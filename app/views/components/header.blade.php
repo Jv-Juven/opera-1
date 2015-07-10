@@ -9,7 +9,7 @@
 			<li>论谈</li>
 			<li>认证</li>
 			<li>商场</li>
-			<li class="active">招贤纳士</li>
+			<li>招贤纳士</li> <!-- class="active" -->
 			<li>在线报名</li>
 		</ul>
 
