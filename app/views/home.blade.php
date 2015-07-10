@@ -5,8 +5,8 @@
 @stop
 
 @section('css')
-@parent
-<link rel="stylesheet" href="/dist/css/home.css">
+    @parent
+    <link rel="stylesheet" href="/dist/css/home.css">
 @stop
 
 @section('body')
@@ -79,6 +79,10 @@
     	<div class="clear"></div>
 
     </div>
+@stop
+
+@section('pagesCover')
+    @parent
 @stop
 
 @section('js')

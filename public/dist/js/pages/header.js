@@ -63,6 +63,11 @@
 				if(data['errCode']==0){
 					alert(data['message']);
 				}
+				else{
+					$("#user_mailbox").text(mail);
+					$("#register_container").fadeOut(200);
+					$("#varify_container").fadeOut(200);
+				}
 			},
 			error:function(){
 				alert("注册失败");
@@ -79,5 +84,15 @@
 	});
 
 	$("#confirm_btn").click(upload_register);
+
+	//-------取消点击登录框和注册框的冒泡事件 START---------
+	$(".cover-box").click(function(){
+		return false;
+	});
+	//-------取消点击登录框和注册框的冒泡事件 END---------
+
+	$("#page_cover").click(function(){
+		$("#page_cover,.cover-box").fadeOut(400);
+	});
 
 })(jQuery);

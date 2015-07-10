@@ -20,7 +20,7 @@
 		@show
 		@include('components.footer')
 		
-
+		@section('pagesCover')
 		<!-- 登录、注册 -->
 		<div id="page_cover">
 			<!-- 登录 -->
@@ -76,14 +76,15 @@
 				</div>
 			</div>
 
-			<div id="varify_container" class="cover-box">
+			<div id="verify_container" class="cover-box">
 				<div class="cover-box-header">用户注册</div>
-				<div class="input-container">
+				<!-- 填写验证码 -->
+				<div id="verify_code_container" class="input-container" style="display:none;">
 					<div class="input" style="height:40px;">
 						
 					</div>
 					<div class="input">
-						请填写校验码，已发送到，<span id="user_mailbox">651458412@qq.com</span>请勿泄露！
+						请填写校验码，已发送到，<span id="user_mailbox"></span>请勿泄露！
 					</div>
 					<div class="input">
 						<input type="text" placeholder="输入校验码">
@@ -93,9 +94,20 @@
 						<div class="confirm-btn">确定</div>
 					</div>
 				</div>
+
+				<div class="input-container">
+					<div id="input_info" class="input">
+						注册成功
+					</div>
+					<div class="confirm-container">
+						<div class="confirm-btn">登录</div>
+					</div>
+				</div>
+
 			</div>
 
 		</div>
+		@show
 
 	</div>
 
