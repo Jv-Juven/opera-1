@@ -52,8 +52,8 @@ class UserController extends BaseController
 		
 		if ($validation->fails()) 
 		{	//获得错误信息数组
-			$nember = $validation->messages()->all();
-			switch ($namber[0])
+			$number = $validation->messages()->all();
+			switch ($number[0])
 			{
 			case 1:
 				return Response::json(array('errCode'=>1, 'message'=>'信息填写不完整！')); 
@@ -383,8 +383,8 @@ class UserController extends BaseController
 
 		if ($validation->fails()) 
 		{	//获得错误信息数组
-			$nember = $validation->messages()->all();
-			switch ($namber[0])
+			$number = $validation->messages()->all();
+			switch ($number[0])
 			{
 			case 1:
 				return Response::json(array('errCode'=>1, 'message'=>'名字长度不能超过20个字！'));
@@ -447,8 +447,8 @@ class UserController extends BaseController
 		if($validation->fails())
 		{	
 			//获得错误信息数组
-			$nember = $validation->messages()->all();
-			switch ($namber[0])
+			$number = $validation->messages()->all();
+			switch ($number[0])
 			{
 			case 1:
 				return Response::json(array('errCode'=>1, 'message'=>'无图片上传！')); 
