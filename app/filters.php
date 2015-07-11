@@ -88,3 +88,20 @@ Route::filter('csrf', function()
 		throw new Illuminate\Session\TokenMismatchException;
 	}
 });
+
+
+Route::filter('auth.user.isIn',function()
+{
+	Session_start();
+	if(!Sentry::check())
+	{
+		if (Request::ajax())
+		{
+			return Response::json(array('errCode' => 10,'message' => '请登陆！'));
+		}
+		else
+		{
+			return Redirect::guest('user/login');
+		}
+	}
+});
