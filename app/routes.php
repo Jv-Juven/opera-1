@@ -19,11 +19,10 @@ Route::group(array('prefix'=>'user'),function()
 	Route::post('check_code', 'UserController@postCheckCode');
 	//注册成功
 	//Route::get('to_login', 'UserController@getToLogin');
-	//登录
-	//Route::post('to_login', 'UserController@toLogin');
+	Route::get('login', 'UserController@login');
+	Route::post('login', 'UserController@postLogin');
 	Route::get('captcha','UserController@captcha');
 	Route::post('check_captcha','UserController@checkCaptcha');
-	Route::post('login', 'UserController@postLogin');
 	Route::get('getremind','UserController@getRemind');
 	Route::post('post_remind','UserController@postRemind');
 	Route::get('get_reset','UserController@getReset');

@@ -140,7 +140,7 @@ class UserController extends BaseController
 		return View::make('to_login');
 	}
 
-	public function toLogin()
+	public function login()
 	{
 		Session_start();
 		$builder = new CaptchaBuilder;
