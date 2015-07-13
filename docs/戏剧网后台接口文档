@@ -100,3 +100,20 @@
 		备注:登录可操作
 
 三、个人中心模块
+	1.空间首页
+		请求方式:	GET
+		请求url:	/user/personal/space_home
+
+		请求参数:	无
+
+		返回参数:	
+				realname		真实姓名
+				city			所在城市
+				gender		性别
+				per_description	我的简介
+				albums		相册数组，依次包含相册名称，图片数，
+				topics			主题数组，依次包含主题名称，发表时间，内容，评论数
+
+		备注:登录可操作
+
+	2.话题动态
