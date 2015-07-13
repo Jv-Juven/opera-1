@@ -58,12 +58,9 @@ module.exports = (grunt)->
                     'dist/css/components.css': ['src/components/**/*.less']
             pages:
                 files:
-                    'dist/css/admin/login/login.css': ['src/pages/admin/login/login.less']
-                    'dist/css/admin/information/info-update.css': ['src/pages/admin/information/info-update.less']
-                    'dist/css/admin/information/history-hot.css': ['src/pages/admin/information/history-hot.less']
-                    'dist/css/admin/information/history-information.css': ['src/pages/admin/information/history-information.less']
-                    'dist/css/admin/information/history-instruction.css': ['src/pages/admin/information/history-instruction.less']
-                    'dist/css/admin/information/history-recommend.css': ['src/pages/admin/information/history-recommend.less']
+                    'dist/css/admin/home/scroll-poster.css': ['src/pages/admin/home/scroll-poster.less']
+                    'dist/css/admin/home/contact-us.css': ['src/pages/admin/home/contact-us.less']
+                    'dist/css/admin/home/friend-links.css': ['src/pages/admin/home/friend-links.less']
 
         cssmin:
             main:
