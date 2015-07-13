@@ -363,13 +363,9 @@ class UserController extends BaseController
 	}
 
 	//获取更新资料界面
-	public function getUpdate()
+	public function getUpdate($user_id)
 	{
-		if(!Sentry::check())
-		{
-			return View::make('home');
-		}
-		$user = Sentry::getUser();
+		$user = User::find($user_id);
 
 		return View::make('个人资料')->with('user', $user);
 	}
@@ -377,15 +373,17 @@ class UserController extends BaseController
 	//更新资料,根据cngcong网写
 	public function postUpdate()
 	{
-		$user = Sentry::getUser();
-		
+		if(!Sentry::check())
+		{
+			return Response::json(array('errCode'=>1, 'message'=>'请登录！'));
+		}		
 		$data =array(
-		'realname' => Input::get('realname'),
-		'gender' => Input::get('gender'), //boolean
-		'city' => Input::get('city'),
-		'position' => Input::get('position'),
-		'interests' => Input::get('interests'),
-		'per_description' => Input::get('per_description')
+			'realname' => Input::get('realname'),
+			'gender' => Input::get('gender'), //boolean
+			'city' => Input::get('city'),
+			'position' => Input::get('position'),
+			'interests' => Input::get('interests'),
+			'per_description' => Input::get('per_description')
 		);
 
 		$rules = array(
@@ -397,7 +395,7 @@ class UserController extends BaseController
 			'per_description' => 'size:1000'
 		);
 
-		$message = array(
+		$messages = array(
 			'realname' => '1',
 			'gender' => '2', //boolean，做成候选模式
 			'city' =>  '3',
@@ -406,7 +404,7 @@ class UserController extends BaseController
 			'per_description' => '6'
 		);
 
-		$validation = Validator::make($data, $rules, $message);
+		$validation = Validator::make($data, $rules, $messages);
 
 		if ($validation->fails()) 
 		{	//获得错误信息数组
@@ -414,22 +412,22 @@ class UserController extends BaseController
 			switch ($number[0])
 			{
 			case 1:
-				return Response::json(array('errCode'=>1, 'message'=>'名字长度不能超过20个字！'));
+				return Response::json(array('errCode'=>2, 'message'=>'名字长度不能超过20个字！'));
 				break;
 			case 2:
-				return Response::json(array('errCode'=>2, 'message'=>''));
+				return Response::json(array('errCode'=>3, 'message'=>''));
 				break;
 			case 3:
-				return Response::json(array('errCode'=>3, 'message'=>'城市名字不能超过20个字！'));
+				return Response::json(array('errCode'=>4, 'message'=>'城市名字不能超过20个字！'));
 				break;
 			case 4:
-				return Response::json(array('errCode'=>4, 'message'=>'职位名字不能超过20个字！'));
+				return Response::json(array('errCode'=>5, 'message'=>'职位名字不能超过20个字！'));
 				break;
 			case 5:
-				return Response::json(array('errCode'=>5, 'message'=>'兴趣描述不可超过50个字！'));
+				return Response::json(array('errCode'=>6, 'message'=>'兴趣描述不可超过50个字！'));
 				break;
 			case 6:
-				return Response::json(array('errCode'=>6, 'message'=>'个人简介不可超过1000个字！'));
+				return Response::json(array('errCode'=>7, 'message'=>'个人简介不可超过1000个字！'));
 				break;
 			default:
 				return Response::json(array());
@@ -437,20 +435,21 @@ class UserController extends BaseController
 		}
 		
 		//性别分开写
-		if($gender != 1 && $gender != 0)
-			$gender = 2;
+		if($data['gender'] != 1 && $data['gender'] != 0)
+			$data['gender'] = 2;
 
-		$user = User::find($user->id);
-		$user->realname = $realname;
-		$user->gender = $gender;
-		$user->position = $position;
-		$user->interests = $interests;
-		$user->per_description = $per_description;
+		$user = Sentry::getUser();
+		$user->realname 		= $data['realname'];
+		$user->gender 		= $data['gender'];
+		$user->position 		= $data['position'];
+		$user->city 			= $data['city'];
+		$user->interests 		= $data['interests'];
+		$user->per_description 	= $data['per_description'];
 
 		if($user->save())
 			return Response::json(array('errCode'=>0, '修改成功!'));
 
-		return Response::json(array('errCode'=>1, '修改失败！'));
+		return Response::json(array('errCode'=>8, '修改失败！'));
 	}
 
 	//更换图片
@@ -490,7 +489,7 @@ class UserController extends BaseController
 				return Response::json(array());
 			}
 		}
-		return Response::json(array('errCode'=>0, '头像上传成功！'));
+		return Response::json(array('errCode'=>0, 'message' => '头像上传成功！'));
 	}
 
 	//在线报名
@@ -624,49 +623,37 @@ class UserController extends BaseController
 	}
 
 	//话题动态
-	public function topic()
+	public function topic($user_id)
 	{
-		if(!Sentry::check())
-		{
-			return View::make('home');
-		}
 
-		$user = Sentry::getUser();
-
+		$user = User::fin($user_id);
 		$topics = $user->hasManyTopics;
-		$topic_comments = $user->hasManyTopicComments;
 
-		return View::make('话题动态')->with(array(
-			'topics' =>$topics,
-			 'topic_comments' =>$topic_comments
-			 ));
+		foreach($topics as $topic)
+		{
+			$topic["commentsCount"] =TopicComment::where('topic_id', '=', $topic->id)->count();
+		}
+		return View::make('话题动态')->with('topics' =>$topics);
 	}
 
 	//相册
-	public function album()
+	public function album($user_id)
 	{
-		if(!Sentry::check())
-		{
-			return View::make('home');
-		}
 
-		$user = Sentry::getUser();
-
+		$user = User::fin($user_id);
 		$albums = $user->hasManyAlbums;
 
+		foreach($albums as $album)
+		{
+			$album['albumCount'] 	= Picture::where('album_id', '=', $albums->id)->count();
+			$album['picture'] 		= Picture::where('album_id', '=', $albums->id)->first()->picture;
+		}
 		return View::make('相册')->with('albums', $albums);
 	}
 
 	//照片
-	public function picture()
+	public function picture($album_id)
 	{
-		if(!Sentry::check())
-		{
-			return View::make('home');
-		}
-
-		$album_id = Input::get('album_id');
-
 		 $album = Album::find($album_id);
 
 		 $pictures = $album->hasManyPictures;
@@ -675,19 +662,14 @@ class UserController extends BaseController
 	}
 
 	//个人中心——获取留言
-	public function message()
+	public function message($user_id)
 	{
-		if(!Sentry::check())
+		$messages = Message::where('receiver_id', '=', $user_id)->get();
+		foreach($messages as $message)
 		{
-			return View::make('home');
+			$message['username'] 			= User::find($message['reciever_id'])->username;
+			$message['messageCommentCount']	= MessageComment::where('message_id', '=', $message->id)->count();
 		}
-
-		$user = Sentry::getUser();
-		
-		$receiver_id = $user->id;
-
-		$messages = Message::where('receiver_id', '=', $receiver_id)->get();
-
 		return View::make('留言页面')->with('messages', $messages);
 	}
 
@@ -696,14 +678,14 @@ class UserController extends BaseController
 	{
 		if(!Sentry::check())
 		{
-			return View::make('home');
+			return Response::json(array('errCode'=>1, 'message'=>'请登录！'));
 		}
 
 		$receiver_id = Input::get('receiver_id');
 
 		$sender_id = Sentry::getUser()->id;
 		
-		$content = Input::get('message-content');
+		$content = Input::get('message_content');
 
 		$msg = new Message;
 		$msg->receiver_id = $receiver_id;
@@ -712,24 +694,23 @@ class UserController extends BaseController
 
 		if(!$msg->save())
 		{
-			return Response::json(array('errCode'=>1, 'message'=>'恢复失败！'));
+			return Response::json(array('errCode'=>2, 'message'=>'恢复失败！'));
 		}
+		$msg['avatar'] 		= User::find($sender_id)->avatar;
+		$msg['username']	 	= User::find($sender_id)->username;
 
-		return Response::json(array('errCode'=>o, 'message'=>'回复成功！'));
+		return Response::json(array('errCode'=>0, 'msg'=>$msg));
 	}
 
 	//个人中心——获取回复
-	public function messageComment()
+	public function messageComment($message_id)
 	{
-		if(!Sentry::check())
+
+		$message_comments = MessageComment::where('message_id', '=', $message_id);
+		foreach($message_comments as $message_comment)
 		{
-			return View::make('home');
+			$message_comment['username'] = User::find($message_comment['user_id'])->username;
 		}
-
-		$message_id = Input::get('message_id');
-
-		$message_comments = Comment::where('message_id', '=', $message_id);
-
 		return View::make('回复信息')->with('message_comments', $message_comments); 
 	}
 
@@ -738,12 +719,11 @@ class UserController extends BaseController
 	{
 		if(!Sentry::check())
 		{
-			return View::make('home');
+			return Response::json(array('errCode'=>1, 'message'=>'请登录！'));
 		}
 
 		$message_id = Input::get('message_id');
-
-		$content = Input::get('comment-content');
+		$content 	= Input::get('comment_content');
 
 		$comment = new Comment;
 		$comment->message_id = $message_id;
@@ -751,21 +731,20 @@ class UserController extends BaseController
 
 		if(!$comment->save())
 		{
-			return Response::json(array('errCode'=>1, 'message'=>'评论创建失败！'));
+			return Response::json(array('errCode'=>2, 'message'=>'评论创建失败！'));
 		}
+		$user = Sentry::getUser();
+		$comment['username'] 	= $user->username;
+		$comment['avatar']		= $user->avatar;
 
-		return Response::json(array('errCode'=>0, 'message'=>'评论创建成功！')); 
+		return Response::json(array('errCode'=>0, 'comment'=>$comment)); 
 	}
 
 	//空间首页
-	public function spaceHome()
+	public function spaceHome($user_id)
 	{
-		if(!Sentry::check())
-		{
-			return Response::json(array('errCode'=>1, 'message'=>'请登录！'));
-		}
+		$user = User::fin($user_id);
 
-		$user = Sentry::getUser();
 		$realname 		= $user->realname;
 		$city          		= $user->city;
 		$gender     	     	= $user->gender;
