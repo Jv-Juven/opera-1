@@ -12,9 +12,10 @@
 			          re_passowrd		确认密码		长度为6-20的字母和数字组成的字符串
 
 		返回参数：  
-				email			邮箱			前端直接获取
-				errCode		错误码		0表示正常返回
-				message		提示信息   
+				{
+					errCode:xxx,			错误码	0表示返回正常	 
+					message:xxx			提示信息
+				}
 
 	2. 用户登录
 	2.1 更换验证码
@@ -32,9 +33,10 @@
 		请求参数:     captcha
 
 		返回参数:	
-				errCode		错误码	0表示返回正常	 
-				message		提示信息
-	
+				{
+					errCode:xxx,			错误码	0表示返回正常	 
+					message:xxx			提示信息
+				}
 	2.3 用户登录
 		请求方式;     POST
 		请求url:         /user/login
@@ -46,8 +48,10 @@
 		
 
 		返回参数:	
-				errCode		错误码	0表示返回正常	 
-				message		提示信息
+				{
+					errCode:xxx,			错误码	0表示返回正常	 
+					message:xxx			提示信息
+				}
 
 二、在线报名模块
 	1. 成绩查询
@@ -59,12 +63,14 @@
 				name			姓名		string
 
 		返回参数:
-				errCode		错误码	0表示返回正常	 
-				message		提示信息
+				{
+					errCode:xxx,			错误码	0表示返回正常	 
+					message:xxx			提示信息
+				},
 				application:[		报名表对象	正常返回时返回此对象
-				  name:xxx
-				  scorenumber:xxx
-				  score:xxx
+					  name:xxx,			名字
+					  scorenumber:xxx,		编号
+					  score:xxx			分数
 				]
 
 		备注:		登录可操作
@@ -94,30 +100,222 @@
 				details			详细说明	text
 
 		返回参数:
-				errCode		错误码	0表示返回正常	 
-				message		提示信息
+				{
+					errCode:xxx,			错误码	0表示返回正常	 
+					message:xxx			提示信息
+				}
 		
 		备注:登录可操作
 
 三、个人中心模块
 	1.空间首页
 		请求方式:	GET
-		请求url:	/user/personal/space_home
+		请求url:	/user/space_home/:user_id
 
-		请求参数:	无
+		请求参数:	user_id		被访问用户id		根据id去到首页
 
-		返回参数:	
+		返回参数:	视图
 				realname		真实姓名
 				city			所在城市
 				gender		性别
 				per_description	我的简介
-				albums		相册数组，依次包含相册名称，图片数，
-				topics			主题数组，依次包含主题名称，发表时间，内容，评论数
 
-		备注:登录可操作
+				albums:[		包含两个相册的数组
+					{
+					album_title1,			相册1的名称
+					number_of_pictures1,	相册1的图片数
+					picture1			相册1的封面图片
+					},
+					{
+					album_title2,			相册2的名称
+					number_of_pictures3,	相册2的图片数
+					picture2			相册2的封面图片			
+					}
+				]
+
+				topics:[		包含两个话题的数组
+					{
+					topic_title1,			话题1的名称
+					topic_time1,			话题1的创建时间
+					topic_content1,		话题1的内容
+					$topic_comments1		话题1的评论数
+					},
+					{
+					topic_title2,			话题2的名称
+					topic_time2,			话题2的创建时间
+					topic_content2,		话题2的内容
+					$topic_comments2		话题2的评论数
+					}
+				]			
+
 
 	2.话题动态
 		请求方式:	GET
-		请求url:	/user/personal/topic
+		请求url:	/user/topic/:user_id
+
+		请求参数:	user_id	被访问用户id			根据id获取话题动态
+
+		返回参数:	视图
+				topics:[
+					{
+						title:xxx,			话题题目
+						topic:xxx,			话题内容
+						created_at:xxx,		话题建立时间
+						commentsCount:xxx		话题评论数
+					},
+					....
+				]
+
+
+	3.相册
+		请求方式:	GET
+		请求url:	/user/album/:user_id
+
+		请求参数:	user_id	被访问用户id			根据id获取相册
+
+		返回参数:	视图
+				albums:[
+					{
+						title:xxx,			相册题目
+						picture:xxx,			相册封面
+						albumCount:xxx		相册图片数目
+						},
+						....
+				]
+
+	4.照片
+		请求方式:	GET
+		请求url:	/user/picture/:album_id
+
+		请求参数:	album_id	相册的id			根据id取得图片实例
+
+		返回参数:	视图
+				pictures:[
+					{
+						title:xxx,			图片标题
+						picture:xxx			图片的url
+					},
+					....
+				]
+	5. 留言
+		请求方式:	GET
+		请求url:	/user/message/:user_id
+
+		请求参数:	user_id	被访问用户id			根据用户id获取留言
+
+		返回参数:	视图
+				messages:[
+					 {
+						username:xxx,			留言人姓名
+						created_at:xxx,			留言时间
+						content:xxx,				留言内容
+						messageCommentCount:xxx	留言的回复数
+					},
+					....
+				]
+
+	6.留言的回复
+		请求方式:	GET
+		请求url:	/user/message_comment/:message_id
+
+		请求参数:	message_id
+
+		返回参数:	
+				message_comments:[
+					{
+						username:xxx,			回复者姓名
+						content:xxx,				回复内容
+						created_at:xxx			回复时间
+					},
+					....
+				]
+
+	7.获取个人资料
+		请求方式:	GET
+		请求url:	/user/update/:user_id
+
+		请求参数:	user_id
+
+		返回参数:	视图
+				user:{	
+						avatar:xxx,			头像
+						realname:xxx,		真实姓名
+						gender:xxx,			性别
+						position:xxx,			职位
+						city:xxx,			所在城市
+						interests:xxx,			兴趣
+						per_description:xxx		我的简介
+				}
+	8.发表留言
+		请求方式:	POST
+		请求url:	/user/personal/message
 
 		请求参数:	
+				receiver_id					被留言者id
+				message_content				留言内容
+
+		返回参数:	
+				{
+					errCode:xxx,			错误码	0表示返回正常	 
+					message:xxx			提示信息
+				},
+				msg:{
+						avatar:xxx,			头像
+						username:xxx,		留言者姓名
+						content:xxx,			内容
+						created_at			留言时间
+				}
+		备注:登录可操作
+
+	9.发表回复
+		请求方式:	POST
+		请求url:	/user/personal/message_comment
+
+		请求参数:	
+				message_id					被回复的留言的id
+				comment_content				回复内容
+
+		返回参数:	
+			{
+				errCode:xxx,			错误码	0表示返回正常	 
+				comment:{
+						avatar:xxx,			头像
+						username:xxx,		回复者姓名
+						content:xxx,			内容
+						created_at			回复时间
+				}
+			}
+
+	10.更新个人资料
+		请求方式:	POST
+		请求url:	/user/personal/update
+
+		请求参数:	
+				realname:xxx,		真实姓名
+				gender:xxx,			性别
+				position:xxx,			职位
+				city:xxx,			所在城市
+				interests:xxx,			兴趣
+				per_description:xxx		我的简介
+
+		返回参数:
+			{
+				errCode:xxx,			错误码	0表示返回正常	 
+				message:xxx			提示信息
+			}
+
+	11.更换头像
+		请求方式:	POST
+		请求url:	/user/personal/chang_image
+
+		请求参数:
+				avatar				头像图片
+
+		返回参数:
+			{
+				errCode:xxx,			错误码	0表示返回正常	 
+				message:xxx			提示信息
+			}
+
+
+

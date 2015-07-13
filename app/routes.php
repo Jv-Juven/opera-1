@@ -28,6 +28,20 @@ Route::group(array('prefix'=>'user'),function()
 	Route::get('get_reset','UserController@getReset');
 	Route::post('post_reset', 'UserController@postReset');
 
+	//空间首页
+	Route::get('space_home/{user_id}', 'UserController@spaceHome');
+	//话题动态
+	Route::get('topic/{user_id}','UserController@topic');
+	//相册和照片
+	Route::get('album/{user_id}','UserController@album');
+	Route::get('picture/{album_id}','UserController@picture');
+	//获取留言
+	Route::get('message/{user_id}', 'UserController@message');
+	//获取留言回复
+	Route::get('message_comment/{message_id}','UserController@messageComment');
+	//获取个人资料
+	Route::get('update/{user_id}', 'UserController@getUpdate');
+
 	Route::group(array('before' => 'auth.user.isIn'), function()
 	{
 		Route::get('logout', 'UserController@getLogout');
@@ -38,21 +52,11 @@ Route::group(array('prefix'=>'user'),function()
 		//个人中心
 		Route::group(array('prefix'=>'personal'), function()
 		{
-			//空间首页
-			Route::get('space_home', 'UserController@spaceHome');
-			//话题动态
-			Route::get('topic','UserController@topic');
-			//相册和照片
-			Route::get('album','UserController@album');
-			Route::get('picture','UserController@picture');
-			//获取和发表留言
-			Route::get('message', 'UserController@message');
+			//发表留言
 			Route::post('message', 'UserController@postMessage');
-			//获取和发表回复
-			Route::get('message_comment','UserController@messageComment');
+			//发表回复
 			Route::post('message_comment','UserController@postMessageComment');
 			//更新个人资料
-			Route::get('update', 'UserController@getUpdate');
 			Route::post('update', 'UserController@postUpdate');
 			//更换头像
 			Route::post('chang_image','UserController@changeImage');
@@ -63,7 +67,7 @@ Route::group(array('prefix'=>'user'),function()
 });
 
 Route::group(array('prefix'=>'customer'), function()
-{	
+{		
 	//首页协会资讯更多
 	Route::group(array('prefix'=>'talk'),function()
 	{	
@@ -119,5 +123,4 @@ Route::group(array('prefix'=>'customer'), function()
 
 Route::get('test', 'UserController@postLogin');
 Route::post('test', 'TestController@postTest');
-
 
