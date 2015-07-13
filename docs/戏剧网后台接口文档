@@ -6,15 +6,15 @@
 		请求url：      /user/register
 		
 		请求参数:    
-			          usename        用户名		
-			          email               邮箱			邮箱格式
-			          password        密码			长度为6-20的字母和数字组成的字符串
-			          re_passowrd   确认密码		长度为6-20的字母和数字组成的字符串
+			          username	 	用户名		
+			          email			邮箱			邮箱格式
+			          password 		密码			长度为6-20的字母和数字组成的字符串
+			          re_passowrd		确认密码		长度为6-20的字母和数字组成的字符串
 
 		返回参数：  
-				email               	邮箱		前端直接获取
-				errCode          	错误码	0表示正常返回
-				message         	提示信息   
+				email			邮箱			前端直接获取
+				errCode		错误码		0表示正常返回
+				message		提示信息   
 
 	2. 用户登录
 	2.1 更换验证码
@@ -33,7 +33,7 @@
 
 		返回参数:	
 				errCode		错误码	0表示返回正常	 
-				message         	提示信息
+				message		提示信息
 	
 	2.3 用户登录
 		请求方式;     POST
@@ -42,12 +42,12 @@
 		请求参数:
 				username		用户名	字符串
 				password		密码		长度为6-20的字母和数字组成的字符串		  
-				captcha		验证码           长度为5的字符串
+				captcha		验证码	长度为5的字符串
 		
 
 		返回参数:	
 				errCode		错误码	0表示返回正常	 
-				message         	提示信息
+				message		提示信息
 
 二、在线报名模块
 	1. 成绩查询
@@ -60,7 +60,7 @@
 
 		返回参数:
 				errCode		错误码	0表示返回正常	 
-				message         	提示信息
+				message		提示信息
 				application:[		报名表对象	正常返回时返回此对象
 				  name:xxx
 				  scorenumber:xxx
@@ -95,8 +95,29 @@
 
 		返回参数:
 				errCode		错误码	0表示返回正常	 
-				message         	提示信息
+				message		提示信息
 		
 		备注:登录可操作
 
 三、个人中心模块
+	1.空间首页
+		请求方式:	GET
+		请求url:	/user/personal/space_home
+
+		请求参数:	无
+
+		返回参数:	
+				realname		真实姓名
+				city			所在城市
+				gender		性别
+				per_description	我的简介
+				albums		相册数组，依次包含相册名称，图片数，
+				topics			主题数组，依次包含主题名称，发表时间，内容，评论数
+
+		备注:登录可操作
+
+	2.话题动态
+		请求方式:	GET
+		请求url:	/user/personal/topic
+
+		请求参数:	
