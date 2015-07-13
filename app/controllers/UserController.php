@@ -633,7 +633,7 @@ class UserController extends BaseController
 		{
 			$topic["commentsCount"] =TopicComment::where('topic_id', '=', $topic->id)->count();
 		}
-		return View::make('话题动态')->with('topics' =>$topics);
+		return View::make('话题动态')->with('topics',$topics);
 	}
 
 	//相册
