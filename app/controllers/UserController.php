@@ -205,13 +205,13 @@ class UserController extends BaseController
 			'captcha'   =>'required|size: 5'  
 		);
 		$messages = array(
-			'username.required' => '请填写用户名！',
-			'password.required' => '请填写密码！',
-			'captcha.required' => '请填写验证码!',
-			'username.unique' => '用户名已被注册',
-			'password.alpha_num' =>'密码只能包含字母和数字！',
-			'password.between' =>'密码必须是6到20位之间！',
-			'captcha.size' =>'验证码格式错误'
+			'username.required' => 1,
+			'password.required' => 2,
+			'captcha.required' => 3,
+			'username.unique' => 4,
+			'password.alpha_num' =>5,
+			'password.between' =>6,
+			'captcha.size' =>7
 		);
 
 		$validation = Validator::make($data, $rules,$messages);
@@ -220,8 +220,43 @@ class UserController extends BaseController
 		if ($validation->fails()) 
 		{	//获得错误信息数组
 			$msgs = $validation->messages()->all();
-			return View::make('login')->with('msgs', $msgs);
+			switch ($namber[0])
+			{
+			case 1:
+				return Response::json(array('errCode'=>1, 'message'=>'请填写用户名！')); 
+				break;
+			case 2:
+				return Response::json(array('errCode'=>2, 'message'=>'请填写密码！'));
+				break;
+			case 3:
+				return Response::json(array('errCode'=>3, 'message'=>'请填写验证码！'));
+				break;
+			case 4:
+				return Response::json(array('errCode'=>4, 'message'=>'用户名已被注册！'));
+				break;
+			case 5:
+				return Response::json(array('errCode'=>5, 'message'=>'密码只能包含字母和数字！'));
+				break;
+			case 6:
+				return Response::json(array('errCode'=>6, 'message'=>'密码必须是6到20位之间！'));
+				break;
+			case 7:
+				return Response::json(array('errCode'=>7, 'message'=>'验证码格式错误！'));
+				break;
+			default:
+				return Response::json(array());
+
+			}
 		}
+
+		$sessionCaptcha = $_SESSION['phrase'];
+
+		if($captcha != $sessionCaptcha)
+		{
+			return Response::json(array('errCode' => 8,'message' => '验证码有误!'));
+		}
+		
+		return Response::json(array('errCode' => 0,'message' => '登录成功!'));
 	}
 
 	public function getRemind()
