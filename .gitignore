@@ -5,7 +5,7 @@ public/node_modules
 /vendor/*
 /app/config/database.php
 /app/config/app.php
-/public/dist
+/public/dist/
 composer.phar
 composer.lock  # Remove this one after you create a project
 .env.*.php
