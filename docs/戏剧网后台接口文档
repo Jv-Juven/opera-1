@@ -1,17 +1,17 @@
 中国儿童戏剧网站后台文档
 
 一、用户模块
-	1. 用户注册            
-		请求方式:     POST
-		请求url：      /user/register
+	1. 用户注册
+		请求方式:	POST
+		请求url：	/user/register
 		
-		请求参数:    
-			          username	 	用户名		
-			          email			邮箱			邮箱格式
-			          password 		密码			长度为6-20的字母和数字组成的字符串
-			          re_passowrd		确认密码		长度为6-20的字母和数字组成的字符串
+		请求参数:
+				username	 	用户名		
+				email			邮箱			邮箱格式
+			 	password 		密码			长度为6-20的字母和数字组成的字符串
+				re_passowrd		确认密码		长度为6-20的字母和数字组成的字符串
 
-		返回参数：  
+		返回参数：
 				{
 					errCode:xxx,			错误码	0表示返回正常	 
 					message:xxx			提示信息
@@ -19,18 +19,18 @@
 
 	2. 用户登录
 	2.1 更换验证码
-	           请求方式:     GET
-	           请求url:	/user/captcha
+	 	请求方式:	GET
+		请求url:	/user/captcha
 
-	           请求参数:      
+		请求参数:	无
 
-	           返回参数:      验证码图片
+		返回参数:	验证码图片
 
 	2.2 验证验证码
 		请求方式:	POST
-		请求url:         /user/check_captcha
+		请求url:	/user/check_captcha
 		
-		请求参数:     captcha
+		请求参数:	captcha
 
 		返回参数:	
 				{
@@ -38,8 +38,8 @@
 					message:xxx			提示信息
 				}
 	2.3 用户登录
-		请求方式;     POST
-		请求url:         /user/login
+		请求方式:	POST
+		请求url:	/user/login
 
 		请求参数:
 				username		用户名	字符串
