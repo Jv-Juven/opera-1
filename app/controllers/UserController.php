@@ -10,9 +10,9 @@ class UserController extends BaseController
 
 		Session_start();
 		$data = array(
-			'username' => Input::get('username'),
-			'email' => Input::get('email'),
-			'password' => Input::get('password'),
+			'username'      => Input::get('username'),
+			'email'             => Input::get('email'),
+			'password'      => Input::get('password'),
 			're_password' => Input::get('re_password')
 		);
 
@@ -22,30 +22,17 @@ class UserController extends BaseController
 			'password'      =>'required|alpha_num|between:6,20',
 			're_password' =>'required|same:password'
 		);
-
-		// $messages = array(
-		// 	'username.required' => '请填写用户名！',
-		// 	'email.required' => '请填写邮箱！',
-		// 	'password.required' => '请填写密码！',
-		// 	're_password.required' => '请填写确认密码！',
-		// 	'username.unique' => '用户名已被注册',
-		// 	'email.email' =>'邮箱格式不正确！',
-		// 	'email.unique' =>'邮箱已被注册！',
-		// 	'password.alpha_num' =>'密码只能包含字母和数字！',
-		// 	'password.between' =>'密码必须是6到20位之间！',
-		// 	're_password.same' => '两次密码输入不一致！'
-		// );
 		$messages = array(
-			'username.required' => '1',
-			'email.required' => '1',
-			'password.required' => '1',
-			're_password.required' => '1',
-			'username.unique' => '2',
-			'email.email' =>'3',
-			'email.unique' =>'4',
-			'password.alpha_num' =>'5',
-			'password.between' =>'6',
-			're_password.same' => '7'
+			'username.required'      => 1,
+			'email.required'             => 1,
+			'password.required' 	    => 1,
+			're_password.required' => 1,
+			'username.unique'        => 2,
+			'email.email'                 =>3,
+			'email.unique'               =>4,
+			'password.alpha_num'  =>5,
+			'password.between'      =>6,
+			're_password.same'     => 7
 		);
 
 		$validation = Validator::make($data, $rules,$messages);
@@ -103,7 +90,7 @@ class UserController extends BaseController
 			$_SESSION['email'] =Input::get('email');
 			$_SESSION['password'] =Input::get('password');
 
-			return View::make('check_code')->with('email', $data['email']);
+			return Response::json(array('errCode'=>0, 'message'=>'验证码发送成功!'));
 		}
 	}
 
@@ -120,10 +107,10 @@ class UserController extends BaseController
 		);
 
 		if($validation->fails())
-			return View::make('user/checkcode')->with('msg','验证码格式不正确！');
+			return Response::json(array('errCode'=>1, 'message'=>'验证码格式不正确！'));
 
 		if($checkcode != $sessionSalt)
-			return View::make('user/checkcode')->with('msg','验证码不正确！');
+			return Response::json(array('errCode'=>2, 'message'=>'验证码不正确！'));
 
 		//创建用户
 		User::create(array(
@@ -132,13 +119,9 @@ class UserController extends BaseController
 			'password' => Hash::make($_SESSION['password'])
 		));
 
-		return Redirect::to('user/to_login');
+		return Response::json(array('errCode'=>0, 'message'=>'注册成功！'));
 	}
 
-	public function getToLogin()
-	{
-		return View::make('to_login');
-	}
 
 	public function login()
 	{
@@ -147,7 +130,7 @@ class UserController extends BaseController
 		$builder->build();
 		$phrase = $builder->getPhrase();
 		$_SESSION['phrase'] = $phrase;
-		return View::make('login')->with('captcha', $builder)->with('msgs', array());
+		return View::make('login')->with('captcha', $builder);
 	}
 
 	//生成验证码(congcong网)
@@ -175,19 +158,16 @@ class UserController extends BaseController
 		);
 
 		if($validator->fails()){
-			return  '验证码格式错误';
-			//return Response::json(array('errCode' => 2, "message" => "验证码格式错误", "validateMes" => $validator->messages()));
+			return Response::json(array('errCode' => 2, "message" => "验证码格式错误", "validateMes" => $validator->messages()));
 		}
 
 		//$sessionCaptcha = Session::get('phrase');
 		$sessionCaptcha = $_SESSION['phrase'];
 
 		if($captcha != $sessionCaptcha)
-			return  '验证码有误!';
-			//return Response::json(array('errCode' => 1,'message' => '验证码有误!'));
+			return Response::json(array('errCode' => 1,'message' => '验证码有误!'));
 
-		return '注册成功';
-		//Response::json(array('errCode' => 0,'message' => '验证码正确!'));
+		return Response::json(array('errCode' => 0,'message' => '验证码正确!'));
 	}
 
 	//登录验证
@@ -219,8 +199,8 @@ class UserController extends BaseController
 		//验证注册信息
 		if ($validation->fails()) 
 		{	//获得错误信息数组
-			$msgs = $validation->messages()->all();
-			switch ($namber[0])
+			$number = $validation->messages()->all();
+			switch ($number[0])
 			{
 			case 1:
 				return Response::json(array('errCode'=>1, 'message'=>'请填写用户名！')); 
@@ -283,17 +263,18 @@ class UserController extends BaseController
 			{
 				Mail::send('emails/get_reset',array(),function($message) use ($email)
 				{
-				$message->to($email,'')->subject('中国儿童戏剧密码重置!');
+					$message->to($email,'')->subject('中国儿童戏剧密码重置!');
 				});
 
 				$_SESSION['reset_email'] = $email;
-				return '验证码已发送';
+				return Response::json(array('errCode' => 0,'message' => '验证码已发送!'));
+			
 			}else{
-				return Redirect::back()->with('msg', '此邮箱还未注册！');
+				return Response::json(array('errCode' => 1,'message' => '此邮箱还未注册！'));
 			}
 
 		}else{
-			return Redirect::back()->with('msg', '邮箱格式错误！');
+			return Response::json(array('errCode' => 2,'message' => '邮箱格式错误！'));
 		}
 	}
 
@@ -320,11 +301,6 @@ class UserController extends BaseController
 			'password.between' => '3',
 			'password.alpha_num' => '4',
 			're_password.same' => '5'
-			// 'password.required' => '请填写重置密码！',
-			// 're_password.required' => '请填写重置密码！',
-			// 'password.between' => '密码必须是6到20位之间！',
-			// 'password.alpha_num' => '密码必须是数字或字母',
-			// 're_password.same' => '密码与第一次输入不一致！'
 		); 
 
 		$validation = Validator::make($data, $rules,$messages);
@@ -332,15 +308,33 @@ class UserController extends BaseController
 		//验证注册信息
 		if ($validation->fails()) 
 		{	//获得错误信息数组
-			$msgs = $validation->messages()->all();
-			return '失败1';
-			//return Redirect::back()->with('msgs', $msgs);
+			$number = $validation->messages()->all();
+			switch ($number[0])
+			{
+			case 1:
+				return Response::json(array('errCode'=>1, 'message'=>'请填写重置密码！')); 
+				break;
+			case 2:
+				return Response::json(array('errCode'=>2, 'message'=>'请填写重置密码！'));
+				break;
+			case 3:
+				return Response::json(array('errCode'=>3, 'message'=>'密码必须是6到20位之间！'));
+				break;
+			case 4:
+				return Response::json(array('errCode'=>4, 'message'=>'密码必须是数字或字母！'));
+				break;
+			case 5:
+				return Response::json(array('errCode'=>5, 'message'=>'密码与第一次输入不一致'));
+				break;
+			default:
+				return Response::json(array());
+			}
 		}
 
 		//获取重置邮箱信息
 		if(!isset($_SESSION['reset_email']))
 		{
-			return Redirect::to('user/getremind');
+			return Response::json(array('errCode'=>6, 'message'=>'未发送重置信息！'));
 		}
 
 		//重置密码
@@ -350,11 +344,10 @@ class UserController extends BaseController
 
 		if(!isset($reset_password))
 		{
-			return '密码重置失败';
-			//return '密码重置成功！';
+			return Response::json(array('errCode'=>7, 'message'=>'密码重置失败！'));
 		}
 		//重置成功，返回主页！
-		return View::make('home');
+		return Response::json(array('errCode'=>0, 'message'=>'密码重置成功！'));
 	}
 
 	//退出登录
@@ -367,7 +360,6 @@ class UserController extends BaseController
 		}else{
 			return Response::json(array('errCode'=>1, 'message'=>'用户未登录！'));
 		}
-
 	}
 
 	//获取更新资料界面
@@ -621,7 +613,7 @@ class UserController extends BaseController
 			return Response::json(array('errCode'=>5,'message'=>'成绩还未出来！'));
 		}
 
-		return Response::json(array('errCode'=>0, 'application'=>$application))
+		return Response::json(array('errCode'=>0, 'application'=>$application));
 	}
 
 	//话题动态
