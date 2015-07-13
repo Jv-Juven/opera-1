@@ -762,17 +762,56 @@ class UserController extends BaseController
 	{
 		if(!Sentry::check())
 		{
-			return View::make('home');
+			return Response::json(array('errCode'=>1, 'message'=>'请登录！'));
 		}
 
 		$user = Sentry::getUser();
-		$albums = $user->hasManyAlbums;
-		$topics = $user->hasManyTopics;
+		$realname 		= $user->realname;
+		$city          		= $user->city;
+		$gender     	     	= $user->gender;
+		$per_description	= $user->per_description;
+
+ 		$albums 			= $user->hasManyAlbums;
+		$album1 			= array();
+		$album_title1 		=  $albums[0]->title; 
+		$number_of_pictures1 	= $album[0]->count();
+		$pictures1			= $album[0]->hasManyPictures;
+		$picture1 			= $pictures[0];
+		array_push($album1, $album_title1,$number_of_pictures1,$picture1);
+		$album2 			= array();
+		$album_title2			=  $albums[1]->title; 
+		$number_of_pictures2 	= $album[1]->count();
+		$pictures2 			= $album[1]->hasManyPictures;
+		$picture2 			= $pictures[1];
+		array_push($album2, $album_title2,$number_of_pictures2,$picture2);
+		$albums 			=array();
+		$albums[0] 			= $album1;
+		$albums[1] 			= $album2;
+
+		$topics 			= $user->hasManyTopics;
+		$topic1 			= array();
+		$topic_title1 			= $topics[0]->title;
+		$topic_time1 			= $topics[0]->created_at;
+		$topic_content1 		= $topics[0]->content;
+		$topic_comments1 		= $topics[0]->hasManyTopicComments->count();
+		array_push($topic1, $topic_title1,$topic_time1,$topic_content1,$topic_comments1);
+		$topic2 			= array();
+		$topic_title2	 		= $topics[0]->title;
+		$topic_time2 			= $topics[0]->created_at;
+		$topic_content2		= $topics[0]->content;
+		$topic_comments2 		= $topics[0]->hasManyTopicComments->count();
+		array_push($topic2, $topic_title2,$topic_time2,$topic_content2,$topic_comments2);
+		$topics 			= array();
+		$topics[0] 			= $topic1;
+		$topics[1] 			= $topic2;
 
 		return View::make('空间首页')->with(array(
-			'user'     =>$user, 
-			'albums'  => $albums,
-			'topics'   => $topics
+			'realname'     		=>$realname,
+			'city'			=>$city,
+			'gender'		=>$gender,
+			'per_description' 	=> $per_description,
+			'albums'  		=> $albums,
+			'topics'   		=> $topics
 			));
 	}
 
