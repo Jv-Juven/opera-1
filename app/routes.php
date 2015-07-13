@@ -117,7 +117,7 @@ Route::group(array('prefix'=>'customer'), function()
 });
 
 
-Route::get('test', 'TestController@test');
+Route::get('test', 'UserController@postLogin');
 Route::post('test', 'TestController@postTest');
 
 

@@ -496,6 +496,11 @@ class UserController extends BaseController
 	//在线报名
 	public function postApplication()
 	{
+		if(!Sentry::check())
+		{
+			return Response::json(array('errCode'=>1, 'message'=>'请登录！'));
+		}
+
 		$name         = Input::get('name');
 		$gender       = Input::get('gender');
 		$year           = Input::get('year');
@@ -526,13 +531,13 @@ class UserController extends BaseController
 			));
 		if($validation->fails())
 		{
-			return Response::json(array('errCode'=>1, 'message'=>'名字和手机必须填写完整'));
+			return Response::json(array('errCode'=>2, 'message'=>'名字和手机必须填写完整!'));
 		}
 
 		$reg = "/^13[0-9]{1}[0-9]{8}$|15[0189]{1}[0-9]{8}$|189[0-9]{8}$/";
 		if(preg_match($reg, $phone))
 		{
-			return Response::json(array('errCode'=>2, 'message'=>'手机格式不正确！'));
+			return Response::json(array('errCode'=>3, 'message'=>'手机格式不正确！'));
 		}
 		//存储报名表
 		$application = new Application;
@@ -556,7 +561,9 @@ class UserController extends BaseController
 		$application->details = $details;
 		
 		if(!$application->save())
-			return Response::json(array('errCode'=>3, 'message'=>'资料保存失败！'));
+		{
+			return Response::json(array('errCode'=>4, 'message'=>'资料保存失败！'));
+		}
 
 		return Response::json(array('errCode'=>0, 'message'=>'报名成功！'));
 	}
@@ -568,14 +575,14 @@ class UserController extends BaseController
 		{
 			$user = Sentry::getUser();
 		}else{
-			return View::make('home');
+			return Response::json(array('errCode'=>1, 'message'=>'请登录！'));
 		}
 
 		$application = $user->hasOneApplication;
 
 		if(!isset($application))
 		{
-			return Response::json(array('errCode'=>1,'message'=>'您还未报名'));
+			return Response::json(array('errCode'=>2,'message'=>'您还未报名！'));
 		}
 
 		$name = Input::get('name');
@@ -589,28 +596,28 @@ class UserController extends BaseController
 				'scorenumber' =>$scorenumber
 			),
 			array(
-				'name' => 'required|same:',
+				'name' => 'required',
 				'scorenumber' => 'required'
 			));
 		if($validation->fails())
 		{
-			return Response::json(array('errCode'=>2, 'message'=>'信息填写不完整！'));
+			return Response::json(array('errCode'=>3, 'message'=>'信息填写不完整！'));
 		}
 
 		if($name != $name_of_application)
 		{
-			return Response::json(array('errCode'=>3, 'message'=>'姓名填写错误！'));
+			return Response::json(array('errCode'=>4, 'message'=>'姓名填写错误！'));
 		}
 
 		if($scorenumber != $scorenumber_of_application)
 		{
-			return Response::json(array('errCode'=>4, 'message'=>'编号填写错误！'));
+			return Response::json(array('errCode'=>5, 'message'=>'编号填写错误！'));
 		}
 
 		$score = $application->score;
 		if(!isset($score))
 		{
-			return Response::json(array('errCode'=>5,'message'=>'成绩还未出来！'));
+			return Response::json(array('errCode'=>6,'message'=>'成绩还未出来！'));
 		}
 
 		return Response::json(array('errCode'=>0, 'application'=>$application));
