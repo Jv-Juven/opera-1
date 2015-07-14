@@ -16,12 +16,10 @@ class AuthenticationController extends BaseController{
 		$dance_associations = array();
 		//网站会员 
 		$website_members = array();
-		//学生
-		$students= array();
 		foreach($users as $user)
 		{	
 			//将不同身份的人分组
-			//identity:1=>主题团，2=>顾问，3=>理事，4=>舞协会员，5=>网站会员，6=>学生
+			//identity:1=>主题团，2=>顾问，3=>理事，4=>舞协会员，5=>网站会员
 			switch ($user->identity) 
 			{
 				case 1:
@@ -36,12 +34,8 @@ class AuthenticationController extends BaseController{
 				case 4:
 					array_push($dance_associattions, $user);
 					break;
-				case 5:
-					array_push($website_members, $user);
-					break;
 				default:
-					array_push($students, $user);
-					break;
+					array_push($website_members, $user);
 			}
 		}
 		switch ($identity) {
@@ -60,19 +54,14 @@ class AuthenticationController extends BaseController{
 			case 5:
 				return View::make('认证首页')->with('website_members', $website_members);
 				break;
-			case 6:
-				return View::make('认证首页')->with('students', $students);
-				break;
 			default:
 				return View::make('认证首页')->with(array(
-				'bureaus' => $bureaus, 
-				'consultants' => $consultants,
-				'directors' => $directors,
-				'dance_associattions' =>$dance_associattions,
-				'website_members' => $website_members,
-				'students' =>$students
+					'bureaus' => $bureaus, 
+					'consultants' => $consultants,
+					'directors' => $directors,
+					'dance_associattions' =>$dance_associattions,
+					'website_members' => $website_members,
 				));
-				break;
 		}
 	}
 
@@ -99,7 +88,7 @@ class AuthenticationController extends BaseController{
 
 		if(isset($cities[$area]))
 		{
-			return View::make('地区分类页')->with('area', $cities[$city]);
+			return View::make('地区分类页')->with('area', $cities[$area]);
 		}else{
 			return View::make('地区分类页')->with('area', $cities);
 		}

@@ -5,9 +5,13 @@ class PerformanceController extends BaseController
 {
 	public function teacher()
 	{
-		$teachers = DB::table('teachers')->orderBy('created_at', 'desc')->take(6)->get();
+		$page			= ceil($teacher_count/15);
+		$teachers		= Teacher::paginate(15); 
 		
-		return View::make('戏剧家页')->with('teachers', $teachers);
+		return View::make('戏剧家页')->with(array(
+				'teachers' 		=> $teachers,
+				'page'			=> $page,
+			));
 	}
 
 	public function teacherMore()
@@ -21,9 +25,15 @@ class PerformanceController extends BaseController
 
 	public function backStage()
 	{
-		$backstages = BackStage::paginate(15);
+		$backstage_count 	= BackStage::count();
+		$page 		= ceil($backstage_count/15);
+		$backstages 		= BackStage::paginate(15);
 
-		return View::make('台前幕后页面')->with('backstages', $backstages);
+		return View::make('台前幕后页面')->with(array(
+				'backstages' 		=> $backstages,
+				'page'			=> $page,
+				'backstage_count' 	=> $backstage_count
+			));
 	}
 
 	public function backStageMore()
@@ -36,10 +46,14 @@ class PerformanceController extends BaseController
 	}
 
 	public function appreciation()
-	{
-		$appreciation = Appreciation::paginate(4);
-
-		return View::make('经典欣赏')->with('appreciation', $appreciation);
+	{	
+		// $appreciation_count  = Appreciation::count();
+		$page			 = ceil($appreciation_count/15);
+		$appreciations 	 = Appreciation::paginate(4);
+		return View::make('经典欣赏')->with(array(
+				'appreciations' => $appreciations,
+				'page'		  => $page
+			));
 	}
 
 	public function appreciationMore()

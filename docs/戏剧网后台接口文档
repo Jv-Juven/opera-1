@@ -474,3 +474,176 @@
 					content:xxx		内容
 				}
 
+5. 教师认证模块
+	1.教师认证首页/身份表示分类
+		请求方式:	GET
+		请求url:	authentication/identity
+
+		请求参数:	identity			
+		备注:		根据此参数,获取不同身份的老师信息，null时返回全部
+
+		返回参数:
+				bureaus:[			主席团
+					{
+					avatar:xxx,		教师头像
+					realname:xxx		真实姓名
+					},
+					....
+				]
+				consultants:[			顾问
+					{
+					avatar:xxx,		教师头像
+					realname:xxx		真实姓名
+					},
+					....
+				]
+				directors:[			理事
+					{
+					avatar:xxx,		教师头像
+					realname:xxx		真实姓名
+					},
+					....
+				]
+				dance_associattions:[	舞协会员
+					{
+					avatar:xxx,		教师头像
+					realname:xxx		真实姓名
+					},
+					....
+				]
+				website_members:[		网站会员
+					{
+					avatar:xxx,		教师头像
+					realname:xxx		真实姓名
+					},
+					....
+				]
+
+	2.按地区分类
+		请求方式:	GET
+		请求url:	authentication/city
+
+		请求参数:	area				地区
+		备注:		根据此参数,获取不同地区的老师信息，null时返回全部
+
+		返回参数:	
+				area:[
+					{
+					avatar:xxx,		教师头像
+					realname:xxx		真实姓名
+					},
+					....
+				]
+
+	3.按用户名分类(首字母)
+		请求方式:	GET
+		请求方式:	authentication/username
+
+		请求参数:	letter				首字母
+		备注:		根据此参数,获取不同用户名的首字母，
+				以此返回老师信息，null时返回全部
+
+		返回参数:
+				letters:[
+					{
+					avatar:xxx,		教师头像
+					realname:xxx		真实姓名
+					},
+					....
+				]
+
+	4.点击老师照片进入个人中心
+		与个人空间模块——空间首页相同
+
+6.协会表演模块
+	1.首页协会表演更多/戏剧百家
+		请求方式:	GET
+		请求url:	performance/teacher
+
+		请求参数:	无
+
+		返回参数:	
+				page:xxx				页数
+				teachers:[
+					{
+					avatar:xxx,			照片
+					position:xxx,			职业
+					chinese_name:xxx		中文名
+					},
+					....
+				]
+
+	2.戏剧百家详细信息
+		请求方式:	GET
+		请求url:	performance/teacher_more
+
+		请求参数:	teacher_id
+
+		返回参数:
+				teacher:{
+					avatar:xxx			照片
+					chinese_name:xxx		中文名
+					foreign_name:xxx		外文名
+					country:xxx			国籍
+					nation:xxx			民族
+					birthplace:xxx			出生地
+					position:xxx			职业
+					social_post:xxx		社会公职
+					production:xxx		代表作品
+					per_description:xxx		简介
+				}
+
+	3.台前幕后
+		请求方式:	GET
+		请求url:	performance/backstage
+
+		请求参数:	无
+
+		返回参数:
+				page:xxx
+				backstage_count:xxx
+				backstages:[
+					{
+					title:xxx,			文章题目
+					created_at:xxx		发表时间
+					}
+				]
+
+	4.台前幕后详细信息
+		请求方式:	GET
+		请求url:	performance/backstage_more
+
+		请求参数:	backstage_id
+
+		返回参数:
+				backstage:{
+					title:xxx,			题目
+					content:xxx,			内容
+					created_at:xxx		发表时间
+				}
+
+	5.经典欣赏
+		请求方式:	GET
+		请求url:	performance/appreciation
+
+		请求参数:	无
+
+		返回参数:
+				page:xxx				页数
+				appreciations:[
+						{
+						title:xxx，		视频标题
+						video:xxx,		视频截图
+						},
+						....
+				]
+
+	6.经典欣赏视频播放
+		请求方式:	GET
+		请求url:	performance/appreciation_more
+
+		请求参数:	
+				video_id
+
+		返回参数:	
+				vedio:xxx,				视频播放
