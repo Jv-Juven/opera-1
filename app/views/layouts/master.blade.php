@@ -115,7 +115,7 @@
 	<script type="text/javascript" src="/lib/js/jquery-1.11.2.js"></script>
 	<script type="text/javascript" src="/lib/js/jquery-1.11.2.min.js"></script>
 	<script type="text/javascript" src="/lib/js/jquery.cookie.js"></script>
-	<script type="text/javascript" src="/dist/js/pages/header.js"></script>
+	<script type="text/javascript" src="/src/js/pages/header.js"></script>
 	@show
 </body>
 </html>

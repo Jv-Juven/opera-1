@@ -87,6 +87,6 @@
 
 @section('js')
 	@parent
-	<script type="text/javascript" src="/dist/js/common.js"></script>
-	<script type="text/javascript" src="/dist/js/pages/home.js"></script>
+	<script type="text/javascript" src="/src/js/common.js"></script>
+	<script type="text/javascript" src="/src/js/pages/home.js"></script>
 @stop

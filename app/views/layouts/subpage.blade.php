@@ -6,7 +6,7 @@
 
 @section('body')
 	@parent
-	<div id="main">
+	<div id="main" class="main">
 
 		@yield('page-left-nav')
 		@yield('page-content')

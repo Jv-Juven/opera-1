@@ -40,5 +40,5 @@
 
 @section('js')
 	@parent
-	<script type="text/javascript" src="/dist/js/pages/communication/masterdynamic.js"></script>
+	<script type="text/javascript" src="/src/js/pages/communication/masterdynamic.js"></script>
 @stop

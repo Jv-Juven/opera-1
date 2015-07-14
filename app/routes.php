@@ -13,5 +13,5 @@
 
 Route::get('/', function()
 {
-	return View::make('certificate.identity');
+	return View::make('apply.query-score');
 });
