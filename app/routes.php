@@ -15,9 +15,6 @@ Route::get('/','HomeController@showWelcome');
 
 Route::group(array('prefix'=>'user'),function()
 {
-<<<<<<< HEAD
-	return View::make('apply.query-score');
-=======
 	Route::post('register', 'UserController@postRegister');
 	Route::post('check_code', 'UserController@postCheckCode');
 	//注册成功
@@ -67,7 +64,6 @@ Route::group(array('prefix'=>'user'),function()
 		});
 		
 	});
->>>>>>> 7fb364bbb0274a1e0a00cac186a77608c7eb95ee
 });
 
 Route::group(array('prefix'=>'customer'), function()
