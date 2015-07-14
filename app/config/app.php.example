@@ -122,13 +122,9 @@ return array(
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 
-		'Way\Generators\GeneratorsServiceProvider',
-		// for laravel-debugbar
-		//'Barryvdh\Debugbar\ServiceProvider',
-		// for Sentry
 		'Cartalyst\Sentry\SentryServiceProvider',
-		// for Nested Set impl baum
-		'Baum\BaumServiceProvider',
+
+		'Way\Generators\GeneratorsServiceProvider',
 	),
 
 	/*
@@ -197,8 +193,6 @@ return array(
 		'View'              => 'Illuminate\Support\Facades\View',
 
 
-		// for laravel-debugbar
-		'Debugbar'          => 'Barryvdh\Debugbar\Facade',
 		// for Sentry
 		'Sentry'            => 'Cartalyst\Sentry\Facades\Laravel\Sentry',
 	),

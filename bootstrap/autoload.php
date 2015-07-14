@@ -73,3 +73,6 @@ if (is_dir($workbench = __DIR__.'/../workbench'))
 {
 	Illuminate\Workbench\Starter::start($workbench);
 }
+
+//引入函数
+require __DIR__.'/../app/libraries/functions/helper.php';

@@ -6,9 +6,11 @@
 	"type": "project",
 	"require": {
 		"laravel/framework": "4.2.*",
-		"qiniu/php-sdk": "7.*",
 		"cartalyst/sentry": "2.1.4",
 		"gregwar/captcha": "dev-master"
+	},
+	"require-dev":{
+		"way/generators": "~2.0"
 	},
 	"autoload": {
 		"classmap": [
