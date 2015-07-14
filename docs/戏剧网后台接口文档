@@ -96,7 +96,7 @@
 				QQ			QQ		string
 				school			所在学校	string
 				postcode		邮编		string
-				trainingunit		京剧培训单位string
+				trainingunit		培训单位	string
 				profession		行当		string
 				timeoflearn		学戏时间	string
 				details			详细说明	text

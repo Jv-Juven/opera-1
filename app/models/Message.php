@@ -12,13 +12,8 @@ class Message extends Eloquent{
 		'created_at'
 	);
 
-	public function UserOfMessage()
-	{
-		return $this->belongsTo('User');
-	}
-
 	public function MessageComments()
 	{
-		return $this->hasMany('MessageComment');
+		return $this->hasMany('MessageComment','message_id', 'id');
 	}
 }
