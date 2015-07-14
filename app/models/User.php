@@ -51,7 +51,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	}
 	
 	//相册
-	public function hasManyAblums()
+	public function hasManyAlbums()
 	{
 		return $this->hasMany('Album','user_id', 'id');
 	}

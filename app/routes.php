@@ -121,6 +121,6 @@ Route::group(array('prefix'=>'customer'), function()
 });
 
 
-Route::get('test', 'UserController@postLogin');
+Route::get('test/{id}', 'UserController@spaceHome');
 Route::post('test', 'TestController@postTest');
 

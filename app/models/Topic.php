@@ -8,14 +8,9 @@ class Topic extends Eloquent{
 		'id',
 		'user_id',
 		'title',
-		'topic',
+		'content',
 		'created_at'
 	);
-
-	public function UserOfTopic()
-	{
-		return $this->belongsTo('User');
-	}
 
 	public function hasManyTopicComments()
 	{

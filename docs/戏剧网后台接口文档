@@ -22,7 +22,8 @@
 	 	请求方式:	GET
 		请求url:	/user/captcha
 
-		请求参数:	无
+		请求参数:	
+				无
 
 		返回参数:	验证码图片
 
@@ -30,7 +31,8 @@
 		请求方式:	POST
 		请求url:	/user/check_captcha
 		
-		请求参数:	captcha
+		请求参数:	
+				captcha
 
 		返回参数:	
 				{
@@ -112,7 +114,8 @@
 		请求方式:	GET
 		请求url:	/user/space_home/:user_id
 
-		请求参数:	user_id		被访问用户id		根据id去到首页
+		请求参数:	
+				user_id		被访问用户id		根据id去到首页
 
 		返回参数:	视图
 				realname		真实姓名
@@ -120,32 +123,22 @@
 				gender		性别
 				per_description	我的简介
 
-				albums:[		包含两个相册的数组
+				albums:[		相册的数组
 					{
-					album_title1,			相册1的名称
-					number_of_pictures1,	相册1的图片数
-					picture1			相册1的封面图片
+					title,					相册名称
+					pictureCount,				相册图片数
+					picture					相册封面图片
 					},
-					{
-					album_title2,			相册2的名称
-					number_of_pictures3,	相册2的图片数
-					picture2			相册2的封面图片			
-					}
+					....
 				]
-
-				topics:[		包含两个话题的数组
+				topics:[		话题数组
 					{
-					topic_title1,			话题1的名称
-					topic_time1,			话题1的创建时间
-					topic_content1,		话题1的内容
-					$topic_comments1		话题1的评论数
+					title,					话题名称
+					created_at,				话题创建时间
+					content,				话题内容
+					topicCommentCount			话题评论数
 					},
-					{
-					topic_title2,			话题2的名称
-					topic_time2,			话题2的创建时间
-					topic_content2,		话题2的内容
-					$topic_comments2		话题2的评论数
-					}
+					....
 				]			
 
 
@@ -153,13 +146,14 @@
 		请求方式:	GET
 		请求url:	/user/topic/:user_id
 
-		请求参数:	user_id	被访问用户id			根据id获取话题动态
+		请求参数:	
+				user_id	被访问用户id			根据id获取话题动态
 
 		返回参数:	视图
 				topics:[
 					{
 						title:xxx,			话题题目
-						topic:xxx,			话题内容
+						content:xxx,			话题内容
 						created_at:xxx,		话题建立时间
 						commentsCount:xxx		话题评论数
 					},
@@ -171,7 +165,8 @@
 		请求方式:	GET
 		请求url:	/user/album/:user_id
 
-		请求参数:	user_id	被访问用户id			根据id获取相册
+		请求参数:	
+				user_id	被访问用户id			根据id获取相册
 
 		返回参数:	视图
 				albums:[
@@ -187,7 +182,8 @@
 		请求方式:	GET
 		请求url:	/user/picture/:album_id
 
-		请求参数:	album_id	相册的id			根据id取得图片实例
+		请求参数:	
+				album_id	相册的id			根据id取得图片实例
 
 		返回参数:	视图
 				pictures:[
@@ -197,11 +193,12 @@
 					},
 					....
 				]
-	5. 留言
+	5. 获取留言
 		请求方式:	GET
 		请求url:	/user/message/:user_id
 
-		请求参数:	user_id	被访问用户id			根据用户id获取留言
+		请求参数:	
+				user_id	被访问用户id			根据用户id获取留言
 
 		返回参数:	视图
 				messages:[
@@ -214,15 +211,17 @@
 					....
 				]
 
-	6.留言的回复
+	6.获取留言的回复
 		请求方式:	GET
 		请求url:	/user/message_comment/:message_id
 
-		请求参数:	message_id
+		请求参数:	
+				message_id						留言的id
 
 		返回参数:	
 				message_comments:[
 					{
+						avatar:xxx,				回复者头像
 						username:xxx,			回复者姓名
 						content:xxx,				回复内容
 						created_at:xxx			回复时间
@@ -234,7 +233,8 @@
 		请求方式:	GET
 		请求url:	/user/update/:user_id
 
-		请求参数:	user_id
+		请求参数:	
+				user_id
 
 		返回参数:	视图
 				user:{	
@@ -285,6 +285,7 @@
 						created_at			回复时间
 				}
 			}
+		备注:登录可操作
 
 	10.更新个人资料
 		请求方式:	POST
@@ -303,6 +304,7 @@
 				errCode:xxx,			错误码	0表示返回正常	 
 				message:xxx			提示信息
 			}
+		备注:登录可操作
 
 	11.更换头像
 		请求方式:	POST
@@ -316,6 +318,7 @@
 				errCode:xxx,			错误码	0表示返回正常	 
 				message:xxx			提示信息
 			}
+		备注:登录可操作
 
 
 
