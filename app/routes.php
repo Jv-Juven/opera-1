@@ -69,7 +69,7 @@ Route::group(array('prefix'=>'user'),function()
 Route::group(array('prefix'=>'customer'), function()
 {		
 	//首页协会资讯更多
-	Route::group(array('prefix'=>'talk'),function()
+	Route::group(array('prefix'=>'news'),function()
 	{	
 		//资讯更多路由
 		Route::get('/','ColumnController@getColumnInfo');

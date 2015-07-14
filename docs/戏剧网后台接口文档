@@ -321,4 +321,156 @@
 		备注:登录可操作
 
 
+4.论谈模块
+	1.首页协会资讯更多
+		请求方式:	GET
+		请求url:	customer/news
+
+		请求参数:	无
+
+		返回参数:	
+				page:xxx			页数
+				column_count:xxx		新闻条数
+				columns:[
+					{
+					title:xxx,		文章题目
+					created_at		发表时间
+					},
+					....
+				]
+
+	2.话题论谈
+		请求方式:	GET
+		请求url:	customer/news/one_topic
+
+		请求参数:	无
+
+		返回参数:
+				topic:{
+					avatar:xxx,			话题人头像
+					name:xxx,			话题人名字
+					title:xxx,			话题标题
+					content:xxx,			话题内容
+					commentCount:xxx		话题评论数
+				}
+				topic_comments:[
+						{
+						name:xxx,		话题评论人名字
+						created_at:xxx,	创建时间
+						content:xxx		话题评论内容
+						},
+						....
+				]
+
+	3.更多话题评论
+		请求方式:	GET
+		请求url:	customer/news/topic_comment
+
+		请求参数:	
+				topic_id				话题id
+
+		返回参数:	
+				comments:[
+					{
+					name:xxx,			话题评论人名字
+					created_at:xxx,		创建时间
+					content:xxx			话题评论内容
+					},
+					....
+				]
+
+	4.启蒙专栏
+		请求方式:	GET
+		请求url:	customer/news/column
+
+		请求参数:	无
+
+		返回参数：
+				page:xxx			页数
+				column_count:xxx		新闻条数
+				columns:[
+					{
+					title:xxx,		文章题目
+					created_at		发表时间
+					},
+					....
+				]
+
+	5.启蒙专栏详细信息
+		请求方式:	GET
+		请求url:	customer/news/column_more
+
+		请求参数:	
+				column_id			专栏文章id
+
+		返回参数：
+				column:{
+					title:xxx,		题目
+					created_at:xxx,	发表时间
+					content:xxx		内容
+				}
+
+	6.学会动态
+		请求方式:	GET
+		请求url:	customer/news/society
+
+		请求参数:	无
+
+		返回参数:	
+				page:xxx			页数
+				society_count:xxx		新闻条数
+				societies:[
+					{
+					title:xxx,		文章题目
+					created_at		发表时间
+					},
+					....
+				]
+
+
+	7.学会动态详细信息
+		请求方式:	GET
+		请求url:	customer/news/society_more
+
+		请求参数:	
+				society_id			学会文章id
+
+		返回参数:
+				society:{
+					title:xxx,		题目
+					created_at:xxx,	发表时间
+					content:xxx		内容
+				}
+
+	8.协会动态
+		请求方式:	GET
+		请求url:	customer/news/association
+
+		请求参数:	无
+
+		返回参数:	
+				page:xxx			页数
+				association_count:xxx	新闻条数
+				associations:[
+					{
+					title:xxx,		文章题目
+					created_at		发表时间
+					},
+					....
+				]
+
+
+	9.协会动态详细信息
+		请求方式:	GET
+		请求url:	customer/news/association_more
+
+		请求参数:
+				association_id		协会文章id
+
+		返回参数:
+				association:{
+					title:xxx,		题目
+					created_at:xxx,	发表时间
+					content:xxx		内容
+				}
 
