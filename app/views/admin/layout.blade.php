@@ -7,6 +7,8 @@
 @section('body')
     @parent
     <div id="main">
+        @include('admin-header-nav')
+        
         @include('admin-left-nav')
 
         @yield('admin-header-nav')

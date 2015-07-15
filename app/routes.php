@@ -124,3 +124,37 @@ Route::group(array('prefix'=>'customer'), function()
 Route::get('test/{id}', 'UserController@spaceHome');
 Route::post('test', 'TestController@postTest');
 
+Route::group(array('prefix'=>'admin'), function()
+{
+	Route::group(array('prefix'=>'home'), function()
+	{
+		Route::get('scroll-poster', 'adminHomePageController@scrollPoster');
+		Route::get('contact-us', 'adminHomePageController@contactUs');
+		Route::get('friend-links', 'adminHomePageController@friendLinks');
+	});
+
+	Route::group(array('prefix'=>'score'), function()
+	{
+		
+	});
+
+	Route::group(array('prefix'=>'employ'), function()
+	{
+		
+	});
+
+	Route::group(array('prefix'=>'authentication'), function()
+	{
+		
+	});
+
+	Route::group(array('prefix'=>'show'), function()
+	{
+		
+	});
+
+	Route::group(array('prefix'=>'topic'), function()
+	{
+		
+	});
+});
