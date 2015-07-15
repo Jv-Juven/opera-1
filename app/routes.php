@@ -91,8 +91,6 @@ Route::group(array('prefix'=>'customer'), function()
 	//教师认证
 	Route::group(array('prefix'=>'authentication'),function()
 	{
-		Route::get('/','AuthenticationController@getSortOfIdentity');
-		//路由参数，定义用户的身份
 		Route::get('identity/{identity}','AuthenticationController@getSortOfIdentity');
 		//根据用户所在城市定义
 		Route::get('city/{area}', 'AuthenticationController@getSortOfCity');
@@ -104,16 +102,15 @@ Route::group(array('prefix'=>'customer'), function()
 	Route::group(array('prefix' => 'performance'),function()
 	{	
 		//协会表演更多
-		Route::get('/','PerformanceController@teacher');
 		//戏剧百家
 		Route::get('teacher','PerformanceController@teacher');
-		Route::get('teachermore', 'PerformanceController@teacherMore');
+		Route::get('teacher_more', 'PerformanceController@teacherMore');
 		//台前幕后
 		Route::get('backstage', 'PerformanceController@backStage');
-		Route::get('backstageMore', 'PerformanceController@backStageMore');
+		Route::get('backstage_more', 'PerformanceController@backStageMore');
 		//经典欣赏
 		Route::get('appreciation','PerformanceController@appreciation');
-		Route::get('appreciationMore','PerformanceController@appreciationMore');
+		Route::get('appreciation_more','PerformanceController@appreciationMore');
 	});
 
 	//招贤纳士
@@ -121,7 +118,7 @@ Route::group(array('prefix'=>'customer'), function()
 });
 
 
-Route::get('test/{id}', 'UserController@spaceHome');
+Route::get('test', 'UserController@test');
 Route::post('test', 'TestController@postTest');
 
 Route::group(array('prefix'=>'admin'), function()
