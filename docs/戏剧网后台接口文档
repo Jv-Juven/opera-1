@@ -73,6 +73,7 @@
 					  name:xxx,			名字
 					  scorenumber:xxx,		编号
 					  score:xxx			分数
+					  score_details		分数详情
 				]
 
 		备注:		登录可操作
@@ -104,7 +105,7 @@
 		返回参数:
 				{
 					errCode:xxx,			错误码	0表示返回正常	 
-					message:xxx			提示信息
+					message:xxx			考生编号
 				}
 		
 		备注:登录可操作
@@ -321,7 +322,7 @@
 		备注:登录可操作
 
 
-4.论谈模块
+四.论谈模块
 	1.首页协会资讯更多
 		请求方式:	GET
 		请求url:	customer/news
@@ -474,7 +475,7 @@
 					content:xxx		内容
 				}
 
-5. 教师认证模块
+五. 教师认证模块
 	1.教师认证首页/身份表示分类
 		请求方式:	GET
 		请求url:	authentication/identity
@@ -555,7 +556,7 @@
 	4.点击老师照片进入个人中心
 		与个人空间模块——空间首页相同
 
-6.协会表演模块
+六.协会表演模块
 	1.首页协会表演更多/戏剧百家
 		请求方式:	GET
 		请求url:	performance/teacher
@@ -647,3 +648,624 @@
 
 		返回参数:	
 				vedio:xxx,				视频播放
+
+
+后台管理员可操作界面
+
+七、 后台首页模块
+	1.1后台首页
+		请求方式:	GET
+		请求url:	admin/home
+				
+
+		请求参数:	无
+			
+		返回参数:
+				images:[
+					{
+					image:xxx			图片
+					},
+					....
+				]
+	1.2轮播海报静态页面与1.1一样
+
+	2.添加轮播海报
+		请求方式:	POST
+		请求url:	admin/home/add_poster
+
+		请求参数:	
+				image:xxx				图片
+
+		返回参数:
+				{
+					errCode:xxx,			错误码	0表示返回正常	 
+					message:xxx			提示信息
+				}	
+
+	3.编辑轮播海报
+		请求方式:	POST
+		请求url:	admin/home/edit_poster
+
+		请求参数:	
+				image_id				图片id
+
+		返回参数:
+				{
+					errCode:xxx,			错误码	0表示返回正常	 
+					message:xxx			提示信息
+				}
+
+	4.删除轮播海报	
+		请求方式:	POST
+		请求url:	admin/home/delete_poster
+
+		请求参数:	
+				image_id				图片id
+
+		返回参数:
+				{
+					errCode:xxx,			错误码	0表示返回正常	 
+					message:xxx			提示信息
+				}
+
+	5.联系我们静态页面
+		请求方式:	GET
+		请求url:	admin/home/contact_us
+
+		请求参数:	无
+
+		返回参数:
+				contact:{
+					number:xxxs,			联系方式
+					people:xxx,			联系人
+					postcode:xxx,		邮政编码
+					address:xxx,			地址
+					site:xxx			网址
+				}
+
+	6.编辑联系我们
+		请求方式:	POST
+		请求url:	admin/home/contact_us
+
+		请求参数:	
+				contact:{
+					number:xxxs,			联系方式
+					people:xxx,			联系人
+					postcode:xxx,		邮政编码
+					address:xxx,			地址
+					site:xxx			网址
+				}
+
+		返回参数:
+				{
+					errCode:xxx,			错误码	0表示返回正常	 
+					message:xxx			提示信息
+				}
+
+	7.友情链接静态页面
+		请求方式:	GET
+		请求url:	admin/home/link
+
+		请求参数:	无
+
+		返回参数:
+				links:[
+					{
+					image:xxx,			网站logo
+					site:xxx			网址
+					},
+					....
+				]
+
+	8.添加友情链接
+		请求方式:	POST
+		请求url:	admin/home/add_link
+
+		请求参数:
+				link:
+					{
+					image:xxx,			网站logo
+					site:xxx			网址
+					}
+
+		返回参数:
+				{
+					errCode:xxx,			错误码	0表示返回正常	 
+					message:xxx			提示信息
+				}
+
+	9.编辑友情链接
+		请求方式:	POST
+		请求url:	admin/home/edit_link
+
+		请求参数:
+				link_id					链接id
+
+		返回参数:
+				{
+					errCode:xxx,			错误码	0表示返回正常	 
+					message:xxx			提示信息
+				}
+
+	10.删除友情链接
+		请求方式:	POST
+		请求url:	admin/home/delete_link
+
+		请求参数:
+				link_id					链接id
+
+		返回参数:
+				{
+					errCode:xxx,			错误码	0表示返回正常	 
+					message:xxx			提示信息
+				}
+
+八、后台谈论模块
+	1.启蒙专栏静态页面
+		请求方式:	GET
+		请求url:	admin/topic/column
+
+		请求参数:	无
+
+		返回参数:
+				columns:{
+					{
+					title:xxx,			文章题目
+					created_at:xxx		发表时间
+					},
+					....
+				}
+
+	2.添加启蒙专栏
+		请求方式:	POST
+		请求url:	admin/topic/add_column
+
+		请求参数:
+				column:{
+					title:xxx,			文章题目
+					content:xxx			文章内容
+					}
+
+		返回参数:
+				{
+					errCode:xxx,			错误码	0表示返回正常	 
+					message:xxx			提示信息
+				}
+
+	3.编辑启蒙专栏
+		请求方式:	POST
+		请求url:	admin/topic/edit_column
+
+		请求参数:	
+				column_id				文章id
+
+		返回参数
+				{
+					errCode:xxx,			错误码	0表示返回正常	 
+					message:xxx			提示信息
+				}
+
+
+	4.删除启蒙专栏
+		请求方式:	POST
+		请求url:	admin/topic/delete_column
+
+		请求参数:	
+				column_id				文章id
+
+		返回参数:
+				{
+					errCode:xxx,			错误码	0表示返回正常	 
+					message:xxx			提示信息
+				}
+
+	5.学会动态静态页面
+		请求方式:	GET
+		请求url:	admin/topic/society
+
+		请求参数:	无
+
+		返回参数:
+				societies:{
+					{
+					title:xxx,			文章题目
+					created_at:xxx		发表时间
+					},
+					....
+				}
+
+	6.添加学会动态
+		请求方式:	POST
+		请求url:	admin/topic/add_society
+
+		请求参数:
+				society:{
+					title:xxx,			文章题目
+					content:xxx			文章内容
+					}
+
+		返回参数:
+				{
+					errCode:xxx,			错误码	0表示返回正常	 
+					message:xxx			提示信息
+				}
+
+	7.编辑学会动态
+		请求方式:	POST
+		请求url:	admin/topic/edit_society
+
+		请求参数:	
+				society_id				文章id
+
+		返回参数
+				{
+					errCode:xxx,			错误码	0表示返回正常	 
+					message:xxx			提示信息
+				}
+
+	8.删除学会动态
+		请求方式:	POST
+		请求url:	admin/topic/delete_society
+
+		请求参数:	
+				society_id				文章id
+
+		返回参数:
+				{
+					errCode:xxx,			错误码	0表示返回正常	 
+					message:xxx			提示信息
+				}
+
+	9.协会动态静态页面
+		请求方式:	GET
+		请求url:	admin/topic/association
+
+		请求参数:	无
+
+		返回参数:
+				associations:{
+					{
+					title:xxx,			文章题目
+					created_at:xxx		发表时间
+					},
+					....
+				}
+
+	10.添加协会动态
+		请求方式:	POST
+		请求url:	admin/topic/add_association
+
+		请求参数:
+				association:{
+					title:xxx,			文章题目
+					content:xxx			文章内容
+					}
+
+		返回参数:
+				{
+					errCode:xxx,			错误码	0表示返回正常	 
+					message:xxx			提示信息
+				}
+	
+	11.编辑协会动态
+		请求方式:	POST
+		请求url:	admin/topic/edit_association
+
+		请求参数:	
+				association_id			文章id
+
+		返回参数
+				{
+					errCode:xxx,			错误码	0表示返回正常	 
+					message:xxx			提示信息
+				}
+
+	12.删除协会动态
+		请求方式:	POST
+		请求url:	admin/topic/delete_association
+
+		请求参数:	
+				association_id			文章id
+
+		返回参数:
+				{
+					errCode:xxx,			错误码	0表示返回正常	 
+					message:xxx			提示信息
+				}
+
+九、招贤纳士
+	1.招贤纳士静态页面
+		请求方式:	GET
+		请求url:	admin/employ
+
+		请求参数:	无
+
+		返回参数:	
+				employments:[
+					{
+					title:xxx,			文章题目
+					created_at:xxx		发表时间
+					},
+					....
+				]
+
+	2.添加招贤纳士
+		请求方式:	POST
+		请求url:	admin/employ/add_employment
+
+		请求参数:	
+				employment:{
+					title:xxx,			文章题目
+					content:xxx			文章内容		
+				}
+
+		返回参数:
+				{
+					errCode:xxx,			错误码	0表示返回正常	 
+					message:xxx			提示信息
+				}
+
+	3.编辑招贤纳士
+		请求方式:	POST
+		请求url:	admin/employ/edit_employment
+
+		请求参数:	
+				employment_id			文章id
+
+		返回参数:
+				{
+					errCode:xxx,			错误码	0表示返回正常	 
+					message:xxx			提示信息
+				}
+
+	4.删除招贤纳士
+		请求方式:	POST
+		请求url:	admin/employ/delete_employment
+
+		请求参数:	
+				employment_id			文章id
+
+		返回参数:
+				{
+					errCode:xxx,			错误码	0表示返回正常	 
+					message:xxx			提示信息
+				}
+
+十、协会表演
+	1.戏剧百家静态页面
+		请求方式:	GET
+		请求url:	admin/show/teacher
+
+		请求参数:	无
+
+		返回参数:
+				teachers:{
+					{
+					image:xxx,			头像图片
+					realname:xxx,		真实姓名
+					username:xxx,		用户名	
+					password:xxx			密码
+					},
+					....
+				}
+
+	2.添加戏剧百家
+		请求方式:	POST
+		请求url:	admin/show/add_teacher
+
+		请求参数:
+				teacher:{
+					image:xxx,			头像图片
+					realname:xxx,		真实姓名
+					username:xxx,		用户名	
+					password:xxx			密码
+					}
+
+		返回参数:
+				{
+					errCode:xxx,			错误码	0表示返回正常	 
+					message:xxx			提示信息
+				}
+
+	3.编辑戏剧百家
+		请求方式:	POST
+		请求url:	admin/show/edit_teacher
+
+		请求参数:	
+				teacher_id				戏剧家id
+
+		返回参数
+				{
+					errCode:xxx,			错误码	0表示返回正常	 
+					message:xxx			提示信息
+				}
+
+
+	4.删除戏剧百家
+		请求方式:	POST
+		请求url:	admin/show/delete_teacher
+
+		请求参数:	
+				teacher_id				戏剧家id
+
+		返回参数:
+				{
+					errCode:xxx,			错误码	0表示返回正常	 
+					message:xxx			提示信息
+				}
+
+	5.台前幕后静态页面
+		请求方式:	GET
+		请求url:	admin/show/backstage
+
+		请求参数:	无
+
+		返回参数:
+				backstages:{
+					{
+					title:xxx,			文章题目
+					created_at:xxx		发表时间
+					},
+					....
+				}
+
+	6.添加台前幕后
+		请求方式:	POST
+		请求url:	admin/show/add_backstage
+
+		请求参数:
+				backstage:{
+					title:xxx,			文章题目
+					content:xxx			文章内容
+					}
+
+		返回参数:
+				{
+					errCode:xxx,			错误码	0表示返回正常	 
+					message:xxx			提示信息
+				}
+
+	7.编辑台前幕后
+		请求方式:	POST
+		请求url:	admin/show/edit_backstage
+
+		请求参数:	
+				backstage_id				文章id
+
+		返回参数
+				{
+					errCode:xxx,			错误码	0表示返回正常	 
+					message:xxx			提示信息
+				}
+
+	8.删除台前幕后
+		请求方式:	POST
+		请求url:	admin/show/delete_backstage
+
+		请求参数:	
+				backstage_id				文章id
+
+		返回参数:
+				{
+					errCode:xxx,			错误码	0表示返回正常	 
+					message:xxx			提示信息
+				}
+
+	9.经典欣赏静态页面
+		请求方式:	GET
+		请求url:	admin/show/appreciation
+
+		请求参数:	无
+
+		返回参数:
+				appreciations:{
+					{
+					title:xxx,			文章题目
+					created_at:xxx		发表时间
+					},
+					....
+				}
+
+	10.添加经典欣赏
+		请求方式:	POST
+		请求url:	admin/show/add_appreciation
+
+		请求参数:
+				appreciation:{
+					title:xxx,			文章题目
+					video:xxx			文章内容
+					}
+
+		返回参数:
+				{
+					errCode:xxx,			错误码	0表示返回正常	 
+					message:xxx			提示信息
+				}
+	
+	11.编辑经典欣赏
+		请求方式:	POST
+		请求url:	admin/show/edit_appreciation
+
+		请求参数:	
+				appreciation_id			文章id
+
+		返回参数
+				{
+					errCode:xxx,			错误码	0表示返回正常	 
+					message:xxx			提示信息
+				}
+
+	12.删除经典欣赏
+		请求方式:	POST
+		请求url:	admin/show/delete_appreciation
+
+		请求参数:	
+				appreciation_id			文章id
+
+		返回参数:
+				{
+					errCode:xxx,			错误码	0表示返回正常	 
+					message:xxx			提示信息
+				}
+
+十一、成绩查询
+	1.成绩查询静态页面
+		请求方式:	GET
+		请求url:	admin/score
+
+		请求参数:	无
+
+		返回参数:
+				scores:{
+					{
+					name:xxx,			姓名
+					scorenumber:xxx,		编号
+					score:xxx,			分数
+					score_details			分数详情	
+					},
+					....
+				}
+
+	2.添加成绩查询
+		请求方式:	POST
+		请求url:	admin/score/score
+
+		请求参数:
+				score:{
+					name:xxx,			姓名
+					scorenumber:xxx,		编号
+					score:xxx,			分数	
+					score_details:xxx		成绩详情
+					}
+
+		返回参数:
+				{
+					errCode:xxx,			错误码	0表示返回正常	 
+					message:xxx			提示信息
+				}
+
+	3.编辑成绩查询
+		与添加成绩查询一样
+
+
+	4.删除成绩查询
+		请求方式:	POST
+		请求url:	admin/score/delete_score
+
+		请求参数:	
+				score_id				分数id
+
+		返回参数:
+				{
+					errCode:xxx,			错误码	0表示返回正常	 
+					message:xxx			提示信息
+				}
+十二、认证
+	1.认证静态页面
+		请求方式:	GET
+		请求url:	admin/authentication
+
+		请求参数:	无
+
+		返回参数:	
+				

@@ -28,6 +28,7 @@ class CreateUsersTable extends Migration {
 			$table->string('interests');
 			$table->text('per_description');
 
+			$table->integer('role_id'); //1=student, 2=teacher, 3= administer 
 			$table->timestamps();
 		});
 	}

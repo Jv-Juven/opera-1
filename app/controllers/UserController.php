@@ -431,12 +431,21 @@ class UserController extends BaseController
 		$application->timeoflearn = $timeoflearn;
 		$application->details = $details;
 		
+		//产生考生编号
+		$possible_charactors = "0123456789";
+		$scorenumber  =  "";   //
+		while(strlen($salt) < 6)
+		{
+		 	 $scorenumber .= substr($possible_charactors,rand(0,strlen($possible_charactors)-1),1);
+		}
+		$application->scorenumber = $scorenumber;
+
 		if(!$application->save())
 		{
 			return Response::json(array('errCode'=>4, 'message'=>'资料保存失败！'));
 		}
 
-		return Response::json(array('errCode'=>0, 'message'=>'报名成功！'));
+		return Response::json(array('errCode'=>0, 'message'=>$scorenumber));
 	}
 
 	//成绩查询

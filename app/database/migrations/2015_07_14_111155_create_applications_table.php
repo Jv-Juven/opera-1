@@ -37,6 +37,7 @@ class CreateApplicationsTable extends Migration {
 
 			$table->string('scorenumber');
 			$table->string('score');
+			$table->string('score_details');
 			$table->timestamps();
 		});
 	}
