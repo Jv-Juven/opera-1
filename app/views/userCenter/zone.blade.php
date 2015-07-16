@@ -16,6 +16,6 @@
 
 @section('page-content')
 	<div class="page-content">
-		
+		   
 	</div>
 @stop
