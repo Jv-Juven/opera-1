@@ -724,11 +724,8 @@ class UserController extends BaseController
 			case 5:
 				return Response::json(array('errCode'=>6, 'message'=>'兴趣描述不可超过50个字！'));
 				break;
-			case 6:
-				return Response::json(array('errCode'=>7, 'message'=>'个人简介不可超过1000个字！'));
-				break;
 			default:
-				return Response::json(array());
+				return Response::json(array('errCode'=>7, 'message'=>'个人简介不可超过1000个字！'));
 			}
 		}
 		
@@ -794,6 +791,6 @@ class UserController extends BaseController
 
 	public function test()
 	{
-		return new Umeditor;
+		// return new Umeditor;
 	}
 }
