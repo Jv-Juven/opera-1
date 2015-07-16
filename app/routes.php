@@ -123,33 +123,39 @@ Route::post('test', 'TestController@postTest');
 
 Route::group(array('prefix'=>'admin'), function()
 {
+	// 首页
 	Route::group(array('prefix'=>'home'), function()
 	{
-		Route::get('scroll-poster', 'adminHomePageController@scrollPoster');
+		Route::get('scroll-poster', 'adminPageController@scrollPoster');
 		Route::get('contact-us', 'adminHomePageController@contactUs');
 		Route::get('friend-links', 'adminHomePageController@friendLinks');
 	});
 
+	// 成绩查询
 	Route::group(array('prefix'=>'score'), function()
 	{
 		
 	});
 
+	// 招贤纳士
 	Route::group(array('prefix'=>'employ'), function()
 	{
 		
 	});
 
+	// 认证
 	Route::group(array('prefix'=>'authentication'), function()
 	{
 		
 	});
 
+	// 表演
 	Route::group(array('prefix'=>'show'), function()
 	{
 		
 	});
 
+	// 谈论
 	Route::group(array('prefix'=>'topic'), function()
 	{
 		
