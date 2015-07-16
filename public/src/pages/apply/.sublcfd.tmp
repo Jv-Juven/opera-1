@@ -1,0 +1,29 @@
+.page-content{
+	padding: 35px 25px 0px 25px !important;
+}
+.query-board{
+	width: 100%;
+	position: relative;
+}
+.query-board-header{
+	height: 25px;
+	background: rgb(0,164,71);
+}
+.query-board-body{
+	height: 450px;
+	background: rgb(239,239,239);
+}
+.query-header-img{
+	width: 763px;
+	padding-top: 45px;
+	height: 100px;
+}
+.query-header-img img{
+	position: absolute;
+	left: 50%;
+	width: 130px;
+	margin: 0px -65px;
+}
+.query-input{
+	
+}

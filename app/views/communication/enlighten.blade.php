@@ -6,7 +6,7 @@
 
 @section('css')
 	@parent
-	<link rel="stylesheet" href="/dist/css/communication/enlighten.css">
+	<link rel="stylesheet" href="/dist/css/communication/enlighten/enlighten.css">
 @stop
 
 @section('page-left-nav')
@@ -36,5 +36,5 @@
 
 @section('js')
 	@parent
-	<script type="text/javascript" src="/src/js/pages/communication/enlighten.js"></script>
+	<script type="text/javascript" src="/src/pages/communication/enlighten/enlighten.js"></script>
 @stop

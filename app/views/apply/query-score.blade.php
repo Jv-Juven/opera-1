@@ -6,7 +6,7 @@
 
 @section('css')
 	@parent
-	<link rel="stylesheet" href="/dist/css/apply/query-score.css">
+	<link rel="stylesheet" href="/dist/css/apply/query-score/query-score.css">
 @stop
 
 

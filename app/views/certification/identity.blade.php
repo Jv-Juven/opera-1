@@ -6,8 +6,8 @@
 
 @section('css')
 	@parent
-	<link rel="stylesheet" href="/dist/css/certificate/certificate.css">
-	<link rel="stylesheet" href="/dist/css/certificate/identity.css">
+	<link rel="stylesheet" href="/dist/css/certification/certification.css">
+	<link rel="stylesheet" href="/dist/css/certification/identity/identity.css">
 @stop
 
 @section('page-left-nav')

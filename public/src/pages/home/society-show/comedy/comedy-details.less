@@ -1,0 +1,52 @@
+@import "./../../../../common/public.less";
+
+
+.comedy-details-container{
+	border-bottom: 0px !important;
+}
+
+.figures-info{
+	padding-left:10px;
+	overflow: hidden;
+	.figures-info-tr{
+		padding:18px 0px 5px 0px;
+		border-bottom:1px dashed #bbbbbb;
+		width:100%;
+		.figures-name-text(14px,'黑体',600);
+		letter-spacing: 1px;
+		.figures-info-name{
+			.figures-name-text(14px);
+		}
+	}
+}
+
+.figures-division-line{
+	height:40px;
+	.division-hr(2px);
+}
+
+.figures-intro{
+	.figures-intro-head{
+	.figures-name-text(18px,"黑体",600);
+		padding: 25px 5px 15px;
+		border-bottom:1px dashed #bbbbbb;
+	}
+	.figures-intro-content{
+		padding: 0px;
+		list-style:disc outside url(./../../../../../../images/common/dotted.png);
+		.figures-name-text(14px);
+		li{
+			margin-left:50px;
+			padding-top:10px;
+			line-height:30px;
+			div{
+				line-height:25px;
+			}
+		}
+
+		.figures-intro-division{
+			height:15px;
+			border-bottom:1px dashed #bbbbbb;
+		}
+	}
+}
