@@ -6,7 +6,7 @@
 
 @section('css')
     @parent
-    <link rel="stylesheet" href="/dist/css/home.css">
+    <link rel="stylesheet" href="/dist/css/home/home.css">
 @stop
 
 @section('body')
@@ -87,6 +87,6 @@
 
 @section('js')
 	@parent
-	<script type="text/javascript" src="/src/js/common.js"></script>
-	<script type="text/javascript" src="/src/js/pages/home.js"></script>
+	<script type="text/javascript" src="/src/common/common.js"></script>
+	<script type="text/javascript" src="/src/pages/home/home.js"></script>
 @stop

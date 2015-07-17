@@ -1,7 +1,8 @@
 @extends('layouts.master')
 
 @section('css')
-	<link rel="stylesheet" href="/dist/css/subpage.css">
+	<link rel="stylesheet" href="/dist/css/components.css">
+	<link rel="stylesheet" href="/dist/css/layouts.css">
 @append
 
 @section('body')

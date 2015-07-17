@@ -9,7 +9,7 @@
 	<meta http-equiv="description" content="中国儿童戏剧曲教育网">
 
 	@section('css')
-	<link rel="stylesheet" href="/dist/css/common.css">
+		<link rel="stylesheet" href="/dist/css/common.css">
 	@show
 </head>
 <body>
@@ -115,7 +115,7 @@
 	<script type="text/javascript" src="/lib/js/jquery-1.11.2.js"></script>
 	<script type="text/javascript" src="/lib/js/jquery-1.11.2.min.js"></script>
 	<script type="text/javascript" src="/lib/js/jquery.cookie.js"></script>
-	<script type="text/javascript" src="/src/js/pages/header.js"></script>
+	<script type="text/javascript" src="/src/components/header/header.js"></script>
 	@show
 </body>
 </html>

@@ -1,0 +1,44 @@
+@import "./../../../../common/public.less";
+
+@btn-color: rgb(20,169,86);
+
+#main{
+	padding-top: 30px;
+}
+
+.page-content{
+	padding: 0px 0px 0px 25px !important;
+	.figures-container{
+		padding-bottom: 40px;
+		border-bottom:1px solid @btn-color;
+		.figures-content{
+			float: left;
+			margin: 0px 23px 45px;
+			padding:15px 15px 0px;
+			border:1px solid @btn-color;
+			&:nth-child(3n+1){
+				margin-left:0px;
+			}
+			&:nth-child(3n){
+				margin-right:0px;
+			}
+			.figures-name-container{
+				padding: 15px 0px;
+				display:block;
+				text-align:center;
+				.figures-name-text();
+				.figures-name{
+					display: inline-block;
+				}
+			}
+		}
+		img{
+			width: 200px;
+		}
+	}
+
+	.figures-footer{
+		padding-top: 30px;
+	}
+
+}

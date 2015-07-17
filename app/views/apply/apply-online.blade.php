@@ -6,7 +6,7 @@
 
 @section('css')
 	@parent
-	<link rel="stylesheet" href="/dist/css/apply/apply-online.css">
+	<link rel="stylesheet" href="/dist/css/apply/apply-online/apply-online.css">
 @stop
 
 

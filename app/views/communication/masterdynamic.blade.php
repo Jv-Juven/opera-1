@@ -6,8 +6,8 @@
 
 @section('css')
 	@parent
-	<link rel="stylesheet" href="/dist/css/communication/enlighten.css">
-	<link rel="stylesheet" href="/dist/css/communication/masterdynamic.css">
+	<link rel="stylesheet" href="/dist/css/communication/enlighten/enlighten.css">
+	<link rel="stylesheet" href="/dist/css/communication/masterdynamic/masterdynamic.css">
 @stop
 
 @section('page-left-nav')
@@ -40,5 +40,5 @@
 
 @section('js')
 	@parent
-	<script type="text/javascript" src="/src/js/pages/communication/masterdynamic.js"></script>
+	<script type="text/javascript" src="/src/pages/communication/masterdynamic/masterdynamic.js"></script>
 @stop
