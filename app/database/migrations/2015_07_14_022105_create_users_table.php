@@ -15,19 +15,20 @@ class CreateUsersTable extends Migration {
 		Schema::create('users', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->string('username');
-			$table->string('email');
-			$table->string('password');
+			$table->string('username');//用户名
+			$table->string('email');//邮箱
+			$table->string('password');//密码
 
-			$table->string('avatar')->default("http://7xk6xh.com1.z0.glb.clouddn.com/lucy.jpg");
-			$table->string('realname');
+			$table->string('avatar')->default("http://7xk6xh.com1.z0.glb.clouddn.com/lucy.jpg");//头像
+			$table->string('realname');//真实姓名
 			$table->boolean('gender')->default(2);  // 0=male 1=female 2=unknown
-			$table->string('city');
-			$table->string('identity');//转换成integer
-			$table->string('position');
-			$table->string('interests');
-			$table->text('per_description');
+			$table->string('city');//所在城市
+			$table->string('identity');//转换成integer，用于认证老师的查询
+			$table->string('position');//职位
+			$table->string('interests');//兴趣
+			$table->text('per_description');//个人简介
 
+			$table->integer('role_id'); //用户类型 1=student, 2=teacher, 3= administer 
 			$table->timestamps();
 		});
 	}

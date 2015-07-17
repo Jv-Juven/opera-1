@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAssociationDynamicsTable extends Migration {
+class CreatePostersTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -11,13 +11,11 @@ class CreateAssociationDynamicsTable extends Migration {
 	 * @return void
 	 */
 	public function up()
-	{
-		Schema::create('association_dynamics', function(Blueprint $table)
+	{			//首页海报
+		Schema::create('posters', function(Blueprint $table)
 		{
-			//协会动态
 			$table->increments('id');
-			$table->string('title');//题目
-			$table->longtext('content');//内容
+			$table->string('image');//图片连接
 			$table->timestamps();
 		});
 	}
@@ -29,7 +27,7 @@ class CreateAssociationDynamicsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('association_dynamics');
+		Schema::drop('posters');
 	}
 
 }

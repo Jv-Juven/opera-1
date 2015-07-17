@@ -1,7 +1,7 @@
 <?php
 
-class ColumnController extends BaseController
-{
+class ColumnPageController extends BaseController{
+
 	public function getColumnInfo()
 	{	
 		

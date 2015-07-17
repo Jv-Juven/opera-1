@@ -1,10 +1,11 @@
 <?php
 
 //协会表演
-class PerformanceController extends BaseController
-{
+class PerformancePageController extends BaseController{
+
 	public function teacher()
-	{
+	{	
+		$teacher_count	= Teacher::count();
 		$page			= ceil($teacher_count/15);
 		$teachers		= Teacher::paginate(15); 
 		
@@ -47,7 +48,7 @@ class PerformanceController extends BaseController
 
 	public function appreciation()
 	{	
-		// $appreciation_count  = Appreciation::count();
+		$appreciation_count  = Appreciation::count();
 		$page			 = ceil($appreciation_count/15);
 		$appreciations 	 = Appreciation::paginate(4);
 		return View::make('经典欣赏')->with(array(
