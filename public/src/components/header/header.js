@@ -1,26 +1,5 @@
 ;(function($){
 
-	//登录数据页面
-	var upload_login=function(){
-		var name=$("#user_name").val();
-		var password=$("#user_pswd").val();
-
-		if(name.length==0){
-			return;
-		}
-		if(password<=6&&password>=20){
-			return;
-		}
-		$.ajax({
-			url:'',
-			type:'POST',
-			dataType:'json',
-			data:{name:name,password:password},
-			timeout:10000,
-			success:function(){},
-			error:function(){}
-		});
-	}
 
 	//用户注册信息页面
 	var upload_register=function(){
@@ -66,7 +45,7 @@
 				else{
 					$("#user_mailbox").text(mail);
 					$("#register_container").fadeOut(200);
-					$("#varify_container").fadeOut(200);
+					$("#varify_container").fadeIn(200);
 				}
 			},
 			error:function(){
@@ -75,12 +54,15 @@
 		});
 	} 
 	
-	$("#login_btn").click(function(){
-		$("#page_cover,#login_container").fadeIn(300);
-	});
+	// $("#login_btn").click(function(){
+	// 	$("#page_cover,#login_container").fadeIn(300);
+	// });
 
 	$("#register_btn").click(function(){
-		$("#page_cover,#register_container").fadeIn(300);
+
+		$("#page_cover,#verify_container").fadeIn(300);
+		count();
+		// $("#page_cover,#register_container").fadeIn(300);
 	});
 
 	$("#confirm_btn").click(upload_register);
@@ -94,5 +76,39 @@
 	$("#page_cover").click(function(){
 		$("#page_cover,.cover-box").fadeOut(400);
 	});
+
+	//////////
+	// 计时器 //
+	//////////
+	function count(num){
+
+		$("#send_verify_code").text("60秒后可重新操作");
+
+		if(!num){
+			num=60;
+		}
+		var setTime=setInterval(function(){
+			--num;
+			$("#send_verify_code").text(num+"秒后可重新操作");
+			if(num<0){
+				$("#send_verify_code").text("发送验证码").removeClass("disabled").addClass("active");
+				clearInterval(setTime);
+				return;
+			}
+		},1000);
+	}
+
+	////////////////
+	// 点击发送验证码按钮 //
+	////////////////
+	$("#send_verify_code").click(function(){
+		if(!$(this).hasClass("active")){
+			return;
+		}
+		alert("发送验证码成功！");
+		count();
+		$("#send_verify_code").addClass("disabled").removeClass("active");
+	})
+
 
 })(jQuery);

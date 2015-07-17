@@ -24,7 +24,7 @@
 		<!-- 登录、注册 -->
 		<div id="page_cover">
 			<!-- 登录 -->
-			<div id="login_container" class="cover-box">
+			<!-- <div id="login_container" class="cover-box">
 				<div class="cover-box-header">
 					用户登录
 				</div>
@@ -52,7 +52,7 @@
 						<div class="confirm-btn">登录</div>
 					</div>
 				</div>
-			</div>
+			</div> -->
 			<!-- 注册 -->
 			<div id="register_container" class="cover-box">
 				<div class="cover-box-header">用户注册</div>
@@ -79,7 +79,7 @@
 			<div id="verify_container" class="cover-box">
 				<div class="cover-box-header">用户注册</div>
 				<!-- 填写验证码 -->
-				<div id="verify_code_container" class="input-container" style="display:none;">
+				<div id="verify_code_container" class="input-container">
 					<div class="input" style="height:40px;">
 						
 					</div>
@@ -88,14 +88,14 @@
 					</div>
 					<div class="input">
 						<input type="text" placeholder="输入校验码">
-						<div id="send_verify_code" class="disabled">59秒后可重新操作</div>
+						<div id="send_verify_code" class="disabled">60秒后可重新操作</div>
 					</div>
 					<div class="confirm-container">
 						<div class="confirm-btn">确定</div>
 					</div>
 				</div>
 
-				<div class="input-container">
+				<div class="input-container" style="display:none;">
 					<div id="input_info" class="input">
 						注册成功
 					</div>
