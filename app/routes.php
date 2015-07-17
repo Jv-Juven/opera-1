@@ -14,7 +14,7 @@
 // 前端测试路由 //
 ////////////
 Route::get('/',function(){
-	return View::make('home.comedy.classic-case');
+	return View::make('apply.apply-online');
 });
 
 
