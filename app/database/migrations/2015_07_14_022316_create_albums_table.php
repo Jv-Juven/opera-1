@@ -11,13 +11,12 @@ class CreateAlbumsTable extends Migration {
 	 * @return void
 	 */
 	public function up()
-	{
+	{			//相册
 		Schema::create('albums', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->integer('user_id')->unsigned()->index('user_id');
-			$table->string('title');
-			$table->string('album');
+			$table->integer('user_id')->unsigned()->index('user_id');//相册所属用户id
+			$table->string('title');//相册名
 			$table->timestamps();
 
 			$table                          

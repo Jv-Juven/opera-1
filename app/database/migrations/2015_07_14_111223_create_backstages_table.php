@@ -11,13 +11,13 @@ class CreateBackstagesTable extends Migration {
 	 * @return void
 	 */
 	public function up()
-	{
+	{				
 		Schema::create('backstages', function(Blueprint $table)
 		{
 			//台前幕后
 			$table->increments('id');
-			$table->string('title');
-			$table->longtext('content');
+			$table->string('title');//标题
+			$table->longtext('content');//内容
 			$table->timestamps();
 		});
 	}

@@ -5,7 +5,7 @@ class TestController extends BaseController{
 	
 	public function test()
 	{
-		return View::make('test');
+		// $users = User
 	}
 
 	public function postTest()

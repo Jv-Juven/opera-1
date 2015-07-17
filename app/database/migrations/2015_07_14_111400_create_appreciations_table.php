@@ -11,12 +11,12 @@ class CreateAppreciationsTable extends Migration {
 	 * @return void
 	 */
 	public function up()
-	{
+	{				//经典欣赏
 		Schema::create('appreciations', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->string('title');
-			$table->string('video');
+			$table->string('title');//标题
+			$table->string('video');//视频连接
 			$table->timestamps();
 		});
 	}

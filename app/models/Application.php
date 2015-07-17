@@ -24,6 +24,10 @@ class Application extends Eloquent{
 		'profession',
 		'timeoflearn',
 		'details',
+		//分数查询
+		'scorenumber',
+		'score',
+		'score_details',
 		'created_at'
 	);
 

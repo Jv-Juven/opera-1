@@ -29,28 +29,28 @@ Route::group(array('prefix'=>'user'),function()
 	Route::post('check_code', 'UserController@postCheckCode');
 	//注册成功
 	//Route::get('to_login', 'UserController@getToLogin');
-	Route::get('login', 'UserController@login');
+	Route::get('login', 'UserPageController@login');
 	Route::post('login', 'UserController@postLogin');
 	Route::get('captcha','UserController@captcha');
 	Route::post('check_captcha','UserController@checkCaptcha');
-	Route::get('getremind','UserController@getRemind');
+	Route::get('getremind','UserPageController@getRemind');
 	Route::post('post_remind','UserController@postRemind');
-	Route::get('get_reset','UserController@getReset');
+	Route::get('get_reset','UserPageController@getReset');
 	Route::post('post_reset', 'UserController@postReset');
 
 	//空间首页
-	Route::get('space_home/{user_id}', 'UserController@spaceHome');
+	Route::get('space_home/{user_id}', 'UserPageController@spaceHome');
 	//话题动态
-	Route::get('topic/{user_id}','UserController@topic');
+	Route::get('topic/{user_id}','UserPageController@topic');
 	//相册和照片
-	Route::get('album/{user_id}','UserController@album');
-	Route::get('picture/{album_id}','UserController@picture');
+	Route::get('album/{user_id}','UserPageController@album');
+	Route::get('picture/{album_id}','UserPageController@picture');
 	//获取留言
-	Route::get('message/{user_id}', 'UserController@message');
+	Route::get('message/{user_id}', 'UserPageController@message');
 	//获取留言回复
-	Route::get('message_comment/{message_id}','UserController@messageComment');
+	Route::get('message_comment/{message_id}','UserPageController@messageComment');
 	//获取个人资料
-	Route::get('update/{user_id}', 'UserController@getUpdate');
+	Route::get('update/{user_id}', 'UserPageController@getUpdate');
 
 	Route::group(array('before' => 'auth.user.isIn'), function()
 	{
@@ -82,30 +82,30 @@ Route::group(array('prefix'=>'customer'), function()
 	Route::group(array('prefix'=>'news'),function()
 	{	
 		//资讯更多路由
-		Route::get('/','ColumnController@getColumnInfo');
+		Route::get('/','ColumnPageController@getColumnInfo');
 		//话题论谈
-		Route::get('one_topic', 'ColumnController@getOneTopic');
+		Route::get('one_topic', 'ColumnPageController@getOneTopic');
 		//更多话题评论
-		Route::get('topic_comment','ColumnController@getTopicCommentMore');
+		Route::get('topic_comment','ColumnPageController@getTopicCommentMore');
 		//启蒙专栏
-		Route::get('column','ColumnController@getColumnInfo');
-		Route::get('column_more','ColumnController@getColumnInfoMore');
+		Route::get('column','ColumnPageController@getColumnInfo');
+		Route::get('column_more','ColumnPageController@getColumnInfoMore');
 		//学会动态
-		Route::get('society', 'ColumnController@getSocietyInfo');
-		Route::get('society_more', 'ColumnController@getSocietyInfoMore');
+		Route::get('society', 'ColumnPageController@getSocietyInfo');
+		Route::get('society_more', 'ColumnPageController@getSocietyInfoMore');
 		//协会动态
-		Route::get('association', 'ColumnController@getAssociationInfo');
-		Route::get('association_more', 'ColumnController@getAssociationInfoMore');
+		Route::get('association', 'ColumnPageController@getAssociationInfo');
+		Route::get('association_more', 'ColumnPageController@getAssociationInfoMore');
 	});
 
 	//教师认证
 	Route::group(array('prefix'=>'authentication'),function()
 	{
-		Route::get('identity/{identity}','AuthenticationController@getSortOfIdentity');
+		Route::get('identity/{identity}','AuthenticationPageController@getSortOfIdentity');
 		//根据用户所在城市定义
-		Route::get('city/{area}', 'AuthenticationController@getSortOfCity');
+		Route::get('city/{area}', 'AuthenticationPageController@getSortOfCity');
 		//首字母拼音分类
-		Route::get('username/{letter}','AuthenticationController@getSortOfUsername');
+		Route::get('username/{letter}','AuthenticationPageController@getSortOfUsername');
 	});
 
 	//协会表演
@@ -113,22 +113,102 @@ Route::group(array('prefix'=>'customer'), function()
 	{	
 		//协会表演更多
 		//戏剧百家
-		Route::get('teacher','PerformanceController@teacher');
-		Route::get('teacher_more', 'PerformanceController@teacherMore');
+		Route::get('teacher','PerformancePageController@teacher');
+		Route::get('teacher_more', 'PerformancePageController@teacherMore');
 		//台前幕后
-		Route::get('backstage', 'PerformanceController@backStage');
-		Route::get('backstage_more', 'PerformanceController@backStageMore');
+		Route::get('backstage', 'PerformancePageController@backStage');
+		Route::get('backstage_more', 'PerformancePageController@backStageMore');
 		//经典欣赏
-		Route::get('appreciation','PerformanceController@appreciation');
-		Route::get('appreciation_more','PerformanceController@appreciationMore');
+		Route::get('appreciation','PerformancePageController@appreciation');
+		Route::get('appreciation_more','PerformancePageController@appreciationMore');
 	});
 
 	//招贤纳士
-	Route::get('recruitment', 'RecruitController@getRecruitment');
+	Route::get('employment', 'EmployPageController@employment');
+	Route::get('employment_more','EmployPageController@employmentMore');
+});
+
+//管理员路由
+Route::group(array('prefix' => 'admin','before' => 'auth.user.isAdmin'),function(){
+	//后台首页
+	Route::group(array('prefix'=>'home'),function(){
+		Route::get('/','AdminPageController@poster');
+		Route::get('poster','AdminPageController@poster');
+		Route::post('add_poster','AdminHomeController@addPoster');
+		Route::post('edit_poster','AdminHomeController@editPoster');
+		Route::post('delete_poster', 'AdminHomeController@deletePoster');
+		Route::get('contact_us', 'AdminPageController@contactUs');
+		Route::post('contact_us', 'AdminHomeController@contactUs');
+		Route::get('link', 'AdminPageController@link');
+		Route::post('add_link', 'AdminHomeController@addLink');
+		Route::post('edit_link', 'AdminHomeController@editLink');
+		Route::post('delete_link','AdminHomeController@deleteLink');
+	});
+
+	//后台谈论模块news
+	Route::group(array('prefix'=>'topic'),function(){
+		//启蒙专栏
+		Route::get('column', 'AdminPageController@column');
+		Route::post('add_column', 'AdminTopicController@addColumn');
+		Route::post('edit_column', 'AdminTopicController@editColumn');
+		Route::post('delete_column', 'AdminTopicController@deleteColumn');
+		//学会动态
+		Route::get('society', 'AdminPageController@society');
+		Route::post('add_society', 'AdminTopicController@addSociety');
+		Route::post('edit_society', 'AdminTopicController@editSociety');
+		Route::post('delete_society', 'AdminTopicController@deleteSociety');
+		//协会动态
+		Route::get('association', 'AdminPageController@association');
+		Route::post('add_association', 'AdminTopicController@addAssociation');
+		Route::post('edit_association', 'AdminTopicController@editAssociation');
+		Route::post('delete_association', 'AdminTopicController@deleteAssociation');
+	});
+
+	//招贤纳士
+	Route::group(array('prefix'=>'employ'),function(){
+		Route::get('/','AdminPageController@employment');
+		Route::post('add_employment', 'AdminEmployController@addEmployment');
+		Route::post('edit_employment', 'AdminEmployController@editEmployment');
+		Route::post('delete_employment', 'AdminEmployController@deleteEmployment');
+	});
+
+	//协会表演performance
+	Route::group(array('prefix'=>'show'), function(){
+		//戏剧百家
+		Route::get('teacher', 'AdminPageController@teacher');
+		Route::post('add_teacher', 'AdminShowController@addTeacher');
+		Route::post('edit_teacher', 'AdminShowController@editTeacher');
+		Route::post('delete_teacher', 'AdminShowController@deleteTeacher');
+		//台前幕后
+		Route::get('backstage', 'AdminPageController@backstage');
+		Route::post('add_backstage', 'AdminShowController@addBackstage');
+		Route::post('edit_backstage', 'AdminShowController@editBackstage');
+		Route::post('delete_backstage', 'AdminShowController@deleteBackstage');
+		//经典欣赏
+		Route::get('appreciation', 'AdminPageController@appreciation');
+		Route::post('add_appreciation', 'AdminShowController@addAppreciation');
+		Route::post('edit_appreciation', 'AdminShowController@editAppreciation');
+		Route::post('delete_appreciation', 'AdminShowController@deleteAppreciation');
+	});
+	
+	//成绩查询
+	Route::group(array('prefix'=>'score'), function(){
+		Route::get('/', 'AdminPageController@score');
+		Route::post('score', 'AdminScoreController@score');
+		Route::post('delete_score', 'AdminScoreController@deleteScore');
+	});	
+
+	Route::group(array('prefix'=>'authentication'), function(){
+		Route::get('/', 'AdminPageController@authentication');
+		Route::post('add_authentication', 'AdminAuthenticationController@addAuthentication');
+		Route::post('edit_authentication', 'AdminAuthenticationController@editAuthentication');
+		Route::post('delete_authentication', 'AdminAuthenticationController@deleteAuthentication');
+	});
 });
 
 
-Route::get('test', 'UserController@test');
+
+Route::get('test', 'TestController@test');
 Route::post('test', 'TestController@postTest');
 
 Route::group(array('prefix'=>'admin'), function()
