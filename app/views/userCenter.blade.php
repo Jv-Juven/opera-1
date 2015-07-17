@@ -6,7 +6,7 @@
 
 @section('css')
     @parent
-    <link rel="stylesheet" href="/dist/css/userCenter.css">
+    <!-- <link rel="stylesheet" href="/dist/css/userCenter.css"> -->
 @stop
 
 @section('body')

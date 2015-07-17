@@ -10,8 +10,18 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
+////////////
+// 前端测试路由 //
+////////////
+Route::get('/',function(){
+	return View::make('home.comedy.classic-case');
+});
 
-Route::get('/','HomeController@showWelcome');
+
+////////////
+// 后端测试路由 //
+////////////
+// Route::get('/','HomeController@showWelcome');
 
 Route::group(array('prefix'=>'user'),function()
 {

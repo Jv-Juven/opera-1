@@ -56,11 +56,26 @@ module.exports = (grunt)->
             components:
                 files:
                     'dist/css/components.css': ['src/components/**/*.less']
+                    'dist/css/layouts.css':['src/layouts/*.less']
             pages:
                 files:
                     'dist/css/admin/home/scroll-poster.css': ['src/pages/admin/home/scroll-poster.less']
                     'dist/css/admin/home/contact-us.css': ['src/pages/admin/home/contact-us.less']
                     'dist/css/admin/home/friend-links.css': ['src/pages/admin/home/friend-links.less']
+                    'dist/css/apply/apply-online/apply-online.css':['src/pages/apply/apply-online/apply-online.less']
+                    'dist/css/apply/query-score/query-score.css':['src/pages/apply/query-score/query-score.less']
+                    'dist/css/certification/identity/identity.css':['src/pages/certification/identity/identity.less']
+                    'dist/css/certification/certification.css':['src/pages/certification/certification.less']
+                    'dist/css/communication/enlighten/enlighten.css':['src/pages/communication/enlighten/enlighten.less']
+                    'dist/css/communication/masterdynamic/masterdynamic.css':['src/pages/communication/masterdynamic/masterdynamic.less']
+                    'dist/css/communication/societydynamic/societydynamic.css':['src/pages/communication/societydynamic/societydynamic.less']
+                    'dist/css/communication/topics/topic.css':['src/pages/communication/topics/topics.less']
+                    'dist/css/home/home.css':['src/pages/home/home.less']
+                    'dist/css/join/join.css':['src/pages/join/join.less']
+                    'dist/css/home/society-show/comedy/comedy.css':['src/pages/home/society-show/comedy/comedy.less']
+                    'dist/css/home/society-show/comedy/comedy-details.css':['src/pages/home/society-show/comedy/comedy-details.less']
+                    'dist/css/home/society-show/comedy/classic-case.css':['src/pages/home/society-show/comedy/classic-case.less']
+                    'dist/css/userCenter/zone.css':['src/pages/userCenter/zone/zone.less']
 
         cssmin:
             main:
