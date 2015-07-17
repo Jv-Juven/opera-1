@@ -16,8 +16,17 @@ class HomeController extends BaseController {
 	*/
 
 	public function showWelcome()
-	{
-		return View::make('home');
+	{	
+		$posters	= Poster::all();
+		$columns 	= EnlightenColumn::orderBy('created_at', 'desc')->take(8)->get();
+		$backstages = BackStage::orderBy('created_at', 'desc')->take(8)->get();
+		$contact 	= Contact::find(1);
+		return View::make('home', array(
+			'posters'=>$posters,
+			'columns'=>$columns,
+			'backstages'=>$backstages,
+			'contact'=>$contact
+			);
 	}
 
 }

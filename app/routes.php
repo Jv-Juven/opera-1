@@ -198,6 +198,6 @@ Route::group(array('prefix' => 'admin','before' => 'auth.user.isAdmin'),function
 
 
 
-Route::get('test', 'UserController@test');
+Route::get('test', 'TestController@test');
 Route::post('test', 'TestController@postTest');
 

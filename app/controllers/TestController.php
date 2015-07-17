@@ -5,7 +5,7 @@ class TestController extends BaseController{
 	
 	public function test()
 	{
-		return '编译正确！';
+		// $users = User
 	}
 
 	public function postTest()

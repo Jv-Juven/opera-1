@@ -1,5 +1,41 @@
 中国儿童戏剧网站后台文档
 
+一、首页
+		请求方式:	GET
+		请求url:	/
+
+		请求参数:	无
+
+		返回参数:
+				contact:{
+					number:xxxs,			联系方式
+					people:xxx,			联系人
+					postcode:xxx,		邮政编码
+					address:xxx,			地址
+					site:xxx			网址
+				}
+				posters:[
+					{
+					image:xxx,			海报
+					}，
+					....
+				]
+				columns:[
+					{
+					title:xxx 			题目
+					},
+					....
+				]
+				backstages:[
+					{
+					title:xxx 			题目
+					},
+					....
+				]
+
+
+
+
 一、用户模块
 	1. 用户注册
 		请求方式:	POST
