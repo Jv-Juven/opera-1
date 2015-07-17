@@ -55,7 +55,7 @@ class AdminPageController extends BaseController{
 	{
 		$employments = Employ::paginate(10);
 
-		return View::make('招贤纳士')->with('employments', $employments)
+		return View::make('招贤纳士')->with('employments', $employments);
 	}
 
 	//戏剧百家
@@ -79,7 +79,7 @@ class AdminPageController extends BaseController{
 	{
 		$appreciations = Appreciation::paginate(10);
 
-		return View::make('经典欣赏')->('appreciations', $appreciation);
+		return View::make('经典欣赏')->with('appreciations', $appreciation);
 	}
 
 	//成绩查询

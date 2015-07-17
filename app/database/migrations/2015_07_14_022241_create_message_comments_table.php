@@ -11,13 +11,13 @@ class CreateMessageCommentsTable extends Migration {
 	 * @return void
 	 */
 	public function up()
-	{
+	{				//留言的回复
 		Schema::create('message_comments', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->integer('user_id')->unsigned()->index('user_id');
-			$table->integer('message_id')->unsigned()->index('message_id');
-			$table->text('content');
+			$table->integer('user_id')->unsigned()->index('user_id');//留言者id
+			$table->integer('message_id')->unsigned()->index('message_id');//被回复的留言的id
+			$table->text('content');//内容
 			$table->timestamps();
 
 			$table                          

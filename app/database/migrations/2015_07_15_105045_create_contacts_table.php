@@ -11,15 +11,15 @@ class CreateContactsTable extends Migration {
 	 * @return void
 	 */
 	public function up()
-	{
+	{			//联系我们
 		Schema::create('contacts', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->string('number');
-			$table->string('people');
-			$table->string('postcode');
-			$table->string('address');
-			$table->string('site');
+			$table->string('number');//电话
+			$table->string('people');//联系人
+			$table->string('postcode');//邮编
+			$table->string('address');//地址
+			$table->string('site');//网址
 			$table->timestamps();
 		});
 	}

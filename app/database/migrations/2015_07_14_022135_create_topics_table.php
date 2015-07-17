@@ -15,9 +15,9 @@ class CreateTopicsTable extends Migration {
 		Schema::create('topics', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->integer('user_id')->unsigned()->index('user_id');
-			$table->string('title');
-			$table->text('content');
+			$table->integer('user_id')->unsigned()->index('user_id');//主题 关联的用户id
+			$table->string('title');//题目
+			$table->text('content');//内容
 			$table->timestamps();
 
 			$table                          

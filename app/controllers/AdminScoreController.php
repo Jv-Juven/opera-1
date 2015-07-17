@@ -1,7 +1,7 @@
 <?php
 
 class AdminScoreController extends BaseController{
-
+	
 	public function score()
 	{	
 		$application_id	= Input::get('application_id');

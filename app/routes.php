@@ -19,28 +19,28 @@ Route::group(array('prefix'=>'user'),function()
 	Route::post('check_code', 'UserController@postCheckCode');
 	//注册成功
 	//Route::get('to_login', 'UserController@getToLogin');
-	Route::get('login', 'UserController@login');
+	Route::get('login', 'UserPageController@login');
 	Route::post('login', 'UserController@postLogin');
 	Route::get('captcha','UserController@captcha');
 	Route::post('check_captcha','UserController@checkCaptcha');
-	Route::get('getremind','UserController@getRemind');
+	Route::get('getremind','UserPageController@getRemind');
 	Route::post('post_remind','UserController@postRemind');
-	Route::get('get_reset','UserController@getReset');
+	Route::get('get_reset','UserPageController@getReset');
 	Route::post('post_reset', 'UserController@postReset');
 
 	//空间首页
-	Route::get('space_home/{user_id}', 'UserController@spaceHome');
+	Route::get('space_home/{user_id}', 'UserPageController@spaceHome');
 	//话题动态
-	Route::get('topic/{user_id}','UserController@topic');
+	Route::get('topic/{user_id}','UserPageController@topic');
 	//相册和照片
-	Route::get('album/{user_id}','UserController@album');
-	Route::get('picture/{album_id}','UserController@picture');
+	Route::get('album/{user_id}','UserPageController@album');
+	Route::get('picture/{album_id}','UserPageController@picture');
 	//获取留言
-	Route::get('message/{user_id}', 'UserController@message');
+	Route::get('message/{user_id}', 'UserPageController@message');
 	//获取留言回复
-	Route::get('message_comment/{message_id}','UserController@messageComment');
+	Route::get('message_comment/{message_id}','UserPageController@messageComment');
 	//获取个人资料
-	Route::get('update/{user_id}', 'UserController@getUpdate');
+	Route::get('update/{user_id}', 'UserPageController@getUpdate');
 
 	Route::group(array('before' => 'auth.user.isIn'), function()
 	{
@@ -188,12 +188,12 @@ Route::group(array('prefix' => 'admin','before' => 'auth.user.isAdmin'),function
 		Route::post('delete_score', 'AdminScoreController@deleteScore');
 	});	
 
-	Route::group(array('prefix'=>'authentication', function(){
+	Route::group(array('prefix'=>'authentication'), function(){
 		Route::get('/', 'AdminPageController@authentication');
 		Route::post('add_authentication', 'AdminAuthenticationController@addAuthentication');
 		Route::post('edit_authentication', 'AdminAuthenticationController@editAuthentication');
 		Route::post('delete_authentication', 'AdminAuthenticationController@deleteAuthentication');
-	}));
+	});
 });
 
 

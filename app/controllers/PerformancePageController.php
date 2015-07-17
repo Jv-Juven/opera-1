@@ -1,8 +1,8 @@
 <?php
 
 //协会表演
-class PerformanceController extends BaseController
-{
+class PerformancePageController extends BaseController{
+
 	public function teacher()
 	{	
 		$teacher_count	= Teacher::count();

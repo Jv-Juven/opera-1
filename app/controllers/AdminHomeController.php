@@ -1,7 +1,7 @@
 <?php
 
 class AdminHomeController extends BaseController{
-	
+
 	public function addPoster()
 	{
 		$image = Input::get('image');
@@ -23,7 +23,7 @@ class AdminHomeController extends BaseController{
 			$number = $validation->messages()->all();
 			if(($number[0]) == 1)
 			{
-				return Response::json(array('errCode'=>1, 'message'=>'还未上传图片！')));
+				return Response::json(array('errCode'=>1, 'message'=>'还未上传图片！'));
 			}
 			return Response::json(array('errCode'=>2, 'message'=>'必须为jpeg, png, bmp 或 gif的图片格式！'));
 		}
@@ -62,7 +62,7 @@ class AdminHomeController extends BaseController{
 			$number = $validation->messages()->all();
 			if(($number[0]) == 1)
 			{
-				return Response::json(array('errCode'=>1, 'message'=>'还未上传图片！')));
+				return Response::json(array('errCode'=>1, 'message'=>'还未上传图片！'));
 			}
 			return Response::json(array('errCode'=>2, 'message'=>'必须为jpeg, png, bmp 或 gif的图片格式！'));
 		}

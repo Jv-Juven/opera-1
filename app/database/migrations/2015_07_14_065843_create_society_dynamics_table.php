@@ -11,12 +11,12 @@ class CreateSocietyDynamicsTable extends Migration {
 	 * @return void
 	 */
 	public function up()
-	{
+	{				//协会动态
 		Schema::create('society_dynamics', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->string('title');
-			$table->longtext('content');
+			$table->string('title');//题目
+			$table->longtext('content');//内容
 			$table->timestamps();
 		});
 	}

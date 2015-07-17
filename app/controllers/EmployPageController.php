@@ -1,6 +1,6 @@
 <?php
 
-class EmployController extends BaseController{
+class EmployPageController extends BaseController{
 
 	public function employment()
 	{

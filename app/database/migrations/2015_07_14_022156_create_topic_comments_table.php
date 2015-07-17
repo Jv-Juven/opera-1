@@ -15,9 +15,9 @@ class CreateTopicCommentsTable extends Migration {
 		Schema::create('topic_comments', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->integer('user_id')->unsigned()->index('user_id');
-			$table->integer('topic_id')->unsigned()->index('topic_id');
-			$table->text('content');
+			$table->integer('user_id')->unsigned()->index('user_id');//评论者的id
+			$table->integer('topic_id')->unsigned()->index('topic_id');//被评论话题id
+			$table->text('content');//内容
 			$table->timestamps();
 
 			$table                          

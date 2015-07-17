@@ -15,9 +15,9 @@ class CreatePicturesTable extends Migration {
 		Schema::create('pictures', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->integer('album_id')->unsigned()->index('album_id');
-			$table->string('title');
-			$table->string('picture');
+			$table->integer('album_id')->unsigned()->index('album_id');//相册id
+			$table->string('title');//图片名 
+			$table->string('picture');//图片
 			$table->timestamps();
 
 			$table                          

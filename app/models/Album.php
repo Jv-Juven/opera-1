@@ -8,7 +8,6 @@ class Album extends Eloquent{
 		'id',
 		'user_id',
 		'title',
-		'album',
 		'created_at'
 	);
 

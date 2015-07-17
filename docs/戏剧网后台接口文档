@@ -728,13 +728,11 @@
 		请求url:	admin/home/contact_us
 
 		请求参数:	
-				contact:{
 					number:xxxs,			联系方式
 					people:xxx,			联系人
 					postcode:xxx,		邮政编码
 					address:xxx,			地址
 					site:xxx			网址
-				}
 
 		返回参数:
 				{
@@ -762,11 +760,8 @@
 		请求url:	admin/home/add_link
 
 		请求参数:
-				link:
-					{
 					image:xxx,			网站logo
 					site:xxx			网址
-					}
 
 		返回参数:
 				{
@@ -821,10 +816,8 @@
 		请求url:	admin/topic/add_column
 
 		请求参数:
-				column:{
 					title:xxx,			文章题目
 					content:xxx			文章内容
-					}
 
 		返回参数:
 				{
@@ -879,10 +872,8 @@
 		请求url:	admin/topic/add_society
 
 		请求参数:
-				society:{
 					title:xxx,			文章题目
 					content:xxx			文章内容
-					}
 
 		返回参数:
 				{
@@ -936,10 +927,8 @@
 		请求url:	admin/topic/add_association
 
 		请求参数:
-				association:{
 					title:xxx,			文章题目
 					content:xxx			文章内容
-					}
 
 		返回参数:
 				{
@@ -994,10 +983,8 @@
 		请求url:	admin/employ/add_employment
 
 		请求参数:	
-				employment:{
 					title:xxx,			文章题目
 					content:xxx			文章内容		
-				}
 
 		返回参数:
 				{
@@ -1054,12 +1041,10 @@
 		请求url:	admin/show/add_teacher
 
 		请求参数:
-				teacher:{
 					image:xxx,			头像图片
 					realname:xxx,		真实姓名
 					username:xxx,		用户名	
 					password:xxx			密码
-					}
 
 		返回参数:
 				{
@@ -1114,10 +1099,8 @@
 		请求url:	admin/show/add_backstage
 
 		请求参数:
-				backstage:{
 					title:xxx,			文章题目
 					content:xxx			文章内容
-					}
 
 		返回参数:
 				{
@@ -1171,10 +1154,8 @@
 		请求url:	admin/show/add_appreciation
 
 		请求参数:
-				appreciation:{
 					title:xxx,			文章题目
 					video:xxx			文章内容
-					}
 
 		返回参数:
 				{
@@ -1231,12 +1212,10 @@
 		请求url:	admin/score/score
 
 		请求参数:
-				score:{
 					name:xxx,			姓名
 					scorenumber:xxx,		编号
 					score:xxx,			分数	
 					score_details:xxx		成绩详情
-					}
 
 		返回参数:
 				{
@@ -1268,4 +1247,44 @@
 		请求参数:	无
 
 		返回参数:	
-				
+				authentications:[
+						{
+						avatar:xxx,		头像
+						realname:xxx		真实姓名
+						},
+						....
+				]
+
+	2.添加认证老师
+		请求方式:	POST
+		请求url:	admin/authentication/add_authentication
+
+		请求参数:	
+				avatar:xxx,				头像
+				username:xxx,			用户名
+				email:xxx,				邮箱
+				password:xxx				密码
+
+		返回参数:
+
+				{
+					errCode:xxx,			错误码	0表示返回正常	 
+					message:xxx			提示信息
+				}
+
+	3.编辑认证老师:
+		请求方式:	POST
+		请求url:	admin/authentication/edit_authentication
+
+		请求参数:	
+				auth_id				认证老师的id
+				avatar:xxx,				头像
+				username:xxx,			用户名
+				email:xxx,				邮箱
+				password:xxx				密码
+
+		返回参数:
+				{
+					errCode:xxx,			错误码	0表示返回正常	 
+					message:xxx			提示信息
+				}

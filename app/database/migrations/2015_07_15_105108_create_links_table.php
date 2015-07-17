@@ -11,12 +11,12 @@ class CreateLinksTable extends Migration {
 	 * @return void
 	 */
 	public function up()
-	{
+	{			//有清连接
 		Schema::create('links', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->string('image');
-			$table->string('link');
+			$table->string('image');//图片
+			$table->string('link');//连接
 			$table->timestamps();
 		});
 	}

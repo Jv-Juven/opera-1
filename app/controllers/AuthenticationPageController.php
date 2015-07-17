@@ -1,6 +1,6 @@
 <?php
 
-class AuthenticationController extends BaseController{
+class AuthenticationPageController extends BaseController{
 
 	public function getSortOfIdentity($identity = null)
 	{

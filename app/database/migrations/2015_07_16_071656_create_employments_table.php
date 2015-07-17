@@ -11,12 +11,12 @@ class CreateEmploymentsTable extends Migration {
 	 * @return void
 	 */
 	public function up()
-	{
+	{			//招贤纳士
 		Schema::create('employments', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->string('title');
-			$table->string('content');
+			$table->string('title');//题目
+			$table->string('content');//内容
 			$table->timestamps();
 		});
 	}

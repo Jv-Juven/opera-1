@@ -1,5 +1,5 @@
 <?php
-class AdminTopicController extends Eloquent{
+class AdminTopicController extends BaseController{
 
 	public function addColumn()
 	{

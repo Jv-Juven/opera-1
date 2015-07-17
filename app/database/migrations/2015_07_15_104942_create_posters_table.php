@@ -11,11 +11,11 @@ class CreatePostersTable extends Migration {
 	 * @return void
 	 */
 	public function up()
-	{
+	{			//首页海报
 		Schema::create('posters', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->string('image');
+			$table->string('image');//图片连接
 			$table->timestamps();
 		});
 	}

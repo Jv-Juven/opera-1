@@ -16,8 +16,8 @@ class CreateAssociationDynamicsTable extends Migration {
 		{
 			//协会动态
 			$table->increments('id');
-			$table->string('title');
-			$table->longtext('content');
+			$table->string('title');//题目
+			$table->longtext('content');//内容
 			$table->timestamps();
 		});
 	}

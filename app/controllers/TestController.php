@@ -5,7 +5,7 @@ class TestController extends BaseController{
 	
 	public function test()
 	{
-		return View::make('test');
+		return '编译正确！';
 	}
 
 	public function postTest()
