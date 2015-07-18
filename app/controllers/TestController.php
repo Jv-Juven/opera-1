@@ -5,7 +5,7 @@ class TestController extends BaseController{
 	
 	public function test()
 	{
-		// $users = User
+		return 'man';
 	}
 
 	public function postTest()
