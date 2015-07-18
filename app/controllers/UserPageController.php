@@ -1,5 +1,6 @@
 <?php
 
+use Gregwar\Captcha\CaptchaBuilder;
 class UserPageController extends BaseController{
 
 	public function login()
