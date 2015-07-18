@@ -75,7 +75,12 @@ module.exports = (grunt)->
                     'dist/css/home/society-show/comedy/comedy.css':['src/pages/home/society-show/comedy/comedy.less']
                     'dist/css/home/society-show/comedy/comedy-details.css':['src/pages/home/society-show/comedy/comedy-details.less']
                     'dist/css/home/society-show/comedy/classic-case.css':['src/pages/home/society-show/comedy/classic-case.less']
-                    'dist/css/userCenter/zone.css':['src/pages/userCenter/zone/zone.less']
+                    'dist/css/userCenter/zone/zone.css':['src/pages/userCenter/zone/zone.less']
+                    'dist/css/userCenter/photo-album/photo-album.css':['src/pages/userCenter/photo-album/photo-album.less']
+                    'dist/css/userCenter/message/message.css':['src/pages/userCenter/message/message.less']
+                    'dist/css/userCenter/information/information.css':['src/pages/userCenter/information/information.less']
+                    'dist/css/userCenter/dynamic/dynamic.css':['src/pages/userCenter/dynamic/dynamic.less']
+                    'dist/css/login/login.css':['src/pages/login/login.less']
 
         cssmin:
             main:

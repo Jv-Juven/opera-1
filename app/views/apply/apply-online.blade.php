@@ -41,7 +41,7 @@
 			<div class="apply-td-text">
 				<span class="apply-text">出生年月：</span>
 			</div>
-			<input class="apply-td-input" type="text" style="width:160px;" />
+			<input class="apply-td-input" type="date" style="width:160px;" />
 		</div>
 		<div class="apply-tr">
 			<div class="apply-td-text">
