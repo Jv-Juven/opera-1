@@ -28,7 +28,9 @@
 					<div class="input">
 						验证码：
 						<div class="verify-img">
-							<div class="verify-img-field"></div>
+							<div class="verify-img-field">
+								<img src="{{ $captcha->inline() }}" id="authcode-img" width="128" height="46" />
+							</div>
 							<div class="verify-img-text">
 								<span>看不清？</span>
 								<a id="login_change_codes" href="javascript:">换张图</a>
