@@ -13,9 +13,10 @@
 ////////////
 // 前端测试路由 //
 ////////////
-Route::get('/',function(){
-	return View::make('login');
-});
+// Route::get('/',function(){
+// 	return View::make('login');
+// });
+Route::get('/','UserPageController@login');
 
 
 
