@@ -1,4 +1,4 @@
-@extend('layouts.subpage')
+@extends('layouts.subpage')
 
 
 @section('title')
@@ -8,10 +8,10 @@
 @section('css')
 	@parent
 	<link rel="stylesheet" href="/dist/css/userCenter/information/information.css">
-@atop
+@stop
 
 @section('page-left-nav')
-	@include('components.left-nav.userCenter-show-left-nav')
+	@include('components.left-nav.userCenter-left-nav')
 @stop
 
 @section('page-content')

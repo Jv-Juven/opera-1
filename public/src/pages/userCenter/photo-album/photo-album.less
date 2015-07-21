@@ -1,0 +1,83 @@
+
+@import "./../../../common/public.less";
+#main{
+	padding-top: 20px;
+}
+.page-content {
+	padding: 0px !important; 
+	.album-container {
+		.album-box {
+			margin: 40px 0px 0px 39px;
+			border: 1px solid @btn-color;
+			padding: 15px;
+			float: left;
+			box-shadow: 4px 3px 12px #aaa;
+			cursor: pointer;
+			&:nth-child(1),&:nth-child(2),&:nth-child(3){
+				margin-top: 20px;
+			}
+			img{
+				width: 200px;
+			}
+			.album-content{
+				width:100%;
+				& span{
+					line-height: 30px;
+				}
+				padding-top: 10px;
+				.album-name{
+					.figures-name-text(14px,"黑体",600,rgb(19,165,76));
+				}
+				.album-pics{
+					font-size: 14px;
+					float :right;
+					color: #969494;
+
+				}
+			}
+
+		}
+	}
+
+	.album-division-hr{
+		.division-hr();
+		margin-left: 40px;
+		margin-top: 60px;
+	}
+
+	.album-paging{
+		margin-top: 20px;
+		padding: 0px 10px 0px 50px;
+		height: 20px;
+		img{
+			height: 100%;
+		}
+		&>span{
+			cursor: pointer;
+			height: 100%;
+		}
+		span{
+			display:inline-block;
+		}
+		.album-Pre,.album-Pre img{
+			float: left;
+			.album-paging-text{
+				padding-left: 10px;
+			}
+		}
+
+		.album-Next,.album-Next img{
+			float: right;
+			.album-paging-text{
+				padding-right: 10px;
+			}
+		}
+
+		.album-paging-text{
+			vertical-align: top;
+			line-height: 20px;
+			.figures-name-text(16px,"黑体",500,#838383);
+		}
+	}
+
+}

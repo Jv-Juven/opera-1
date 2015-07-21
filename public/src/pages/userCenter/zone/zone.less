@@ -1,0 +1,170 @@
+
+@import "./../../../common/public.less";
+.page-content{
+	padding: 0px !important;
+}
+.zone-container{
+	background: none;
+	padding: 40px 0px 0px 20px;
+    & .zone-line-container>div{
+	    border: 1px solid @btn-color;
+    }
+
+    .zone-banner{
+    	width: 100%;
+    	background: @btn-color;
+    	padding: 10px 0px;
+		.figures-name-text(16px,"黑体",600,white);
+		text-align: center;
+    }
+
+	.zone-header{
+		float: left;
+
+		.zone-content{
+			padding: 12px;
+			img{
+				width: 180px;
+			}
+		}
+		.zone-header-info{
+			width: 180px;
+			line-height: 40px;
+			&>span{
+				display: inline-block;
+				.figures-name-text(18px,"黑体",600,black);
+			}
+			.zone-header-name{
+				float: left;
+			}
+			.zone-header-org{
+				float: right;
+			}
+		}
+	}
+
+	.zone-info{
+		margin-left: 224px;
+		overflow: hidden;
+		position: absolute;
+		.zone-content{
+			height: 217px;
+			.figures-name-text(14px,"黑体",600,black);
+			padding: 15px;
+			.zone-info-line{
+				height: 40px;
+				vertical-align: top;
+				&>span{
+					display: inline-block;
+					width: 50%;
+					float: left;
+				}
+				.name{
+					float: left;
+				}
+				.sex{
+					float: right;
+				}
+			}
+		}
+
+		.zone-info-intro{
+			vertical-align: top;
+			overflow: hidden;
+			height: 177px;;
+			.intro-box{
+				position: relative;
+				vertical-align: inherit;
+				height: 100%;
+				display: inline-block;
+				&:nth-child(1){
+					float: left;
+				}
+				&:nth-child(2){
+					float: right;
+					width: 460px;
+				}
+
+				.more{
+					position: absolute;
+					bottom: 0px;
+					width: 100%;
+					line-height: 18px;
+					text-align: right;
+					.figures-name-text(14px,"黑体",500);
+					span{
+						cursor: pointer;
+					}
+				}
+			}
+
+
+		}
+
+	}
+
+	.zone-album{
+		float: left; 
+		margin: 30px 0px;
+		width: 204px;
+		.zone-album-box{
+			position: relative;
+			padding: 12px 12px 0px 12px;
+			img{
+				width: 180px;
+				position: relative;
+			}
+		}
+		.zone-ablum-text{
+			width: 180px;
+			padding: 5px 0px;
+			font-size: 14px;
+			.pic-count{
+				display: inline-block;
+				float: right;
+				.figures-name-text(14px,"黑体",500,#777);
+			}
+		}
+	}
+
+
+}
+
+.zone-paging {
+  padding: 40px 10px 20px;
+  height: 20px;
+}
+.zone-paging img {
+  height: 100%;
+}
+.zone-paging > span {
+  cursor: pointer;
+  height: 100%;
+}
+.zone-paging span {
+  display: inline-block;
+}
+.zone-paging .zone-Pre,
+.zone-paging .zone-Pre img {
+  float: left;
+}
+.zone-paging .zone-Pre .zone-paging-text,
+.zone-paging .zone-Pre img .zone-paging-text {
+  padding-left: 10px;
+}
+.zone-paging .zone-Next,
+.zone-paging .zone-Next img {
+  float: right;
+}
+.zone-paging .zone-Next .zone-paging-text,
+.zone-paging .zone-Next img .zone-paging-text {
+  padding-right: 10px;
+}
+.zone-paging .zone-paging-text {
+  vertical-align: top;
+  line-height: 20px;
+  font-size: 16px;
+  font-family: "黑体";
+  font-weight: 500;
+  color: #838383;
+}
