@@ -46,7 +46,7 @@
 		   	   				<div class="intro-box">我的简介：</div>
 		   	   				<div class="intro-box">
 		   		   				<span class="intro-box-content">
-		   		   					真做官，南，1896年生于中国华盛顿伦敦区巴黎街柏林巷1919号10栋1号房。中国妇女协会主席，曾经就妇女在日本岛遭受虐待问题向中国议会提出过，后遭到日本女优绑架。为此，印度阿三向时关禁于索马里监牢里的布什发去贺电，表示热烈祝贺。台湾著名爱国者周洁龙表示愿意为其付出绑架费用1卢布。
+		   		   					真做官，南，1896年生于中国华盛顿伦敦区巴黎街柏林巷1919号10栋1号房。中国妇女协会主席，曾经就妇女在日本岛遭受虐待问题向中国议会提出过，后遭到日本女优绑架。为此，印度阿三向时关禁于索马里猪牢里的布什发去贺电，表示热烈祝贺。台湾著名爱国者周洁龙表示愿意为其付出绑架费用1卢布。
 		   		   				</span>
 		   		   				
 		   		   				<div class="more">
@@ -61,6 +61,7 @@
 
 		   </div>
 		   <div class="clearx zone-line-container">
+
 			   	<div class="zone-album clearx">
 			   		<div class="zone-banner">相册</div>
 
@@ -98,6 +99,49 @@
 				    	</span>
 				    </div>
 			   	</div>
+
+			   	<div class="zone-topics clearx">
+			   		<div class="zone-banner">话题动态</div>
+			   		<div class="zone-content">
+
+			   			<div class="zone-topics-item">
+			   				<div class="zone-topics-head">
+			   					<span class="zone-topics-title">生活点滴相关</span>
+			   					<span class="zone-topics-date">2015-07-10</span>
+			   				</div>
+			   				<div class="zone-topics-content">
+			   					我有一只小毛驴
+			   					我从来也不骑
+			   					有一天我心血来潮骑它去赶集
+			   					我手里拿着小皮鞭
+			   					我心里正得意
+			   					不知怎么哗啦啦啦啦 调到茅坑里！！！
+			   				</div>
+			   				<div class="zone-topics-comment">
+			   					(<span class="comments-count">10</span>)个评论
+			   				</div>
+			   			</div>
+
+			   			<div class="zone-topics-item">
+			   				<div class="zone-topics-head">
+			   					<span class="zone-topics-title">生活点滴相关</span>
+			   					<span class="zone-topics-date">2015-07-10</span>
+			   				</div>
+			   				<div class="zone-topics-content">
+			   					太阳天空照，花儿对我笑，小鸟说：“早！早！早！你为什么背上炸药包？”我去炸学校~老师不知道，手一拉，砰！砰！砰！学校转眼变平地~
+			   				</div>
+			   				<div class="zone-topics-comment">
+			   					(<span class="comments-count">10</span>)个评论
+			   				</div>
+			   			</div>
+
+			   			<div class="zone-topics-more">
+			   				<span>查看更多话题动态</span>
+			   			</div>
+
+			   		</div>
+			   	</div>
+
 		   </div>
 		   	
 

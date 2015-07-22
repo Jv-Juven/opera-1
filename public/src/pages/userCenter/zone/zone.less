@@ -46,7 +46,7 @@
 	.zone-info{
 		margin-left: 224px;
 		overflow: hidden;
-		position: absolute;
+		position: relative;
 		.zone-content{
 			height: 217px;
 			.figures-name-text(14px,"黑体",600,black);
@@ -105,7 +105,7 @@
 
 	.zone-album{
 		float: left; 
-		margin: 30px 0px;
+		margin: 0px;
 		width: 204px;
 		.zone-album-box{
 			position: relative;
@@ -124,6 +124,53 @@
 				float: right;
 				.figures-name-text(14px,"黑体",500,#777);
 			}
+		}
+	}
+
+	.zone-topics{
+		margin: 30px 0px 30px 224px;
+		overflow: hidden;
+		position: relative;
+		height: 442px;
+		.zone-content{
+			width: 100%;
+			.zone-topics-item{
+				margin: 0px 20px;
+				padding: 0px 0px 10px;
+				.division-hr();
+				.zone-topics-head{
+					line-height: 50px;
+					.zone-topics-title{
+						.figures-name-text(16px,"黑体",600);
+					}
+					.zone-topics-date{
+						padding-left: 10px;
+						.figures-name-text(16px,"黑体",600,#7e7e7e);
+					}
+				}
+				.zone-topics-content{
+					line-height: 24px;
+					.figures-name-text(14px,"黑体",500,#000);
+				}
+				.zone-topics-comment{
+					line-height: 40px;
+					.figures-name-text(14px,"黑体",600,#7e7e7e);
+				}
+			}
+
+
+			.zone-topics-more{
+				padding: 50px 0px 20px 0px;
+				margin: 0px 20px;
+				text-align: right;
+				.figures-name-text(16px,"黑体",600);
+
+				&>span{
+					cursor: pointer;
+					letter-spacing: 1px;
+				}
+			}
+
 		}
 	}
 
