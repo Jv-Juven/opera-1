@@ -20,13 +20,13 @@ class HomeController extends BaseController {
 		$posters	= Poster::all();
 		$columns 	= EnlightenColumn::orderBy('created_at', 'desc')->take(8)->get();
 		$backstages = BackStage::orderBy('created_at', 'desc')->take(8)->get();
-		$contact 	= Contact::find(1);
-		return View::make('home', array(
+		$contact 	= ContactUs::find(1);
+		return View::make('home.home', array(
 			'posters'=>$posters,
 			'columns'=>$columns,
 			'backstages'=>$backstages,
 			'contact'=>$contact
-			);
+			));
 	}
 
 }

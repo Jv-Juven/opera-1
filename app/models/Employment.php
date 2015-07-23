@@ -2,9 +2,9 @@
 
 class Employment extends Eloquent{
 
-	$table = 'employments';
+	protected $table = 'employments';
 
-	$fillable = array(
+	protected $fillable = array(
 		'title',
 		'content'
 	);

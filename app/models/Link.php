@@ -1,9 +1,10 @@
 <?php
 
 class Link extends Eloquent{
-	$table = 'links';
+	
+	protected $table = 'links';
 
-	$fillable = array(
+	protected $fillable = array(
 		'image',
 		'link'
 		);

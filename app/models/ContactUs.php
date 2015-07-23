@@ -2,9 +2,9 @@
 
 class ContactUs extends Eloquent{
 	 
-	$table = 'contacts';
+	protected $table = 'contacts';
 	
-	$fillable = array(
+	protected $fillable = array(
 		'number',
 		'people',
 		'postcode',

@@ -12,18 +12,25 @@
 */
 ////////////
 // 前端测试路由 //
-////////////
-Route::get('/',function(){
-	return View::make('userCenter.zone');
-});
-// Route::get('/','UserPageController@login');
+// ////////////
+// Route::get('/',function(){
+// 	return View::make('userCenter.zone');
+// });
+// // Route::get('/','UserPageController@login');
 
 
 
 ////////////
 // 后端测试路由 //
 ////////////
-// Route::get('/','HomeController@showWelcome');
+Route::get('/','HomeController@showWelcome');
+//纯页面跳转
+Route::group(array('prefix'=>'static'),function(){
+	Route::get('auth','StaticPageController@auth');
+	Route::get('inquiry','StaticPageController@inquiry');
+});
+
+
 
 Route::group(array('prefix'=>'user'),function()
 {
@@ -103,11 +110,11 @@ Route::group(array('prefix'=>'customer'), function()
 	//教师认证
 	Route::group(array('prefix'=>'authentication'),function()
 	{
-		Route::get('identity/{identity}','AuthenticationPageController@getSortOfIdentity');
+		Route::get('identity/{identity?}','AuthenticationPageController@getSortOfIdentity');
 		//根据用户所在城市定义
-		Route::get('city/{area}', 'AuthenticationPageController@getSortOfCity');
+		Route::get('city/{area?}', 'AuthenticationPageController@getSortOfCity');
 		//首字母拼音分类
-		Route::get('username/{letter}','AuthenticationPageController@getSortOfUsername');
+		Route::get('username/{letter?}','AuthenticationPageController@getSortOfUsername');
 	});
 
 	//协会表演
@@ -116,7 +123,7 @@ Route::group(array('prefix'=>'customer'), function()
 		//协会表演更多
 		//戏剧百家
 		Route::get('teacher','PerformancePageController@teacher');
-		Route::get('teacher_more', 'PerformancePageController@teacherMore');
+		Route::get('teacher_more/{id}', 'PerformancePageController@teacherMore');
 		//台前幕后
 		Route::get('backstage', 'PerformancePageController@backStage');
 		Route::get('backstage_more', 'PerformancePageController@backStageMore');

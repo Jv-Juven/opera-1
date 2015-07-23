@@ -40,33 +40,33 @@ class AuthenticationPageController extends BaseController{
 		}
 		switch ($identity) {
 			case 1:
-				return View::make('认证首页')->with('bureaus', $bureaus);
+				return View::make('certification.identity')->with('bureaus', $bureaus);
 				break;
 			case 2:
-				return View::make('认证首页')->with('consultants', $consultants);
+				return View::make('certification.identity')->with('consultants', $consultants);
 				break;
 			case 3:
-				return View::make('认证首页')->with('directors', $directors);
+				return View::make('certification.identity')->with('directors', $directors);
 				break;
 			case 4:
-				return View::make('认证首页')->with('dance_associattions', $dance_associattions);
+				return View::make('certification.identity')->with('dance_associattions', $dance_associattions);
 				break;
 			case 5:
-				return View::make('认证首页')->with('website_members', $website_members);
+				return View::make('certification.identity')->with('website_members', $website_members);
 				break;
 			default:
-				return View::make('认证首页')->with(array(
+				return View::make('certification.identity')->with(array(
 					'bureaus' => $bureaus, 
 					'consultants' => $consultants,
 					'directors' => $directors,
-					'dance_associattions' =>$dance_associattions,
+					'dance_associattions' =>$dance_associations,
 					'website_members' => $website_members,
 				));
 		}
 	}
 
 	//按所在身份分类
-	public function getSortOfCity($area)
+	public function getSortOfCity($area = null)
 	{
 		$users = User::all();
 		//以城市名称为键的数组
@@ -88,14 +88,16 @@ class AuthenticationPageController extends BaseController{
 
 		if(isset($cities[$area]))
 		{
-			return View::make('地区分类页')->with('area', $cities[$area]);
+			return View::make('certification.identity');
+			// ->with('area', $cities[$area]);
 		}else{
-			return View::make('地区分类页')->with('area', $cities);
+			return View::make('certification.identity');
+			// ->with('area', $cities);
 		}
 
 	}
 
-	public function getSortOfUsername($letter)
+	public function getSortOfUsername($letter = null)
 	{
 		$users =User::all();
 		//以字母为键的数组
@@ -119,9 +121,11 @@ class AuthenticationPageController extends BaseController{
 
 		if(isset($letters[$letter]))
 		{
-			return View::make('字母分类页')->with('letters', $letters[$letter]);
+			return View::make('certification.identity');
+			// ->with('letters', $letters[$letter]);
 		}else{
-			return View::make('字母分类页')->with('letters', $letters);
+			return View::make('certification.identity');
+			// ->with('letters', $letters);
 		}
 
 	}

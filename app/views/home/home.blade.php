@@ -13,43 +13,33 @@
     <div id="main">
 
     	<div id="slider">
-    		<img src="/images/home/slider_img.png" class="slider-img" alt="">
+    		<img src="/images/home/{{$posters[0]->image}}" class="slider-img" alt="">
     	</div>
 
     	<ul id="content">
     		<li>
     			<div class="content-li-head">
-    				<span class="sub-title"><a href="#">协会资讯</a>/</span>
-    				<span class="sub-title-en"><a href="#">ABOUT  US</a></span>
-    				<span class="more"><a href="#" class="sub-title">更多》</a></span>
+    				<span class="sub-title"><a href="/customer/news/one_topic/">协会资讯</a>/</span>
+    				<span class="sub-title-en"><a href="/customer/news/one_topic/">ABOUT  US</a></span>
+    				<span class="more"><a href="/customer/news/one_topic/" class="sub-title">更多》</a></span>
     			</div>
     			<ul class="content-list">
-    				<li><a href="#">中国儿童戏剧协会</a></li>
-    				<li><a href="#">中国儿童戏剧协会</a></li>
-    				<li><a href="#">中国儿童戏剧协会</a></li>
-    				<li><a href="#">中国儿童戏剧协会</a></li>
-    				<li><a href="#">中国儿童戏剧协会</a></li>
-    				<li><a href="#">中国儿童戏剧协会</a></li>
-    				<li><a href="#">中国儿童戏剧协会</a></li>
-    				<li><a href="#">中国儿童戏剧协会</a></li>
+    				@foreach ( $columns as $column)
+                                                    <li><a href="#">{{$column->title}}</a></li>
+                                           @endforeach
     			</ul>
     		</li>
     		<li>
     			<div class="content-li-head">
-    				<span class="sub-title"><a href="#">协会表演</a>/</span>
-    				<span class="sub-title-en"><a href="#">PERFORM</a></span>
-    				<span class="more"><a href="#" class="sub-title">更多》</a></span>
+    				<span class="sub-title"><a href="/customer/performance/teacher">协会表演</a>/</span>
+    				<span class="sub-title-en"><a href="/customer/performance/teacher">PERFORM</a></span>
+    				<span class="more"><a href="/customer/performance/teacher" class="sub-title">更多》</a></span>
 
     			</div>
     			<ul class="content-list">
-    				<li><a href="#">中国儿童戏剧协会</a></li>
-    				<li><a href="#">中国儿童戏剧协会</a></li>
-    				<li><a href="#">中国儿童戏剧协会</a></li>
-    				<li><a href="#">中国儿童戏剧协会</a></li>
-    				<li><a href="#">中国儿童戏剧协会</a></li>
-    				<li><a href="#">中国儿童戏剧协会</a></li>
-    				<li><a href="#">中国儿童戏剧协会</a></li>
-    				<li><a href="#">中国儿童戏剧协会</a></li>
+                                            @foreach($backstages as $backstage)
+                                                        <li><a href="#">{{$backstage->title}}</a></li>
+                                            @endforeach
     			</ul>
     		</li>
     		<li>
@@ -58,11 +48,11 @@
     				<span class="sub-title-en"><a href="#">CONTACT</a></span>
     			</div>
     			<ul class="content-list">
-    				<li>联系电话：02039289799</li>
-    				<li>联系人：林小姐</li>
-    				<li>邮政编码：511431</li>
-    				<li>网址：<a>www.gzhm.cm</a></li>
-    				<li>地址：广州天河区水荫路34号省文化厅大院演音大楼205</li>
+    				<li>联系电话：{{$contact->number}}</li>
+    				<li>联系人：{{$contact->people}}</li>
+    				<li>邮政编码：{{$contact->postcode}}</li>
+    				<li>网址：<a>{{$contact->site}}</a></li>
+    				<li>地址：{{$contact->address}}</li>
     				<li>
     					<img class="index-code" src="/images/home/index_code.png" alt="">
     					<div id="code_content">

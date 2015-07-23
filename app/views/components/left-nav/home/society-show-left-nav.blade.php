@@ -4,9 +4,9 @@
 			协会表演
 		</div>
 		<ul class="left-nav-list">
-			<li>戏剧百家</li>
-			<li>台前幕后</li>
-			<li>经典欣赏</li>
+			<a href="/customer/performance/teacher"><li>戏剧百家</li></a>
+			<a href="/customer/performance/backstage"><li>台前幕后</li></a>
+			<a href="/customer/performance/appreciation"><li>经典欣赏</li></a>
 		</ul>
 	</div>
 </div>

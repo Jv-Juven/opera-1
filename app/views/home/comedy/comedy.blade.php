@@ -17,57 +17,20 @@
 @section('page-content')
 	<div class="page-content">
 		<div class="figures-container clearx">
-
+			@foreach( $teachers as $teacher)
 			<div class="figures-content">
-				<img src="./images/home/comedy_head.png" alt="">
+				<a href="/customer/performance/teacher_more/{{$teacher->id}}">
+					<img src="/images/home/{{$teacher->avatar}}" alt="">
+				</a>
 				<span class="figures-name-container">
-					戏剧家
-					<span class="figures-name">朱茵</span>
+					{{{$teacher->position}}}
+					<span class="figures-name">{{{$teacher->chinese_name}}}</span>
 				</span>
 			</div>
-
-			<div class="figures-content">
-				<img src="./images/home/comedy_head.png" alt="">
-				<span class="figures-name-container">
-					戏剧家
-					<span class="figures-name">朱茵</span>
-				</span>
-			</div>
-
-			<div class="figures-content">
-				<img src="./images/home/comedy_head.png" alt="">
-				<span class="figures-name-container">
-					戏剧家
-					<span class="figures-name">朱茵</span>
-				</span>
-			</div>
-
-			<div class="figures-content">
-				<img src="./images/home/comedy_head.png" alt="">
-				<span class="figures-name-container">
-					戏剧家
-					<span class="figures-name">朱茵</span>
-				</span>
-			</div>
-
-			<div class="figures-content">
-				<img src="./images/home/comedy_head.png" alt="">
-				<span class="figures-name-container">
-					戏剧家
-					<span class="figures-name">朱茵</span>
-				</span>
-			</div>
-
-			<div class="figures-content">
-				<img src="./images/home/comedy_head.png" alt="">
-				<span class="figures-name-container">
-					戏剧家
-					<span class="figures-name">朱茵</span>
-				</span>
-			</div>
-
-
+			@endforeach
+			
 		</div>
+		{{$teachers->links()}}
 		<ul class="enlighten-subpage-plugin figures-footer">
 			<li><a href="javascript:">首页</a></li>
 			<li><a href="javascript:">1</a></li>

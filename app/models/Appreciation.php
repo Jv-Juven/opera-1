@@ -2,7 +2,7 @@
 
 class Appreciation extends Eloquent{
 
-	protected $table = 'appreciationvideos';
+	protected $table = 'appreciations';
 
 	protected $fillable = array(
 		'id',

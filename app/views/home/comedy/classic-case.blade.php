@@ -19,7 +19,7 @@
 		<div class="classic-container clearx">
 
 			<div class="classic-content">
-				<img src="./images/home/classic_case.png" alt="">
+				<img src="/images/home/classic_case.png" alt="">
 				<span class="classic-name-container">
 					戏剧
 					<span class="classic-name">《苏三起舞》</span>
@@ -27,7 +27,7 @@
 			</div>
 
 			<div class="classic-content">
-				<img src="./images/home/classic_case.png" alt="">
+				<img src="/images/home/classic_case.png" alt="">
 				<span class="classic-name-container">
 					戏剧
 					<span class="classic-name">《苏三起舞》</span>
@@ -35,7 +35,7 @@
 			</div>
 
 			<div class="classic-content">
-				<img src="./images/home/classic_case.png" alt="">
+				<img src="/images/home/classic_case.png" alt="">
 				<span class="classic-name-container">
 					戏剧
 					<span class="classic-name">《苏三起舞》</span>
@@ -43,7 +43,7 @@
 			</div>
 
 			<div class="classic-content">
-				<img src="./images/home/classic_case.png" alt="">
+				<img src="/images/home/classic_case.png" alt="">
 				<span class="classic-name-container">
 					戏剧
 					<span class="classic-name">《苏三起舞》</span>

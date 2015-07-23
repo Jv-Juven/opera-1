@@ -9,11 +9,12 @@ class ColumnPageController extends BaseController{
 		$page 		=  ceil($column_count/15);
 		$columns 		=  EnlightenColumn::paginate(15);
 
-		return View::make('启蒙专栏')->with(array(
-				'columns'		=> $columns,
-				'page'			=> $page,
-				'column_count' 	=> $column_count
-			));
+		return View::make('communication.enlighten');
+			// ->with(array(
+			// 	'columns'		=> $columns,
+			// 	'page'			=> $page,
+			// 	'column_count' 	=> $column_count
+			// ));
 	}
 
 	public function getColumnInfoMore()
@@ -31,11 +32,12 @@ class ColumnPageController extends BaseController{
 		$page 		=  ceil($society_count/15);
 		$societies= SocietyDynamics::paginate(15);
 
-		return View::make('学会动态')->with(array(
-				'societies' 		=> $societies,
-				'page'	      		=> $page,
-				'society_count' 	=> $society_count
-			));
+		return View::make('communication.masterdynamic');
+			// ->with(array(
+			// 	'societies' 		=> $societies,
+			// 	'page'	      		=> $page,
+			// 	'society_count' 	=> $society_count
+			// ));
 	}
 
 	public function getSocietyInfoMore()
@@ -49,15 +51,16 @@ class ColumnPageController extends BaseController{
 
 	public function getAssociationInfo()
 	{
-		$association_count = AssociationDynamics::cunt();
+		$association_count = AssociationDynamics::count();
 		$page			= ceil($association_count/15);
 		$associations 	= AssociationDynamics::paginate(15);
 
-		return View::make('协会动态')->with(array(
-				'associations '	 => $associations,
-				'page' 			=> $page,
-				'association_count'	 => $association_count
-		));
+		return View::make('communication.societydynamic');
+		// 		->with(array(
+		// 		'associations '	 => $associations,
+		// 		'page' 			=> $page,
+		// 		'association_count'	 => $association_count
+		// ));
 	}
 
 	public function getAssociationInfoMore()
@@ -91,16 +94,18 @@ class ColumnPageController extends BaseController{
 		}
 		if(isset($topic_comments))
 		{
-			return View::make('话题论谈')->with(array(
-				'topic'=>$topic, 
-				'topic_comments'=>$topic_comments
-				));
+			return View::make('communication.topics');
+				// ->with(array(
+				// 'topic'=>$topic, 
+				// 'topic_comments'=>$topic_comments
+				// ));
 		}
 
-		return View::make('话题论谈')->with(array(
-			'topic'=>$topic, 
-			'topic_comments'=>array()
-			));
+		return View::make('communication.topics');
+			// ->with(array(
+			// 'topic'=>$topic, 
+			// 'topic_comments'=>array()
+			// ));
 	}
 
 	public function getTopicCommentMore()
