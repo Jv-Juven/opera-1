@@ -76,14 +76,17 @@
 			timeout: 10000,
 			success: function (data){
 
-				// if (data['errCode'] == 0){
+				if (data['errCode'] == 0){
 
-					$("#online").hide();
-					$("#offline").fadeIn();
+					// $("#online").hide();
+					// $("#offline").fadeIn();
+					// 
+					alert("退出成功");
+					window.location.href = "/";
 
 					console.log(data['errCode'] + "." + data['message']);
 
-				// }
+				}
 			},
 			error: function (data){
 				alert(data['message']);
