@@ -1,9 +1,15 @@
 ;(function($){
 
-	var userMail = "";
+	var userMail = "",
+	    userName = "",
+	    userPassword = "";
+
+    //用户登录成功之后
+    var online = function (){
+    }
 	
 	//登录数据页面
-	var upload_login = function(){
+	var upload_login = function (){
 		var name = $("#user_name").val();
 		var password = $("#user_pswd").val();
 		var verify_code = $("#verify_input").val();
@@ -33,38 +39,32 @@
 			},
 			timeout:10000,
 			success:function (data){
-				if(data['errCode'] == 0){}
-					else{
-						$("#login_container").fadeOut(400);
-						$("#login_success").fadeIn(400);
-						$("#login_success_btn").click(function (){
-							$("#login_success,#page_cover").fadeOut(400);
-						});
-					}
+				if(data['errCode'] == 0){
+					
+					// alert("");
+					$("#login_container,#page_cover").fadeOut(400);
+					$("#login_success").fadeIn(400);
+					$("#login_success_btn").click(function (){
+						$("#login_success,#page_cover").fadeOut(400);
+					});
+				}
+				else{
+					alert(data['message']);
+				}
 			},
 			error:function(){}
 		});
 	}
 
 	//加载验证码
-	var change_codes = function () {
+	var change_codes = (function () {
 		$("#authcode-img").attr('src', ' ').attr('src', '/user/captcha' + '?id=' + Math.random(12));
-	};
-
-	change_codes();
-
-	$("#login_submit").on("click",function(e){
-		upload_login();
-	});
-
-	$("#login_change_codes").on("click",function(){
-		change_codes();
 	});
 
 
 
 	//用户注册信息页面
-	var upload_register=function(){
+	var upload_register = function(){
 
 		var name=$("#reg_user_name").val();
 		var mail=$("#reg_user_mail").val();
@@ -88,7 +88,9 @@
 			return;
 		}
 
-		userMail=mail;
+		userMail = mail;
+		userName = name;
+		userPassword = password;
 
 		$.ajax({
 			url:'/user/register',
@@ -106,10 +108,11 @@
 				console.log(data['errCode']+"、"+data['message']);
 				if(data['errCode']==0){
 
-					$("#register_container").fadeOut(400);
+					$("#register_container").hide();
 					$("#verify_container").fadeIn(400,function(){
 						count();
 					});
+					
 					$("#user_mailbox").text(mail);
 
 				}
@@ -124,6 +127,18 @@
 			}
 		});
 	} 
+
+	change_codes();
+
+	$("#login_submit").on("click",function(e){
+		upload_login();
+	});
+
+	$("#login_change_codes").on("click",function(){
+		change_codes();
+	});
+
+
 	
 	$("#login_btn").click(function(){
 		$(".cover-box").hide();
@@ -137,7 +152,7 @@
 		$("#page_cover,#register_container").fadeIn(300);
 	});
 
-	$("#confirm_btn").click(upload_register);
+	$("#register_confirm_btn").click(upload_register);
 
 	//-------取消点击登录框和注册框的冒泡事件 START---------
 	$(".cover-box").click(function(){
@@ -189,11 +204,14 @@
 			
 		},'json');
 
-		// alert("发送验证码成功！");
 		count();
 		$("#send_verify_code").addClass("disabled").removeClass("active");
 	});
 
+
+    /////////////
+    // 验证码确定按钮 //
+    /////////////
 	$("#verify_suc_btn").click(function(){
 
 		$.ajax({
@@ -207,7 +225,7 @@
 
 					alert("注册成功");
 
-					$("#verify_container").fadeOut(300);
+					$("#verify_code_container").hide();
 					$("#register_success").fadeIn(400);
 
 				}
@@ -218,6 +236,19 @@
 			error:function(){}
 		});
 		
+	});
+
+	////////////////////
+	// 注册成功之后的“登录”按钮 //
+	////////////////////
+	$("#register_login").click(function(){
+
+		$("#register_container").fadeOut(400);
+		$("#login_container").fadeIn(400);
+
+		$("#user_name").val(userName);
+		$("#user_pswd").val(userPassword);
+
 	});
 
 

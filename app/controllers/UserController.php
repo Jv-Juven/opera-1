@@ -114,7 +114,7 @@ class UserController extends BaseController{
 		User::create(array(
 			'username' => $_SESSION['username'],
 			'email' =>$_SESSION['email'],
-			'password' => Hash::make($_SESSION['password'])
+			'password' => $_SESSION['password']
 		));
 
 		return Response::json(array('errCode'=>0, 'message'=>'注册成功！'));
@@ -141,18 +141,24 @@ class UserController extends BaseController{
 
 		$validator = Validator::make(
 			array('captcha'  => $captcha  ),
-			array('captcha' => 'required|alpha_num|size :5' )
+			array('captcha' => 'required|alpha_num|size :6' )
 		);
 
 		if($validator->fails()){
-			return Response::json(array('errCode' => 2, "message" => "验证码格式错误", "validateMes" => $validator->messages()));
+			return Response::json(array('errCode' => 1, "message" => "验证码格式错误", "validateMes" => $validator->messages()));
 		}
-
 		//$sessionCaptcha = Session::get('phrase');
-		$sessionCaptcha = $_SESSION['phrase'];
+		$sessionCaptcha = $_SESSION['registerSalt'];
 
 		if($captcha != $sessionCaptcha)
-			return Response::json(array('errCode' => 1,'message' => '验证码有误!'));
+			return Response::json(array('errCode' => 2,'message' => '验证码有误!'));
+
+		//创建用户
+		User::create(array(
+			'username' => $_SESSION['username'],
+			'email' =>$_SESSION['email'],
+			'password' =>Hash::make($_SESSION['password'])
+		));
 
 		return Response::json(array('errCode' => 0,'message' => '验证码正确!'));
 	}
@@ -167,7 +173,7 @@ class UserController extends BaseController{
 			'captcha' => Input::get('captcha')
 		);
 		$rules = array(
-			'username' =>'required|unique:users,username',
+			'username' =>'required',
 			'password' =>'required|alpha_num|between:6,20',
 			'captcha'   =>'required|size: 5'  
 		);
@@ -175,10 +181,9 @@ class UserController extends BaseController{
 			'username.required' => 1,
 			'password.required' => 2,
 			'captcha.required' => 3,
-			'username.unique' => 4,
-			'password.alpha_num' =>5,
-			'password.between' =>6,
-			'captcha.size' =>7
+			'password.alpha_num' =>4,
+			'password.between' =>5,
+			'captcha.size' =>6
 		);
 
 		$validation = Validator::make($data, $rules,$messages);
@@ -198,17 +203,14 @@ class UserController extends BaseController{
 			case 3:
 				return Response::json(array('errCode'=>3, 'message'=>'请填写验证码！'));
 				break;
-			case 4:
-				return Response::json(array('errCode'=>4, 'message'=>'用户名已被注册！'));
-				break;
 			case 5:
-				return Response::json(array('errCode'=>5, 'message'=>'密码只能包含字母和数字！'));
+				return Response::json(array('errCode'=>4, 'message'=>'密码只能包含字母和数字！'));
 				break;
 			case 6:
-				return Response::json(array('errCode'=>6, 'message'=>'密码必须是6到20位之间！'));
+				return Response::json(array('errCode'=>5, 'message'=>'密码必须是6到20位之间！'));
 				break;
 			case 7:
-				return Response::json(array('errCode'=>7, 'message'=>'验证码格式错误！'));
+				return Response::json(array('errCode'=>6, 'message'=>'验证码格式错误！'));
 				break;
 			default:
 				return Response::json(array());
@@ -220,20 +222,30 @@ class UserController extends BaseController{
 
 		if($data['captcha'] != $sessionCaptcha)
 		{
-			return Response::json(array('errCode' => 8,'message' => '验证码有误!'));
+			return Response::json(array('errCode' => 7,'message' => '验证码有误!'));
 		}
 		
-		$user = User::where('email', '=', $data['username'])->first();
-		if($user = null)
-		{	
-			return Response::json(array('errCode' => 9,'message' => '此邮箱没注册!'));
-		}	
-		$password = $user->password;
-		if($data['password'] != $password )
+		$user = User::where('username', '=', $data['username'])->first();
+
+	    if(!isset($user))
+	    {
+	    	return Response::json(array('errCode' => 8,'message' => '此用户没注册!'));
+	    }
+		// $password = $user->password;
+		// $data = Hash::make($data['password']);
+		// dd(Hash::make(666666));
+		// if( $data != $password )
+		// {
+		// 	return Response::json(array('errCode' => 9,'message' => '密码错误!'));
+		// }
+		// return Response::json(array('errCode' => 0,'message' => '登录成功!'));
+
+		if(Auth::attempt(array('username'=>$data['username'], 'password'=> $data['password'])))
 		{
-			return Response::json(array('errCode' => 9,'message' => '密码错误!'));
+			return Response::json(array('errCode' => 0,'message' => '登录成功!'));
 		}
-		return Response::json(array('errCode' => 0,'message' => '登录成功!'));
+
+		return Response::json(array('errCode' => 9,'message' => '密码错误!'));
 	}
 
 	//重发验证码

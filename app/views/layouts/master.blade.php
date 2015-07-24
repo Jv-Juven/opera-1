@@ -57,7 +57,7 @@
 			</div>
 
 			<div class="cover-box">
-				<div id="login_success" class="input-container" style="display:none;">
+				<div id="login_success" class="input-container" style="">
 					<div id="input_info" class="input">
 						登录成功
 					</div>
@@ -87,7 +87,7 @@
 						确认密码：<input id="reg_confirm_pswd" type="password">
 					</div>
 					<div class="confirm-container">
-						<div class="confirm-btn" id="confirm_btn">下一步</div>
+						<div class="confirm-btn" id="register_confirm_btn">下一步</div>
 					</div>
 				</div>
 			</div>
@@ -116,7 +116,7 @@
 						注册成功
 					</div>
 					<div class="confirm-container">
-						<div class="confirm-btn">登录</div>
+						<div id="register_login" class="confirm-btn">登录</div>
 					</div>
 				</div>
 

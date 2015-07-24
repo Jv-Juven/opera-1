@@ -17,6 +17,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		'id',
 		'username',
 		'email',
+		'password',
 		'avatar',
 		'realname',
 		'gender',
@@ -25,6 +26,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		'position',
 		'interests',
 		'per_description',
+		'role_id',
 		'created_at',
 		'updated_at'
 	);
