@@ -91,7 +91,8 @@ Route::filter('csrf', function()
 
 
 Route::filter('auth.user.isIn',function()
-{
+{	
+	
 	Session_start();
 	if(!Sentry::check())
 	{

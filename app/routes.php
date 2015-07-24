@@ -63,7 +63,7 @@ Route::group(array('prefix'=>'user'),function()
 	//获取个人资料
 	Route::get('update/{user_id}', 'UserPageController@getUpdate');
 
-	Route::group(array('before' => 'auth.user.isIn'), function()
+	Route::group(array('before' => 'auth'), function()
 	{
 		Route::get('logout', 'UserController@getLogout');
 		//在线报名
