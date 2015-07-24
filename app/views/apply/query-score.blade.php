@@ -22,13 +22,13 @@
 			<div class="query-header-img">
 				<img src="/images/common/logo.png" alt="">
 			</div>
-			<div class="query-form" style="display:none">
-				<input id="query-num" class="query-input" type="text" placeholder="输入你的编号">
-				<input id="query-name" class="query-input" type="text" placeholder="输入你的姓名">
+			<div class="query-form">
+				<input id="query_num" class="query-input" type="text" placeholder="输入你的编号">
+				<input id="query_name" class="query-input" type="text" placeholder="输入你的姓名">
 				<div id="query_btn" class="query-submit">成绩查询</div>
 			</div>
 
-			<div class="query-result">
+			<div class="query-result" style="display:none">
 				<div class="line-one">王小花</div>
 				<div class="line-two">201507081428</div>
 				<div class="line-three">考试成绩为：87分</div>
