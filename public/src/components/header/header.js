@@ -5,7 +5,20 @@
 	    userPassword = "";
 
     //用户登录成功之后
-    var online = function (){
+    var online = function (imgUrl,userN){
+
+    	$("#offline").hide();
+    	$("#online").fadeIn();
+
+    	$("#user_head").attr("src"," ").attr("src",imgUrl);
+    	$("#user_id").text(userN);
+
+    	$("#login_container, #page_cover").fadeOut(400);
+    	$("#login_success").fadeIn(400);
+    	$("#login_success_btn").click(function (){
+    		$("#login_success,# page_cover").fadeOut(400);
+    	});
+
     }
 	
 	//登录数据页面
@@ -40,13 +53,9 @@
 			timeout:10000,
 			success:function (data){
 				if(data['errCode'] == 0){
+					console.log(data['user']['avatar']);
+					online(data['user']['avatar'],data['user']['username']);
 					
-					// alert("");
-					$("#login_container,#page_cover").fadeOut(400);
-					$("#login_success").fadeIn(400);
-					$("#login_success_btn").click(function (){
-						$("#login_success,#page_cover").fadeOut(400);
-					});
 				}
 				else{
 					alert(data['message']);
@@ -79,11 +88,11 @@
 			alert("请填写正确的邮箱");
 			return;
 		}
-		if(password.length<6||password.length>20){
+		if(password.length < 6 || password.length > 20){
 			alert("请输入6-20位的密码");
 			return;
 		}
-		if(password.length!==re_password.length){
+		if(password.length !== re_password.length){
 			alert("确认密码有误");
 			return;
 		}

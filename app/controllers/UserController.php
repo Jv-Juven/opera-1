@@ -242,7 +242,7 @@ class UserController extends BaseController{
 
 		if(Auth::attempt(array('username'=>$data['username'], 'password'=> $data['password'])))
 		{
-			return Response::json(array('errCode' => 0,'message' => '登录成功!'));
+			return Response::json(array('errCode' => 0,'message' => '登录成功!','user'=>$user));
 		}
 
 		return Response::json(array('errCode' => 9,'message' => '密码错误!'));

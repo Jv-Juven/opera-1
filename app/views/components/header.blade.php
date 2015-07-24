@@ -14,7 +14,7 @@
 		</ul>
 
 		<!--用户已登录 -->
-		<ul class="user-info">
+		<ul id="offline" class="user-info">
 			<li class="login">
 				<a id="login_btn" href="javascript:">登录</a> /   
 				<!-- <a id="login_btn" href="/user/login">登录</a> /    -->
@@ -25,11 +25,11 @@
 		</ul>
 
 		<!-- 用户未登录 -->
-		<ul class="user-info" style="display:none;">
+		<ul id="online" class="user-info" style="display:none;">
 			<li class="user-portrit">
 				<a href="javascript:">
-					<img class="user-head" src="/images/common/user_head.png" alt="">
-					<span class="user-id">logan</span>
+					<img id="user_head" class="user-head" src="/images/common/user_head.png" alt="">
+					<span id="user_id" class="user-id">logan</span>
 				</a>    
 			</li>
 			<li class="logout">
