@@ -390,7 +390,7 @@ class UserController extends BaseController{
 	//在线报名
 	public function postApplication()
 	{
-		if(!Sentry::check())
+		if(!Auth::check())
 		{
 			return Response::json(array('errCode'=>1, 'message'=>'请登录！'));
 		}
@@ -474,9 +474,9 @@ class UserController extends BaseController{
 	//成绩查询
 	public function scoreInquiry()
 	{
-		if(Sentry::check())
+		if(Auth::check())
 		{
-			$user = Sentry::getUser();
+			$user = Auth::getUser();
 		}else{
 			return Response::json(array('errCode'=>1, 'message'=>'请登录！'));
 		}
@@ -529,14 +529,14 @@ class UserController extends BaseController{
 	//个人中心——发表留言
 	public function postMessage()
 	{
-		if(!Sentry::check())
+		if(!Auth::check())
 		{
 			return Response::json(array('errCode'=>1, 'message'=>'请登录！'));
 		}
 
 		$receiver_id = Input::get('receiver_id');
 
-		$sender_id = Sentry::getUser()->id;
+		$sender_id = Auth::getUser()->id;
 		
 		$content = Input::get('message_content');
 
@@ -558,11 +558,11 @@ class UserController extends BaseController{
 	//个人中心——发表回复
 	public function postMessageComment()
 	{
-		if(!Sentry::check())
+		if(!Auth::check())
 		{
 			return Response::json(array('errCode'=>1, 'message'=>'请登录！'));
 		}
-		$user = Sentry::getUser();
+		$user = Auth::getUser();
 
 		$message_id = Input::get('message_id');
 		$content 	= Input::get('comment_content');
@@ -586,7 +586,7 @@ class UserController extends BaseController{
 	//更新资料,根据cngcong网写
 	public function postUpdate()
 	{
-		if(!Sentry::check())
+		if(!Auth::check())
 		{
 			return Response::json(array('errCode'=>1, 'message'=>'请登录！'));
 		}		
@@ -648,7 +648,7 @@ class UserController extends BaseController{
 		if($data['gender'] != 1 && $data['gender'] != 0)
 			$data['gender'] = 2;
 
-		$user = Sentry::getUser();
+		$user = Auth::getUser();
 		$user->realname 		= $data['realname'];
 		$user->gender 		= $data['gender'];
 		$user->position 		= $data['position'];
@@ -665,7 +665,7 @@ class UserController extends BaseController{
 	//更换图片
 	public function changeImage()
 	{
-		if(!Sentry::check())
+		if(!Auth::check())
 		{
 			return Response::json(array('errCode'=>1, 'message'=>'请登录！'));
 		}
