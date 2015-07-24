@@ -65,6 +65,33 @@
 		});
 	}
 
+	//用户登出
+	var logout = function (){
+
+		$.ajax({
+			url: 'user/logout',
+			type: 'get',
+			data: {},
+			dataType: 'json',
+			timeout: 10000,
+			success: function (data){
+
+				// if (data['errCode'] == 0){
+
+					$("#online").hide();
+					$("#offline").fadeIn();
+
+					console.log(data['errCode'] + "." + data['message']);
+
+				// }
+			},
+			error: function (data){
+				alert(data['message']);
+			}
+		});
+
+	}
+
 	//加载验证码
 	var change_codes = (function () {
 		$("#authcode-img").attr('src', ' ').attr('src', '/user/captcha' + '?id=' + Math.random(12));
@@ -73,26 +100,26 @@
 
 
 	//用户注册信息页面
-	var upload_register = function(){
+	var upload_register = function (){
 
-		var name=$("#reg_user_name").val();
-		var mail=$("#reg_user_mail").val();
-		var password=$("#reg_user_pswd").val();
-		var re_password=$("#reg_confirm_pswd").val();
+		var name = $("#reg_user_name").val();
+		var mail = $("#reg_user_mail").val();
+		var password = $("#reg_user_pswd").val();
+		var re_password = $("#reg_confirm_pswd").val();
 
-		if(name.length==0){
+		if(name.length == 0) {
 			alert("请填写用户名");
 			return;
 		}
-		if(!/^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/.test(mail)){
+		if(!/^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/.test(mail)) {
 			alert("请填写正确的邮箱");
 			return;
 		}
-		if(password.length < 6 || password.length > 20){
+		if(password.length < 6 || password.length > 20) {
 			alert("请输入6-20位的密码");
 			return;
 		}
-		if(password.length !== re_password.length){
+		if(password.length !== re_password.length) {
 			alert("确认密码有误");
 			return;
 		}
@@ -102,20 +129,20 @@
 		userPassword = password;
 
 		$.ajax({
-			url:'/user/register',
-			type:'POST',
-			dataType:'json',
-			data:{
+			url: '/user/register',
+			type: 'POST',
+			dataType: 'json',
+			data: {
 				username:name,
 				email:mail,
 				password:password,
 				re_password:re_password
 			},
-			timeout:10000,
-			success:function(data){
-				var data=eval(data);
-				console.log(data['errCode']+"、"+data['message']);
-				if(data['errCode']==0){
+			timeout: 10000,
+			success: function(data){
+				var data = eval(data);
+				console.log(data['errCode'] + "、" + data['message']);
+				if(data['errCode'] == 0){
 
 					$("#register_container").hide();
 					$("#verify_container").fadeIn(400,function(){
@@ -131,7 +158,7 @@
 
 				}
 			},
-			error:function(){
+			error: function(){
 				alert("注册失败");
 			}
 		});
@@ -260,5 +287,9 @@
 
 	});
 
+	///////////
+	// 用户登出 //
+	///////////
+    $("#logout").click(logout);
 
 })(jQuery);

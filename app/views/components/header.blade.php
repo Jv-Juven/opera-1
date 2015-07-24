@@ -33,7 +33,7 @@
 				</a>    
 			</li>
 			<li class="logout">
-				<a href="javascript:">退出</a>
+				<a id="logout" href="javascript:">退出</a>
 			</li>
 		</ul>
 
