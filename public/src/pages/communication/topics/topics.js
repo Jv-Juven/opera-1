@@ -1,5 +1,5 @@
 ;(function($){
 
-	$(".left-nav-list li").eq(0).addClass("active");
+	// $(".left-nav-list li").eq(0).addClass("active");
 	
 })(jQuery);

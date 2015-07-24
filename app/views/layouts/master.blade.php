@@ -131,7 +131,7 @@
 	<script type="text/javascript" src="/lib/js/jquery-1.11.2.js"></script>
 	<script type="text/javascript" src="/lib/js/jquery-1.11.2.min.js"></script>
 	<script type="text/javascript" src="/lib/js/jquery.cookie.js"></script>
-	<script type="text/javascript" src="/src/components/header/header.js"></script>
+	<script type="text/javascript" src="/dist/js/native.js"></script>
 	@show
 </body>
 </html>

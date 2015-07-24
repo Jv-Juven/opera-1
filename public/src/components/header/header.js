@@ -282,7 +282,7 @@
 	////////////////////
 	$("#register_login").click(function(){
 
-		$("#register_container").fadeOut(400);
+		$("#verify_container").fadeOut(400);
 		$("#login_container").fadeIn(400);
 
 		$("#user_name").val(userName);
