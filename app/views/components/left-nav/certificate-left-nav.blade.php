@@ -4,9 +4,9 @@
 			教师认证
 		</div>
 		<ul class="left-nav-list">
-			<a href="/customer/authentication/identity"><li>身份标示分类</li></a>
-			<a href="/customer/authentication/city"><li>按照地区分类</li></a>
-			<a href="/customer/authentication/username"><li>按用户名分类</li></a>
+			<li><a href="/customer/authentication/identity">身份标示分类</a></li>
+			<li><a href="/customer/authentication/city">按照地区分类</a></li>
+			<li><a href="/customer/authentication/username">按用户名分类</a></li>
 		</ul>
 	</div>
 </div>

@@ -24,7 +24,7 @@
 		<!-- 登录、注册 -->
 		<div id="page_cover">
 			<!-- 登录 -->
-			<!-- <div id="login_container" class="cover-box">
+			<div id="login_container" class="cover-box">
 				<div class="cover-box-header">
 					用户登录
 				</div>
@@ -34,25 +34,41 @@
 						用户名：<input id="user_name" type="text">
 					</div>
 					<div class="input">
-						密 码：<input id="user_pswd" type="text">
+						密 码：<input id="user_pswd" type="password">
 					</div>
 					<div class="input">
 						验证码：
 						<div class="verify-img">
-							<div class="verify-img-field"></div>
+							<div class="verify-img-field">
+								<img src="" id="authcode-img" width="128" height="46" />
+							</div>
 							<div class="verify-img-text">
 								<span>看不清？</span>
-								<a href="javascript:">换张图</a>
+								<a id="login_change_codes" href="javascript:">换张图</a>
 							</div>
 						</div>
-						<input class="verify-input" type="text">
+						<input id="verify_input" class="verify-input" type="text">
 					</div>
 					<div class="login-line"></div>
 					<div class="confirm-container">
-						<div class="confirm-btn">登录</div>
+						<div class="confirm-btn" id="login_submit">登录</div>
 					</div>
 				</div>
-			</div> -->
+			</div>
+
+			<div class="cover-box">
+				<div id="login_success" class="input-container" style="display:none;">
+					<div id="input_info" class="input">
+						登录成功
+					</div>
+					<div class="confirm-container">
+						<div id="login_success_btn" class="confirm-btn">确定</div>
+					</div>
+				</div>
+			</div>
+
+			
+
 			<!-- 注册 -->
 			<div id="register_container" class="cover-box">
 				<div class="cover-box-header">用户注册</div>
@@ -87,15 +103,15 @@
 						请填写校验码，已发送到，<span id="user_mailbox"></span>请勿泄露！
 					</div>
 					<div class="input">
-						<input type="text" placeholder="输入校验码">
+						<input id="user_verify_code" type="text" placeholder="输入校验码">
 						<div id="send_verify_code" class="disabled">60秒后可重新操作</div>
 					</div>
 					<div class="confirm-container">
-						<div class="confirm-btn">确定</div>
+						<div id="verify_suc_btn" class="confirm-btn">确定</div>
 					</div>
 				</div>
 
-				<div class="input-container" style="display:none;">
+				<div id="register_success" class="input-container" style="display:none;">
 					<div id="input_info" class="input">
 						注册成功
 					</div>

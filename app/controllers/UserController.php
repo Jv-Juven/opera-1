@@ -82,7 +82,6 @@ class UserController extends BaseController{
 			{
 				$message->to($data['email'],'')->subject('中国儿童戏剧教育网验证码!');
 			});
-
 			//储存数据
 			$_SESSION['registerSalt'] = $salt;
 			$_SESSION['username'] =Input::get('username');
@@ -219,13 +218,47 @@ class UserController extends BaseController{
 
 		$sessionCaptcha = $_SESSION['phrase'];
 
-		if($captcha != $sessionCaptcha)
+		if($data['captcha'] != $sessionCaptcha)
 		{
 			return Response::json(array('errCode' => 8,'message' => '验证码有误!'));
 		}
 		
+		$user = User::where('email', '=', $data['username'])->first();
+		if($user = null)
+		{	
+			return Response::json(array('errCode' => 9,'message' => '此邮箱没注册!'));
+		}	
+		$password = $user->password;
+		if($data['password'] != $password )
+		{
+			return Response::json(array('errCode' => 9,'message' => '密码错误!'));
+		}
 		return Response::json(array('errCode' => 0,'message' => '登录成功!'));
 	}
+
+	//重发验证码
+	public function resendCheckCode(){
+		 Session_start();
+		 $email =  Input::get('email');
+		 //产生随机验证码发到邮箱
+		$possible_charactors = "abcdefghijklmnopqrstuvwxyz0123456789";
+		$salt  =  "";   //验证码
+		while(strlen($salt) < 6)
+		{
+		 	 $salt .= substr($possible_charactors,rand(0,strlen($possible_charactors)-1),1);
+		}
+		
+		//发送邮件
+		Mail::send('emails/token',array('token' => $salt),function($message) use ($email)
+		{
+			$message->to($email,'')->subject('中国儿童戏剧教育网验证码!');
+		});
+
+		$_SESSION['registerSalt'] = $salt;
+
+		return Response::json(array('errCode' => 0, 'message'=> '验证码发送成功！'));
+	}
+
 
 	//发用邮件重设密码
 	public function postRemind()

@@ -6,7 +6,7 @@
 
 @section('css')
 	@parent
-	<link rel="stylesheet" href="/dist/css/communication/topics/topics.css">
+	<link rel="stylesheet" href="/dist/css/communication/topics/topic.css">
 @stop
 
 @section('page-left-nav')

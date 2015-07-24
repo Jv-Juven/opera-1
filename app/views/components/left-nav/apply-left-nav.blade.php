@@ -4,8 +4,8 @@
 			在线报名
 		</div>
 		<ul class="left-nav-list">
-			<a href="/static/auth/"><li>在线报名</li></a>
-			<a href="/static/inquiry/"><li>成绩查询</li></a>
+			<li><a href="/static/auth/">在线报名</a></li>
+			<li><a href="/static/inquiry/">成绩查询</a></li>
 		</ul>
 	</div>
 </div>

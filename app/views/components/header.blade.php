@@ -16,7 +16,8 @@
 		<!--用户已登录 -->
 		<ul class="user-info">
 			<li class="login">
-				<a id="login_btn" href="/login/login">登录</a> /   
+				<a id="login_btn" href="javascript:">登录</a> /   
+				<!-- <a id="login_btn" href="/user/login">登录</a> /    -->
 			</li>
 			<li class="register">
 				<a id="register_btn" href="javascript:">注册</a>

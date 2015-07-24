@@ -117,8 +117,7 @@ input{
 }
 .verify-img-field{
 	width: 100%;
-	height: 42px;
-	background: rgba(0,0,0,.5);
+	height: 47px;
 }
 .verify-img-text{
 	color: #a9a0a0;
@@ -227,24 +226,27 @@ header #header a:link,header #header a:visited{
 }
 
 .nav{
-	padding:25px 0 0 10px;
+	padding:30px 0 0 10px;
 	float: left;
 	font-weight: 500;
 }
 .nav li{
 	float: left;
-	padding: 5px 15px;
+	
 	cursor: pointer;
 	letter-spacing: 1px;
+}
+.nav li>a{
+	padding: 5px 15px;
 }
 .nav .active{
 	background: #00af65;
 	color: #fff;
 }
 
-.nav li:hover{
-	background: #00af65;
-	color: #fff;
+.nav li:hover,.nav li>a:hover{
+	background: #00af65 !important;
+	color: #fff !important;
 }
 
 .user-info{

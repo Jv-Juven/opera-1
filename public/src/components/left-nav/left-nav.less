@@ -1,5 +1,13 @@
-
-
+.left-nav-list{
+	padding-top: 25px;
+}
+.left-nav-list a{
+	text-decoration: none;
+}
+.left-nav-list a:link,.left-nav-list a:visited{
+	
+	color: white;
+}
 .left-nav-bar{
 	position: relative;
 	float: left;
@@ -23,19 +31,22 @@
 	border-bottom: 2px solid rgb(210,210,210);
 }
 .left-nav-list li{
-	padding-top: 25px;
 	font-size: 17px;
 	font-weight: 500;
 	color: #fff;
 }
 .left-nav-list>li{
 	margin: 3px auto;
-	padding:6px 0px;
 	text-align: center;
 	background: rgb(59,149,61);
 	cursor: pointer;
 }
-.left-nav-list>li:hover{
+.left-nav-list>li a{
+	width: 100%;
+	display: block;
+	padding:6px 0px;
+}
+.left-nav-list>li a:hover{
 	background: rgb(44,101,55);
 }
 .left-nav-list .active{

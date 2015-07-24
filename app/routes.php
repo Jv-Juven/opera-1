@@ -42,6 +42,8 @@ Route::group(array('prefix'=>'user'),function()
 	Route::post('login', 'UserController@postLogin');
 	Route::get('captcha','UserController@captcha');
 	Route::post('check_captcha','UserController@checkCaptcha');
+	//
+	Route::post('resend_checkcode','UserController@resendCheckCode' );
 	Route::get('getremind','UserPageController@getRemind');
 	Route::post('post_remind','UserController@postRemind');
 	Route::get('get_reset','UserPageController@getReset');
