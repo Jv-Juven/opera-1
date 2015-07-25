@@ -13,7 +13,7 @@ class Application extends Eloquent{
 		'day',
 		'hometown',
 		'address',
-		'guardian'
+		'guardian',
 		'phone',
 		'unit',
 		'position',
