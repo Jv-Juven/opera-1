@@ -65,14 +65,14 @@
      //////////////
     (function () {
       
-    	if(localStorage.getItem("opera_userId") !== null){
-    		console.log(localStorage.getItem("opera_userImg"));
+    	if(getCookie("opera_userId") !== null){
+    		// console.log(unescape(getCookie("opera_userImg")));
 
     		$("#offline").hide();
     		$("#online").show();
 
-    		$("#user_head").attr("src"," ").attr("src",localStorage.getItem("opera_userImg"));
-    		$("#user_id").text(localStorage.getItem("opera_userName"));
+    		$("#user_head").attr("src"," ").attr("src",unescape(getCookie("opera_userImg")));
+    		$("#user_id").text(getCookie("opera_userName"));
 
     	}
     	else {
@@ -118,12 +118,12 @@
 
 					
 
-					localStorage.setItem("opera_userId",data["user"]["id"]);
-					localStorage.setItem("opera_userName",data["user"]["username"]);
-					localStorage.setItem("opera_userImg",data['user']['avatar']);
+					setCookie("opera_userId",data["user"]["id"]);
+					setCookie("opera_userName",data["user"]["username"]);
+					setCookie("opera_userImg",data['user']['avatar']);
 
-					console.log(data['user']['avatar']);
-					console.log(localStorage.getItem("opera_userImg"));
+					// console.log(data['user']['avatar']);
+					// console.log(getCookie("opera_userImg"));
 					
 				}
 				else{
@@ -150,7 +150,9 @@
 					alert("退出成功");
 
 					//删除本地存储
-					localStorage.clear();
+					delCookie("opera_userId");
+					delCookie("opera_userImg");
+					delCookie("opera_userName");
 					
 					window.location.href = "/";
 
