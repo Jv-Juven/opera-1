@@ -1,11 +1,49 @@
 ;(function($){
 
-	var userMail = "",
+	var	userMail = "",
 	    userName = "",
 	    userPassword = "";
 
+
+    //写cookies
+    function setCookie(name,value)
+    {
+        var Days = 30;
+        var exp = new Date();
+        exp.setTime(exp.getTime() + Days*24*60*60*1000);
+        document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString();
+
+        
+        // var strsec = getsec(time);
+        // var exp = new Date();
+        // exp.setTime(exp.getTime() + strsec*1);
+        // document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString();
+    }
+
+    //读取cookies
+    function getCookie(name)
+    {
+        var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+     
+        if(arr=document.cookie.match(reg))
+     
+            return (arr[2]);
+        else
+            return null;
+    }
+
+    //删除cookies
+    function delCookie(name)
+    {
+        var exp = new Date();
+        exp.setTime(exp.getTime() - 1);
+        var cval=getCookie(name);
+        if(cval!=null)
+            document.cookie= name + "="+cval+";expires="+exp.toGMTString();
+    }
+
     //用户登录成功之后
-    var online = function (imgUrl,userN){
+    function online(imgUrl,userN) {
 
     	$("#offline").hide();
     	$("#online").fadeIn();
@@ -20,9 +58,31 @@
     	});
 
     }
+
+
+     //////////////
+     // 检测用户是否登录 //
+     //////////////
+    (function () {
+      
+    	if(localStorage.getItem("opera_userId") !== null){
+    		console.log(localStorage.getItem("opera_userImg"));
+
+    		$("#offline").hide();
+    		$("#online").show();
+
+    		$("#user_head").attr("src"," ").attr("src",localStorage.getItem("opera_userImg"));
+    		$("#user_id").text(localStorage.getItem("opera_userName"));
+
+    	}
+    	else {
+    		console.log("没有用户登录！");
+    	}
+
+    })();
 	
 	//登录数据页面
-	var upload_login = function (){
+	var upload_login = function () {
 		var name = $("#user_name").val();
 		var password = $("#user_pswd").val();
 		var verify_code = $("#verify_input").val();
@@ -53,8 +113,17 @@
 			timeout:10000,
 			success:function (data){
 				if(data['errCode'] == 0){
-					console.log(data['user']['avatar']);
+					// console.log(data['user']['avatar']);
 					online(data['user']['avatar'],data['user']['username']);
+
+					
+
+					localStorage.setItem("opera_userId",data["user"]["id"]);
+					localStorage.setItem("opera_userName",data["user"]["username"]);
+					localStorage.setItem("opera_userImg",data['user']['avatar']);
+
+					console.log(data['user']['avatar']);
+					console.log(localStorage.getItem("opera_userImg"));
 					
 				}
 				else{
@@ -78,13 +147,14 @@
 
 				if (data['errCode'] == 0){
 
-					// $("#online").hide();
-					// $("#offline").fadeIn();
-					// 
 					alert("退出成功");
+
+					//删除本地存储
+					localStorage.clear();
+					
 					window.location.href = "/";
 
-					console.log(data['errCode'] + "." + data['message']);
+					// console.log(data['errCode'] + "." + data['message']);
 
 				}
 			},
@@ -294,5 +364,8 @@
 	// 用户登出 //
 	///////////
     $("#logout").click(logout);
+
+
+
 
 })(jQuery);

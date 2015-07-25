@@ -5,6 +5,8 @@
 
 	var submit = function () {
 
+		$("#info_name").text();
+
 		 var applyName = $("#apply_name").val(),
 				   sex = $(".radio-container input:checked").val(),
 			  bornDate = $("#born_date").val(),

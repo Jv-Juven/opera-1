@@ -13,7 +13,7 @@
     <div id="main">
 
     	<div id="slider">
-    		<img src="/images/home/{{$posters[0]->image}}" class="slider-img" alt="">
+    		<img src="{{$posters[0]->image}}" class="slider-img" alt="">
     	</div>
 
     	<ul id="content">
