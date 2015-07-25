@@ -122,7 +122,7 @@
 			<textarea id="apply_details" name="" class="apply-td-explain" cols="60" rows="10"></textarea>
 		</div>
 
-		<div class="apply-btn-container">
+		<div class="apply-btn-container"> 
 			<span>提交发表</span>
 			<span>重新填写</span>
 			<span>返回上一页</span>
