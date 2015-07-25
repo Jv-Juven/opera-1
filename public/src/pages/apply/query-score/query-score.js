@@ -9,7 +9,7 @@
 		var name = queryName.val();
 
 		if(!'/[0-9]{0,}/'.test(num)){
-			alert("请输入你的编号")；
+			alert("请输入你的编号");
 			queryNum.focus();
 			return ;
 		}

@@ -1,6 +1,6 @@
 ;(function(window){
 
-	var submit = $(".apply-btn-container span").eq(0),
+	var submit_btn = $(".apply-btn-container span").eq(0),
 		 reset = $(".apply-btn-container span").eq(1);
 
 	var submit = function () {
@@ -22,7 +22,7 @@
 			 learnTime = $("#learn_time").val(),
 		  applyDetails = $("#apply_details").val();
 
-		  if(applyName.length == 0){
+		  if($(applyName).length == 0){
 		  	alert("请填写姓名");
 		  	$("#apply_name").focus();
 		  	return false;
@@ -102,9 +102,9 @@
 		  $.post("/user/application",{
 		  	name         : applyName,
 		  	gender       : sex,
-		  	year         :
-		  	month        :
-		  	day          :
+		  	// year         :
+		  	// month        :
+		  	// day          :
 		  	hometown     : nativePlace,
 		  	address      : applyAddr,
 		  	guardian     : guardian,
@@ -130,7 +130,7 @@
 
 	} 
 
-	$(submit).click(submit);
+	$(submit_btn).click(submit);
 
 
 })(window);
