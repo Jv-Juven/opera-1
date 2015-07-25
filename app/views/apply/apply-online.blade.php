@@ -130,3 +130,10 @@
 
 	</div>
 @stop
+
+@section('js')
+    @parent
+    <script type="text/javascript"></script>
+@stop
+
+

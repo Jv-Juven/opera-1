@@ -28,7 +28,8 @@ module.exports = (grunt)->
                 flatten: true
                 files: {
                     'dist/js/components.js': ['src/components/**/*.coffee'],
-                    'dist/js/native.js': ['src/**/**/*.js'],
+                    'dist/js/native.js': ['src/components/**/*.js'],
+                    'dist/js/native.js': ['src/common/**/*.js'],
                 }
 
             pages:
