@@ -77,6 +77,6 @@
 
 @section('js')
 	@parent
-	<script type="text/javascript" src="/src/common/common.js"></script>
-	<script type="text/javascript" src="/src/pages/home/home.js"></script>
+	<!-- // <script type="text/javascript" src="/src/common/common.js"></script>
+	// <script type="text/javascript" src="/src/pages/home/home.js"></script> -->
 @stop

@@ -18,5 +18,5 @@
 @append
 
 @section('js')
-	@parent
+	
 @append

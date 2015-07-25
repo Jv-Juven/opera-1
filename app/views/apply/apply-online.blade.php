@@ -133,7 +133,7 @@
 
 @section('js')
     @parent
-    <script type="text/javascript"></script>
+    <!-- // <script type="text/javascript"></script> -->
 @stop
 
 

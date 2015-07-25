@@ -38,5 +38,5 @@
 
 @section('js')
 	@parent
-	<script type="text/javascript" src="/src/pages/communication/societydynamic/societydynamic.js"></script>
+	<!-- // <script type="text/javascript" src="/src/pages/communication/societydynamic/societydynamic.js"></script> -->
 @stop

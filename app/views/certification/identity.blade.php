@@ -92,5 +92,5 @@
 
 @section('js')
 	@parent
-	<script type="text/javascript" src="/src/js/pages/certificate/identity.js"></script>
+	<!-- // <script type="text/javascript" src="/src/js/pages/certificate/identity.js"></script> -->
 @stop

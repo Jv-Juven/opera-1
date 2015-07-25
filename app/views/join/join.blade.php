@@ -53,5 +53,5 @@
 
 @section('js')
 	@parent
-	<script type="text/javascript" src="/src/pages/join/join.js"></script>
+	<!-- // <script type="text/javascript" src="/src/pages/join/join.js"></script> -->
 @stop
