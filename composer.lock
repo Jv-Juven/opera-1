@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "c3a3065be2f250af8c78e9d00824a6a0",
+    "hash": "b7915395eb427f0d64748c78d1d1e427",
     "packages": [
         {
             "name": "cartalyst/sentry",
@@ -117,6 +117,47 @@
                 "security"
             ],
             "time": "2014-07-23 20:35:12"
+        },
+        {
+            "name": "ckeditor/ckeditor",
+            "version": "4.5.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ckeditor/ckeditor-releases.git",
+                "reference": "d73e63a92b2215ab61ad7599d5c342bf541508c7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "http://packagist.phpcomposer.com/files/ckeditor/ckeditor-releases/d73e63a92b2215ab61ad7599d5c342bf541508c7.zip",
+                "reference": "d73e63a92b2215ab61ad7599d5c342bf541508c7",
+                "shasum": ""
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0+",
+                "LGPL-2.1+",
+                "MPL-1.1+"
+            ],
+            "authors": [
+                {
+                    "name": "CKSource",
+                    "homepage": "http://cksource.com"
+                }
+            ],
+            "description": "JavaScript WYSIWYG web text editor.",
+            "homepage": "http://ckeditor.com",
+            "keywords": [
+                "CKEditor",
+                "editor",
+                "fckeditor",
+                "html",
+                "javascript",
+                "richtext",
+                "text",
+                "wysiwyg"
+            ],
+            "time": "2015-07-02 12:38:46"
         },
         {
             "name": "classpreloader/classpreloader",
@@ -268,6 +309,59 @@
                 "zf2"
             ],
             "time": "2015-06-29 05:42:04"
+        },
+        {
+            "name": "frozennode/administrator",
+            "version": "v4.16.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/FrozenNode/Laravel-Administrator.git",
+                "reference": "6c88ffbb7c17250dd38384fcba1ff6c49d06dac9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "http://packagist.phpcomposer.com/files/FrozenNode/Laravel-Administrator/6c88ffbb7c17250dd38384fcba1ff6c49d06dac9.zip",
+                "reference": "6c88ffbb7c17250dd38384fcba1ff6c49d06dac9",
+                "shasum": ""
+            },
+            "require": {
+                "ckeditor/ckeditor": "4.*",
+                "laravel/framework": "4.*",
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "~0.9"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/controllers"
+                ],
+                "psr-0": {
+                    "Frozennode\\Administrator": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jan Hartigan",
+                    "email": "jan@frozennode.com"
+                }
+            ],
+            "description": "A database interface package for Laravel",
+            "homepage": "http://administrator.frozennode.com",
+            "keywords": [
+                "admin",
+                "administrator",
+                "cms",
+                "database",
+                "laravel",
+                "laravel-administrator"
+            ],
+            "time": "2015-02-18 19:05:26"
         },
         {
             "name": "gregwar/captcha",
@@ -1423,25 +1517,13 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/EventDispatcher.git",
-                "reference": "9310b5f9a87ec2ea75d20fec0b0017c77c66dac3",
-                "mirrors": [
-                    {
-                        "url": "/%package%/%normalizedUrl%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "reference": "9310b5f9a87ec2ea75d20fec0b0017c77c66dac3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/EventDispatcher/zipball/9310b5f9a87ec2ea75d20fec0b0017c77c66dac3",
+                "url": "http://packagist.phpcomposer.com/files/symfony/EventDispatcher/9310b5f9a87ec2ea75d20fec0b0017c77c66dac3.zip",
                 "reference": "9310b5f9a87ec2ea75d20fec0b0017c77c66dac3",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "http://pkg.phpcomposer.com/repo/packagist/dists/%package%/%version%/%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": ">=5.3.9"
@@ -1493,25 +1575,13 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Filesystem.git",
-                "reference": "2d7b2ddaf3f548f4292df49a99d19c853d43f0b8",
-                "mirrors": [
-                    {
-                        "url": "/%package%/%normalizedUrl%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "reference": "2d7b2ddaf3f548f4292df49a99d19c853d43f0b8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Filesystem/zipball/2d7b2ddaf3f548f4292df49a99d19c853d43f0b8",
+                "url": "http://packagist.phpcomposer.com/files/symfony/Filesystem/2d7b2ddaf3f548f4292df49a99d19c853d43f0b8.zip",
                 "reference": "2d7b2ddaf3f548f4292df49a99d19c853d43f0b8",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "http://pkg.phpcomposer.com/repo/packagist/dists/%package%/%version%/%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "php": ">=5.3.9"
