@@ -8,11 +8,11 @@ class ContactsTableSeeder extends Seeder {
 	public function run()
 	{
 			ContactUs::create([
-				'number' => 13246860389,
-				'people'  => '小伙儿',
+				'number' => 13232323232,
+				'people'  => '林小姐',
 				'postcode' => '666666',
-				'address' => '你猜你猜你猜猜猜',
-				'site' => '不告诉你！'
+				'address' => '广州市天河区水荫路34号省文化厅大院演音大楼205',
+				'site' => 'wwwgzhm.com'
 			]);
 	}
 

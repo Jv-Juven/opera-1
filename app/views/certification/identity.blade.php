@@ -20,10 +20,10 @@
 			<ul>
 				<li class="active">全部</li>
 				<li>全部</li>
-				<li>全部</li>
-				<li>全部</li>
-				<li>全部</li>
-				<li>全部</li>
+				<li>主席团</li>
+				<li>顾问</li>
+				<li>理事</li>
+				<li>舞协会员</li>
 			</ul>
 		</div>
 		<div class="certificate-container">
@@ -32,58 +32,59 @@
 				<ul>
 					<li>
 						<div class="certificate-head-portrait">
-							<img src="/images/certificate/user_head.png" alt="">
+							<img src="/images/admin/authentications/user_head.png" alt="">
 						</div>
 						<div class="certificate-user-name">贾侦探</div>
 					</li>
 					<li>
 						<div class="certificate-head-portrait">
-							<img src="/images/certificate/user_head.png" alt="">
+							<img src="/images/admin/authentications/user_head.png" alt="">
 						</div>
 						<div class="certificate-user-name">贾侦探</div>
 					</li>
 					<li>
 						<div class="certificate-head-portrait">
-							<img src="/images/certificate/user_head.png" alt="">
+							<img src="/images/admin/authentications/user_head.png" alt="">
 						</div>
 						<div class="certificate-user-name">贾侦探</div>
 					</li>
 					<li>
 						<div class="certificate-head-portrait">
-							<img src="/images/certificate/user_head.png" alt="">
+							<img src="/images/admin/authentications/user_head.png" alt="">
 						</div>
 						<div class="certificate-user-name">贾侦探</div>
 					</li>
 					<li>
 						<div class="certificate-head-portrait">
-							<img src="/images/certificate/user_head.png" alt="">
+							<img src="/images/admin/authentications/user_head.png" alt="">
 						</div>
 						<div class="certificate-user-name">贾侦探</div>
 					</li>
 					<li>
 						<div class="certificate-head-portrait">
-							<img src="/images/certificate/user_head.png" alt="">
+							<img src="/images/admin/authentications/user_head.png" alt="">
 						</div>
 						<div class="certificate-user-name">贾侦探</div>
 					</li>
 					<li>
 						<div class="certificate-head-portrait">
-							<img src="/images/certificate/user_head.png" alt="">
+							<img src="/images/admin/authentications/user_head.png" alt="">
 						</div>
 						<div class="certificate-user-name">贾侦探</div>
 					</li>
 					<li>
 						<div class="certificate-head-portrait">
-							<img src="/images/certificate/user_head.png" alt="">
+							<img src="/images/admin/authentications/user_head.png" alt="">
 						</div>
 						<div class="certificate-user-name">贾侦探</div>
 					</li>
 					<li>
 						<div class="certificate-head-portrait">
-							<img src="/images/certificate/user_head.png" alt="">
+							<img src="/images/admin/authentications/user_head.png" alt="">
 						</div>
 						<div class="certificate-user-name">贾侦探</div>
 					</li>
+					
 				</ul>
 			</div>
 		</div>

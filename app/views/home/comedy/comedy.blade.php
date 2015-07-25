@@ -20,7 +20,7 @@
 			@foreach( $teachers as $teacher)
 			<div class="figures-content">
 				<a href="/customer/performance/teacher_more/{{$teacher->id}}">
-					<img src="/images/home/{{$teacher->avatar}}" alt="">
+					<img src="/images/admin/teachers/{{$teacher->avatar}}" alt="">
 				</a>
 				<span class="figures-name-container">
 					{{{$teacher->position}}}

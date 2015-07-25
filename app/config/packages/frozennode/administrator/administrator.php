@@ -92,7 +92,7 @@ return array(
 	 *
 	 * @type string
 	 */
-	'home_page' => 'posters',
+	'home_page' => 'contacts',
 
 	/**
 	 * The route to which the user will be taken when they click the "back to site" button
