@@ -372,6 +372,13 @@
     $("#logout").click(logout);
 
 
+    //////////////
+    // 点击“忘记密码” //
+    //////////////
+    $(".login-tips").click(function() {
+    	$("#login_container").fadeOut(400);
+    	$("#login_findpsd").fadeIn(300);
+    });
 
 
 })(jQuery);
