@@ -70,7 +70,7 @@
 				</div>
 			</div> -->
 
-			<div id="login_findpsd" class="cover-box" style="display: block;">
+			<div id="login_findpsd" class="cover-box">
 				<div class="cover-box-header find-box-head">
 					<div class="find-head">
 						找回密码

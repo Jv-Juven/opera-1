@@ -256,8 +256,8 @@
 	
 	$("#login_btn").click(function(){
 		$(".cover-box").hide();
-		// $("#page_cover,#login_container").fadeIn(300);
-		$("#page_cover,#login_findpsd").fadeIn(300);
+		$("#page_cover,#login_container").fadeIn(300);
+		// $("#page_cover,#login_findpsd").fadeIn(300);
 	});
 
 	$("#register_btn").click(function(){
@@ -372,6 +372,13 @@
     $("#logout").click(logout);
 
 
+    //////////////
+    // 点击“忘记密码” //
+    //////////////
+    $(".login-tips").click(function() {
+    	$("#login_container").fadeOut(400);
+    	$("#login_findpsd").fadeIn(300);
+    });
 
 
 })(jQuery);
