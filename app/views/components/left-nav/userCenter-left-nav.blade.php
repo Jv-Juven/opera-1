@@ -4,11 +4,11 @@
 			个人中心
 		</div>
 		<ul class="left-nav-list">
-			<li>空间首页</li>
-			<li>话题动态</li>
-			<li>相册</li>
-			<li>留言</li>
-			<li>个人资料</li>
+			<li><a href="">空间首页</a></li>
+			<li><a href="">话题动态</a></li>
+			<li><a href="/user/album/?user_id=1">相册</a></li>
+			<li><a href="">留言</a></li>
+			<li><a href="">个人资料</a></li>
 		</ul>
 	</div>
 </div>

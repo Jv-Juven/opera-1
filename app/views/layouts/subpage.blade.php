@@ -3,7 +3,6 @@
 @section('css')
 	<link rel="stylesheet" href="/dist/css/components.css">
 	<link rel="stylesheet" href="/dist/css/layouts.css">
-	<link rel="stylesheet" href="/dist/css/common.css">
 @append
 
 @section('body')
