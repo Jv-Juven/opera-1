@@ -3,6 +3,8 @@
 	   direction: 'horizontal',
 	   loop: true,
 	   // autoplay: 4000,
+	    
+	   paginationClickable: true,
 	   
 	   // 如果需要分页器
 	   pagination: '.swiper-pagination',

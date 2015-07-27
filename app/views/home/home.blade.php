@@ -6,8 +6,8 @@
 
 @section('css')
     @parent
-    <link rel="stylesheet" href="/dist/css/home/home.css">
     <link rel="stylesheet" href="/lib/css/swiper3.1.0.min.css">
+    <link rel="stylesheet" href="/dist/css/home/home.css">
 @stop
 
 @section('body')

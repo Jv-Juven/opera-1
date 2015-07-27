@@ -7,6 +7,7 @@
 
 @section('css')
 	@parent
+	<link rel="stylesheet" href="/lib/css/swiper3.1.0.min.css">
 	<link rel="stylesheet" href="/dist/css/userCenter/photo-album/photo-album.css">
 @stop
 
@@ -90,4 +91,24 @@
 		</div>
 
 	</div>
+	<div class="full-screen">
+		<div class="swiper-containter photo-album-swiper">
+			<div class="swiper-wrapper">
+				<div class="swiper-slider">
+					<img src="/images/userCenter/album01.png" alt="">
+				</div>
+				<div class="swiper-slider">
+					<img src="/images/userCenter/album02.png" alt="">
+				</div>
+				<div class="swiper-slider">
+					<img src="/images/userCenter/album03.png" alt="">
+				</div>
+			</div>
+		</div>
+	</div>
+@stop
+
+@section('js')
+	@parent
+	<script type="text/javascript" src="/dist/js/lib/plugins/swiper3.1.0.jquery.min.js"></script>
 @stop
