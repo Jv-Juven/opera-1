@@ -7,13 +7,31 @@
 @section('css')
     @parent
     <link rel="stylesheet" href="/dist/css/home/home.css">
+    <link rel="stylesheet" href="/lib/css/swiper3.1.0.min.css">
 @stop
 
 @section('body')
     <div id="main">
 
     	<div id="slider">
-    		<img src="{{$posters[0]->image}}" class="slider-img" alt="">
+            <div class="swiper-container home-swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img src="{{$posters[0]->image}}" class="slider-img" alt=""></div>
+                    <div class="swiper-slide"><img src="{{$posters[0]->image}}" class="slider-img" alt=""></div>
+                    <div class="swiper-slide"><img src="{{$posters[0]->image}}" class="slider-img" alt=""></div>
+                </div>
+                <!-- 如果需要分页器 -->
+                <div class="swiper-pagination"></div>
+                
+                <!-- 如果需要导航按钮 -->
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+                
+                <!-- 如果需要滚动条 -->
+                <!-- <div class="swiper-scrollbar"></div> -->
+            </div>
+
+    		<!-- <img src="{{$posters[0]->image}}" class="slider-img" alt=""> -->
     	</div>
 
     	<ul id="content">
@@ -77,6 +95,11 @@
 
 @section('js')
 	@parent
-	<!-- // <script type="text/javascript" src="/src/common/common.js"></script>
-	// <script type="text/javascript" src="/src/pages/home/home.js"></script> -->
+    <script type="text/javascript" src="/dist/js/lib/plugins/swiper3.1.0.jquery.min.js"></script>
+	<!-- // <script type="text/javascript" src="/src/common/common.js"></script> -->
+	<script type="text/javascript" src="/dist/js/pages/home.js"></script>
 @stop
+
+
+
+

@@ -13,6 +13,8 @@ module.exports = (grunt)->
             dev:
                 files: [
                     {expand: true, flatten: true, src: ["lib/js/jquery/*"], dest: 'dist/js/lib/jquery/'}
+                    {expand: true, flatten: true, src: ["lib/js/plugins/*"], dest: 'dist/js/lib/plugins/'}
+                    {expand: true, flatten: true, src: ["src/pages/**/*.js"], dest: 'dist/js/pages/'}
                 ]
 
         clean:
