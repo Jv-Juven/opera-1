@@ -16,7 +16,7 @@
 @stop
 
 @section('page-content')
-<div class="page-content">
+<div class="page-content" style="display:none">
 	<div class="seach-container clearx">
 		<input class="seach-input" type="text">
 		<div class="seach-btn">发布话题</div>
@@ -101,6 +101,11 @@
 			<!-- 如果需要滚动条 -->
 		    <div class="swiper-scrollbar topics-scrollbar"></div>
 		</div>
+	</div>
+</div>
+<div class="page-content">
+	<div class="topics-publish">
+		
 	</div>
 </div>
 @stop

@@ -11,7 +11,7 @@
         var Days = 30;
         var exp = new Date();
         exp.setTime(exp.getTime() + Days*24*60*60*1000);
-        document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString();
+        document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString()+";path=/";
 
         
         // var strsec = getsec(time);
@@ -39,7 +39,7 @@
         exp.setTime(exp.getTime() - 1);
         var cval=getCookie(name);
         if(cval!=null)
-            document.cookie= name + "="+cval+";expires="+exp.toGMTString();
+            document.cookie= name + "="+cval+";expires="+exp.toGMTString()+";path=/";
     }
 
     //用户登录成功之后
@@ -123,6 +123,7 @@
 					setCookie("opera_userId",data["user"]["id"]);
 					setCookie("opera_userName",data["user"]["username"]);
 					setCookie("opera_userImg",data['user']['avatar']);
+					$(".user-portrit>a").attr("href","/user/space_home/?user_id="+getCookie("opera_userId"));
 
 					// console.log(data['user']['avatar']);
 					// console.log(getCookie("opera_userImg"));
