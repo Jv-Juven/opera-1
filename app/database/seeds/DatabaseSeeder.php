@@ -23,8 +23,10 @@ class DatabaseSeeder extends Seeder {
 		// $this->call('AlbumsTableSeeder');
 		// $this->call('TopicsTableSeeder');
 		// $this->call('PicturesTableSeeder');	
-		 $this->call('UsersTableSeeder');
-		 $this->call('TopicCommentsTableSeeder');
+		 // $this->call('UsersTableSeeder');
+		 // $this->call('TopicCommentsTableSeeder');
+		$this->call('MessagesTableSeeder');
+		
 	}
 
 }

@@ -15,52 +15,23 @@
 @stop
 
 @section('page-content')
+	@foreach($messages as $message)
 	<div class="page-content">
 		<div class="image">
-			<img src="images/userCenter/figure_head.png">
+			<img src="{{{$message->avatar}}}">
 		</div>
 		<div>
-			<p><span class= "name">张三</span><span class ="time">2015-07-27</span></p>
+			<p><span class= "name">{{{$message->sender}}}</span><span class ="time">{{{$message->created_at}}}</span></p>
 		</div>
 		<div class="content">
-			<p>你好丑啊啊啊啊啊 啊啊啊啊啊啊啊啊，真是d的 的   的的的的的订单  的的的的的的</p>
+			<p>{{{$message->content}}}</p>
 		</div>
 		<div class="message-btn">
-			<p class="message-edit"><span class= "reply-btn">回复</span>|<span class = "delete-btn">删除</span></p>
+			<p class="message-edit"><span class= "reply-btn">回复({{{$message->messageCommentCount}}})</span>|<span class = "delete-btn">删除</span></p>
 		</div>
 
 	</div>
+	@endforeach
 
-	<div class="page-content">
-		<div class="image">
-			<img src="images/userCenter/figure_head.png">
-		</div>
-		<div>
-			<p><span class= "name">张三</span><span class ="time">2015-07-27</span></p>
-		</div>
-		<div class="content">
-			<p>你好丑啊啊啊啊啊 啊啊啊啊啊啊啊啊，真是d的 的   的的的的的订单  的的的的的的</p>
-		</div>
-		<div class="message-btn">
-			<p class="message-edit"><span class= "reply-btn">回复</span>|<span class = "delete-btn">删除</span></p>
-		</div>
-
-	</div>
-
-	<div class="page-content">
-		<div class="image">
-			<img src="images/userCenter/figure_head.png">
-		</div>
-		<div>
-			<p><span class= "name">张三</span><span class ="time">2015-07-27</span></p>
-		</div>
-		<div class="content">
-			<p>你好丑啊啊啊啊啊 啊啊啊啊啊啊啊啊，真是d的 的   的的的的的订单  的的的的的的</p>
-		</div>
-		<div class="message-btn">
-			<p class="message-edit"><span class= "reply-btn">回复</span>|<span class = "delete-btn">删除</span></p>
-		</div>
-
-	</div>
-
+	
 @stop

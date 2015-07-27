@@ -6,7 +6,7 @@ class Message extends Eloquent{
 
 	protected $fillable = array(
 		'id',
-		'reciever_id'
+		'receiver_id',
 		'sender_id',
 		'content',
 		'created_at'

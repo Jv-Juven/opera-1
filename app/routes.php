@@ -52,16 +52,16 @@ Route::group(array('prefix'=>'user'),function()
 	//空间首页
 	Route::get('space_home', 'UserPageController@spaceHome');
 	//话题动态
-	Route::get('topic/{user_id}','UserPageController@topic');
+	Route::get('topic','UserPageController@topic');
 	//相册和照片
-	Route::get('album/{user_id}','UserPageController@album');
-	Route::get('picture/{album_id}','UserPageController@picture');
+	Route::get('album','UserPageController@album');
+	Route::get('picture','UserPageController@picture');
 	//获取留言
-	Route::get('message/{user_id}', 'UserPageController@message');
+	Route::get('message', 'UserPageController@message');
 	//获取留言回复
 	Route::get('message_comment/{message_id}','UserPageController@messageComment');
 	//获取个人资料
-	Route::get('update/{user_id}', 'UserPageController@getUpdate');
+	Route::get('update', 'UserPageController@getUpdate');
 
 	Route::group(array('before' => 'auth'), function()
 	{
