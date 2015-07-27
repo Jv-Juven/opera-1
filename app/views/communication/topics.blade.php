@@ -82,36 +82,6 @@
 									</div>
 									<div class="item-body">这是一首抚今追昔、伤时感世这作。上片“忆昔”领起，所展现的是当年豪酣欢乐的生活画面，这正是申发题中的“忆洛中旧游”之意。</div>
 								</div>
-								<!-- 一个用户的评论 -->
-								<div class="comments-item">
-									<div class="item-head">
-										<div class="item-title">嘴巴的屁股</div>
-										<span class="comments-item-comment">评论</span>
-										<span>18:47:59</span>
-										<span>2015-7-6</span>
-									</div>
-									<div class="item-body">这是一首抚今追昔、伤时感世这作。上片“忆昔”领起，所展现的是当年豪酣欢乐的生活画面，这正是申发题中的“忆洛中旧游”之意。</div>
-								</div>
-								<!-- 一个用户的评论 -->
-								<div class="comments-item">
-									<div class="item-head">
-										<div class="item-title">嘴巴的屁股</div>
-										<span class="comments-item-comment">评论</span>
-										<span>18:47:59</span>
-										<span>2015-7-6</span>
-									</div>
-									<div class="item-body">这是一首抚今追昔、伤时感世这作。上片“忆昔”领起，所展现的是当年豪酣欢乐的生活画面，这正是申发题中的“忆洛中旧游”之意。</div>
-								</div>
-								<!-- 一个用户的评论 -->
-								<div class="comments-item">
-									<div class="item-head">
-										<div class="item-title">嘴巴的屁股</div>
-										<span class="comments-item-comment">评论</span>
-										<span>18:47:59</span>
-										<span>2015-7-6</span>
-									</div>
-									<div class="item-body">这是一首抚今追昔、伤时感世这作。上片“忆昔”领起，所展现的是当年豪酣欢乐的生活画面，这正是申发题中的“忆洛中旧游”之意。</div>
-								</div>
 								<!-- 更多评论 -->
 								<div class="commonts-more">
 
