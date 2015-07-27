@@ -24,42 +24,48 @@ class UserPageController extends BaseController{
 	}
 
 	//空间首页
-	public function spaceHome($user_id)
+	public function spaceHome()
 	{
+		$user_id = Input::get('user_id');
 		$user = User::find($user_id);
 
-		$realname 		= $user->realname;
-		$city          		= $user->city;
-		$gender     	     	= $user->gender;
-		$per_description	= $user->per_description;
+		//取得相册和话题数组collections
+		$albums 			= $user->hasManyAlbums()->get();
+ 		$topics			= $user->hasManyTopics()->get();
 
-		//取得相册和话题数组
- 		$albums 			= $user->hasManyAlbums()->get();
- 		$topics 			= $user->hasManyTopics()->get();
+ 		$pictureCount = array();
+ 		$picture  = array();
+ 		$topicCommentCount = array();
  		if($albums != null)
- 		{
+ 		{	
  			foreach($albums as $album)
- 			{
+ 			{	
  				$pictures 			= $album->hasManyPictures()->get();
- 				$album['pictureCount'] 	= $pictures->count();
- 				$album['picture'] 		= $pictures[0]->picture;
+ 				$pictureCount[$album['id']] 	= $pictures->count();
+ 				$p 				= $pictures->toArray();
+ 				if($p != null )
+ 				{
+ 					$picture[$album['id']]	 = $p[0]['picture'];
+ 				}
  			}
  		}
  		if($topics != null)
  		{
  			foreach($topics as $topic)
  			{
- 				$topic['topicCommentCount'] = $topic->hasManyTopicComments()->count();
+ 				$topicCommentCount[$topic['id']] = $topic->hasManyTopicComments()->count();
  			}
  		}
 
-		return View::make('空间首页')->with(array(
-				'realname'     		=>$realname,
-				'city'			=>$city,
-				'gender'		=>$gender,
-				'per_description' 	=> $per_description,
-				'albums'  		=> $albums,
-				'topics'   		=> $topics
+ 		$albums 			= Album::where('user_id', '=', $user_id)->paginate(2);
+ 		$topics 			= Topic::where('user_id', '=', $user_id)->paginate(2);
+		return View::make('userCenter.zone')->with(array(
+				'user' 	  		  => $user,
+				'albums'  		  => $albums,
+				'topics'   		  => $topics,
+				'pictureCount' 	  =>$pictureCount,
+				'picture'		  =>$picture,
+				'topicCommentCount'  => $topicCommentCount
 			));
 	}
 
