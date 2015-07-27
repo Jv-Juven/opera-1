@@ -16,7 +16,7 @@
 @stop
 
 @section('page-content')
-<div class="page-content" style="display:none">
+<div id="topics_border01" class="page-content">
 	<div class="seach-container clearx">
 		<input class="seach-input" type="text">
 		<div class="seach-btn">发布话题</div>
@@ -103,9 +103,18 @@
 		</div>
 	</div>
 </div>
-<div class="page-content">
+<div id="topics_border02" class="page-content" style="display:none">
 	<div class="topics-publish">
-		
+		<div class="publish-container">
+			<input class="topics-input" id="topics_title" type="text" placeholder="请输入主题">
+			<div class="hr"></div>
+			<textarea class="topics-input" name="topics_content" id="topics_content" cols="30" rows="10" placeholder="请输入内容"></textarea>
+		</div>
+
+		<div class="topics-publish-tr">
+			<span class="topics-publish-btn">发布话题</span>
+		</div>
+
 	</div>
 </div>
 @stop

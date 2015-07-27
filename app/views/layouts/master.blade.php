@@ -48,21 +48,43 @@
 							</div>
 						</div>
 						<input id="verify_input" class="verify-input" type="text">
+
 					</div>
-					<div class="login-line"></div>
+					<div class="login-line">
+						<div class="login-tips">忘记密码？</div>
+					</div>
 					<div class="confirm-container">
 						<div class="confirm-btn" id="login_submit">登录</div>
 					</div>
 				</div>
 			</div>
 
-			<div class="cover-box">
+			<!-- <div class="cover-box">
 				<div id="login_success" class="input-container" style="">
 					<div id="input_info" class="input">
 						登录成功
 					</div>
 					<div class="confirm-container">
 						<div id="login_success_btn" class="confirm-btn">确定</div>
+					</div>
+				</div>
+			</div> -->
+
+			<div id="login_findpsd" class="cover-box" style="display: block;">
+				<div class="cover-box-header find-box-head">
+					<div class="find-head">
+						找回密码
+					</div>
+					<div class="find-subhead">
+						验证码将会发至你的注册邮箱或手机
+					</div>
+				</div>
+				<div id="" class="input-container" style="">
+					<div class="find-input">
+						<input id="find_input" type="text" placeholder="手机号或邮箱">
+					</div>
+					<div class="confirm-container find-confirm-container">
+						<div id="login_find_btn" class="confirm-btn">获取验证码</div>
 					</div>
 				</div>
 			</div>
