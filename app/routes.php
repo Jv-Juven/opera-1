@@ -50,7 +50,7 @@ Route::group(array('prefix'=>'user'),function()
 	Route::post('post_reset', 'UserController@postReset');
 
 	//空间首页
-	Route::get('space_home/{user_id}', 'UserPageController@spaceHome');
+	Route::get('space_home', 'UserPageController@spaceHome');
 	//话题动态
 	Route::get('topic/{user_id}','UserPageController@topic');
 	//相册和照片

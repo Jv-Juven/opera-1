@@ -23,10 +23,10 @@
 		   	   	<div class="zone-header">
 		   	   		<div class="zone-banner">头像</div>
 		   	   		<div class="zone-content">
-		   	   			<img src="images/userCenter/figure_head.png" alt="">
+		   	   			<img src="{{$user->avatar}}" alt="">
 		   	   			<div class="zone-header-info clearx">
-		   	   				<span class="zone-header-name">王大明</span>
-		   	   				<span class="zone-header-org">广西南宁</span>
+		   	   				<span class="zone-header-name">{{$user->realname}}</span>
+		   	   				<span class="zone-header-org">{{$user->city}}</span>
 		   	   			</div>
 		   	   		</div>
 		   	   	</div>
@@ -36,17 +36,23 @@
 		   	   		<div class="zone-content">
 		   	   			<div class="zone-info-line">
 		   	   				<span class="name">真实姓名：
-		   		   				<span>王大明</span>
+		   		   				<span>{{$user->realname}}</span>
 		   	   				</span>
 		   	   				<span class="sex">性别：
-		   		   				<span>男</span>
+		   	   				@if($user->gender == 1)
+		   		   				<span>女</span>
+							@elseif ($user->gender == 0)
+								<span>男</span>
+							@elseif ($user->gender == 2)
+								<span></span>
+							@endif
 		   	   				</span>
 		   	   			</div>
 		   	   			<div class="zone-info-intro clearx">
 		   	   				<div class="intro-box">我的简介：</div>
 		   	   				<div class="intro-box">
 		   		   				<span class="intro-box-content">
-		   		   					真做官，南，1896年生于中国华盛顿伦敦区巴黎街柏林巷1919号10栋1号房。中国妇女协会主席，曾经就妇女在日本岛遭受虐待问题向中国议会提出过，后遭到日本女优绑架。为此，印度阿三向时关禁于索马里猪牢里的布什发去贺电，表示热烈祝贺。台湾著名爱国者周洁龙表示愿意为其付出绑架费用1卢布。
+		   		   					{{$user->per_description}}
 		   		   				</span>
 		   		   				
 		   		   				<div class="more">
@@ -66,35 +72,27 @@
 			   		<div class="zone-banner">相册</div>
 
 			   		<div class="zone-content">
+			   			@foreach($albums as $album)
 			   			<div class="zone-album-box">
-			   				<img src="images/userCenter/album.png" alt="">
+			   				<img src="{{$picture[$album->id]}}" alt="">
 			   				<div class="zone-ablum-text">
 			   					社会活动
 			   					<span class="pic-count">
 			   						图片数：
-			   						<span>3</span>
+			   						<span>{{$pictureCount[$album->id]}}</span>
 			   					</span>
 			   				</div>
 			   			</div>
-			   			<div class="zone-album-box">
-			   				<img src="images/userCenter/album.png" alt="">
-			   				<div class="zone-ablum-text">
-			   					社会活动
-			   					<span class="pic-count">
-			   						图片数：
-			   						<span>3</span>
-			   					</span>
-			   				</div>
-			   			</div>
+			   			@endforeach
 			   		</div>
-
+			   		
 				    <div class="zone-paging">
 				    	<span class="zone-Pre">
-				    		<img src="images/userCenter/pre_page.png" alt="">
+				    		<img src="/images/userCenter/pre_page.png" alt="">
 				    		<span class="zone-paging-text">上一页</span>
 				    	</span>
 				    	<span class="zone-Next">
-				    		<img src="images/userCenter/next_page.png" alt="">
+				    		<img src="/images/userCenter/next_page.png" alt="">
 				    		<span class="zone-paging-text">下一页</span>
 				    	</span>
 				    </div>
@@ -103,38 +101,21 @@
 			   	<div class="zone-topics clearx">
 			   		<div class="zone-banner">话题动态</div>
 			   		<div class="zone-content">
-
+						@foreach($topics as $topic)
 			   			<div class="zone-topics-item">
 			   				<div class="zone-topics-head">
-			   					<span class="zone-topics-title">生活点滴相关</span>
-			   					<span class="zone-topics-date">2015-07-10</span>
+			   					<span class="zone-topics-title">{{$topic->title}}</span>
+			   					<span class="zone-topics-date">{{$topic->created_at}}</span>
 			   				</div>
 			   				<div class="zone-topics-content">
-			   					我有一只小毛驴
-			   					我从来也不骑
-			   					有一天我心血来潮骑它去赶集
-			   					我手里拿着小皮鞭
-			   					我心里正得意
-			   					不知怎么哗啦啦啦啦 调到茅坑里！！！
+			   					{{$topic->content}}
 			   				</div>
 			   				<div class="zone-topics-comment">
-			   					(<span class="comments-count">10</span>)个评论
+			   					(<span class="comments-count">{{$topicCommentCount[$topic->id]}}</span>)个评论
 			   				</div>
 			   			</div>
-
-			   			<div class="zone-topics-item">
-			   				<div class="zone-topics-head">
-			   					<span class="zone-topics-title">生活点滴相关</span>
-			   					<span class="zone-topics-date">2015-07-10</span>
-			   				</div>
-			   				<div class="zone-topics-content">
-			   					太阳天空照，花儿对我笑，小鸟说：“早！早！早！你为什么背上炸药包？”我去炸学校~老师不知道，手一拉，砰！砰！砰！学校转眼变平地~
-			   				</div>
-			   				<div class="zone-topics-comment">
-			   					(<span class="comments-count">10</span>)个评论
-			   				</div>
-			   			</div>
-
+						@endforeach
+			   			
 			   			<div class="zone-topics-more">
 			   				<span>查看更多话题动态</span>
 			   			</div>
