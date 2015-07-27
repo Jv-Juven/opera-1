@@ -8,7 +8,7 @@ class ColumnPageController extends BaseController{
 		
 		$column_count	=  EnlightenColumn::count();
 		$page 		=  ceil($column_count/10);
-		$columns 		=  EnlightenColumn::paginate(10);
+		$columns 		=  EnlightenColumn::simplePaginate(10);
 
 		return View::make('communication.enlighten')
 			->with(array(

@@ -20,6 +20,7 @@
 			<li><a href="javascript:">{{$column->title}}<span class="enlighten-list-date">{{$column->created_at}}</span></a></li>
 		@endforeach
 		</ul>
+		{{$columns->links()}}
 		<ul class="enlighten-subpage-plugin">
 			<li><a href="javascript:">首页</a></li>
 			<li><a href="javascript:">1</a></li>

@@ -24,6 +24,7 @@
 			<li><a href="javascript:">{{$society->title}}<span class="enlighten-list-date">{{$society->created_at}}</span></a></li>
 			@endforeach
 		</ul>
+		{{$societies->links()}}
 		<ul class="enlighten-subpage-plugin">
 			<li><a href="javascript:">首页</a></li>
 			<li><a href="javascript:">1</a></li>
