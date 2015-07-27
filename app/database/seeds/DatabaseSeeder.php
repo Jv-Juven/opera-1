@@ -22,11 +22,9 @@ class DatabaseSeeder extends Seeder {
 		// $this->call('TeachersTableSeeder');
 		// $this->call('AlbumsTableSeeder');
 		// $this->call('TopicsTableSeeder');
-		$this->call('PicturesTableSeeder');
-
-
-
-		
+		// $this->call('PicturesTableSeeder');	
+		 $this->call('UsersTableSeeder');
+		 $this->call('TopicCommentsTableSeeder');
 	}
 
 }

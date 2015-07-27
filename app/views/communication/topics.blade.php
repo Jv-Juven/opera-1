@@ -30,58 +30,29 @@
 						<div class="topics-right-content">
 							<!-- 动态内容 -->
 							<div class="topics-msg">
-								<div class="topics-name">佳作光</div>
-								<div class="topics-title">舞动青春 - 那时归来</div>
+								<div class="topics-name">{{$user->username}}</div>
+								<div class="topics-title">{{$topic->title}}</div>
 								<div class="topics-msg-body">
-									忆昔午桥桥上饮，坐中多是豪英。长沟流月去无声。杏花疏影里，吹笛到天明。
-									　　二十余年如一梦，此身虽在堪惊。闲登小阁看新睛。古今多少事，渔唱起三更。
-								</div>
+									{{$topic->content}}
 								<div class="topics-comment">
-									评论（<span>3</span>）
+									评论（<span>{{$commentCount}}</span>）
 								</div>
 							</div>
 							<!-- 评论区 -->
 							<div class="topics-comments-container">
 								<!-- 一个用户的评论 -->
+								@foreach($topic_comments as $topic_comment)
 								<div class="comments-item">
 									<div class="item-head">
-										<div class="item-title">嘴巴的屁股</div>
+										<div class="item-title">{{$comment_name[$topic_comment->user_id]}}</div>
 										<span class="comments-item-comment">评论</span>
-										<span>18:47:59</span>
-										<span>2015-7-6</span>
+										<span>{{$topic_comment->created_at}}</span>
+										
 									</div>
-									<div class="item-body">这是一首抚今追昔、伤时感世这作。上片“忆昔”领起，所展现的是当年豪酣欢乐的生活画面，这正是申发题中的“忆洛中旧游”之意。</div>
+									<div class="item-body">{{$topic_comment->content}}</div>
 								</div>
-								<!-- 一个用户的评论 -->
-								<div class="comments-item">
-									<div class="item-head">
-										<div class="item-title">嘴巴的屁股</div>
-										<span class="comments-item-comment">评论</span>
-										<span>18:47:59</span>
-										<span>2015-7-6</span>
-									</div>
-									<div class="item-body">这是一首抚今追昔、伤时感世这作。上片“忆昔”领起，所展现的是当年豪酣欢乐的生活画面，这正是申发题中的“忆洛中旧游”之意。</div>
-								</div>
-								<!-- 一个用户的评论 -->
-								<div class="comments-item">
-									<div class="item-head">
-										<div class="item-title">嘴巴的屁股</div>
-										<span class="comments-item-comment">评论</span>
-										<span>18:47:59</span>
-										<span>2015-7-6</span>
-									</div>
-									<div class="item-body">这是一首抚今追昔、伤时感世这作。上片“忆昔”领起，所展现的是当年豪酣欢乐的生活画面，这正是申发题中的“忆洛中旧游”之意。</div>
-								</div>
-								<!-- 一个用户的评论 -->
-								<div class="comments-item">
-									<div class="item-head">
-										<div class="item-title">嘴巴的屁股</div>
-										<span class="comments-item-comment">评论</span>
-										<span>18:47:59</span>
-										<span>2015-7-6</span>
-									</div>
-									<div class="item-body">这是一首抚今追昔、伤时感世这作。上片“忆昔”领起，所展现的是当年豪酣欢乐的生活画面，这正是申发题中的“忆洛中旧游”之意。</div>
-								</div>
+								@endforeach
+								
 								<!-- 更多评论 -->
 								<div class="commonts-more">
 

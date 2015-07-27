@@ -20,20 +20,16 @@
 		<div class="masterdynamic-subhead text-center">发布时间：<span class="masterdynamic-subhead-date">2015-06-21</span><span class="masterdynamic-subhead-date">13:06</span></div>
 		<div class="masterdynamic-body"></div> -->
 		<ul class="enlighten-list">
-			<li><a href="javascript:">本真小演员布尼王出演<span class="enlighten-list-date">2015-04-02</span></a></li>
-			<li><a href="javascript:">本真小演员布尼王出演<span class="enlighten-list-date">2015-04-02</span></a></li>
-			<li><a href="javascript:">本真小演员布尼王出演<span class="enlighten-list-date">2015-04-02</span></a></li>
-			<li><a href="javascript:">本真小演员布尼王出演<span class="enlighten-list-date">2015-04-02</span></a></li>
-			<li><a href="javascript:">本真小演员布尼王出演<span class="enlighten-list-date">2015-04-02</span></a></li>
-			<li><a href="javascript:">本真小演员布尼王出演<span class="enlighten-list-date">2015-04-02</span></a></li>
-			<li><a href="javascript:">本真小演员布尼王出演<span class="enlighten-list-date">2015-04-02</span></a></li>
+			@foreach($societies as $society)
+			<li><a href="javascript:">{{$society->title}}<span class="enlighten-list-date">{{$society->created_at}}</span></a></li>
+			@endforeach
 		</ul>
 		<ul class="enlighten-subpage-plugin">
 			<li><a href="javascript:">首页</a></li>
 			<li><a href="javascript:">1</a></li>
 			<li><a href="javascript:">2</a></li>
 			<li><a href="javascript:">末页</a></li>
-			<li>共<span class="enlighten-pages">2</span>页<span class="enlighten-items">31</span>条</li>
+			<li>共<span class="enlighten-pages">{{$page}}</span>页<span class="enlighten-items">{{$society_count}}</span>条</li>
 		</ul>
 	</div>
 @stop

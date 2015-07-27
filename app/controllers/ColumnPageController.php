@@ -2,19 +2,20 @@
 
 class ColumnPageController extends BaseController{
 
+	//启蒙专栏
 	public function getColumnInfo()
 	{	
 		
 		$column_count	=  EnlightenColumn::count();
-		$page 		=  ceil($column_count/15);
-		$columns 		=  EnlightenColumn::paginate(15);
+		$page 		=  ceil($column_count/10);
+		$columns 		=  EnlightenColumn::paginate(10);
 
-		return View::make('communication.enlighten');
-			// ->with(array(
-			// 	'columns'		=> $columns,
-			// 	'page'			=> $page,
-			// 	'column_count' 	=> $column_count
-			// ));
+		return View::make('communication.enlighten')
+			->with(array(
+				'columns'		=> $columns,
+				'page'			=> $page,
+				'column_count' 	=> $column_count
+			));
 	}
 
 	public function getColumnInfoMore()
@@ -26,18 +27,19 @@ class ColumnPageController extends BaseController{
 		 return View::make('启蒙专栏详细信息')->with('column', $column);
 	}
 
+	//学会动态
 	public function getSocietyInfo()
 	{	
 		$society_count	= SocietyDynamics::count();
-		$page 		=  ceil($society_count/15);
-		$societies= SocietyDynamics::paginate(15);
+		$page 		=  ceil($society_count/10);
+		$societies= SocietyDynamics::paginate(10);
 
-		return View::make('communication.masterdynamic');
-			// ->with(array(
-			// 	'societies' 		=> $societies,
-			// 	'page'	      		=> $page,
-			// 	'society_count' 	=> $society_count
-			// ));
+		return View::make('communication.masterdynamic')
+			->with(array(
+				'societies' 		=> $societies,
+				'page'	      		=> $page,
+				'society_count' 	=> $society_count
+			));
 	}
 
 	public function getSocietyInfoMore()
@@ -49,18 +51,19 @@ class ColumnPageController extends BaseController{
 		return View::make('学会动态')->with('society', $society);
 	}
 
+	//协会动态
 	public function getAssociationInfo()
 	{
 		$association_count = AssociationDynamics::count();
-		$page			= ceil($association_count/15);
-		$associations 	= AssociationDynamics::paginate(15);
+		$page			= ceil($association_count/10);
+		$associations 	= AssociationDynamics::paginate(10);
 
-		return View::make('communication.societydynamic');
-		// 		->with(array(
-		// 		'associations '	 => $associations,
-		// 		'page' 			=> $page,
-		// 		'association_count'	 => $association_count
-		// ));
+		return View::make('communication.societydynamic')
+				->with(array(
+				'associations'	 => $associations,
+				'page' 			=> $page,
+				'association_count'	 => $association_count
+		));
 	}
 
 	public function getAssociationInfoMore()
@@ -73,41 +76,49 @@ class ColumnPageController extends BaseController{
 	}
 
 	public function getOneTopic()
-	{
-		$topic = DB::table('topics')->orderBy('id', 'desc')->first();
+	{	
+		//获取最新的那个话题
+		$topic = Topic::orderBy('id', 'asc')->first();
 		if($topic != null)
-		{
+		{	//话题人的信息
 			$user_id 		= $topic->user_id;
-			$topic['name'] 	= User::find($user_id)->username;
-			$topic['avatar'] 	= User::find($user_id)->avatar;
-
-			$topic_comments = $topic->hasManyTopicComments()->get(); 
+			$user 			= User::find($user_id);
+			//话题评论
+			$topic_comments 	= $topic->hasManyTopicComments()->get(); 
+			$comment_name 	= array();
 			if($topic_comments != null)
-			{
-				$topic['commentCount'] = $topic_comments->count();
+			{	
+				$commentCount = $topic_comments->count();
 				foreach($topic_comments as $topic_comment)
-				{	
+				{	//评论人的信息	
 					$user_id 			= $topic_comment->user_id;
-					$topic_comment['name'] 	= User::find($user_id)->username;
+					$name 			= User::find($user_id)->username;
+					$comment_name[$user_id] = $name;
 				}
 			}
 		}
+		// dd($topic_comments);
 		if(isset($topic_comments))
 		{
-			return View::make('communication.topics');
-				// ->with(array(
-				// 'topic'=>$topic, 
-				// 'topic_comments'=>$topic_comments
-				// ));
+			return View::make('communication.topics')->with(array(
+				'topic'=>$topic, 
+				'topic_comments'=>$topic_comments,
+				'commentCount' => $commentCount,
+				'comment_name' => $comment_name,
+				'user' =>$user
+				));
 		}
 
-		return View::make('communication.topics');
-			// ->with(array(
-			// 'topic'=>$topic, 
-			// 'topic_comments'=>array()
-			// ));
+		return View::make('communication.topics')->with(array(
+				'topic'=>$topic, 
+				'topic_comments'=>$topic_comments,
+				'commentCount' => $commentCount,
+				'comment_name' => $comment_name,
+				'user' => $user
+				));
 	}
 
+	//话题评论内容
 	public function getTopicCommentMore()
 	{
 		$topic_id = Input::get('topic_id');
