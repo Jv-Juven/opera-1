@@ -74,6 +74,8 @@
     		$("#user_head").attr("src"," ").attr("src",unescape(getCookie("opera_userImg")));
     		$("#user_id").text(getCookie("opera_userName"));
 
+    		$(".user-portrit>a").attr("href","/user/space_home/?user_id="+getCookie("opera_userId"));
+
     	}
     	else {
     		console.log("没有用户登录！");

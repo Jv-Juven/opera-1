@@ -27,7 +27,7 @@
 		<!-- 用户未登录 -->
 		<ul id="online" class="user-info" style="display:none;">
 			<li class="user-portrit">
-				<a href="javascript:">
+				<a href="/user/space_home/">
 					<img id="user_head" class="user-head" src="/images/common/user_head.png" alt="">
 					<span id="user_id" class="user-id">logan</span>
 				</a>    
