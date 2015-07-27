@@ -4,7 +4,7 @@
 	    userName = "",
 	    userPassword = "";
 
-	    alert(getCookie("PHPSESSID"));
+	    // alert(getCookie("PHPSESSID"));
 
     //写cookies
     function setCookie(name,value)
