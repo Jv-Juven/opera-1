@@ -8,6 +8,7 @@ class AdminController extends \BaseController {
 
 	public function postIndex()
 	{	
+		
 		$username = Input::get('username');
 		$password = Input::get('password');
   		if (Auth::attempt(['username' => $username, 'password' => $password]))
@@ -24,7 +25,7 @@ class AdminController extends \BaseController {
   		}
 		return Redirect::back()
      					 ->withInput()
-					 ->withErrors('用户名或密码不正确！');
+					 ->withErrors('密码不正确！');
 	}
 
 	public function logout()
