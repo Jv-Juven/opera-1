@@ -69,7 +69,7 @@ return array(
 	 */
 	'permission'=> function()
 	{	
-		return;
+		return Auth::check();
 	},
 
 	/**
