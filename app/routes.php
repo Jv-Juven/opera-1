@@ -125,7 +125,7 @@ Route::group(array('prefix'=>'customer'), function()
 		//协会表演更多
 		//戏剧百家
 		Route::get('teacher','PerformancePageController@teacher');
-		Route::get('teacher_more/{id}', 'PerformancePageController@teacherMore');
+		Route::get('teacher_more', 'PerformancePageController@teacherMore');
 		//台前幕后
 		Route::get('backstage', 'PerformancePageController@backStage');
 		Route::get('backstage_more', 'PerformancePageController@backStageMore');

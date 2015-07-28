@@ -15,11 +15,11 @@ class PerformancePageController extends BaseController{
 			));
 	}
 
-	public function teacherMore($id)
+	public function teacherMore()
 	{
-		// $teacher_id = Input::get('teacher_id');
+		$teacher_id = Input::get('teacher_id');
 
-		$teacher = Teacher::find($id);
+		$teacher = Teacher::find($teacher_id);
 
 		return View::make('home.comedy.comedy-details')->with('teacher', $teacher);
 	}
@@ -27,15 +27,15 @@ class PerformancePageController extends BaseController{
 	public function backStage()
 	{
 		$backstage_count 	= BackStage::count();
-		$page 		= ceil($backstage_count/15);
-		$backstages 		= BackStage::paginate(15);
+		$page 		= ceil($backstage_count/10);
+		$backstages 		= BackStage::paginate(10);
 
-		return View::make('home.comedy.before-behind');
-			// ->with(array(
-			// 	'backstages' 		=> $backstages,
-			// 	'page'			=> $page,
-			// 	'backstage_count' 	=> $backstage_count
-			// ));
+		return View::make('home.comedy.before-behind')
+			->with(array(
+				'backstages' 		=> $backstages,
+				'page'			=> $page,
+				'backstage_count' 	=> $backstage_count
+			));
 	}
 
 	public function backStageMore()
@@ -44,7 +44,7 @@ class PerformancePageController extends BaseController{
 
 		$backstage = BackStage::find($backstage_id);
 
-		return View::make('台前幕后详细信息')->with('backstage', $backstage);
+		return View::make('home.comedy.before-behind-details')->with('backstage', $backstage);
 	}
 
 	public function appreciation()

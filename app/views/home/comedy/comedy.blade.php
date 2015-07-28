@@ -19,7 +19,7 @@
 		<div class="figures-container clearx">
 			@foreach( $teachers as $teacher)
 			<div class="figures-content">
-				<a href="/customer/performance/teacher_more/{{$teacher->id}}">
+				<a href="/customer/performance/teacher_more?teacher_id={{$teacher->id}}">
 					<img src="/images/admin/teachers/{{$teacher->avatar}}" alt="">
 				</a>
 				<span class="figures-name-container">

@@ -22,9 +22,9 @@ class ColumnPageController extends BaseController{
 	{
 		$column_id = Input::get('column_id');
 
-		$column = EnlightenColumn::find($column);
+		$column = EnlightenColumn::find($column_id);
 		
-		 return View::make('启蒙专栏详细信息')->with('column', $column);
+		 return View::make('communication.enlighten-more')->with('column', $column);
 	}
 
 	//学会动态
@@ -46,9 +46,10 @@ class ColumnPageController extends BaseController{
 	{
 		$society_id = Input::get('society_id');
 
-		$society = SocietyDynamics::find($society);
+		$society = SocietyDynamics::find($society_id);
 		
-		return View::make('学会动态')->with('society', $society);
+		return View::make('communication.masterdynamic-more')
+				->with('society', $society);
 	}
 
 	//协会动态
@@ -69,10 +70,9 @@ class ColumnPageController extends BaseController{
 	public function getAssociationInfoMore()
 	{
 		$association_id = Input::get('association_id');
-
-		$association = AssociationDynamics::find('association_id');
-
-		return View::make('协会动态')->with('association', $association);
+		$association = AssociationDynamics::find($association_id);
+		return View::make('communication.societydynamic-more')
+				->with('association', $association);
 	}
 
 	public function getOneTopic()

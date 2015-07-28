@@ -21,7 +21,7 @@
 		<div class="masterdynamic-body"></div> -->
 		<ul class="enlighten-list">
 			@foreach($societies as $society)
-			<li><a href="javascript:">{{$society->title}}<span class="enlighten-list-date">{{$society->created_at}}</span></a></li>
+			<li><a href="/customer/news/society_more?society_id={{{$society->id}}}">{{$society->title}}<span class="enlighten-list-date">{{$society->created_at}}</span></a></li>
 			@endforeach
 		</ul>
 		{{$societies->links()}}

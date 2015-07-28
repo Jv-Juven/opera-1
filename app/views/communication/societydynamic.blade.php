@@ -18,7 +18,7 @@
 	<div class="page-content">
 		<ul class="enlighten-list">
 			@foreach($associations as $association)
-			<li><a href="javascript:">{{$association->title}}<span class="enlighten-list-date">{{$association->created_at}}</span></a></li>
+			<li><a href="/customer/news/association_more?association_id={{{$association->id}}}">{{$association->title}}<span class="enlighten-list-date">{{$association->created_at}}</span></a></li>
 			@endforeach
 		</ul>
 		{{$associations->links()}}

@@ -20,7 +20,7 @@
 		<div class="figures-container clearx comedy-details-container">
 
 			<div class="figures-content">
-				<img src="/images/home/{{$teacher->avatar}}" alt="">
+				<img src="/images/admin/teachers/{{$teacher->avatar}}" alt="">
 				<span class="figures-name-container">
 					{{{$teacher->position}}}
 					<span class="figures-name">{{{$teacher->chinese_name}}}</span>

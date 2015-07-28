@@ -1,7 +1,7 @@
 @extends('layouts.subpage')
 
 @section('title')
-	<title>话题动态</title>
+	<title>启蒙专栏</title>
 @stop
 
 @section('css')
@@ -17,7 +17,7 @@
 	<div class="page-content">
 		<ul class="enlighten-list">
 		@foreach($columns as $column)
-			<li><a href="javascript:">{{$column->title}}<span class="enlighten-list-date">{{$column->created_at}}</span></a></li>
+			<li><a href="/customer/news/column_more?column_id={{{$column->id}}}">{{$column->title}}<span class="enlighten-list-date">{{$column->created_at}}</span></a></li>
 		@endforeach
 		</ul>
 		{{$columns->links()}}
