@@ -49,7 +49,7 @@ class CreateApplicationsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('applicatios');
+		Schema::drop('applications');
 	}
 
 }
