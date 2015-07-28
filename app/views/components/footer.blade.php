@@ -1,5 +1,5 @@
 <footer>
-	<div id="footer">
+	<div id="footer" class="clearx">
 		<span class="sub-title footer-icon">友情链接：</span>
 		<a href="#" class="footer-icon"><img src="/images/admin/links/logos01.png" class="logos" alt="logos"></a>
 		<a href="#" class="footer-icon"><img src="/images/admin/links/logos02.png" class="logos" alt="logos"></a>

@@ -93,8 +93,8 @@ input{
 }
 .input{
 	position: relative;
-	padding: 20px 0px;
-	width: 400px;
+	padding: 10px 0px;
+	width: 410px;
 	margin: 0px auto;
 	font-size: 20px;
 	color: #222;
@@ -104,15 +104,19 @@ input{
 }
 .input>input{
 	float: right;
-	width: 280px;
+	width: 298px;
 	line-height: 40px;
 	border-radius: 10px;
 	border: 1px solid rgb(140,214,172);
 	margin-top: -10px;
+	&:focus{
+		border: 0px solid #fff;
+		border-radius: 10px;
+	}
 }
 .input .verify-input{
-	width: 150px;
-	margin-right: 130px;
+	width: 175px;
+	margin-right: 123px;
 }
 .login-tips{
 	position: absolute;
@@ -125,7 +129,7 @@ input{
 .verify-img{
 	position: absolute;
 	right: 0px;
-	top: 5px;
+	top: -2px;
 	width: 120px;
 	height: 100%;
 }
@@ -134,10 +138,14 @@ input{
 	height: 47px;
 }
 .verify-img-text{
+	position: absolute;
+	top: -5px;
+	right: 70px;
 	color: #a9a0a0;
 	font-size: 14px;
 }
 .verify-img-text a{
+
 	text-decoration: none;
 }
 .login-line{
@@ -258,11 +266,12 @@ header{
 }
 .head-title{
 	font-family: "黑体";
-	font-size: 18px;
+	font-size: 20px;
 	color: #085434;
 	display: block;
 	height: 100%;
 	float: right;
+	font-weight: 600;
 	padding:8px 7px;
 }
 .a:link{
@@ -359,11 +368,12 @@ footer{
 	width:1024px;
 	margin:0 auto;
 	position: relative;
-	padding-top: 50px;
-	padding-bottom: 40px;
+	padding-top: 40px;
+	padding-bottom: 10px;
 }
 .footer-icon{
 	float: left;
+	color: #00af65;
 }
 .footer-icon:not(:nth-child(1)){
 	margin-left: 30px;
@@ -378,6 +388,7 @@ footer{
 	text-align: center;
 	letter-spacing: 2px;
 	color: #888788;
+	font-size: 14px;
 }
 /*----footer END----*/
 
