@@ -95,27 +95,24 @@ class ColumnPageController extends BaseController{
 					$name 			= User::find($user_id)->username;
 					$comment_name[$user_id] = $name;
 				}
+
+				return View::make('communication.topics')->with(array(
+					'topic'=>$topic, 
+					'topic_comments'=>$topic_comments,
+					'commentCount' => $commentCount,
+					'comment_name' => $comment_name,
+					'user' =>$user
+					));
 			}
 		}
-		// dd($topic_comments);
-		if(isset($topic_comments))
-		{
-			return View::make('communication.topics')->with(array(
-				'topic'=>$topic, 
-				'topic_comments'=>$topic_comments,
-				'commentCount' => $commentCount,
-				'comment_name' => $comment_name,
-				'user' =>$user
-				));
-		}
-
-		return View::make('communication.topics')->with(array(
-				'topic'=>$topic, 
-				'topic_comments'=>$topic_comments,
-				'commentCount' => $commentCount,
-				'comment_name' => $comment_name,
-				'user' => $user
-				));
+		return View::make('communication.topics');
+				// ->with(array(
+				// 'topic'=>$topic, 
+				// 'topic_comments'=>$topic_comments,
+				// 'commentCount' => $commentCount,
+				// 'comment_name' => $comment_name,
+				// 'user' => $user
+				// ));
 	}
 
 	//话题评论内容

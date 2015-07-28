@@ -21,12 +21,13 @@
 		<input class="seach-input" type="text">
 		<div class="seach-btn">发布话题</div>
 	</div>
+	@if(isset($topic))
 	<div class="topics-content">
 		<div class="swiper-container topics-swiper">
 			<div class="swiper-wrapper">
 				<div class="swiper-slider">
 					<div class="topics-items">
-						<img src="/images/userCenter/figure_head.png">
+						<img src="{{$user->avatar}}">
 						<div class="topics-right-content">
 							<!-- 动态内容 -->
 							<div class="topics-msg">
@@ -74,6 +75,7 @@
 		</div>
 	</div>
 </div>
+	@endif
 <div id="topics_border02" class="page-content" style="display:none">
 	<div class="topics-publish">
 		<div class="publish-container">
