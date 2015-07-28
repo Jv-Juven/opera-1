@@ -32,7 +32,7 @@
 
 
 
-                    {{ Form::open(['role' => 'form']) }}
+                    {{ Form::open(['action' => 'AdminController@postIndex']) }}
 
                     <fieldset>
 
