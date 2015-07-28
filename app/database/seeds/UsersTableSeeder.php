@@ -29,7 +29,7 @@ class UsersTableSeeder extends Seeder {
 		User::create([
 			'username' => 'admin',
 			'avatar' => 'http://7xk6xh.com1.z0.glb.clouddn.com/avatar.png',
-			'password' => '666666',
+			'password' => 'admin',
 			'role_id' =>3
 		]);
 
