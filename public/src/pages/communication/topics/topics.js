@@ -5,7 +5,7 @@
 	    direction: 'vertical',
 	    freeMode: true,
 	    mousewheelControl: true,
-	    slidesPerView: '1',
+	    slidesPerView: 'auto',
 	    scrollbar: '.topics-scrollbar',
 
 	});

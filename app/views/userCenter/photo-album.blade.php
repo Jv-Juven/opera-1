@@ -43,16 +43,16 @@
 		</div>
 
 	</div>
-	<div class="full-screen">
+	<div class="full-screen" style="display: none;">
 		<div class="swiper-containter photo-album-swiper">
 			<div class="swiper-wrapper">
-				<div class="swiper-slider">
+				<div class="swiper-slide">
 					<img src="/images/userCenter/album01.png" alt="">
 				</div>
-				<div class="swiper-slider">
+				<div class="swiper-slide">
 					<img src="/images/userCenter/album02.png" alt="">
 				</div>
-				<div class="swiper-slider">
+				<div class="swiper-slide">
 					<img src="/images/userCenter/album03.png" alt="">
 				</div>
 			</div>
@@ -68,4 +68,5 @@
 @section('js')
 	@parent
 	<script type="text/javascript" src="/dist/js/lib/plugins/swiper3.1.0.jquery.min.js"></script>
+	<script type="text/javascript" src="/dist/js/pages/photo-album.js"></script>
 @stop

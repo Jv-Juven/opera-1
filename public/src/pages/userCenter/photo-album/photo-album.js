@@ -1,7 +1,10 @@
 
-var abbumSwiper = new Swiper("photo-album-swiper",{
+var abbumSwiper = new Swiper(".photo-album-swiper",{
 	direction: "horizontal",
-	freeMode: true,
+	// freeMode: true,
 	speed: 400,
 	slidesPerView: 1,
+	spaceBetween: 100,
+	nextButton: ".swiper-button-next",
+	prevButton: ".swiper-button-prev",
 });

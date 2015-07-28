@@ -38,3 +38,7 @@
 	</div>
 </div>
 @stop
+
+@section("js")
+	@parent
+@stop

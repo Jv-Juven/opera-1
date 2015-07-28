@@ -45,3 +45,8 @@
 	</div>
 @stop
 
+
+@section('js')
+	@parent
+	<!-- // <script type="text/javascript" src="/src/pages/communication/masterdynamic/masterdynamic.js"></script> -->
+@stop

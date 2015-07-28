@@ -25,7 +25,7 @@
 	<div class="topics-content">
 		<div class="swiper-container topics-swiper">
 			<div class="swiper-wrapper">
-				<div class="swiper-slider">
+				<div class="swiper-slide">
 					<div class="topics-items">
 						<img src="{{$user->avatar}}">
 						<div class="topics-right-content">
@@ -35,6 +35,7 @@
 								<div class="topics-title">{{$topic->title}}</div>
 								<div class="topics-msg-body">
 									{{$topic->content}}
+								</div>
 								<div class="topics-comment">
 									评论（<span>{{$commentCount}}</span>）
 								</div>

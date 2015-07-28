@@ -41,7 +41,12 @@
 			<div class="apply-td-text">
 				<span class="apply-text">出生年月：</span>
 			</div>
-			<input id="born_date" class="apply-td-input" type="date" style="width:160px;" />
+			<input id="born_year" class="apply-td-input born-date" type="text" />
+			<span class="born-date-text">年</span>
+			<input id="born_month" class="apply-td-input born-date" type="text" />
+			<span class="born-date-text">月</span>
+			<input id="born_day" class="apply-td-input born-date" type="text" />
+			<span class="born-date-text">日</span>
 		</div>
 		<div class="apply-tr">
 			<div class="apply-td-text">

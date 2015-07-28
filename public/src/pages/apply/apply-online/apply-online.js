@@ -9,7 +9,9 @@
 
 		 var applyName = $("#apply_name").val(),
 				   sex = $(".radio-container input:checked").val(),
-			  bornDate = $("#born_date").val(),
+			  bornYear = $("#born_year").val(),
+			  bornMonth = $("#born_month").val(),
+			  bornDay = $("#born_day").val(),
 		   nativePlace = $("#native_place").val(),
 			 applyAddr = $("#apply_addr").val(),
 			  guardian = $("#guardian").val(),
@@ -104,9 +106,9 @@
 		  $.post("/user/application",{
 		  	name         : applyName,
 		  	gender       : sex,
-		  	// year         :
-		  	// month        :
-		  	// day          :
+		  	year         : bornYear,
+		  	month        : bornMonth,
+		  	day          : bornDay,
 		  	hometown     : nativePlace,
 		  	address      : applyAddr,
 		  	guardian     : guardian,
