@@ -18,9 +18,11 @@
 
 @section('page-content')
     <div class="page-content">
-        <p id="title">{{$backstage->title}}</p>
-        <p id="time">发布时间：{{$backstage->created_at}}</p>
-        {{$backstage->content}}
+	    <div class="masterdynamic-title text-center">{{$backstage->title}}</div>
+	    <div class="masterdynamic-subhead text-center">发布时间：{{$backstage->created_at}}</div>
+	    <div class="masterdynamic-body">
+	    	{{$backstage->content}}
+	    </div>
     </div>
 @stop
 

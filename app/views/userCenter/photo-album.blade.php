@@ -43,18 +43,17 @@
 		</div>
 
 	</div>
-	<div class="full-screen" style="display: none;">
+	<div class="full-screen album-full-screen" style="display: block;z-index: -1;opacity: 0;">
 		<div class="swiper-containter photo-album-swiper">
 			<div class="swiper-wrapper">
+				@foreach($albums as $album)
 				<div class="swiper-slide">
-					<img src="/images/userCenter/album01.png" alt="">
+					<img src="{{{$album->picture}}}" alt="">
 				</div>
-				<div class="swiper-slide">
-					<img src="/images/userCenter/album02.png" alt="">
-				</div>
-				<div class="swiper-slide">
+				@endforeach
+				<!-- <div class="swiper-slide">
 					<img src="/images/userCenter/album03.png" alt="">
-				</div>
+				</div> -->
 			</div>
 		</div>
 

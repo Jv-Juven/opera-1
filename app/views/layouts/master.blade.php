@@ -153,6 +153,7 @@
 	<script type="text/javascript" src="/dist/js/lib/jquery/jquery-1.11.2.js"></script>
 	<script type="text/javascript" src="/dist/js/lib/jquery/jquery-1.11.2.min.js"></script>
 	<script type="text/javascript" src="/dist/js/lib/jquery/jquery.cookie.js"></script>
+	<script type="text/javascript" src="/dist/js/lib/jquery/jquery.transit.js"></script>
 	<script type="text/javascript" src="/dist/js/mycomponents.js"></script>
 	<script type="text/javascript" src="/dist/js/common.js"></script>
 	@show

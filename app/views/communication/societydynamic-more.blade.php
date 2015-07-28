@@ -8,6 +8,8 @@
 	@parent
 	<link rel="stylesheet" href="/dist/css/communication/enlighten/enlighten.css">
 	<link rel="stylesheet" href="/dist/css/communication/societydynamic/societydynamic.css">
+	<link rel="stylesheet" href="/dist/css/communication/masterdynamic/masterdynamic.css">
+
 @stop
 
 @section('page-left-nav')
@@ -15,11 +17,13 @@
 @stop
 
 @section('page-content')
-	<div class="page-content">
-		<p id="title">{{$association->title}}</p>
-		<p id="time">发布时间：{{$association->created_at}}</p>
-		{{$association->content}}
-	</div>
+    <div class="page-content">
+	    <div class="masterdynamic-title text-center">{{$association->title}}</div>
+	    <div class="masterdynamic-subhead text-center">发布时间：{{$association->created_at}}</div>
+	    <div class="masterdynamic-body">
+	    	{{$association->content}}
+	    </div>
+    </div>
 @stop
 
 

@@ -21,6 +21,7 @@
 	   <!--  <div class="masterdynamic-title text-center">京昆学会与《中国学生健康报》合作“京剧启蒙游戏化”栏目第四期</div>
 	    <div class="masterdynamic-subhead text-center">发布时间：<span class="masterdynamic-subhead-date">2015-06-21</span><span class="masterdynamic-subhead-date">13:06</span></div>
 	    <div class="masterdynamic-body"></div> -->
+        
     	<ul class="enlighten-list">
         @foreach($backstages as $backstage)
     		<li><a href="/customer/performance/backstage_more?backstage_id={{$backstage->id}}">{{$backstage->title}}<span class="enlighten-list-date">{{$backstage->created_at}}</span></a></li>

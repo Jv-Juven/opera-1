@@ -16,10 +16,12 @@
 
 @section('page-content')
 	<div class="page-content">
-		<p id="title">{{$society->title}}</p>
-		<p id="time">发布时间：{{$society->created_at}}</p>
-		{{$society->content}}
-	</div>
+	    <div class="masterdynamic-title text-center">{{$society->title}}</div>
+	    <div class="masterdynamic-subhead text-center">发布时间：{{$society->created_at}}</div>
+	    <div class="masterdynamic-body">
+	    	{{$society->content}}
+	    </div>
+    </div>
 @stop
 
 @section('js')

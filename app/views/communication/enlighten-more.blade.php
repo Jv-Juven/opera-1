@@ -7,6 +7,8 @@
 @section('css')
 	@parent
 	<link rel="stylesheet" href="/dist/css/communication/enlighten/enlighten.css">
+	<link rel="stylesheet" href="/dist/css/communication/masterdynamic/masterdynamic.css">
+
 @stop
 
 @section('page-left-nav')
@@ -14,11 +16,13 @@
 @stop
 
 @section('page-content')
-	<div class="page-content">
-		<p id="title">{{$column->title}}</p>
-		<p id="time">发布时间：{{$column->created_at}}</p>
-		{{$column->content}}
-	</div>
+    <div class="page-content">
+	    <div class="masterdynamic-title text-center">{{$column->title}}</div>
+	    <div class="masterdynamic-subhead text-center">发布时间：{{$column->created_at}}</div>
+	    <div class="masterdynamic-body">
+	    	{{$column->content}}
+	    </div>
+    </div>
 @stop
 
 @section('js')
