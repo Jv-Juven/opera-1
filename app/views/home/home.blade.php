@@ -43,7 +43,7 @@
     			</div>
     			<ul class="content-list">
     				@foreach ( $columns as $column)
-                                                    <li><a href="#">{{$column->title}}</a></li>
+                                                    <li><a href="customer/news/column_more?column_id={{$column->id}}">{{$column->title}}</a></li>
                                            @endforeach
     			</ul>
     		</li>
@@ -56,7 +56,7 @@
     			</div>
     			<ul class="content-list">
                                             @foreach($backstages as $backstage)
-                                                        <li><a href="#">{{$backstage->title}}</a></li>
+                                                        <li><a href="customer/performance/backstage_more?backstage_id={{$backstage->id}}">{{$backstage->title}}</a></li>
                                             @endforeach
     			</ul>
     		</li>
