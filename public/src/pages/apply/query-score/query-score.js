@@ -33,6 +33,9 @@
 				$(".query-result .line-three").text(data[1]["score"]);
 
 			}
+			else{
+				alert(data[0]["message"]);
+			}
 		},'json');
 
 	}

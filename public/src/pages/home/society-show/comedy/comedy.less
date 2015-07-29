@@ -41,13 +41,15 @@
 		padding-top: 30px;
 		text-align: center;
 		clear: both;
+		float: right;
+		margin-right: -15px;
 		li{
 			display: inline-block;
 			a:link{
 				color: black;
 			}
 			a:visited{
-				color: red;
+				color: black;
 			}
 			a,span{
 				display: inline-block;
@@ -58,6 +60,21 @@
 					color: red;
 				}
 			}
+		}
+		li:nth-child(1){
+			float: left;
+			
+		}
+		li:nth-last-child(1){
+			
+			float: right;
+
+		}
+		.active span{
+			color: red;
+		}
+		.disabled,.disabled:hover span{
+			color: #ddd !important;
 		}
 	}
 

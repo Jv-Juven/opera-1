@@ -79,6 +79,7 @@ module.exports = (grunt)->
                     'dist/css/home/society-show/comedy/comedy.css':['src/pages/home/society-show/comedy/comedy.less']
                     'dist/css/home/society-show/comedy/comedy-details.css':['src/pages/home/society-show/comedy/comedy-details.less']
                     'dist/css/home/society-show/comedy/classic-case.css':['src/pages/home/society-show/comedy/classic-case.less']
+                    'dist/css/home/society-show/comedy/before-behind.css':['src/pages/home/society-show/comedy/before-behind.less']
                     'dist/css/userCenter/zone/zone.css':['src/pages/userCenter/zone/zone.less']
                     'dist/css/userCenter/photo-album/photo-album.css':['src/pages/userCenter/photo-album/photo-album.less']
                     'dist/css/userCenter/message/message.css':['src/pages/userCenter/message/message.less']

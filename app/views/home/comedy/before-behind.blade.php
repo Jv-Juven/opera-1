@@ -7,7 +7,7 @@
 @section('css')
 	@parent
 	<link rel="stylesheet" href="/dist/css/communication/enlighten/enlighten.css">
-	<!-- <link rel="stylesheet" href="/dist/css/home/society-show/comedy/before-behind.css"> -->
+	<link rel="stylesheet" href="/dist/css/home/society-show/comedy/before-behind.css">
 	<link rel="stylesheet" href="/dist/css/communication/masterdynamic/masterdynamic.css">
 @stop
 
@@ -22,7 +22,7 @@
 	    <div class="masterdynamic-subhead text-center">发布时间：<span class="masterdynamic-subhead-date">2015-06-21</span><span class="masterdynamic-subhead-date">13:06</span></div>
 	    <div class="masterdynamic-body"></div> -->
         
-    	<ul class="enlighten-list">
+    	<ul class="enlighten-list before-behind-list">
         @foreach($backstages as $backstage)
     		<li><a href="/customer/performance/backstage_more?backstage_id={{$backstage->id}}">{{$backstage->title}}<span class="enlighten-list-date">{{$backstage->created_at}}</span></a></li>
         @endforeach	
