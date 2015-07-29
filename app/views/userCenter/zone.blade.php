@@ -87,14 +87,15 @@
 			   		</div>
 			   		
 				    <div class="zone-paging">
-				    	<span class="zone-Pre">
+					    {{$albums->links()}}
+				    	<!-- <span class="zone-Pre">
 				    		<img src="/images/userCenter/pre_page.png" alt="">
 				    		<span class="zone-paging-text">上一页</span>
 				    	</span>
 				    	<span class="zone-Next">
 				    		<img src="/images/userCenter/next_page.png" alt="">
 				    		<span class="zone-paging-text">下一页</span>
-				    	</span>
+				    	</span> -->
 				    </div>
 			   	</div>
 
@@ -133,4 +134,5 @@
 
 @section("js")
     @parent
+    <script type="text/javascript" src="/dist/js/pages/zone.js"></script>
 @stop
