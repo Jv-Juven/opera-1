@@ -25,12 +25,6 @@
 ////////////
 Route::get('/','HomeController@showWelcome');
 //纯页面跳转
-Route::group(array('prefix'=>'static'),function(){
-	Route::get('auth','StaticPageController@auth');
-	Route::get('inquiry','StaticPageController@inquiry');
-});
-
-Route::post('test','UserController@issueTopic');
 
 Route::group(array('prefix'=>'user'),function()
 {
@@ -62,6 +56,10 @@ Route::group(array('prefix'=>'user'),function()
 	Route::get('message_comment/{message_id}','UserPageController@messageComment');
 	//获取个人资料
 	Route::get('update', 'UserPageController@getUpdate');
+	//报名静态页
+	Route::get('auth','StaticPageController@auth');
+	//分数查询静态页
+	Route::get('inquiry','StaticPageController@inquiry');
 
 	Route::group(array('before' => 'auth'), function()
 	{

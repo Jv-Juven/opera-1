@@ -69,7 +69,11 @@ return array(
 	 */
 	'permission'=> function()
 	{	
-		return Auth::check();
+		$user = Auth::user();
+		if($user->role_id == 3)
+		{
+			return Auth::check();
+		}
 	},
 
 	/**

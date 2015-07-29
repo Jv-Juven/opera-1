@@ -16,6 +16,8 @@
 
 @section('page-content')
 	<div class="page-content">
+	
+	{{Form::open(array('url'=>'/user/application'))}}
 		<div class="apply-tr">
 			<div class="apply-td-text">
 				<span class="apply-text apply-must">姓名：</span>
@@ -126,13 +128,14 @@
 			</div>
 			<textarea id="apply_details" name="" class="apply-td-explain" cols="60" rows="10"></textarea>
 		</div>
-
+	
+	
 		<div class="apply-btn-container"> 
-			<span>提交发表</span>
+			{{Form::submit('提交发表')}}
 			<span>重新填写</span>
 			<span>返回上一页</span>
 		</div>
-
+	{{Form::close()}}
 	</div>
 @stop
 
