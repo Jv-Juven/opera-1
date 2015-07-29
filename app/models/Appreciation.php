@@ -8,6 +8,7 @@ class Appreciation extends Eloquent{
 		'id',
 		'title',
 		'video',
+		'video_img',
 		'created_at'
 	);
 

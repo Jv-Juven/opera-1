@@ -9,7 +9,8 @@ class AppreciationsTableSeeder extends Seeder {
 	{
 			Appreciation::create([
 				'title' => '史记-秦始皇的故事',
-				'video' =>'http://pan.baidu.com/s/1pJuuaPt'
+				'video' =>'http://pan.baidu.com/s/1pJuuaPt',
+				'video_img' => ''
 			]);
 			Appreciation::create([
 				'title' => '史记-秦始皇的故事',

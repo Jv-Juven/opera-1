@@ -17,6 +17,7 @@ class CreateAppreciationsTable extends Migration {
 			$table->increments('id');
 			$table->string('title');//标题
 			$table->string('video');//视频连接
+			$table->string('video_img');
 			$table->timestamps();
 		});
 	}
