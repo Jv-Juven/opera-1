@@ -17,7 +17,7 @@
             <div class="swiper-container home-swiper-container">
                 <div class="swiper-wrapper">
                         @foreach($posters as $poster)
-                    <div class="swiper-slide"><a href="{{$poster->link}}"><img src="{{$poster->image}}" class="slider-img" alt=""></a></div>
+                    <div class="swiper-slide"><a href="{{$poster->link}}"><img src="/images/admin/posters/{{$poster->image}}" class="slider-img" alt=""></a></div>
                         @endforeach
                 </div>
                 <!-- 如果需要分页器 -->

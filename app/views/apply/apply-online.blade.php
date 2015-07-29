@@ -16,8 +16,6 @@
 
 @section('page-content')
 	<div class="page-content">
-	
-	{{Form::open(array('url'=>'/user/application'))}}
 		<div class="apply-tr">
 			<div class="apply-td-text">
 				<span class="apply-text apply-must">姓名：</span>
@@ -131,11 +129,10 @@
 	
 	
 		<div class="apply-btn-container"> 
-			{{Form::submit('提交发表')}}
+			<span>提交发表</span>
 			<span>重新填写</span>
 			<span>返回上一页</span>
 		</div>
-	{{Form::close()}}
 	</div>
 @stop
 
