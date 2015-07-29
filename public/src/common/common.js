@@ -232,13 +232,30 @@ window.navigation = (function() {
         }
 
     }
-    else{
+    else if(urlArr[1] == "static"){
         headNav.removeClass("active").eq(5).addClass("active");
         if(urlArr[2] == "auth"){
             leftNav.removeClass("active").eq(0).addClass("active");
         }
         else{
             leftNav.removeClass("active").eq(1).addClass("active");
+        }
+    }
+    else {
+        if(urlArr[2] == "space_home"){
+            leftNav.removeClass("active").eq(0).addClass("active");
+        }
+        else if(urlArr[2] == "topic"){
+            leftNav.removeClass("active").eq(1).addClass("active");
+        }
+        else if(urlArr[2] == "album"){
+            leftNav.removeClass("active").eq(2).addClass("active");
+        }
+        else if(urlArr[2] == "message"){
+            leftNav.removeClass("active").eq(3).addClass("active");
+        }
+        else{
+            leftNav.removeClass("active").eq(4).addClass("active");
         }
     }
     

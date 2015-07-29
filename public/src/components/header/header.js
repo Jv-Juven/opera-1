@@ -142,7 +142,7 @@
 	var logout = function (){
 
 		$.ajax({
-			url: 'user/logout',
+			url: '/user/logout',
 			type: 'get',
 			data: {},
 			dataType: 'json',

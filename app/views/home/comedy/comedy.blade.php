@@ -31,7 +31,7 @@
 			
 		</div>
 		{{$teachers->links()}}
-		<ul class="enlighten-subpage-plugin figures-footer">
+		<!-- <ul class="enlighten-subpage-plugin figures-footer">
 			<li><a href="javascript:">首页</a></li>
 			<li><a href="javascript:">1</a></li>
 			<li><a href="javascript:">2</a></li>
@@ -41,12 +41,12 @@
 			<li><a href="javascript:">下一页</a></li>
 			<li><a href="javascript:">末页</a></li>
 			<li>共<span class="enlighten-pages">2</span>页</li>
-		</ul>
+		</ul> -->
 	</div>
 @stop
 
 
 @section('js')
 	@parent
-	<!-- // <script type="text/javascript" src="/src/pages/communication/masterdynamic/masterdynamic.js"></script> -->
+	<script type="text/javascript" src="/dist/js/pages/comedy.js"></script>
 @stop

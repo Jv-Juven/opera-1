@@ -37,8 +37,28 @@
 		}
 	}
 
-	.figures-footer{
+	.figures-footer,.pagination{
 		padding-top: 30px;
+		text-align: center;
+		clear: both;
+		li{
+			display: inline-block;
+			a:link{
+				color: black;
+			}
+			a:visited{
+				color: red;
+			}
+			a,span{
+				display: inline-block;
+				text-decoration: none;
+				padding: 6px 15px;
+				cursor: pointer;
+				&:hover{
+					color: red;
+				}
+			}
+		}
 	}
 
 }
