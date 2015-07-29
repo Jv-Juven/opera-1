@@ -10,7 +10,7 @@
 			<li><a href="/customer/authentication/identity/">认证</a></li>
 			<li><a href="http://www.taobao.com/">商场</a></li>
 			<li><a href="/customer/employment/">招贤纳士</a></li> 
-			<li><a href="/static/auth/">在线报名</a></li>
+			<li><a href="/user/auth/">在线报名</a></li>
 		</ul>
 
 		<!--用户已登录 -->

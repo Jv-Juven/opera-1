@@ -9,6 +9,6 @@ class StaticPageController extends BaseController{
 
 	public function inquiry()
 	{
-		return View::make('apply/query-score');
+		return View::make('apply.query-score');
 	}
 }
