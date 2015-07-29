@@ -16,7 +16,6 @@
 
 @section('page-content')
 <div class="page-content">
-	{{Form::open(array('url'=>'/user/score_inquiry'))}}
 	<div class="query-board">
 		<div class="query-board-header"></div>
 		<div class="query-board-body">
@@ -26,9 +25,8 @@
 			<div class="query-form">
 				<input id="query_num" class="query-input" type="text" placeholder="输入你的编号">
 				<input id="query_name" class="query-input" type="text" placeholder="输入你的姓名">
-				<div id="query_btn" class="query-submit">
-					<input type="image" src="" alt="成绩查询" />
-				 </div>
+				<div id="query_btn" class="query-submit">成绩查询</div>
+
 			</div>
 
 			<div class="query-result" style="display:none">
@@ -39,7 +37,6 @@
 
 		</div>
 	</div>
-	{{Form::close()}}
 </div>
 @stop
 

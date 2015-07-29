@@ -29,6 +29,15 @@ return array(
 		),
 	),
 
+	'rules' => array(
+			'link' => 'required',
+			'image' => 'required'
+		),
+
+	'messages' => array(
+		'link.required' => '请添加海报链接！',
+		'image.required' => '请上传图片！',
+	),
 
 
 

@@ -37,8 +37,6 @@ return array(
 	'messages' => array(
 		'link.required' => '请添加网页链接！',
 		'image.required' => '请上传图片！',
-		'image.image' => '必须为jpeg, png, bmp 或 gif的图片格式！' 
-
 	),
 
 );
