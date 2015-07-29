@@ -1,9 +1,10 @@
 ;(function($){
 	var mySwiper = new Swiper ('.home-swiper-container', {
 	   direction: 'horizontal',
+	   speed: 400,
 	   loop: true,
-	   // autoplay: 4000,
-	    
+	   autoplay: 3000,
+	   effect: "slide",
 	   paginationClickable: true,
 	   
 	   // 如果需要分页器
@@ -16,4 +17,5 @@
 	   // 如果需要滚动条
 	   // scrollbar: '.swiper-scrollbar',
 	 });
+	
 })(jQuery);

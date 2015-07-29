@@ -95,7 +95,7 @@
 
 @section('js')
 	@parent
-    <script type="text/javascript" src="/dist/js/lib/plugins/swiper3.1.0.jquery.min.js"></script>
+    <script type="text/javascript" src="/dist/js/lib/plugins/swiper.min.js"></script>
 	<!-- // <script type="text/javascript" src="/src/common/common.js"></script> -->
 	<script type="text/javascript" src="/dist/js/pages/home.js"></script>
 @stop
