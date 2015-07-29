@@ -16,9 +16,9 @@
     	<div id="slider">
             <div class="swiper-container home-swiper-container">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide"><img src="{{$posters[0]->image}}" class="slider-img" alt=""></div>
-                    <div class="swiper-slide"><img src="{{$posters[0]->image}}" class="slider-img" alt=""></div>
-                    <div class="swiper-slide"><img src="{{$posters[0]->image}}" class="slider-img" alt=""></div>
+                        @foreach($posters as $poster)
+                    <div class="swiper-slide"><a href="{{$poster->link}}"><img src="{{$poster->image}}" class="slider-img" alt=""></a></div>
+                        @endforeach
                 </div>
                 <!-- 如果需要分页器 -->
                 <div class="swiper-pagination"></div>

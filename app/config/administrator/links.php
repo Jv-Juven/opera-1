@@ -14,15 +14,15 @@ return array(
 		),
 		'link' =>  array(
 			'title' => '链接',
-			
 		),
 	),
 
 	'edit_fields' => array(
 		'image' => array(
 			'title' => '网站logo',
-			'type' =>'image', 
+			'type' => 'image',
 			'location' => public_path().'/images/admin/links/',
+			'naming' =>'keep'
 		),
 		'link' =>  array(
 			'title' => '链接',
@@ -31,7 +31,7 @@ return array(
 
  	'rules' => array(
 			'link' => 'required',
-			'image' => 'required|image'
+			'image' => 'required'
 		),
 
 	'messages' => array(

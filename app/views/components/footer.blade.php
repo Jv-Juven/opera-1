@@ -4,6 +4,8 @@
 		<a href="#" class="footer-icon"><img src="/images/admin/links/logos01.png" class="logos" alt="logos"></a>
 		<a href="#" class="footer-icon"><img src="/images/admin/links/logos02.png" class="logos" alt="logos"></a>
 		<a href="#" class="footer-icon"><img src="/images/admin/links/logos03.png" class="logos" alt="logos"></a>
+		
+		
 	</div>
 	<div id="icp_container">
 		<span>Copyright©中国儿童戏剧教育网版权所有</span>

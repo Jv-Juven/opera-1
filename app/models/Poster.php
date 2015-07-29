@@ -6,6 +6,7 @@ class Poster extends Eloquent{
 
         protected $fillable = array(
                     'image',
+                    'link',
                     'created_at'
             );        
 }

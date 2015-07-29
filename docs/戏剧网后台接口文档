@@ -416,7 +416,23 @@
 					....
 				]
 
-	4.启蒙专栏
+				<---登录可操作--->
+	4.发表话题
+		请求方式:	POST
+		请求url:	user/personal/issue_topic
+
+		请求参数:
+				title:xxx  				话题标题
+				content:xxx 				话题内容
+
+		返回参数:	
+				{
+				errCode:xxx,			错误码	0表示返回正常	 
+				message:xxx			提示信息
+				}
+
+
+	5.启蒙专栏
 		请求方式:	GET
 		请求url:	customer/news/column
 
@@ -433,7 +449,7 @@
 					....
 				]
 
-	5.启蒙专栏详细信息
+	6.启蒙专栏详细信息
 		请求方式:	GET
 		请求url:	customer/news/column_more
 
@@ -447,7 +463,7 @@
 					content:xxx		内容
 				}
 
-	6.学会动态
+	7.学会动态
 		请求方式:	GET
 		请求url:	customer/news/society
 
@@ -465,7 +481,7 @@
 				]
 
 
-	7.学会动态详细信息
+	8.学会动态详细信息
 		请求方式:	GET
 		请求url:	customer/news/society_more
 
@@ -479,7 +495,7 @@
 					content:xxx		内容
 				}
 
-	8.协会动态
+	9.协会动态
 		请求方式:	GET
 		请求url:	customer/news/association
 
@@ -497,7 +513,7 @@
 				]
 
 
-	9.协会动态详细信息
+	10.协会动态详细信息
 		请求方式:	GET
 		请求url:	customer/news/association_more
 
