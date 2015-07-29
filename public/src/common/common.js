@@ -232,17 +232,17 @@ window.navigation = (function() {
         }
 
     }
-    else if(urlArr[1] == "static"){
-        headNav.removeClass("active").eq(5).addClass("active");
+    else if(urlArr[1] == "user"){
+        
         if(urlArr[2] == "auth"){
             leftNav.removeClass("active").eq(0).addClass("active");
+            headNav.removeClass("active").eq(5).addClass("active");
         }
-        else{
+        else if(urlArr[2] == "inquiry"){
             leftNav.removeClass("active").eq(1).addClass("active");
+            headNav.removeClass("active").eq(5).addClass("active");
         }
-    }
-    else {
-        if(urlArr[2] == "space_home"){
+        else if(urlArr[2] == "space_home"){
             leftNav.removeClass("active").eq(0).addClass("active");
         }
         else if(urlArr[2] == "topic"){
@@ -257,6 +257,9 @@ window.navigation = (function() {
         else{
             leftNav.removeClass("active").eq(4).addClass("active");
         }
+    }
+    else{
+        
     }
     
 })();

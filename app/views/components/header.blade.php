@@ -1,6 +1,6 @@
 <header>
 	<div id="header">
-		<a href="#" class="logo">
+		<a href="/" class="logo">
 			<img src="/images/common/logo.png" class="head-portrait" alt="logo">
 			<div class="head-title">儿童戏剧</div>
 		</a>
