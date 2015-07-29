@@ -22,10 +22,10 @@ return array(
 			'title' => '邮政编码'
 		),
 		'address' => array(
-			'title' => '网址'
+			'title' => '地址'
 		),
 		'site' => array(
-			'title' => '地址'
+			'title' => '网址'
 		)
 	),
 
@@ -40,10 +40,10 @@ return array(
 			'title' => '邮政编码'
 		),
 		'address' => array(
-			'title' => '网址'
+			'title' => '地址'
 		),
 		'site' => array(
-			'title' => '地址'
+			'title' => '网址'
 		)
 	),
 

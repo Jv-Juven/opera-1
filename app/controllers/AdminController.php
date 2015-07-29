@@ -13,6 +13,7 @@ class AdminController extends \BaseController {
 		$password = Input::get('password');
   		if (Auth::attempt(['username' => $username, 'password' => $password]))
   		{
+  			
   			$admin = Auth::user();
   			$role_id = $admin->role_id;
   			if( $role_id != 3)
@@ -21,7 +22,7 @@ class AdminController extends \BaseController {
      					 ->withInput()
 					 ->withErrors('你没有管理员权限！');
   			}
-      			return Redirect::intended('/admin');
+  			 return Redirect::intended('/admin');
   		}
 		return Redirect::back()
      					 ->withInput()

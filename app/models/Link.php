@@ -6,6 +6,7 @@ class Link extends Eloquent{
 
 	protected $fillable = array(
 		'image',
-		'link'
+		'link',
+		 'created_at'
 		);
 }

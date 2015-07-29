@@ -30,7 +30,7 @@ Route::group(array('prefix'=>'static'),function(){
 	Route::get('inquiry','StaticPageController@inquiry');
 });
 
-
+Route::post('test','UserController@issueTopic');
 
 Route::group(array('prefix'=>'user'),function()
 {
@@ -73,6 +73,8 @@ Route::group(array('prefix'=>'user'),function()
 		//个人中心
 		Route::group(array('prefix'=>'personal'), function()
 		{
+			//发表话题
+			Route::post('issue_topic', 'UserController@issueTopic');
 			//发表留言
 			Route::post('message', 'UserController@postMessage');
 			//发表回复
@@ -222,5 +224,5 @@ Route::controller('/login', 'AdminController');
 
 
 
-Route::get('test', 'TestController@test');
-Route::post('test', 'TestController@postTest');
+// Route::get('test', 'TestController@test');
+// Route::post('test', 'TestController@postTest');

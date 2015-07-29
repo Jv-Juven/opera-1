@@ -28,7 +28,7 @@ class CreateUsersTable extends Migration {
 			$table->string('interests');//兴趣
 			$table->text('per_description');//个人简介
 			$table->string('remember_token');
-			$table->integer('role_id'); //用户类型 1=student, 2=teacher, 3= administer 
+			$table->integer('role_id'); //用户类型 1=student, 0=teacher, 3= administer 
 			$table->timestamps();
 		});
 	}

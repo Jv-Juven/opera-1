@@ -5,7 +5,7 @@ class AuthenticationPageController extends BaseController{
 	public function getSortOfIdentity($identity = null)
 	{
 		//取得用户对象数组
-		$users = User::all();
+		$users = User::where('role_id', '=', 0)->get();
 		//主席团
 		$bureaus = array();
 		//顾问
@@ -16,6 +16,7 @@ class AuthenticationPageController extends BaseController{
 		$dance_associations = array();
 		//网站会员 
 		$website_members = array();
+
 		foreach($users as $user)
 		{	
 			//将不同身份的人分组
@@ -32,7 +33,7 @@ class AuthenticationPageController extends BaseController{
 					array_push($directors, $user);
 					break;
 				case 4:
-					array_push($dance_associattions, $user);
+					array_push($dance_associations, $user);
 					break;
 				default:
 					array_push($website_members, $user);

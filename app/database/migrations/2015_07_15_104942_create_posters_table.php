@@ -16,6 +16,7 @@ class CreatePostersTable extends Migration {
 		{
 			$table->increments('id');
 			$table->string('image');//图片连接
+			$table->string('link');
 			$table->timestamps();
 		});
 	}

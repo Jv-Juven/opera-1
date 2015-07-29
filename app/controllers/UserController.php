@@ -92,33 +92,34 @@ class UserController extends BaseController{
 		}
 	}
 
-	//校验码验证
-	public function postCheckCode()
-	{
-		Session_start();
-		$checkcode = trim(Input::get('checkcode'));
-		$sessionSalt = $_SESSION['registerSalt'];
+	// //校验码验证
+	// public function postCheckCode()
+	// {
+	// 	Session_start();
+	// 	$checkcode = trim(Input::get('checkcode'));
+	// 	$sessionSalt = $_SESSION['registerSalt'];
 
-		$validation = Validator::make(
-			array('checkcode' =>$checkcode),
-			array('checkcode' =>'required|alpha_num|size:6')
-		);
+	// 	$validation = Validator::make(
+	// 		array('checkcode' =>$checkcode),
+	// 		array('checkcode' =>'required|alpha_num|size:6')
+	// 	);
 
-		if($validation->fails())
-			return Response::json(array('errCode'=>1, 'message'=>'验证码格式不正确！'));
+	// 	if($validation->fails())
+	// 		return Response::json(array('errCode'=>1, 'message'=>'验证码格式不正确！'));
 
-		if($checkcode != $sessionSalt)
-			return Response::json(array('errCode'=>2, 'message'=>'验证码不正确！'));
+	// 	if($checkcode != $sessionSalt)
+	// 		return Response::json(array('errCode'=>2, 'message'=>'验证码不正确！'));
 
-		//创建用户
-		User::create(array(
-			'username' => $_SESSION['username'],
-			'email' =>$_SESSION['email'],
-			'password' => $_SESSION['password']
-		));
+	// 	//创建用户
+	// 	User::create(array(
+	// 		'username' => $_SESSION['username'],
+	// 		'email' =>$_SESSION['email'],
+	// 		'password' => $_SESSION['password'],
+	// 		'role_id' =>1
+	// 	));
 
-		return Response::json(array('errCode'=>0, 'message'=>'注册成功！'));
-	}
+	// 	return Response::json(array('errCode'=>0, 'message'=>'注册成功！'));
+	// }
 
 	//生成验证码(congcong网)
 	public function captcha()
@@ -157,7 +158,9 @@ class UserController extends BaseController{
 		User::create(array(
 			'username' => $_SESSION['username'],
 			'email' =>$_SESSION['email'],
-			'password' =>Hash::make($_SESSION['password'])
+			'password' =>Hash::make($_SESSION['password']),
+			'role_id' =>1
+
 		));
 
 		return Response::json(array('errCode' => 0,'message' => '验证码正确!'));
@@ -705,6 +708,39 @@ class UserController extends BaseController{
 			}
 		}
 		return Response::json(array('errCode'=>0, 'message' => '头像上传成功！'));
+	}
+
+	public function issueTopic()
+	{
+		$title = Input::get('title');
+		$content = Input::get('content');
+		$user_id = Auth::user()->id;
+		$validation = Validator::make(
+				array(
+				'title' =>$title,
+				'content' => $content
+				),
+				array(
+				'title' => 'required',
+				'content' => 'required'
+				)
+		);
+
+		if ($validation->fails()) 
+		{
+			return Response::json(array('errCode'=>1, 'message'=> '信息填写不完整！'));
+		}
+		//创建用户
+		$topic = new Topic;
+		$topic->user_id 	= $user_id;
+		$topic->title 		= $title;
+		$topic->content 	= $content;
+		if($topic->save())
+		{
+			return Response::json(array('errCode'=>0,'message'=>'话题发表成功!'));
+		}
+
+		return Response::json(array('errCode'=>2, 'message'=>'话题发表失败，请重新发送！'));
 	}
 
 }

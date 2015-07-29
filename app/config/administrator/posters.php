@@ -12,13 +12,20 @@ return array(
 			'title' => '海报',
 			'output' => '<img src="/images/admin/posters/(:value)" height="100" />',
 		),
+		'link' =>  array(
+			'title' => '链接',
+		),
 	),
 
 	'edit_fields' => array(
 		'image' => array(
 			'title' => '海报',
 			'type' => 'image',
-			'location' => public_path().'/images/admin/posters/'
+			'location' => public_path().'/images/admin/posters/',
+			'naming' =>'keep'
+		),
+		'link' =>  array(
+			'title' => '链接',
 		),
 	),
 
