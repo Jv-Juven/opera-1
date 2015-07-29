@@ -55,7 +55,7 @@ module.exports = (grunt)->
         less:
             common:
                 files:
-                    'dist/css/common.css': ['src/common/**/*.less']
+                    'dist/css/common.css': ['src/common/common.less']
 
             components:
                 files:

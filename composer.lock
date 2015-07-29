@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "b7915395eb427f0d64748c78d1d1e427",
+    "hash": "9ebf175cde791f69476cd1593d8f2f63",
     "packages": [
         {
             "name": "cartalyst/sentry",
