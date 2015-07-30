@@ -17,6 +17,8 @@ class CreateAlbumsTable extends Migration {
 			$table->increments('id');
 			$table->integer('user_id')->unsigned()->index('user_id');//相册所属用户id
 			$table->string('title');//相册名
+			$table->string('albumCount');
+			$table->string('picture');
 			$table->timestamps();
 
 			$table                          
