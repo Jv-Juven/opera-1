@@ -50,7 +50,7 @@ class AuthenticationPageController extends BaseController{
 				return View::make('certification.identity')->with('directors', $directors);
 				break;
 			case 4:
-				return View::make('certification.identity')->with('dance_associattions', $dance_associattions);
+				return View::make('certification.identity')->with('dance_associations', $dance_associations);
 				break;
 			case 5:
 				return View::make('certification.identity')->with('website_members', $website_members);
@@ -66,15 +66,16 @@ class AuthenticationPageController extends BaseController{
 		}
 	}
 
-	//按所在身份分类
+	//按所在城市分类
 	public function getSortOfCity($area = null)
-	{
-		$users = User::all();
+	{	
+		$users = User::where('role_id', '=', 0)->get();
 		//以城市名称为键的数组
 		$cities = array();
 		foreach($users as $user)
 		{
 			$city = $user->city;
+
 			//将城市的名称变成变量名
 			if(!isset($$city))
 			{
@@ -85,27 +86,50 @@ class AuthenticationPageController extends BaseController{
 			{
 				$cities[$city] = $$city;
 			}
+			$cities[$city] = $$city;
 		}
 
-		if(isset($cities[$area]))
-		{
-			return View::make('certification.identity');
-			// ->with('area', $cities[$area]);
+		if($area != null)
+		{	
+			$selection = array(
+				'北京市','天津市','河北省','山西省','内蒙古自治区','辽宁省',
+				'吉林省','黑龙江省','上海市','江苏省','浙江省','安徽省',
+				'福建省','江西省','山东省','河南省','湖北省','湖南省',
+				'广东省','广西壮族自治区','海南省','重庆市','四川省','贵州省','云南省',
+				'西藏自治区','陕西省','甘肃省','青海省','宁夏回族自治区','新疆维吾尔自治区',
+				'台湾省','香港特别行政区', '澳门特别行政区','海外','其他');
+			$area = $selection[$area];
+
+			if(isset($cities[$area]))
+			{	
+				//判断类别
+				$num = 1;
+				return View::make('certification.area')->with(array(
+				'area' => $cities[$area],
+				'num' => $num
+				));
+			}
+				$num = 2;
+			return View::make('certification.area')->with('num',$num);
+			return Redirect::to('/customer/authentication/city');
 		}else{
-			return View::make('certification.identity');
-			// ->with('area', $cities);
+				$num = 0;
+			return View::make('certification.area')->with(array(
+				'area' =>$cities,
+				'num' =>$num
+				));
 		}
 
 	}
 
-	public function getSortOfUsername($letter = null)
+	public function getSortOfUsername($ABC = null)
 	{
-		$users =User::all();
+		$users =User::where('role_id', '=', 0)->get();
 		//以字母为键的数组
 		$letters = array();
 		foreach($users as $user)
 		{
-			$username = $user->username;
+			$username = $user->realname;
 			//获取首字母
 			$letter = getFirstCharter($username);
 			//如果没有设置这个变量，就根据这个变量声明一个数组
@@ -118,15 +142,21 @@ class AuthenticationPageController extends BaseController{
 			{
 				$letters[$letter] = $$letter;
 			}
+			$letters[$letter] = $$letter;
 		}
 
-		if(isset($letters[$letter]))
+		if($ABC != null)
 		{
-			return View::make('certification.identity');
-			// ->with('letters', $letters[$letter]);
+			if(isset($letters[$ABC]))
+			{
+				return View::make('certification.username')->with(array(
+					'letters' => $letters[$ABC],
+					'letter'  => $ABC
+					));
+			}
+			return Redirect::back();
 		}else{
-			return View::make('certification.identity');
-			// ->with('letters', $letters);
+			return View::make('certification.username')->with('letters', $letters);
 		}
 
 	}
