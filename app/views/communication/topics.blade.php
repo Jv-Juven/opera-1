@@ -37,7 +37,7 @@
 									{{$topic->content}}
 								</div>
 								<div class="topics-comment">
-									评论（<span>{{$commentCount}}</span>）
+									评论（<span>{{$commentCount}}</span>）  
 								</div>
 							</div>
 							<!-- 评论区 -->
