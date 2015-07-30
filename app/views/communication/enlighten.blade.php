@@ -33,5 +33,5 @@
 
 @section('js')
 	@parent
-	<script type="text/javascript" src="/dist/js/pages/enlighten.js"></script>
+	// <!-- <script type="text/javascript" src="/dist/js/pages/enlighten.js"></script> -->
 @stop
