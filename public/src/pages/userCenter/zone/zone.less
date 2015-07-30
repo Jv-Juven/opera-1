@@ -91,9 +91,10 @@
 					width: 100%;
 					line-height: 18px;
 					text-align: right;
-					.figures-name-text(14px,"黑体",500);
-					span{
-						cursor: pointer;
+					
+					a {
+						text-decoration: none;
+						.figures-name-text(14px,"黑体",500);
 					}
 				}
 			}
@@ -134,6 +135,7 @@
 		height: 442px;
 		.zone-content{
 			width: 100%;
+			display: inline-block;
 			.zone-topics-item{
 				margin: 0px 20px;
 				padding: 0px 0px 10px;
@@ -163,10 +165,11 @@
 				padding: 50px 0px 20px 0px;
 				margin: 0px 20px;
 				text-align: right;
-				.figures-name-text(16px,"黑体",600);
+				
 
-				&>span{
-					cursor: pointer;
+				&>a{
+					text-decoration: none;
+					.figures-name-text(16px,"黑体",600);
 					letter-spacing: 1px;
 				}
 			}

@@ -22,13 +22,13 @@
 		   	
 		   	   	<div class="zone-header">
 		   	   		<div class="zone-banner">头像</div>
-		   	   		<div class="zone-content">
+		   	   		<a href="/" class="zone-content">
 		   	   			<img src="{{$user->avatar}}" alt="">
 		   	   			<div class="zone-header-info clearx">
 		   	   				<span class="zone-header-name">{{$user->realname}}</span>
 		   	   				<span class="zone-header-org">{{$user->city}}</span>
 		   	   			</div>
-		   	   		</div>
+		   	   		</a>
 		   	   	</div>
 
 		   	   	<div class="zone-info">
@@ -56,7 +56,7 @@
 		   		   				</span>
 		   		   				
 		   		   				<div class="more">
-		   			   				<span>查看更多个人资料</span>
+		   			   				<a href="#">查看更多个人资料</a>
 		   		   				</div>
 		   	   				</div>
 
@@ -71,7 +71,7 @@
 			   	<div class="zone-album clearx">
 			   		<div class="zone-banner">相册</div>
 
-			   		<div class="zone-content">
+			   		<a href="#" class="zone-content">
 			   			@foreach($albums as $album)
 			   			<div class="zone-album-box">
 			   				<img src="{{$picture[$album->id]}}" alt="">
@@ -84,7 +84,7 @@
 			   				</div>
 			   			</div>
 			   			@endforeach
-			   		</div>
+			   		</a>
 			   		
 				    <div class="zone-paging">
 					    {{$albums->links()}}
@@ -118,7 +118,7 @@
 						@endforeach
 			   			
 			   			<div class="zone-topics-more">
-			   				<span>查看更多话题动态</span>
+			   				<a href="#">查看更多话题动态</a href="#">
 			   			</div>
 
 			   		</div>
