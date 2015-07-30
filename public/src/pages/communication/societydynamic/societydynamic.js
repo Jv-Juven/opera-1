@@ -1,5 +1,5 @@
 
-$('.pagination').addClass('.enlighten-subpage-plugin').children().css({
+$('.pagination').addClass('enlighten-subpage-plugin').children().css({
   'padding': '5px 10px',
   'cursor': 'pointer'
 }).filter('.active').find('span').css({
