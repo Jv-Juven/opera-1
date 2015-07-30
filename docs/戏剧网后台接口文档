@@ -7,7 +7,7 @@
 		请求参数:	无
 
 		返回参数:
-				contact:{
+				contact:{ 
 					number:xxxs,			联系方式
 					people:xxx,			联系人
 					postcode:xxx,		邮政编码

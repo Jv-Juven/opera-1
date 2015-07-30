@@ -611,7 +611,7 @@ class UserController extends BaseController{
 			'city' 			=>  'max:20',
 			'position' 		=>  'max:20',
 			'interests' 		=>  'max:50',
-			'per_description' 	=> 'size:1000'
+			'per_description' 	=> 'max:1000'
 		);
 
 		$messages = array(
