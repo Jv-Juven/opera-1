@@ -31,32 +31,48 @@
 	height: 14px;
 }
 
+.avatar-btn,.avatar-char,.edit-info,.edit-btn{
+	cursor: pointer;
+}
+
+.information-container{
+	color: black;
+}
+
 .name-field{
-	margin-right: 41px;
-	color: #009933;
+	display: inline-block;
+	width: 100px;
+	/*margin-right: 41px;*/
+	/*color: #009933;*/
 }
 
 .name-info{
-	color: #009933;
+	/*color: #009933;*/
 }
 
 .name{
 	margin-top: 27px;
+	position: relative;
+	.edit-click {
+		position: absolute;
+		display: inline-block;
+		right: 0px;
+		top: 0px;
+	}
 }
 
 .edit-btn{
-	position: absolute;
-	right: 95px;
+	float:right;
 	height: 15px;
 	width: 15px;
 	vertical-align:middle;
 }
 
 .edit-info{
-	position: absolute;
-	right: 35px;
+	float:right;
 	font-size: 14px;
 	color: #009933;
+	padding-left: 5px;
 }
 
 .gender{
@@ -87,7 +103,59 @@
 .per-description .name-info{
 	display:block;
 	float: left;
-	width: 395px;
+	width: 460px;
 	text-align: justify;
+}
+.page-content{
+	.information-container{
+		.p{
+			&>input{
+				line-height: 26px;
+				width: 400px;
+				font-size: 14px;
+			}
+		}
+		.gender{
+			.radio-container{
+				
+				line-height: 24px;
+				width: 400px;
+				input,label{
+					display: inline-block;
+				}
+			}
+		}
+		.city,.name{
+			input{
+				width: 120px;
+			}
+		}
+		.per-description{
 
+			#info_txtarea{
+				font-size: 14px;
+				border-color: #ddd;
+				margin-left: 5px;
+			}
+		}
+	}
+	.edit-status{
+		display: none;
+	}
+}
+
+.information-btns-containers{
+	width: 100%;
+	padding: 100px 0px;
+	text-align: center;
+	.info-btn{
+		display: inline-block;
+		padding: 10px 25px;
+		background: #009933;
+		font-size: 20px;
+		font-weight: 400;
+		color: #fff;
+		margin: 0px 20px;
+		cursor: pointer;
+	}
 }
