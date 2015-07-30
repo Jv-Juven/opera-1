@@ -25,17 +25,18 @@
 			@endforeach
 		</ul>
 		{{$societies->links()}}
-		<ul class="enlighten-subpage-plugin">
+		<!-- <ul class="enlighten-subpage-plugin">
 			<li><a href="javascript:">首页</a></li>
 			<li><a href="javascript:">1</a></li>
 			<li><a href="javascript:">2</a></li>
 			<li><a href="javascript:">末页</a></li>
 			<li>共<span class="enlighten-pages">{{$page}}</span>页<span class="enlighten-items">{{$society_count}}</span>条</li>
-		</ul>
+		</ul> -->
 	</div>
 @stop
 
 @section('js')
 	@parent
 	<!-- // <script type="text/javascript" src="/src/pages/communication/masterdynamic/masterdynamic.js"></script> -->
+	<script type="text/javascript" src="/dist/js/pages/masterdynamic.js"></script>
 @stop
