@@ -8,7 +8,7 @@ class EmployPageController extends BaseController{
 		$page			= ceil($employment_count/15);
 		$employments		= Employment::paginate(15);
 
-		return View::make('join.join');
+		return View::make('join.join')->with('links',$this->link());
 			// ->with(array(
 			// 	'employments' 	=> $employments,
 			// 	'page'			=> $page,
@@ -22,6 +22,9 @@ class EmployPageController extends BaseController{
 
 		$employment = Employment::find($employment_id);
 
-		return View::make('招贤纳士详细页面')->with('employment', $employment);
+		return View::make('招贤纳士详细页面')->with(array(
+			'employment'	=>$employment,
+			'links' 		=>$this->link()
+			));
 	}
 }

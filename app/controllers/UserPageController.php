@@ -10,7 +10,10 @@ class UserPageController extends BaseController{
 		$builder->build();
 		$phrase = $builder->getPhrase();
 		$_SESSION['phrase'] = $phrase;
-		return View::make('login')->with('captcha', $builder);
+		return View::make('login')->with(array(
+			'captcha' 	=> $builder,
+			'links' 		=>$this->link()
+			));
 	}
 
 	public function getRemind()
@@ -66,7 +69,8 @@ class UserPageController extends BaseController{
 				'topics'   		  => $topics,
 				'pictureCount' 	  	  =>$pictureCount,
 				'picture'		  =>$picture,
-				'topicCommentCount'    => $topicCommentCount
+				'topicCommentCount'    => $topicCommentCount,
+				'links' 			  =>$this->link()
 			));
 	}
 
@@ -85,7 +89,8 @@ class UserPageController extends BaseController{
 		}
 		return View::make('userCenter.dynamic')->with(array(
 			'topics' => $topics,
-			'user'   => $user
+			'user'   => $user,
+			'links' 	=>$this->link()
 			));
 	}
 
@@ -109,8 +114,9 @@ class UserPageController extends BaseController{
 		$albums = Album::where('user_id','=', $user_id)->paginate(6);
 
 		return View::make('userCenter.photo-album')->with(array(
-			'albums' => $albums,
-			'user' => $user
+			'albums' 	=> $albums,
+			'user' 		=> $user,
+			'links' 		=>$this->link()
 			));
 	}
 
@@ -121,7 +127,10 @@ class UserPageController extends BaseController{
 
 		 $pictures = $album->hasManyPictures()->get();
 
-		 return View::make('照片')->with('pictures',$pictures);
+		 return View::make('照片')->with(array(
+		 	'pictures' 	=> $pictures,
+		 	'links' 		=>$this->link()
+		 	));
 	}
 
 	//个人中心——获取留言
@@ -137,8 +146,9 @@ class UserPageController extends BaseController{
 			$message['messageCommentCount']	= $message->MessageComments()->count();
 		}
 		return View::make('userCenter.message')->with(array(
-			'messages' => $messages,
-			'user' 	 => $user
+			'messages' 	=> $messages,
+			'user' 	 	=> $user,
+			'links' 		=>$this->link()
 			));
 	}
 
@@ -152,7 +162,10 @@ class UserPageController extends BaseController{
 			$message_comment['avatar']	=	User::find($message_comment['user_id'])->avatar;
 			$message_comment['username']   = 	User::find($message_comment['user_id'])->username;
 		}
-		return View::make('回复信息')->with('message_comments', $message_comments); 
+		return View::make('回复信息')->with(array(
+			'message_comments' => $message_comments,
+			'links' 			=>$this->link()
+			)); 
 	}
 
 	//获取更新资料界面
@@ -163,7 +176,8 @@ class UserPageController extends BaseController{
 		$user = User::find($user_id);
 
 		return View::make('userCenter.information')->with(array(
-				'user'=>$user
+				'user'		=>$user,
+				'links' 		=>$this->link()
 			));
 	}
 
