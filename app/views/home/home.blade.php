@@ -41,10 +41,14 @@
     				<span class="sub-title-en"><a href="/customer/news/one_topic/">ABOUT  US</a></span>
     				<span class="more"><a href="/customer/news/one_topic/" class="sub-title">更多》</a></span>
     			</div>
-    			<ul class="content-list">
+    			<ul class="content-list home-list">
     				@foreach ( $columns as $column)
-                                                    <li><a href="customer/news/column_more?column_id={{$column->id}}">{{$column->title}}</a></li>
-                                           @endforeach
+                    <li>
+                        <a href="customer/news/column_more?column_id={{$column->id}}">
+                            {{$column->title}}
+                        </a>
+                    </li>
+                   @endforeach
     			</ul>
     		</li>
     		<li>
@@ -54,10 +58,14 @@
     				<span class="more"><a href="/customer/performance/teacher" class="sub-title">更多》</a></span>
 
     			</div>
-    			<ul class="content-list">
-                                            @foreach($backstages as $backstage)
-                                                        <li><a href="customer/performance/backstage_more?backstage_id={{$backstage->id}}">{{$backstage->title}}</a></li>
-                                            @endforeach
+    			<ul class="content-list home-list">
+                    @foreach($backstages as $backstage)
+                    <li>
+                        <a href="customer/performance/backstage_more?backstage_id={{$backstage->id}}">
+                            {{$backstage->title}}
+                        </a>
+                    </li>
+                    @endforeach
     			</ul>
     		</li>
     		<li>
@@ -65,13 +73,13 @@
     				<span class="sub-title"><a href="#">联系我们</a>/</span>
     				<span class="sub-title-en"><a href="#">CONTACT</a></span>
     			</div>
-    			<ul class="content-list">
+    			<ul class="content-list home-code">
     				<li>联系电话：{{$contact->number}}</li>
     				<li>联系人：{{$contact->people}}</li>
     				<li>邮政编码：{{$contact->postcode}}</li>
     				<li>网址：<a>{{$contact->site}}</a></li>
     				<li>地址：{{$contact->address}}</li>
-    				<li>
+    				<li id="home_code_container">
     					<img class="index-code" src="/images/home/index_code.png" alt="">
     					<div id="code_content">
     						<img class="sweep" src="/images/home/sweep_bg.png" alt="">

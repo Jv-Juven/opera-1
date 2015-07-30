@@ -38,7 +38,7 @@
 	width: 100%;
 }
 #content .content-list a:link,#content .content-list a:visited{
-	color: #000;
+	color: #515051;
 }
 #content .content-list a:hover{
 	color: blue;
@@ -70,16 +70,16 @@
 #content>li:not(:nth-child(1)){
 	margin-left: 80px;
 }
-/*#content .content-list li:before{
-	content:"";
-	width: 5px;
-	height: 5px;
-	border-radius: 50%;
-	border-color: #00af65;
-	border-style: solid;
-	border-width: 1px;
-	background: #00af65;
-}*/
+.home-list li:before{
+	/*content: url('/images/home/li_point.png');*/
+	content: " ";
+	display: inline-block;
+	background: rgb(77,167,100);
+	width: 9px;
+	height: 9px;
+	border-radius: 9px;
+	margin-bottom: 0px;
+}
 
 #content .content-list li{
 	width: 100%;
@@ -90,17 +90,24 @@
 	overflow: hidden;
 	text-overflow: ellipsis; 
 	white-space: nowrap;
+	color: #515051;
 	a:hover{
 		color: rgb(0,175,101);
 	}
 }
+#content .content-list:nth-last-child(1) li:nth-child(1){
+	padding-top: 9px;
+}
 #content>li:nth-child(3) li{
 	border:0px;
-	line-height: 21px;
+	line-height: 20px;
 	padding-top: 0px;
 	letter-spacing: 2px;
 	font-size: 13px;
 
+}
+#content>li:nth-child(3) li:nth-last-child(1){
+	padding-top: 6px;
 }
 .index-code{
 	width: 115px;
@@ -144,5 +151,8 @@
 	text-align: center;
 	font-family: "楷体";
 	font-size: 13px;
+}
+#home_code_container{
+	
 }
 
