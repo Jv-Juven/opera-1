@@ -108,14 +108,14 @@ class AuthenticationPageController extends BaseController{
 
 	}
 
-	public function getSortOfUsername($letter = null)
+	public function getSortOfUsername($ABC = null)
 	{
 		$users =User::where('role_id', '=', 0)->get();
 		//以字母为键的数组
 		$letters = array();
 		foreach($users as $user)
 		{
-			$username = $user->username;
+			$username = $user->realname;
 			//获取首字母
 			$letter = getFirstCharter($username);
 			//如果没有设置这个变量，就根据这个变量声明一个数组
@@ -128,11 +128,19 @@ class AuthenticationPageController extends BaseController{
 			{
 				$letters[$letter] = $$letter;
 			}
+			$letters[$letter] = $$letter;
 		}
 
-		if(isset($letters[$letter]))
+		if($ABC != null)
 		{
-			return View::make('certification.username')->with('letters', $letters[$letter]);
+			if(isset($letters[$ABC]))
+			{
+				return View::make('certification.username')->with(array(
+					'letters' => $letters[$ABC],
+					'letter'  => $ABC
+					));
+			}
+			return Redirect::back();
 		}else{
 			return View::make('certification.username')->with('letters', $letters);
 		}
