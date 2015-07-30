@@ -21,9 +21,11 @@ $("#info_confirm").click(function() {
 	    job = $("#info_job").val(),
 	    city = $("#info_city").val(),
 	    interest = $("#info_interest").val(),
-	    intro = $("#info_txtarea").val();
+	    intro = $("#info_txtarea").val(),
+	    userId = $("input[type='hidden']").val();
 
     $.post("/user/personal/update",{
+    	user_id : userId,
     	realname : realName,
     	gender : gender,
     	position : job,

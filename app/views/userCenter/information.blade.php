@@ -25,7 +25,7 @@
 					<span class="avatar-char">更换头像</span>
 			</div>	
 		</div>
-
+		<input type="hidden" value="{{$user->id}}" />
 		<div class="information-container clearx">
 			<div class="p name">
 				<span class="name-field">真实姓名:</span>
