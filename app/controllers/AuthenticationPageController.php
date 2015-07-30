@@ -111,7 +111,6 @@ class AuthenticationPageController extends BaseController{
 			}
 				$num = 2;
 			return View::make('certification.area')->with('num',$num);
-			return Redirect::to('/customer/authentication/city');
 		}else{
 				$num = 0;
 			return View::make('certification.area')->with(array(
@@ -144,21 +143,27 @@ class AuthenticationPageController extends BaseController{
 			}
 			$letters[$letter] = $$letter;
 		}
-
 		if($ABC != null)
 		{
 			if(isset($letters[$ABC]))
-			{
+			{	
+				$num = 1;
 				return View::make('certification.username')->with(array(
 					'letters' => $letters[$ABC],
-					'letter'  => $ABC
+					'letter'  => $ABC,
+					'num' =>$num
 					));
 			}
-			return Redirect::back();
-		}else{
-			return View::make('certification.username')->with('letters', $letters);
-		}
+			$num = 2;
+			return View::make('certification.username')->with('num',$num);
 
+		}else{
+				$num = 0;
+			return View::make('certification.username')->with(array(
+				'num' => $num,
+				'letters' => $letters
+			));
+		}
 	}
 	// public function test()
 	// {	
