@@ -51,7 +51,7 @@
 		</div>
 		<div class="certificate-container">
 			<div class="certificate-users-container">
-				@if(count($letters) > 1)	
+				@if( $num == 0 )	
 					@foreach($letters as $key=>$letter)
 				<div class="certificate-users-head">{{$key}} （{{count($letter)}}）</div>
 				<ul>
@@ -69,7 +69,7 @@
 					@endforeach
 				@endif
 
-				@if(count($letters) == 1)	
+				@if($num == 1)	
 				<div class="certificate-users-head">{{$letter}} （{{count($letters)}}）</div>
 				<ul>
 						@foreach($letters as $user)
