@@ -22,13 +22,13 @@
 			@endforeach
 		</ul>
 		{{$associations->links()}}
-		<ul class="enlighten-subpage-plugin">
+		<!-- <ul class="enlighten-subpage-plugin">
 			<li><a href="javascript:">首页</a></li>
 			<li><a href="javascript:">1</a></li>
 			<li><a href="javascript:">2</a></li>
 			<li><a href="javascript:">末页</a></li>
 			<li>共<span class="enlighten-pages">{{$page}}</span>页<span class="enlighten-items">{{$association_count}}</span>条</li>
-		</ul>
+		</ul> -->
 	</div>
 @stop
 
@@ -36,4 +36,6 @@
 @section('js')
 	@parent
 	<!-- // <script type="text/javascript" src="/src/pages/communication/societydynamic/societydynamic.js"></script> -->
+	<!-- // <script type="text/javascript" src="/dist/js/pages/societydynamic.js"></script> -->
+
 @stop

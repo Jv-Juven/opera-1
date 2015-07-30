@@ -7,13 +7,26 @@
 }
 .certificate-nav-container>ul>li{
 	float: left;
-	padding: 5px 10px;
 	border-right: 1px solid #cccccc;
 	cursor: pointer;
+	a{
+		text-decoration: none;
+		padding: 5px 10px;
+		display: inline-block;
+		color: #000;
+		&:visited,&:link{
+			color: #000;
+		}
+	}
 }
-.certificate-nav-container .active{
+.certificate-nav-container .active,
+.certificate-nav-container .active:hover,
+.certificate-nav-container .active a:link,
+certificate-nav-container .active a:visited,
+.certificate-nav-container .active a,
+.certificate-nav-container a:hover{
 	background: rgb(0,164,71);
-	color: white;
+	color: white !important;
 	border-color: rgb(0,164,71);
 }
 .certificate-nav-container>ul>li:hover{

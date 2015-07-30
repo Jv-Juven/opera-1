@@ -1,4 +1,3 @@
-
 $('.pagination').addClass('enlighten-subpage-plugin').children().css({
   'padding': '5px 10px',
   'cursor': 'pointer'
