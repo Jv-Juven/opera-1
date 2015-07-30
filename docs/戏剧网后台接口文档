@@ -1340,3 +1340,16 @@
 					errCode:xxx,			错误码	0表示返回正常	 
 					message:xxx			提示信息
 				}
+
+补充：
+	1.修改个人资料判断
+		请求方式:	GET
+		请求url:	/user/personal/is_own
+
+		请求参数:	user_id					个人中心的id
+
+		返回参数:
+				{
+					errCode:xxx,			错误码	0表示返回正常	 
+					message:xxx			提示信息
+				}

@@ -751,4 +751,20 @@ class UserController extends BaseController{
 		return Response::json(array('errCode'=>2, 'message'=>'话题发表失败，请重新发送！'));
 	}
 
+	public function isOwn()
+	{
+		if(!Auth::check())
+		{
+			return Response::json(array('errCode'=>1, 'message'=>'无效操作'));
+		}
+		$user_id = Auth::user()->id;
+		$another_id = Input::get('user_id');
+		if($user_id != $another_id)
+		{
+			return Response::json(array('errCode'=>2, 'message'=>'无效操作'));
+		}
+
+		return Response::json(array('errCode'=>0, 'message'=>'可操作'));
+	}
+
 }
