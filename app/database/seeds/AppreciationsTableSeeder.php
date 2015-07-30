@@ -10,43 +10,52 @@ class AppreciationsTableSeeder extends Seeder {
 			Appreciation::create([
 				'title' => '史记-秦始皇的故事',
 				'video' =>'http://pan.baidu.com/s/1pJuuaPt',
-				'video_img' => ''
+				'video_img' => 'http://7xk6xh.com1.z0.glb.clouddn.com/3.JPG'
 			]);
 			Appreciation::create([
 				'title' => '史记-秦始皇的故事',
-				'video' =>'http://pan.baidu.com/s/1pJuuaPt'
+				'video' =>'http://pan.baidu.com/s/1pJuuaPt',
+				'video_img' => 'http://7xk6xh.com1.z0.glb.clouddn.com/3.JPG'
 			]);
 			Appreciation::create([
 				'title' => '史记-秦始皇的故事',
-				'video' =>'http://pan.baidu.com/s/1pJuuaPt'
+				'video' =>'http://pan.baidu.com/s/1pJuuaPt',
+				'video_img' => 'http://7xk6xh.com1.z0.glb.clouddn.com/3.JPG'
 			]);
 			Appreciation::create([
 				'title' => '史记-秦始皇的故事',
-				'video' =>'http://pan.baidu.com/s/1pJuuaPt'
+				'video' =>'http://pan.baidu.com/s/1pJuuaPt',
+				'video_img' => 'http://7xk6xh.com1.z0.glb.clouddn.com/3.JPG'
 			]);
 			Appreciation::create([
 				'title' => '史记-秦始皇的故事',
-				'video' =>'http://pan.baidu.com/s/1pJuuaPt'
+				'video' =>'http://pan.baidu.com/s/1pJuuaPt',
+				'video_img' => 'http://7xk6xh.com1.z0.glb.clouddn.com/3.JPG'
 			]);
 			Appreciation::create([
 				'title' => '史记-秦始皇的故事',
-				'video' =>'http://pan.baidu.com/s/1pJuuaPt'
+				'video' =>'http://pan.baidu.com/s/1pJuuaPt',
+				'video_img' => 'http://7xk6xh.com1.z0.glb.clouddn.com/3.JPG'
 			]);
 			Appreciation::create([
 				'title' => '史记-秦始皇的故事',
-				'video' =>'http://pan.baidu.com/s/1pJuuaPt'
+				'video' =>'http://pan.baidu.com/s/1pJuuaPt',
+				'video_img' => 'http://7xk6xh.com1.z0.glb.clouddn.com/3.JPG'
 			]);
 			Appreciation::create([
 				'title' => '史记-秦始皇的故事',
-				'video' =>'http://pan.baidu.com/s/1pJuuaPt'
+				'video' =>'http://pan.baidu.com/s/1pJuuaPt',
+				'video_img' => 'http://7xk6xh.com1.z0.glb.clouddn.com/3.JPG'
 			]);
 			Appreciation::create([
 				'title' => '史记-秦始皇的故事',
-				'video' =>'http://pan.baidu.com/s/1pJuuaPt'
+				'video' =>'http://pan.baidu.com/s/1pJuuaPt',
+				'video_img' => 'http://7xk6xh.com1.z0.glb.clouddn.com/3.JPG'
 			]);
 			Appreciation::create([
 				'title' => '史记-秦始皇的故事',
-				'video' =>'http://pan.baidu.com/s/1pJuuaPt'
+				'video' =>'http://pan.baidu.com/s/1pJuuaPt',
+				'video_img' => 'http://7xk6xh.com1.z0.glb.clouddn.com/3.JPG'
 			]);
 			
 	}
