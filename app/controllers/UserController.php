@@ -595,7 +595,15 @@ class UserController extends BaseController{
 		if(!Auth::check())
 		{
 			return Response::json(array('errCode'=>1, 'message'=>'请登录！'));
-		}		
+		}
+		
+		$user_id = Auth::user()->id;
+		$another_id = Input::get('user_id');
+
+		if($user_id != $another_id)
+		{
+			return Response::json(array('crrCode' =>2,'message'=>'不可以更改其他人资料'));
+		}	
 		$data =array(
 			'realname' 		=> Input::get('realname'),
 			'gender' 		=> Input::get('gender'), //boolean
@@ -631,22 +639,22 @@ class UserController extends BaseController{
 			switch ($number[0])
 			{
 			case 1:
-				return Response::json(array('errCode'=>2, 'message'=>'名字长度不能超过20个字！'));
+				return Response::json(array('errCode'=>3, 'message'=>'名字长度不能超过20个字！'));
 				break;
 			case 2:
-				return Response::json(array('errCode'=>3, 'message'=>''));
+				return Response::json(array('errCode'=>4, 'message'=>''));
 				break;
 			case 3:
-				return Response::json(array('errCode'=>4, 'message'=>'城市名字不能超过20个字！'));
+				return Response::json(array('errCode'=>5, 'message'=>'城市名字不能超过20个字！'));
 				break;
 			case 4:
-				return Response::json(array('errCode'=>5, 'message'=>'职位名字不能超过20个字！'));
+				return Response::json(array('errCode'=>6, 'message'=>'职位名字不能超过20个字！'));
 				break;
 			case 5:
-				return Response::json(array('errCode'=>6, 'message'=>'兴趣描述不可超过50个字！'));
+				return Response::json(array('errCode'=>7, 'message'=>'兴趣描述不可超过50个字！'));
 				break;
 			default:
-				return Response::json(array('errCode'=>7, 'message'=>'个人简介不可超过1000个字！'));
+				return Response::json(array('errCode'=>8, 'message'=>'个人简介不可超过1000个字！'));
 			}
 		}
 		
@@ -665,7 +673,7 @@ class UserController extends BaseController{
 		if($user->save())
 			return Response::json(array('errCode'=>0, '修改成功!'));
 
-		return Response::json(array('errCode'=>8, '修改失败！'));
+		return Response::json(array('errCode'=>9, '修改失败！'));
 	}
 
 	//更换图片
