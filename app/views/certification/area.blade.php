@@ -20,7 +20,7 @@
 			<ul>
 				<li class="active"><a href="/customer/authentication/city">全部</a> </li>
 				<li><a href="/customer/authentication/city/0">北京市</a></li>
-				<li><a href="/customer/authentication/city/1"天津市>天津市</a></li>
+				<li><a href="/customer/authentication/city/1">天津市</a></li>
 				<li><a href="/customer/authentication/city/2">河北省</a></li>
 				<li><a href="/customer/authentication/city/3">山西省</a></li>
 				<li><a href="/customer/authentication/city/4">内蒙古自治区</a></li>
@@ -60,7 +60,7 @@
 		</div>
 		<div class="certificate-container">
 			<div class="certificate-users-container">
-				@if(count($area) > 1)	
+				@if($num == 0 )	
 					@foreach($area as $key=>$users)
 				<div class="certificate-users-head">{{$key}} （{{count($users)}}）</div>
 				<ul>
@@ -78,7 +78,7 @@
 					@endforeach
 				@endif
 
-				@if(count($area) == 1)	
+				@if($num == 1)	
 				<div class="certificate-users-head">{{$area[0]->city}} （{{count($area)}}）</div>
 				<ul>
 						@foreach($area as $user)
