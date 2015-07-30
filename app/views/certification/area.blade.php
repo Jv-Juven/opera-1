@@ -67,7 +67,9 @@
 						@foreach($users as $user)
 						<li>
 							<div class="certificate-head-portrait">
-								<img src="/images/admin/authentications/{{$user->avatar}}" alt="">
+								<a href="/user/space_home?user_id={{$user->id}}">
+									<img src="/images/admin/authentications/{{$user->avatar}}" alt="">
+								</a>	
 							</div>
 							<div class="certificate-user-name">{{$user->realname}}</div>
 						</li>
@@ -82,7 +84,9 @@
 						@foreach($area as $user)
 						<li>
 							<div class="certificate-head-portrait">
-								<img src="/images/admin/authentications/{{$user->avatar}}" alt="">
+								<a href="/user/space_home?user_id={{$user->id}}">	
+									<img src="/images/admin/authentications/{{$user->avatar}}" alt="">
+								</a>
 							</div>
 							<div class="certificate-user-name">{{$user->realname}}</div>
 						</li>

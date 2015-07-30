@@ -35,7 +35,9 @@
 						@foreach($bureaus as $bureau)
 					<li>
 						<div class="certificate-head-portrait">
-							<img src="/images/admin/authentications/{{$bureau->avatar}}" alt="">
+							<a href="/user/space_home?user_id={{$bureau->id}}">
+								<img src="/images/admin/authentications/{{$bureau->avatar}}" alt="">
+      							</a>						
 						</div>
 						<div class="certificate-user-name">{{$bureau->realname}}</div>
 					</li>
@@ -49,7 +51,9 @@
 						@foreach($consultants as $consultant)
 					<li>
 						<div class="certificate-head-portrait">
-							<img src="/images/admin/authentications/{{$consultant->avatar}}" alt="">
+							<a href="/user/space_home?user_id={{$consultant->id}}">
+								<img src="/images/admin/authentications/{{$consultant->avatar}}" alt="">
+							</a>
 						</div>
 						<div class="certificate-user-name">{{$consultant->realname}}</div>
 					</li>
@@ -63,7 +67,9 @@
 						@foreach($directors as $director)
 					<li>
 						<div class="certificate-head-portrait">
-							<img src="/images/admin/authentications/{{$director->avatar}}" alt="">
+							<a href="/user/space_home?user_id={{$director->id}}">
+								<img src="/images/admin/authentications/{{$director->avatar}}" alt="">
+							</a>
 						</div>
 						<div class="certificate-user-name">{{$director->realname}}</div>
 					</li>
@@ -77,7 +83,9 @@
 						@foreach($dance_associattions as $dance_associattion)
 					<li>
 						<div class="certificate-head-portrait">
-							<img src="/images/admin/authentications/{{$dance_associattion->avatar}}" alt="">
+							<a href="/user/space_home?user_id={{$dance_associattion->id}}">
+								<img src="/images/admin/authentications/{{$dance_associattion->avatar}}" alt="">
+							</a>
 						</div>
 						<div class="certificate-user-name">{{$dance_associattion->realname}}</div>
 					</li>
@@ -91,8 +99,9 @@
 						@foreach($website_members as $website_member)
 					<li>
 						<div class="certificate-head-portrait">
-															
-							<img src="/images/admin/authentications/{{$website_member->avatar}}" alt="">
+							<a href="/user/space_home?user_id={{$website_member->id}}">							
+								<img src="/images/admin/authentications/{{$website_member->avatar}}" alt="">
+							</a>
 						</div>
 						<div class="certificate-user-name">{{$website_member->realname}}</div>
 					</li>
