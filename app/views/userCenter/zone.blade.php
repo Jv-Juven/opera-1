@@ -118,7 +118,7 @@
 						@endforeach
 			   			
 			   			<div class="zone-topics-more">
-			   				<a href="#">查看更多话题动态</a href="#">
+			   				<a href="#">查看更多话题动态</a>
 			   			</div>
 
 			   		</div>

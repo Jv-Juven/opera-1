@@ -6,6 +6,12 @@
 .zone-container{
 	background: none;
 	padding: 40px 0px 0px 20px;
+	a{
+		&:visited{
+			color: #000;
+		}
+		text-decoration: none;
+	}
     & .zone-line-container>div{
 	    border: 1px solid @btn-color;
     }
@@ -30,6 +36,7 @@
 		.zone-header-info{
 			width: 180px;
 			line-height: 40px;
+			padding: 0px 12px;
 			&>span{
 				display: inline-block;
 				.figures-name-text(18px,"黑体",600,black);
