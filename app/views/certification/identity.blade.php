@@ -18,12 +18,12 @@
 	<div class="page-content">
 		<div class="certificate-nav-container">
 			<ul>
-				<li class="active">全部</li>
-				<li>主席团</li>
-				<li>顾问</li>
-				<li>理事</li>
-				<li>舞协会员</li>
-				<li>网站会员</li>
+				<li class="active"><a href="/customer/authentication/identity">全部</a></li>
+				<li><a href="/customer/authentication/identity/1">主席团</a></li>
+				<li><a href="/customer/authentication/identity/2">顾问</a></li>
+				<li><a href="/customer/authentication/identity/3">理事</a></li>
+				<li><a href="/customer/authentication/identity/4">舞协会员</a></li>
+				<li><a href="/customer/authentication/identity/5">网站会员</a></li>
 			</ul>
 		</div>
 		<div class="certificate-container">

@@ -25,13 +25,14 @@ class UserPageController extends BaseController{
 
 	//空间首页
 	public function spaceHome()
-	{
+	{	
 		$user_id = Input::get('user_id');
 		$user = User::find($user_id);
+		// dd($user_id);	
 
-		//取得相册和话题数组collections
-		$albums 			= $user->hasManyAlbums()->get();
+		$albums 		= $user->hasManyAlbums()->get();
  		$topics			= $user->hasManyTopics()->get();
+ 		// dd($albums);
 
  		$pictureCount = array();
  		$picture  = array();
@@ -63,9 +64,9 @@ class UserPageController extends BaseController{
 				'user' 	  		  => $user,
 				'albums'  		  => $albums,
 				'topics'   		  => $topics,
-				'pictureCount' 	  =>$pictureCount,
+				'pictureCount' 	  	  =>$pictureCount,
 				'picture'		  =>$picture,
-				'topicCommentCount'  => $topicCommentCount
+				'topicCommentCount'    => $topicCommentCount
 			));
 	}
 
@@ -99,10 +100,14 @@ class UserPageController extends BaseController{
 		{
 			foreach($albums as $album)
 			{
-				$album['albumCount'] 	= $album->hasManyPictures()->count();
-				$album['picture'] 		= $album->hasManyPictures()->first()->picture;
+				$album->albumCount 	= $album->hasManyPictures()->count();
+				$album->picture	= $album->hasManyPictures()->first()->picture;
+				$album->save();
 			}	
 		}
+
+		$albums = Album::where('user_id','=', $user_id)->paginate(6);
+
 		return View::make('userCenter.photo-album')->with(array(
 			'albums' => $albums,
 			'user' => $user

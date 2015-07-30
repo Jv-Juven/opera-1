@@ -11,8 +11,11 @@ return array(
 		'title' => array(
 			'title' => '视频名字'
 		),
-		'content' => array(
+		'video' => array(
 			 'title' => '视频连接'
+		),
+		'video_img'=>array(
+			'title' => '视频图片'
 		),
 	),
 
@@ -23,16 +26,21 @@ return array(
 		'content' => array(
 			 'title' => '内容',		
 		),
+		'video_img'=>array(
+			'title' => '视频图片'
+		),
 	),
 
 	'rules' => array(
 			'title' => 'required',
-			'content' => 'required'
+			'video' => 'required',
+			'video_img' =>'required'
 	),
 
 	'messages' => array(
 		'title.required' => '请添加视频名字！',
-		'content.required' => '请添加链接地址！',
+		'video.required' => '请添加链接地址！',
+		'video_img.required' => '请添加视频图片'
 	),
 
 );
