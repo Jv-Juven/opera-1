@@ -41,27 +41,43 @@ class AuthenticationPageController extends BaseController{
 		}
 		switch ($identity) {
 			case 1:
-				return View::make('certification.identity')->with('bureaus', $bureaus);
+				return View::make('certification.identity')->with(array(
+					'bureaus'	=>$bureaus,
+					'links' 		=>$this->link()
+					));
 				break;
 			case 2:
-				return View::make('certification.identity')->with('consultants', $consultants);
+				return View::make('certification.identity')->with(array(
+					'consultants'	=> $consultants,
+					'links' 		=>$this->link()
+					));
 				break;
 			case 3:
-				return View::make('certification.identity')->with('directors', $directors);
+				return View::make('certification.identity')->with(array(
+					'directors'	=>$directors,
+					'links' 		=>$this->link()
+					));
 				break;
 			case 4:
-				return View::make('certification.identity')->with('dance_associations', $dance_associations);
+				return View::make('certification.identity')->with(array(
+					'dance_associations'	=>$dance_associations,
+					'links' 			=>$this->link()
+					));
 				break;
 			case 5:
-				return View::make('certification.identity')->with('website_members', $website_members);
+				return View::make('certification.identity')->with(array(
+					'website_members' 	=> $website_members,
+					'links' 			=>$this->link()
+					));
 				break;
 			default:
 				return View::make('certification.identity')->with(array(
-					'bureaus' => $bureaus, 
-					'consultants' => $consultants,
-					'directors' => $directors,
-					'dance_associattions' =>$dance_associations,
-					'website_members' => $website_members,
+					'bureaus' 		=> $bureaus, 
+					'consultants' 		=> $consultants,
+					'directors' 		=> $directors,
+					'dance_associattions' 	=>$dance_associations,
+					'website_members' 	=> $website_members,
+					'links' 			=>$this->link()
 				));
 		}
 	}
@@ -106,7 +122,8 @@ class AuthenticationPageController extends BaseController{
 				$num = 1;
 				return View::make('certification.area')->with(array(
 				'area' => $cities[$area],
-				'num' => $num
+				'num' => $num,
+				'links' =>$this->link()
 				));
 			}
 				$num = 2;
@@ -115,7 +132,8 @@ class AuthenticationPageController extends BaseController{
 				$num = 0;
 			return View::make('certification.area')->with(array(
 				'area' =>$cities,
-				'num' =>$num
+				'num' =>$num,
+				'links' =>$this->link()
 				));
 		}
 
@@ -150,8 +168,9 @@ class AuthenticationPageController extends BaseController{
 				$num = 1;
 				return View::make('certification.username')->with(array(
 					'letters' => $letters[$ABC],
-					'letter'  => $ABC,
-					'num' =>$num
+					'letter'  	=> $ABC,
+					'num' 	=>$num,
+					'links' 	=>$this->link()
 					));
 			}
 			$num = 2;
@@ -160,8 +179,9 @@ class AuthenticationPageController extends BaseController{
 		}else{
 				$num = 0;
 			return View::make('certification.username')->with(array(
-				'num' => $num,
-				'letters' => $letters
+				'num' 	=> $num,
+				'letters' => $letters,
+				'links' 	=>$this->link()
 			));
 		}
 	}

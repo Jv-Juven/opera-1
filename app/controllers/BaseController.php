@@ -15,4 +15,9 @@ class BaseController extends Controller {
 		}
 	}
 
+	public function link()
+	{
+		return Link::all();
+	}
+
 }

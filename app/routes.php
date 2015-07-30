@@ -71,6 +71,7 @@ Route::group(array('prefix'=>'user'),function()
 		//个人中心
 		Route::group(array('prefix'=>'personal'), function()
 		{
+			// Route::get('')
 			//发表话题
 			Route::post('issue_topic', 'UserController@issueTopic');
 			//发表留言

@@ -12,6 +12,7 @@ class PerformancePageController extends BaseController{
 		return View::make('home.comedy.comedy')->with(array(
 				'teachers' 		=> $teachers,
 				'page'			=> $page,
+				'links' 			=>$this->link()
 			));
 	}
 
@@ -21,7 +22,10 @@ class PerformancePageController extends BaseController{
 
 		$teacher = Teacher::find($teacher_id);
 
-		return View::make('home.comedy.comedy-details')->with('teacher', $teacher);
+		return View::make('home.comedy.comedy-details')->with(array(
+				'teacher' 	=> $teacher,
+				'links' 		=>$this->link()
+				));
 	}
 
 	public function backStage()
@@ -34,7 +38,8 @@ class PerformancePageController extends BaseController{
 			->with(array(
 				'backstages' 		=> $backstages,
 				'page'			=> $page,
-				'backstage_count' 	=> $backstage_count
+				'backstage_count' 	=> $backstage_count,
+				'links' 			=>$this->link()
 			));
 	}
 
@@ -44,7 +49,10 @@ class PerformancePageController extends BaseController{
 
 		$backstage = BackStage::find($backstage_id);
 
-		return View::make('home.comedy.before-behind-details')->with('backstage', $backstage);
+		return View::make('home.comedy.before-behind-details')->with(array(
+				'backstage' 	=> $backstage,
+				'links' 		=>$this->link()
+				));
 	}
 
 	public function appreciation()
@@ -52,7 +60,7 @@ class PerformancePageController extends BaseController{
 		$appreciation_count  = Appreciation::count();
 		$page			 = ceil($appreciation_count/15);
 		$appreciations 	 = Appreciation::paginate(4);
-		return View::make('home.comedy.classic-case');
+		return View::make('home.comedy.classic-case')->with('links',$this->link());
 			// ->with(array(
 			// 	'appreciations' => $appreciations,
 			// 	'page'		  => $page
@@ -65,6 +73,6 @@ class PerformancePageController extends BaseController{
 
  		$video = Appreciation::find($video_id);
 
- 		return View::make('视频')->with('video', $video); 
+ 		return View::make('视频')->with('video', $video)->with('links',$this->link()); 
 	}
 }

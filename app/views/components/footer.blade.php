@@ -1,9 +1,11 @@
 <footer>
 	<div id="footer" class="clearx">
 		<span class="sub-title footer-icon">友情链接：</span>
-		<a href="#" class="footer-icon"><img src="/images/admin/links/logos01.png" class="logos" alt="logos"></a>
-		<a href="#" class="footer-icon"><img src="/images/admin/links/logos02.png" class="logos" alt="logos"></a>
-		<a href="#" class="footer-icon"><img src="/images/admin/links/logos03.png" class="logos" alt="logos"></a>
+		@if(!empty($links))
+			@foreach($links as $link)
+		<a href="{{$link->link}}" class="footer-icon"><img src="/images/admin/links/{{$link->image}}" class="logos" alt="logos"></a>
+			@endforeach
+		@endif
 		
 		
 	</div>

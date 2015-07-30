@@ -14,7 +14,8 @@ class ColumnPageController extends BaseController{
 			->with(array(
 				'columns'		=> $columns,
 				'page'			=> $page,
-				'column_count' 	=> $column_count
+				'column_count' 	=> $column_count,
+				'links' 			=>$this->link()
 			));
 	}
 
@@ -24,7 +25,10 @@ class ColumnPageController extends BaseController{
 
 		$column = EnlightenColumn::find($column_id);
 		
-		 return View::make('communication.enlighten-more')->with('column', $column);
+		 return View::make('communication.enlighten-more')->with(array(
+		 			'column' 	=> $column,
+		 			'links' 		=>$this->link()
+		 			));
 	}
 
 	//学会动态
@@ -38,7 +42,8 @@ class ColumnPageController extends BaseController{
 			->with(array(
 				'societies' 		=> $societies,
 				'page'	      		=> $page,
-				'society_count' 	=> $society_count
+				'society_count' 	=> $society_count,
+				'links' 			=>$this->link()
 			));
 	}
 
@@ -48,8 +53,10 @@ class ColumnPageController extends BaseController{
 
 		$society = SocietyDynamics::find($society_id);
 		
-		return View::make('communication.masterdynamic-more')
-				->with('society', $society);
+		return View::make('communication.masterdynamic-more')->with(array(
+							'society' => $society,
+							'links' 	=>$this->link()
+							));
 	}
 
 	//协会动态
@@ -61,9 +68,10 @@ class ColumnPageController extends BaseController{
 
 		return View::make('communication.societydynamic')
 				->with(array(
-				'associations'	 => $associations,
+				'associations'	 	=> $associations,
 				'page' 			=> $page,
-				'association_count'	 => $association_count
+				'association_count'	 => $association_count,
+				'links' 			=>$this->link()
 		));
 	}
 
@@ -71,8 +79,10 @@ class ColumnPageController extends BaseController{
 	{
 		$association_id = Input::get('association_id');
 		$association = AssociationDynamics::find($association_id);
-		return View::make('communication.societydynamic-more')
-				->with('association', $association);
+		return View::make('communication.societydynamic-more')->with(array(
+				'association' 	=> $association,
+				'links' 		=>$this->link()
+				));
 	}
 
 	public function getOneTopic()
@@ -101,11 +111,12 @@ class ColumnPageController extends BaseController{
 					'topic_comments'=>$topic_comments,
 					'commentCount' => $commentCount,
 					'comment_name' => $comment_name,
-					'user' =>$user
+					'user' 		=>$user,
+					'links' 		=>$this->link()
 					));
 			}
 		}
-		return View::make('communication.topics');
+		return View::make('communication.topics')->with('links',$this->link());
 				// ->with(array(
 				// 'topic'=>$topic, 
 				// 'topic_comments'=>$topic_comments,
@@ -124,6 +135,6 @@ class ColumnPageController extends BaseController{
 
 		$comments = $topic->hasManyTopicComments;
 
-		return View::make('话题评论内容')->with('comments', $comments);
+		return View::make('话题评论内容')->with('comments', $comments)->with('links',$this->link());
 	}
 }
