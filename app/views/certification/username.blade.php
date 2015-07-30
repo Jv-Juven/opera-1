@@ -1,7 +1,7 @@
 @extends('layouts.subpage')
 
 @section('title')
-	<title>按照用户名分类</title>
+	<title>按照姓名分类</title>
 @stop
 
 @section('css')
