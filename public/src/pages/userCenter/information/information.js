@@ -34,7 +34,7 @@ $("#info_confirm").click(function() {
 	var realName = $("#info_name").val(),
 	    gender = $(".radio-container input[type='radio']:checked").val(),
 	    job = $("#info_job").val(),
-	    city = $("#info_city").val(),
+	    city = $("#info_city option:selected").text(),
 	    interest = $("#info_interest").val(),
 	    intro = $("#info_txtarea").val(),
 	    userId = $("input[type='hidden']").val();
