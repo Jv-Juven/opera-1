@@ -7,7 +7,8 @@
 	@show
 	<meta http-equiv="keywords" content="中国儿童戏剧曲教育网">
 	<meta http-equiv="description" content="中国儿童戏剧曲教育网">
-
+	<!-- <link rel="shortcut icon" href="/images/common/logo.png" /> -->
+	<link rel="icon" type="image/png" href="/images/icon.png">
 	@section('css')
 		<link rel="stylesheet" href="/dist/css/common.css">
 	@show

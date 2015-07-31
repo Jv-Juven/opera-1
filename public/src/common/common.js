@@ -170,11 +170,26 @@ window.navigation = (function() {
     var urlStr = window.location.pathname,
         urlArr = [],
         headNav = $("#header .nav li");
-        leftNav = $(".left-nav-list li");
+        leftNav = $(".left-nav-list li"),
+        certication_li = $(".certificate-nav-container>ul>li"),
+        arg = [],
+        index = 0;
 
     urlArr = urlStr.split("/");
-    // alert(urlArr[0]+"|"+urlArr[1]);
+    arg = urlArr.length - 1;
+    if(urlArr[arg] == ""){
+        index = 0;
+    }
+    if(isNaN(urlArr[arg])){
+        index = urlArr[arg].charCodeAt() - 64;
+    }
+    else{
+        index = urlArr[arg];
+    }
+    
+    console.log(index);
 
+    // alert(urlArr[0]+"|"+urlArr[1]);
     if(urlArr[1] == ""){
         headNav.removeClass("active").eq(0).addClass("active");
     }
@@ -216,12 +231,15 @@ window.navigation = (function() {
 
             if(urlArr[3] == "identity"){
                 leftNav.removeClass("active").eq(0).addClass("active");
+                certication_li.removeClass("active").eq(index).addClass("active");
             }
             else if(urlArr[3] == "city"){
                 leftNav.removeClass("active").eq(1).addClass("active");
+                certication_li.removeClass("active").eq(index+1).addClass("active");
             }
             else if(urlArr[3] == "username"){
                 leftNav.removeClass("active").eq(2).addClass("active");
+                certication_li.removeClass("active").eq(index).addClass("active");
             }
 
         }
