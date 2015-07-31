@@ -90,11 +90,32 @@ class UserPageController extends BaseController{
 		$topics = $user->hasManyTopics()->get();
 		if($topics != null)
 		{
-			foreach($topics as $topic)
+			foreach($topics as &$topic)
 			{
 				$topic["commentsCount"] = $topic->hasManyTopicComments()->count();
+				$topic["comments"] = $topic->hasManyTopicComments()->get();
+				foreach ($topic["comments"] as &$comment) {
+					$replies = DB::table("comment_of_topiccomments")->where('topiccomment_id', '=', $comment->id)->orderBy("created_at", "desc")->get();
+					$comment["author_name"] = User::find($comment->user_id)->username;
+
+					foreach ($replies as &$reply) {
+						$reply->receiver_name = User::find($reply->receiver_id)->username;
+						$reply->sender_name = User::find($reply->sender_id)->username;
+					}
+
+					// for ($i = 0; $i < count($comment["replies"]); $i ++) { 
+					// 	var_dump($comment["replies"][$i] = $comment["replies"][$i]);
+					// 	// $comment["replies"][$i]["receiver_name"] = User::find($comment["replies"][$i]->receiver_id)->username;
+					// 	// $comment["replies"][$i]["sender_name"] = User::find($comment["replies"][$i]->sender_id)->username;
+					// 	exit;
+					// }
+
+					$comment["replies"] = $replies;
+				}
 			}		
 		}
+
+
 		return View::make('userCenter.dynamic')->with(array(
 			'topics' => $topics,
 			'user'   => $user,

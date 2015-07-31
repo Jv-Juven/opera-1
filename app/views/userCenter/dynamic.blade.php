@@ -38,82 +38,52 @@
 					</a>
 
 					<div class="comments">
+						@foreach($topic->comments as $comment)
 						<div class="comment">
 							<div class="comment-item">
 								<img class="author-avatar" src="http://7sbxao.com1.z0.glb.clouddn.com/login.jpg" width="50" height="50" />
 								<div class="commment-info"> 
-									<span class="author-name">黄小明</span>
+									<span class="author-name">{{{ $comment["author_name"] }}}</span>
 								 	 ： 
-									<span class="comment-content">《苏三起解》因话本和戏剧闻名的苏三，在中国是一个家喻户晓的人物《苏三起解》因话本和戏剧闻名的苏三，在中国是一个家喻户晓的人物《苏三起解》因话本和戏剧闻名的苏三，在中国是一个家喻户晓的人物《苏三起解》因话本和戏剧闻名的苏三，在中国是一个家喻户晓的人物《苏三起解》因话本和戏剧闻名的苏三，在中国是一个家喻户晓的人物《苏三起解》因话本和戏剧闻名的苏三，在中国是一个家喻户晓的人物</span>
+									<span class="comment-content">{{{ $comment["content"] }}}</span>
 									<div class="comment-operate">
-										<span class="comment-time">7月6日 19:36</span>
-										<a class="reply-btn" href="javascript:void(0);">回复</a>
+										<span class="comment-time">{{{ $comment["created_at"] }}}</span>
+										<a class="comment-reply-btn" href="javascript:void(0);">回复</a>
 									</div>
 								</div>
 								<div class="comment-input-wrapper">
 									<textarea class="reply-input"></textarea>
+									<input type="button" class="comment-reply-submit-btn" value="提交" />
+								</div>
+								<div style="clear:both;"></div>
+							</div>
+							<div class="replies">
+								@foreach($comment["replies"] as $reply)
+								<div class="reply">
+									<img class="author-avatar" src="http://7sbxao.com1.z0.glb.clouddn.com/login.jpg" width="50" height="50" />
+									<div class="reply-info"> 
+										<span class="author-name">{{{ $reply->sender_name }}}</span>
+										回复
+										<span class="author-name">{{{ $reply->receiver_name }}}</span>
+
+									 	 ： 
+										<span class="reply-content">{{{ $reply->content }}}</span>
+										<div class="reply-operate">
+											<span class="reply-time">{{{ $reply->created_at }}}</span>
+											<!-- <span class="reply-time">7月6日 19:36</span> -->
+											<a class="reply-btn" href="javascript:void(0);">回复</a>
+										</div>
+									</div>
+									<div style="clear:both;"></div>
+								</div>
+								@endforeach
+								<div class="reply-input-wrapper">
+									<textarea class="reply-input"></textarea>
 									<input type="button" class="reply-submit-btn" value="提交" />
 								</div>
-								<div style="clear:both;"></div>
-							</div>
-							<div class="replies">
-								<div class="reply">
-									<img class="author-avatar" src="http://7sbxao.com1.z0.glb.clouddn.com/login.jpg" width="50" height="50" />
-									<div class="reply-info"> 
-										<span class="author-name">黄小明</span>
-									 	 ： 
-										<span class="reply-content">《苏三起解》因话本和戏剧闻名的苏三，在中国是一个家喻户晓的人物《苏三起解》因话本和戏剧闻名的苏三，在中国是一个家喻户晓的人物《苏三起解》因话本和戏剧闻名的苏三，在中国是一个家喻户晓的人物《苏三起解》因话本和戏剧闻名的苏三，在中国是一个家喻户晓的人物《苏三起解》因话本和戏剧闻名的苏三，在中国是一个家喻户晓的人物《苏三起解》因话本和戏剧闻名的苏三，在中国是一个家喻户晓的人物</span>
-										<div class="reply-operate">
-											<span class="reply-time">7月6日 19:36</span>
-											<a class="reply-btn" href="javascript:void(0);">回复</a>
-										</div>
-									</div>
-									<div style="clear:both;"></div>
-								</div>
-								<div class="reply">
-									<img class="author-avatar" src="http://7sbxao.com1.z0.glb.clouddn.com/login.jpg" width="50" height="50" />
-									<div class="reply-info"> 
-										<span class="author-name">黄小明</span>
-									 	 ： 
-										<span class="reply-content">《苏三起解》因话本和戏剧闻名的苏三，在中国是一个家喻户晓的人物《苏三起解》因话本和戏剧闻名的苏三，在中国是一个家喻户晓的人物《苏三起解》因话本和戏剧闻名的苏三，在中国是一个家喻户晓的人物《苏三起解》因话本和戏剧闻名的苏三，在中国是一个家喻户晓的人物《苏三起解》因话本和戏剧闻名的苏三，在中国是一个家喻户晓的人物《苏三起解》因话本和戏剧闻名的苏三，在中国是一个家喻户晓的人物</span>
-										<div class="reply-operate">
-											<span class="reply-time">7月6日 19:36</span>
-											<a class="reply-btn" href="javascript:void(0);">回复</a>
-										</div>
-									</div>
-									<div style="clear:both;"></div>
-								</div>
-								<div class="reply">
-									<img class="author-avatar" src="http://7sbxao.com1.z0.glb.clouddn.com/login.jpg" width="50" height="50" />
-									<div class="reply-info"> 
-										<span class="author-name">黄小明</span>
-									 	 ： 
-										<span class="reply-content">《苏三起解》因话本和戏剧闻名的苏三，在中国是一个家喻户晓的人物《苏三起解》因话本和戏剧闻名的苏三，在中国是一个家喻户晓的人物《苏三起解》因话本和戏剧闻名的苏三，在中国是一个家喻户晓的人物《苏三起解》因话本和戏剧闻名的苏三，在中国是一个家喻户晓的人物《苏三起解》因话本和戏剧闻名的苏三，在中国是一个家喻户晓的人物《苏三起解》因话本和戏剧闻名的苏三，在中国是一个家喻户晓的人物</span>
-										<div class="reply-operate">
-											<span class="reply-time">7月6日 19:36</span>
-											<a class="reply-btn" href="javascript:void(0);">回复</a>
-										</div>
-									</div>
-									<div style="clear:both;"></div>
-								</div>
 							</div>
 						</div>
-						<div class="comment">
-							<div class="comment-item">
-								<img class="author-avatar" src="http://7sbxao.com1.z0.glb.clouddn.com/login.jpg" width="50" height="50" />
-								<div class="commment-info"> 
-									<span class="author-name">黄小明</span>
-								 	 ： 
-									<span class="comment-content">《苏三起解》因话本和戏剧闻名的苏三，在中国是一个家喻户晓的人物《苏三起解》因话本和戏剧闻名的苏三，在中国是一个家喻户晓的人物《苏三起解》因话本和戏剧闻名的苏三，在中国是一个家喻户晓的人物《苏三起解》因话本和戏剧闻名的苏三，在中国是一个家喻户晓的人物《苏三起解》因话本和戏剧闻名的苏三，在中国是一个家喻户晓的人物《苏三起解》因话本和戏剧闻名的苏三，在中国是一个家喻户晓的人物</span>
-									<div class="comment-operate">
-										<span class="comment-time">7月6日 19:36</span>
-										<a class="reply-btn" href="javascript:void(0);">回复</a>
-									</div>
-								</div>
-								<div style="clear:both;"></div>
-							</div>
-							<div class="replies">
-						</div>
+						@endforeach
 					</div>
 				</p>
 			</div>
