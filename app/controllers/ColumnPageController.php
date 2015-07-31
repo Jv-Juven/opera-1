@@ -107,7 +107,7 @@ class ColumnPageController extends BaseController{
 					// $name 			= User::find($user_id)->username;
 					// $comment_name[$user_id] = $name;
 					//评论的回复人信息
-					$replys		= CommentOfTopiccomment::where('topiccomment_id','=', $topic_comments->id);
+					$replys	 = CommentOfTopiccomment::where('topiccomment_id','=', $topic_comment->id);
 					// $reply_name	= array();
 					if($replys != null)
 					{
@@ -119,13 +119,13 @@ class ColumnPageController extends BaseController{
 				}
 
 				return View::make('communication.topics')->with(array(
-					'topic'=>$topic, 
-					'topic_comments'=>$topic_comments,
-					'comment_replys' => $comment_replys,
-					'commentCount' => $commentCount,
-					'another' 	=> $another,
-					'user' 		=>$user,
-					'links' 		=>$this->link()
+					'topic'			=> $topic, 
+					'topic_comments'	=> $topic_comments,
+					'comment_replys' 	=> $comment_replys,
+					'commentCount' 	=> $commentCount,
+					'another' 		=> $another,
+					'user' 			=>$user,
+					'links' 			=>$this->link()
 					));
 			}
 		}
