@@ -9,7 +9,7 @@
 		"cartalyst/sentry": "2.1.4",
 		"gregwar/captcha": "dev-master",
 		 "frozennode/administrator": "4.*",
-		 "qiniu/php-sdk": "7.*",
+		 "qiniu/php-sdk": "7.*"
 	},
 	"require-dev":{
 		"way/generators": "~2.0"
