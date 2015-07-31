@@ -34,7 +34,7 @@ $("#info_confirm").click(function() {
 	var realName = $("#info_name").val(),
 	    gender = $(".radio-container input[type='radio']:checked").val(),
 	    job = $("#info_job").val(),
-	    city = $("#info_city").val(),
+	    city = $("#info_city option:selected").text(),
 	    interest = $("#info_interest").val(),
 	    intro = $("#info_txtarea").val(),
 	    userId = $("input[type='hidden']").val();
@@ -63,7 +63,7 @@ $(".img-char").click(function() {
         browse_button: "change_avatar",
         container: "avatar_container",
         uptoken_url: "/qiniu/getUpToken",
-        domain: "http://7sbxao.com1.z0.glb.clouddn.com/"
+        domain: "http://7xk6xh.com1.z0.glb.clouddn.com/"
     },{
         FileUploaded: function (up,file,info) {
             info = $.parseJSON(info);
