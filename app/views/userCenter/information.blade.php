@@ -70,7 +70,45 @@
 			<div class="p city">
 				<span class="name-field">所在城市:</span>
 				<span class="name-info noedit-status">{{{$user->city}}}</span>
-				<input id="info_city" class="name-info edit-status" type="text" value="{{{$user->city}}}"></input>
+				<!-- <input id="info_city" class="name-info edit-status" type="text" value="{{{$user->city}}}"></input> -->
+				<select id="info_city" class="name-info edit-status">
+					<option>北京市</option>
+					<option>天津市</option>
+					<option>河北省</option>
+					<option>山西省</option>
+					<option>内蒙古自治区</option>
+					<option>辽宁省</option>
+					<option>吉林省</option>
+					<option>黑龙江省</option>
+					<option>上海市</option>
+					<option>江苏省</option>
+					<option>浙江省</option>
+					<option>安徽省</option>
+					<option>福建省</option>
+					<option>江西省</option>
+					<option>山东省</option>
+					<option>河南省</option>
+					<option>湖北省</option>
+					<option>湖南省</option>
+					<option selected="selected">广东省</option>
+					<option>广西壮族自治区</option>
+					<option>海南省</option>
+					<option>重庆市</option>
+					<option>四川省</option>
+					<option>贵州省</option>
+					<option>云南省</option>
+					<option>西藏自治区</option>
+					<option>陕西省</option>
+					<option>甘肃省</option>
+					<option>青海省</option>
+					<option>宁夏回族自治区</option>
+					<option>新疆维吾尔自治区</option>
+					<option>台湾省</option>
+					<option>香港特别行政区</option>
+					<option>澳门特别行政区</option>
+					<option>海外</option>
+					<option>其他</option>
+				</select>
 			</div>
 			<div class="p internets">
 				<span class="name-field">兴&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;趣:</span>

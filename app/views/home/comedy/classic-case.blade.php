@@ -20,7 +20,7 @@
 		@if($appreciations != null)
 			@foreach($appreciations as $appreciation)
 			<div class="classic-content">
-				<img src="/images/admin/classic/{{$appreciation->video_img}}" alt="">
+				<img src="/images/admin/classic/{{$appreciation->video_img}}" data-id="{{$appreciation->id}}" alt="">
 				<span class="classic-name-container">
 					戏剧
 					<span class="classic-name">{{$appreciation->title}}</span>
