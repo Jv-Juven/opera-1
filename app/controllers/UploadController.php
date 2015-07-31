@@ -6,8 +6,8 @@ class UploadController extends \BaseController {
 
 	public function getUpToken()
 	{
-		$accessKey = 'KHltWJvn82wXVCCcs2OI1FQYID7T8CcS1wJG9KLP';
-		$secretKey = '-1ixiyPLCtQSIKm0PWyVGBSIy7SzFLrY6MH2Se4Q';
+		$accessKey = 'KnOa3BkwBgjUSOm6TqvtYoARkhGM7blkOIq7G9Mg';
+		$secretKey = '0XmYlKCYaushdgA-R9_d87hyvYPsHDKTnVQTW2Q5';
 		$auth = new Auth($accessKey, $secretKey);
 
 		$bucket = 'opera';
