@@ -74,6 +74,10 @@ Route::group(array('prefix'=>'user'),function()
 			Route::get('is_own', 'UserController@isOwn');
 			//发表话题
 			Route::post('issue_topic', 'UserController@issueTopic');
+			//发表话题评论
+			Route::post('topic_comment','UserController@topicComment');
+			//发表话题评论的回复
+			Route::post('comment_topiccomment', 'UserController@commentOfTopicComment');
 			//发表留言
 			Route::post('message', 'UserController@postMessage');
 			//发表回复

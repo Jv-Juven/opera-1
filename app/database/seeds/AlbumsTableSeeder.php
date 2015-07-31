@@ -24,11 +24,51 @@ class AlbumsTableSeeder extends Seeder {
 			'title' => '戏剧人生，人生戏剧',
 		]);
 		Album::create([
-			'user_id' => '1',
+			'user_id' => '2',
 			'title' => '戏剧人生，人生戏剧',
 		]);
 		Album::create([
-			'user_id' => '1',
+			'user_id' => '2',
+			'title' => '戏剧人生，人生戏剧',
+		]);
+		Album::create([
+			'user_id' => '2',
+			'title' => '戏剧人生，人生戏剧',
+		]);
+		Album::create([
+			'user_id' => '2',
+			'title' => '戏剧人生，人生戏剧',
+		]);
+		Album::create([
+			'user_id' => '3',
+			'title' => '戏剧人生，人生戏剧',
+		]);
+		Album::create([
+			'user_id' => '3',
+			'title' => '戏剧人生，人生戏剧',
+		]);
+		Album::create([
+			'user_id' => '3',
+			'title' => '戏剧人生，人生戏剧',
+		]);
+		Album::create([
+			'user_id' => '3',
+			'title' => '戏剧人生，人生戏剧',
+		]);
+		Album::create([
+			'user_id' => '4',
+			'title' => '戏剧人生，人生戏剧',
+		]);
+		Album::create([
+			'user_id' => '4',
+			'title' => '戏剧人生，人生戏剧',
+		]);
+		Album::create([
+			'user_id' => '4',
+			'title' => '戏剧人生，人生戏剧',
+		]);
+		Album::create([
+			'user_id' => '4',
 			'title' => '戏剧人生，人生戏剧',
 		]);
 

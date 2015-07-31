@@ -22,6 +22,8 @@ class MessagesTableSeeder extends Seeder {
 			'sender_id' => 4,
 			'content' => '其实不应该是这样的，你完全不理解戏曲的重要性，我们做的是什么，热爱，对生活的向往，向阳！',
 		]);
+
+
 		
 	}
 

@@ -6,7 +6,7 @@ class TopicComment extends Eloquent{
 
 	protected $fillable = array(
 		'id',
-		'comment',
+		'content',
 		'user_id',
 		'topic_id',
 		'created_at',

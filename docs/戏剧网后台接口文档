@@ -431,6 +431,34 @@
 				message:xxx			提示信息
 				}
 
+	4.1 发表话题评论
+		请求方式:	POST
+		请求url:	/user/personal/topic_comment
+
+		请求参数:	
+				topic_id:xxx 			话题的id
+				content:xxx 			话题内容
+
+		返回参数:
+				{
+				errCode:xxx,			错误码	0表示返回正常	 
+				message:xxx			提示信息
+				}
+
+	4.2 发表话题评论的回复
+		请求方式:	POST
+		请求url:	/user/personal/comment_topiccomment
+
+		请求参数:	
+				topicComment_id:xxx 		评论的id
+				content:xxx 			话题内容
+
+		返回参数:
+				{
+				errCode:xxx,			错误码	0表示返回正常	 
+				message:xxx			提示信息
+				}
+
 
 	5.启蒙专栏
 		请求方式:	GET
@@ -1364,8 +1392,8 @@
 				page:xxx 		总页数
 				appreciations:[	
 					{
+					id:xxx 			视频id
 					title:xxx 		视频标题
-					video:xxx 		视频连接
 					video_img:xxx 		视频截图
 					},...
 				]
@@ -1376,4 +1404,16 @@
 
 				http://player.youku.com/player.php/sid/XMTI4NjQ4Njg0MA==/v.swf
 
+	3. 视频播放:
+		请求方式:	GET
+		请求url:	customer/performance/appreciation_more
+
+		请求参数:	video_id			视频id
+
+		返回参数: 
+				{
+					errCode:xxx,			错误码	0表示返回正常	 
+					message:xxx			提示信息
+					video:xxx 			视频连接
+				}
 				
