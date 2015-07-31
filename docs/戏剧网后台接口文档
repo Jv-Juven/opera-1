@@ -1353,3 +1353,19 @@
 					errCode:xxx,			错误码	0表示返回正常	 
 					message:xxx			提示信息
 				}
+
+	2. 经典欣赏静态页面
+		请求方式:	GET
+		请求url:	customer/performance/appreciation
+
+		请求参数:	无
+
+		返回参数: 
+				page:xxx 		总页数
+				appreciations:[	
+					{
+					title:xxx 		视频标题
+					video:xxx 		视频连接
+					video_img:xxx 		视频截图
+					},...
+				]

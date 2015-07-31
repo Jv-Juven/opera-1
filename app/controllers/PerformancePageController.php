@@ -58,13 +58,13 @@ class PerformancePageController extends BaseController{
 	public function appreciation()
 	{	
 		$appreciation_count  = Appreciation::count();
-		$page			 = ceil($appreciation_count/15);
+		$page			 = ceil($appreciation_count/4);
 		$appreciations 	 = Appreciation::paginate(4);
-		return View::make('home.comedy.classic-case')->with('links',$this->link());
-			// ->with(array(
-			// 	'appreciations' => $appreciations,
-			// 	'page'		  => $page
-			// ));
+		return View::make('home.comedy.classic-case')->with(array(
+				'appreciations' => $appreciations,
+				'page'		=> $page,
+				'links'		=>$this->link()
+			));
 	}
 
 	public function appreciationMore()
