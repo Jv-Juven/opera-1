@@ -15,10 +15,10 @@ class CreateCommentOfTopiccomments extends Migration {
 		Schema::create('comment_of_topiccomments', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->integer('sender_id')->unsigned()->index('sender_id');
-			$table->integer('topiccomment_id')->unsigned()->index('topiccomment_id');
-			$table->integer('receiver_id')->unsigned()->index('receiver_id');
-			$table->string('content');
+			$table->integer('sender_id')->unsigned()->index('sender_id');		// 发表回复的用户
+			$table->integer('topiccomment_id')->unsigned()->index('topiccomment_id');	// 该回复所在的评论
+			$table->integer('receiver_id')->unsigned()->index('receiver_id');	// 被回复的用户
+			$table->string('content');	// 评论内容
 			$table->timestamps();
 
 			$table                          

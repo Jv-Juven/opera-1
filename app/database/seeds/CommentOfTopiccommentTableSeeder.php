@@ -8,21 +8,24 @@ class CommentOfTopiccommentTableSeeder extends Seeder {
 	public function run()
 	{
 		CommentOfTopiccomment::create([
-			'user_id' => 4,
+			'sender_id' => 4,
+			'receiver_id' => 1,
 			'topiccomment_id' =>1,
-			'content' => '神回复'
+			'content' => '神回复1'
 		]);
 
 		CommentOfTopiccomment::create([
-			'user_id' => 4,
-			'topiccomment_id' =>2,
-			'content' => '神回复'
+			'sender_id' => 1,
+			'receiver_id' => 4,
+			'topiccomment_id' =>1,
+			'content' => '神回复2'
 		]);
 
 		CommentOfTopiccomment::create([
-			'user_id' => 4,
-			'topiccomment_id' =>3,
-			'content' => '神回复'
+			'sender_id' => 2,
+			'receiver_id' => 1,
+			'topiccomment_id' => 2,
+			'content' => '神回复3'
 		]);
 
 	}
