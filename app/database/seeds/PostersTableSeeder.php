@@ -7,14 +7,14 @@ class PostersTableSeeder extends Seeder {
 
 	public function run()
 	{
-			Poster::create([
-				'image' => 'http://7xk6xh.com1.z0.glb.clouddn.com/home_page.png'
-			]);
+		Poster::create([
+			'image' => 'http://7xk6xh.com1.z0.glb.clouddn.com/home_page.png',
+			'link' => 'http://www.baidu.com'
+		]);
 
-			Poster::create([
-				'image' => 'http://7xk6xh.com1.z0.glb.clouddn.com/home_page.png'
-			]);
-
+		Poster::create([
+			'image' => 'http://7xk6xh.com1.z0.glb.clouddn.com/home_page.png',
+			'link' => 'http://www.baidu.com'
+		]);
 	}
-
 }

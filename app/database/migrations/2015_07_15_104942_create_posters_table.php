@@ -15,8 +15,8 @@ class CreatePostersTable extends Migration {
 		Schema::create('posters', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->string('image');//图片连接
-			$table->string('link');
+			$table->string('image');				// 图片链接
+			$table->string('link');		// 点击后的跳转链接
 			$table->timestamps();
 		});
 	}
