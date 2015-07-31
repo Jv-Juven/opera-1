@@ -1,5 +1,20 @@
+//用户id验证
+var user_verify = (function() {
 
+    var des_id = $("#des_id").val();
+    console.log(des_id);
+    $.get("/user/personal/is_own",{
+        user_id: des_id
+    },function(data) {
+        if(data["errCode"] != 0){
+            $(".avatar-change,.edit-click").hide();
+        }
+        else{
 
+        }
+    });
+
+})();
 
 // 点击”编辑资料“按钮
 $(".edit-click").click(function() {
@@ -41,5 +56,27 @@ $("#info_confirm").click(function() {
     	}
     },"json");
 
-
 });
+
+$(".img-char").click(function() {
+    $.upload({
+        browse_button: "change_avatar",
+        container: "avatar_container",
+        uptoken_url: "/qiniu/getUpToken",
+        domain: "http://7sbxao.com1.z0.glb.clouddn.com/"
+    },{
+        FileUploaded: function (up,file,info) {
+            info = $.parseJSON(info);
+            domain = up.getOption("domain");
+            url = domain + info.key;
+
+            $(".img-char").find("img").attr("src",url);
+        }
+    });
+});
+
+
+
+
+
+

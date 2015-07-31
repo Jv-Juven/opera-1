@@ -1,4 +1,4 @@
-@extends('layouts.subpage');
+@extends('layouts.subpage')
 
 @section('title')
 	<title>台前幕后</title>

@@ -22,8 +22,25 @@
 	// 点击topics_border02的“发布话题”按钮事件 //
 	///////////////////
 	$(".topics-publish-btn").click(function() {
-		$("#topics_border02").fadeOut(200);
-		$("#topics_border01").fadeIn(200);
+
+		var title = $("#topics_title").val(),
+			content = $("#topics_content").val();
+
+		$.post("/user/personal/issue_topic",{
+			title: title,
+			content: content
+		},function(data) {
+			if(data["errCode"] == 0){
+				console.log("发布话题信息提交成功");
+				window.location.href = window.location.href;
+				// $("#topics_border02").fadeOut(200);
+				// $("#topics_border01").fadeIn(200);
+			}
+			else{
+				alert(data["message"]);
+			}
+		});
+
 	});
 
 })(jQuery);

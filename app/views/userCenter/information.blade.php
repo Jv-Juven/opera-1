@@ -16,16 +16,17 @@
 
 @section('page-content')
 	<div class="page-content">
-		<div class="page-img">
+		<div class="page-img" id="avatar_container">
 			<div class="img">
 				<img class="avatar" src="{{{$user->avatar}}}">
 			</div>
 			<div class="img-char">
-					<img class="avatar-btn" src="/images/userCenter/change_pic.png">
-					<span class="avatar-char">更换头像</span>
+				<img class="avatar-btn avatar-change" src="/images/userCenter/change_pic.png">
+				<span class="avatar-char avatar-change">更换头像</span>
+				<input type="file" id="change_avatar"/>
 			</div>	
 		</div>
-		<input type="hidden" value="{{$user->id}}" />
+		<input id="des_id" type="hidden" value="{{$user->id}}" />
 		<div class="information-container clearx">
 			<div class="p name">
 				<span class="name-field">真实姓名:</span>
@@ -96,6 +97,8 @@
 
 @section("js")
     @parent
+    <script type="text/javascript" src="/dist/js/lib/plugins/qiniu.min.js"></script>
+    <script type="text/javascript" src="/dist/js/lib/plugins/plupload.full.min.js"></script>
     <script type="text/javascript" src="/dist/js/pages/information.js"></script>
 @stop
 

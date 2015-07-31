@@ -1,4 +1,4 @@
-@extends('layouts.subpage');
+@extends('layouts.subpage')
 
 @section('title')
 	<title>经典欣赏</title>
@@ -63,9 +63,10 @@
 			<li>共<span class="enlighten-pages">2</span>页</li>
 		</ul>
 	</div>
+	<div id="case_video" class="full-screen"></div>
 @stop
 
 @section('js')
 	@parent
-	<!-- // <script type="text/javascript" src="/src/pages/communication/masterdynamic/masterdynamic.js"></script> -->
+	<script type="text/javascript" src="/dist/js/pages/classic-case.js"></script>
 @stop
