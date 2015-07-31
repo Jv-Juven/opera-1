@@ -21,3 +21,4 @@ $('.pagination .disabled').css({
 		"color": "#000"
 	});
 });
+$(".pagination").fadeIn(1200);

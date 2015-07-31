@@ -18,7 +18,7 @@
 	<div class="page-content">
 		<div class="certificate-nav-container">
 			<ul>
-				<li class="active"><a href="/customer/authentication/city">全部</a> </li>
+				<li class=""><a href="/customer/authentication/city">全部</a> </li>
 				<li><a href="/customer/authentication/city/0">北京市</a></li>
 				<li><a href="/customer/authentication/city/1">天津市</a></li>
 				<li><a href="/customer/authentication/city/2">河北省</a></li>

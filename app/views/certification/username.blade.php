@@ -18,7 +18,7 @@
 	<div class="page-content">
 		<div class="certificate-nav-container">
 			<ul>
-				<li class="active"><a href="/customer/authentication/username">全部</a></li>
+				<li class=""><a href="/customer/authentication/username">全部</a></li>
 				<li><a href="/customer/authentication/username/A">A</a></li>
 				<li><a href="/customer/authentication/username/B">B</a></li>
 				<li><a href="/customer/authentication/username/C">C</a></li>
