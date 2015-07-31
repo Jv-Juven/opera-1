@@ -41,7 +41,7 @@
 						@foreach($topic->comments as $comment)
 						<div class="comment">
 							<div class="comment-item">
-								<img class="author-avatar" src="http://7sbxao.com1.z0.glb.clouddn.com/login.jpg" width="50" height="50" />
+								<img class="author-avatar" src="{{{ $comment['author_avatar'] }}}" width="50" height="50" />
 								<div class="commment-info"> 
 									<span class="author-name">{{{ $comment["author_name"] }}}</span>
 								 	 ： 
@@ -60,7 +60,7 @@
 							<div class="replies">
 								@foreach($comment["replies"] as $reply)
 								<div class="reply">
-									<img class="author-avatar" src="http://7sbxao.com1.z0.glb.clouddn.com/login.jpg" width="50" height="50" />
+									<img class="author-avatar" src="{{{ $reply->sender_avatar }}}" width="50" height="50" />
 									<div class="reply-info"> 
 										<span class="author-name">{{{ $reply->sender_name }}}</span>
 										回复

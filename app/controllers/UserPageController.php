@@ -97,18 +97,14 @@ class UserPageController extends BaseController{
 				foreach ($topic["comments"] as &$comment) {
 					$replies = DB::table("comment_of_topiccomments")->where('topiccomment_id', '=', $comment->id)->orderBy("created_at", "desc")->get();
 					$comment["author_name"] = User::find($comment->user_id)->username;
+					$comment["author_avatar"] = User::find($comment->user_id)->avatar;
 
 					foreach ($replies as &$reply) {
+						$reply->receiver_avatar = User::find($reply->receiver_id)->avatar;
 						$reply->receiver_name = User::find($reply->receiver_id)->username;
+						$reply->sender_avatar = User::find($reply->sender_id)->avatar;
 						$reply->sender_name = User::find($reply->sender_id)->username;
 					}
-
-					// for ($i = 0; $i < count($comment["replies"]); $i ++) { 
-					// 	var_dump($comment["replies"][$i] = $comment["replies"][$i]);
-					// 	// $comment["replies"][$i]["receiver_name"] = User::find($comment["replies"][$i]->receiver_id)->username;
-					// 	// $comment["replies"][$i]["sender_name"] = User::find($comment["replies"][$i]->sender_id)->username;
-					// 	exit;
-					// }
 
 					$comment["replies"] = $replies;
 				}
