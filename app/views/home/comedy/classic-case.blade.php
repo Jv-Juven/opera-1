@@ -41,7 +41,9 @@
 			<li>共<span class="enlighten-pages">2</span>页</li>
 		</ul>
 	</div>
-	<div id="case_video" class="full-screen"></div>
+	<div id="case_video" class="full-screen">
+		<iframe height=498 width=510 src="" frameborder=0 allowfullscreen></iframe>
+	</div>
 @stop
 
 @section('js')
