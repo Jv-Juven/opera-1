@@ -114,11 +114,18 @@ class UserPageController extends BaseController{
 			foreach($albums as $album)
 			{
 				$album->albumCount 	= $album->hasManyPictures()->count();
-				$album->picture	= $album->hasManyPictures()->first()->picture;
+				$pictures 		= $album->hasManyPictures()->get();
+				$pictures 		= $pictures->toArray();
+				if($pictures == null)
+				{
+					$album->picture 	= "http://7xk6xh.com1.z0.glb.clouddn.com/album_03.png";
+				}else{
+
+					$album->picture	= $pictures[0]['picture'];
+				}
 				$album->save();
 			}	
 		}
-
 		$albums = Album::where('user_id','=', $user_id)->paginate(6);
 
 		return View::make('userCenter.photo-album')->with(array(
