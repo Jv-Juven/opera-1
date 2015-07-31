@@ -108,6 +108,7 @@ class ColumnPageController extends BaseController{
 					// $comment_name[$user_id] = $name;
 					//评论的回复人信息
 					$replys	 = CommentOfTopiccomment::where('topiccomment_id','=', $topic_comment->id);
+
 					// $reply_name	= array();
 					if($replys != null)
 					{
@@ -131,8 +132,8 @@ class ColumnPageController extends BaseController{
 		}
 		return View::make('communication.topics')->with('links',$this->link());
 				// ->with(array(
-				// 'topic'=>$topic, 
-				// 'topic_comments'=>$topic_comments,
+				// 'topic' => $topic, 
+				// 'topic_comments' =>$topic_comments,
 				// 'commentCount' => $commentCount,
 				// 'comment_name' => $comment_name,
 				// 'user' => $user

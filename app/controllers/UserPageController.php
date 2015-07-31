@@ -12,8 +12,8 @@ class UserPageController extends BaseController{
 		$_SESSION['phrase'] = $phrase;
 		return View::make('login')->with(array(
 			'captcha' 	=> $builder,
-			'links' 		=>$this->link()
-			));
+			'links' 	=>$this->link()
+		));
 	}
 
 	public function getRemind()
@@ -51,8 +51,13 @@ class UserPageController extends BaseController{
  				{
  					$picture[$album['id']]	 = $p[0]['picture'];
  				}
+ 				else 
+ 				{
+ 					$picture[$album['id']]	 = "http://7xk6xh.com1.z0.glb.clouddn.com/album_03.png";
+ 				}
  			}
  		}
+
  		if($topics != null)
  		{
  			foreach($topics as $topic)
@@ -63,15 +68,18 @@ class UserPageController extends BaseController{
 
  		$albums 			= Album::where('user_id', '=', $user_id)->paginate(2);
  		$topics 			= Topic::where('user_id', '=', $user_id)->paginate(2);
-		return View::make('userCenter.zone')->with(array(
-				'user' 	  		  => $user,
-				'albums'  		  => $albums,
-				'topics'   		  => $topics,
-				'pictureCount' 	  	  =>$pictureCount,
-				'picture'		  =>$picture,
-				'topicCommentCount'    => $topicCommentCount,
-				'links' 			  =>$this->link()
-			));
+			
+		$result = array(
+			'user' 	  		  		=> $user,
+			'albums'  		  		=> $albums,
+			'topics'   		  		=> $topics,
+			'pictureCount' 	  		=>$pictureCount,
+			'picture'		 	 	=>$picture,
+			'topicCommentCount'    	=> $topicCommentCount,
+			'links' 			  	=>$this->link()
+		);
+
+		return View::make('userCenter.zone')->with($result);
 	}
 
 	//话题动态
