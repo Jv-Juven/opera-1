@@ -718,6 +718,7 @@ class UserController extends BaseController{
 		return Response::json(array('errCode'=>0, 'message' => '头像上传成功！'));
 	}
 
+	//发表话题
 	public function issueTopic()
 	{
 		$title = Input::get('title');
@@ -749,6 +750,62 @@ class UserController extends BaseController{
 		}
 
 		return Response::json(array('errCode'=>2, 'message'=>'话题发表失败，请重新发送！'));
+	}
+
+	// 发表话题评论
+	public function topicComment()
+	{
+		$user 		= Auth::user();
+		$topic_id	=Input::get('topic_id');
+		$content 	= Input::get('content');
+		$validation = Validator::make(
+			array('content'=>$content),
+			array('content'=>'required')
+			);
+		if($validation->fails())
+		{
+			return Response::json(array('errCode' => 1,'message'=>'请写评论！'));
+		}
+
+		$topicComment = new TopicComment;
+		$topicComment->topic_id = $topic_id;
+		$topicComment->user_id = $user->id;
+		$topicComment->content = $content;
+		if($topicComment->save())
+		{
+			return Response::json(array('errCode'=>0, 'message'=>'评论成功'));
+		}
+
+		return Response::json(array('errCode'=>2, 'message'=>'评论失败！'));
+	}
+
+	//发表话题评论的回复
+	public function commentOfTopicComment()
+	{
+		$user 			= Auth::user();
+		$topicComment_id	=Input::get('topicComment_id');
+		$content 		= Input::get('content');
+		$validation		= Validator::make(
+					array('content'=>$content),
+					array('content'=>'required')
+					);
+		if($validation->fails())
+		{
+			return Response::json(array('errCode' => 1,'message'=>'请写评论！'));
+		}
+
+		$commentOfTopiccomment 				= new CommentOfTopiccomment;
+		$commentOfTopiccomment->user_id 		= $user->id;
+		$commentOfTopiccomment->topiccomment_id 	= $topicComment_id;
+		$commentOfTopiccomment->content 		=$content;
+
+		if($commentOfTopiccomment->save())
+		{
+			return Response::json(array('errCdoe'=>0,'message'=>'回复成功！'));
+		}
+
+		return Response::json(array('errCode'=>2, 'message'=>'回复失败！'));
+
 	}
 
 	public function isOwn()

@@ -16,22 +16,17 @@
     	<div id="slider">
             <div class="swiper-container home-swiper-container">
                 <div class="swiper-wrapper">
+                    @if($posters != null)
                         @foreach($posters as $poster)
                     <div class="swiper-slide"><a href="{{$poster->link}}"><img src="/images/admin/posters/{{$poster->image}}" class="slider-img" alt=""></a></div>
                         @endforeach
+                    @endif
                 </div>
                 <!-- 如果需要分页器 -->
                 <div class="swiper-pagination"></div>
-                
-                <!-- 如果需要导航按钮 -->
-                <!-- <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next"></div> -->
-                
-                <!-- 如果需要滚动条 -->
-                <!-- <div class="swiper-scrollbar"></div> -->
+
             </div>
 
-    		<!-- <img src="{{$posters[0]->image}}" class="slider-img" alt=""> -->
     	</div>
 
     	<ul id="content">

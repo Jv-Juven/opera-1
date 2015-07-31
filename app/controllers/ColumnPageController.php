@@ -88,29 +88,42 @@ class ColumnPageController extends BaseController{
 	public function getOneTopic()
 	{	
 		//获取最新的那个话题
-		$topic = Topic::orderBy('id', 'asc')->first();
+		$topic = Topic::orderBy('updated_at', 'desc')->first();
 		if($topic != null)
 		{	//话题人的信息
 			$user_id 		= $topic->user_id;
 			$user 			= User::find($user_id);
 			//话题评论
-			$topic_comments 	= $topic->hasManyTopicComments()->get(); 
-			$comment_name 	= array();
+			$topic_comments  	= $topic->hasManyTopicComments()->get(); 
+			// $comment_name 	= array();
+			$comment_replys = array();
+			$another	 = User::all();	
 			if($topic_comments != null)
 			{	
 				$commentCount = $topic_comments->count();
 				foreach($topic_comments as $topic_comment)
 				{	//评论人的信息	
-					$user_id 			= $topic_comment->user_id;
-					$name 			= User::find($user_id)->username;
-					$comment_name[$user_id] = $name;
+					// $user_id 		= $topic_comment->user_id;
+					// $name 			= User::find($user_id)->username;
+					// $comment_name[$user_id] = $name;
+					//评论的回复人信息
+					$replys		= CommentOfTopiccomment::where('topiccomment_id','=', $topic_comments->id);
+					// $reply_name	= array();
+					if($replys != null)
+					{
+						foreach($replys as $reply)
+						{
+							array_push($comment_replys,$reply);
+						}
+					}
 				}
 
 				return View::make('communication.topics')->with(array(
 					'topic'=>$topic, 
 					'topic_comments'=>$topic_comments,
+					'comment_replys' => $comment_replys,
 					'commentCount' => $commentCount,
-					'comment_name' => $comment_name,
+					'another' 	=> $another,
 					'user' 		=>$user,
 					'links' 		=>$this->link()
 					));
