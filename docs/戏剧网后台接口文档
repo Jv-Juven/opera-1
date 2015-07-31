@@ -1416,4 +1416,10 @@
 					message:xxx			提示信息
 					video:xxx 			视频连接
 				}
-				
+
+	4. 七牛云:
+		请求方式:	GET
+		请求url:	qiniu/getUpToken
+
+		请求参数:
+

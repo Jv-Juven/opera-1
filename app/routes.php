@@ -136,12 +136,20 @@ Route::group(array('prefix'=>'customer'), function()
 		Route::get('backstage_more', 'PerformancePageController@backStageMore');
 		//经典欣赏
 		Route::get('appreciation','PerformancePageController@appreciation');
-		Route::get('appreciation_more','PerformancePageController@appreciationMore');
+		Route::post('appreciation_more','PerformancePageController@appreciationMore');
 	});
 
 	//招贤纳士
 	Route::get('employment', 'EmployPageController@employment');
 	Route::get('employment_more','EmployPageController@employmentMore');
+});
+
+Route::group(array('prefix' => 'qiniu'),function()
+{
+	Route::group(array('before' => 'auth'), function()
+	{
+		Route::get('getUpToken','UploadController@getUpToken');
+	});
 });
 
 //后台管理员路由

@@ -15,13 +15,20 @@ class CreateCommentOfTopiccomments extends Migration {
 		Schema::create('comment_of_topiccomments', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->integer('user_id')->unsigned()->index('user_id');
+			$table->integer('sender_id')->unsigned()->index('sender_id');
 			$table->integer('topiccomment_id')->unsigned()->index('topiccomment_id');
+			$table->integer('receiver_id')->unsigned()->index('receiver_id');
 			$table->string('content');
 			$table->timestamps();
 
 			$table                          
-				->foreign('user_id')
+				->foreign('sender_id')
+				->references('id')->on('users') 
+				->onDelete('cascade')
+				->onUpdate('cascade');
+
+			$table                          
+				->foreign('receiver_id')
 				->references('id')->on('users') 
 				->onDelete('cascade')
 				->onUpdate('cascade');
