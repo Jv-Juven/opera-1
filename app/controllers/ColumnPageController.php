@@ -97,7 +97,6 @@ class ColumnPageController extends BaseController{
 			$topic_comments  	= $topic->hasManyTopicComments()->get(); 
 			// $comment_name 	= array();
 			$comment_replys = array();
-			$another	 = User::all();	
 			if($topic_comments != null)
 			{	
 				$commentCount = $topic_comments->count();
@@ -124,7 +123,6 @@ class ColumnPageController extends BaseController{
 					'topic_comments'	=> $topic_comments,
 					'comment_replys' 	=> $comment_replys,
 					'commentCount' 	=> $commentCount,
-					'another' 		=> $another,
 					'user' 			=>$user,
 					'links' 			=>$this->link()
 					));

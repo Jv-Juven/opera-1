@@ -17,39 +17,17 @@
 @section('page-content')
 	<div class="page-content">
 		<div class="classic-container clearx">
-
+		@if($appreciations != null)
+			@foreach($appreciations as $appreciation)
 			<div class="classic-content">
-				<img src="/images/home/classic_case.png" alt="">
+				<img src="/images/admin/classic/{{$appreciation->video_img}}" alt="">
 				<span class="classic-name-container">
 					戏剧
-					<span class="classic-name">《苏三起舞》</span>
+					<span class="classic-name">{{$appreciation->title}}</span>
 				</span>
 			</div>
-
-			<div class="classic-content">
-				<img src="/images/home/classic_case.png" alt="">
-				<span class="classic-name-container">
-					戏剧
-					<span class="classic-name">《苏三起舞》</span>
-				</span>
-			</div>
-
-			<div class="classic-content">
-				<img src="/images/home/classic_case.png" alt="">
-				<span class="classic-name-container">
-					戏剧
-					<span class="classic-name">《苏三起舞》</span>
-				</span>
-			</div>
-
-			<div class="classic-content">
-				<img src="/images/home/classic_case.png" alt="">
-				<span class="classic-name-container">
-					戏剧
-					<span class="classic-name">《苏三起舞》</span>
-				</span>
-			</div>
-
+			@endforeach
+		@endif
 		</div>
 		<ul class="enlighten-subpage-plugin classic-footer">
 			<li><a href="javascript:">首页</a></li>

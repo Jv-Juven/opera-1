@@ -5,7 +5,8 @@ class CommentOfMsgcomment extends Eloquent{
 	protected $table = 'comment_of_msgcomment';
 
 	protected $fillable = array(
-		'user_id',
+		'sender_id',
+		'receiver_id',
 		'messagecomment_id',
 		'content'
 	);
