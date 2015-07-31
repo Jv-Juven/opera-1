@@ -196,5 +196,9 @@ class UserPageController extends BaseController{
 			));
 	}
 
+	//论谈评论
+	
+	
+	//论谈回复
 	
 }

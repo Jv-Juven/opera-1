@@ -1417,9 +1417,26 @@
 					video:xxx 			视频连接
 				}
 
-	4. 七牛云:
-		请求方式:	GET
-		请求url:	qiniu/getUpToken
+	4. 论谈评论
+		请求方式:	POST
+		请求url:	user/topic_comment
 
-		请求参数:
+		请求参数:	content:xxx 				评论内容
 
+		返回参数: 
+				{
+					errCode:xxx,			错误码	0表示返回正常	 
+					message:xxx			提示信息
+				}
+
+	5.论谈评论的回复
+		请求方式:	POST
+		请求url:	user/reply
+
+		请求参数:	content:xxx 				回复内容
+
+		返回参数: 
+				{
+					errCode:xxx,			错误码	0表示返回正常	 
+					message:xxx			提示信息
+				}

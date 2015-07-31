@@ -89,6 +89,7 @@ class ColumnPageController extends BaseController{
 	{	
 		//获取最新的那个话题
 		$topic = Topic::orderBy('updated_at', 'desc')->first();
+		// dd($topic->id);
 		if($topic != null)
 		{	//话题人的信息
 			$user_id 		= $topic->user_id;
