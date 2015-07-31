@@ -15,7 +15,8 @@ return array(
 			 'title' => '视频连接'
 		),
 		'video_img'=>array(
-			'title' => '视频图片'
+			'title' => '视频图片',
+			'output' => '<img src="/images/admin/classic/(:value)" height="100" />',
 		),
 	),
 
@@ -27,7 +28,10 @@ return array(
 			 'title' => '内容',		
 		),
 		'video_img'=>array(
-			'title' => '视频图片'
+			'title' => '视频图片',
+			'type' => 'image',
+			'location' => public_path().'/images/admin/classic/',
+			'naming' =>'keep'
 		),
 	),
 
