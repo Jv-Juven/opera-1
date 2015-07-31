@@ -18,7 +18,7 @@
 	<div class="page-content">
 		<div class="certificate-nav-container">
 			<ul>
-				<li class="active"><a href="/customer/authentication/identity">全部</a></li>
+				<li class=""><a href="/customer/authentication/identity">全部</a></li>
 				<li><a href="/customer/authentication/identity/1">主席团</a></li>
 				<li><a href="/customer/authentication/identity/2">顾问</a></li>
 				<li><a href="/customer/authentication/identity/3">理事</a></li>

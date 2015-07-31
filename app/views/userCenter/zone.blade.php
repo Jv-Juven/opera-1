@@ -86,7 +86,7 @@
 			   			@endforeach
 			   		</a>
 			   		
-				    <div class="zone-paging">
+				    <div class="zone-paging" style="display: none;">
 					    {{$albums->links()}}
 				    	<!-- <span class="zone-Pre">
 				    		<img src="/images/userCenter/pre_page.png" alt="">

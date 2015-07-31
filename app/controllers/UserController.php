@@ -542,7 +542,7 @@ class UserController extends BaseController{
 
 		$receiver_id = Input::get('receiver_id');
 
-		$sender_id = Auth::getUser()->id;
+		$sender_id = Auth::user()->id;
 		
 		$content = Input::get('message_content');
 
