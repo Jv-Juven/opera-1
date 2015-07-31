@@ -50,6 +50,10 @@
 										<a class="reply-btn" href="javascript:void(0);">回复</a>
 									</div>
 								</div>
+								<div class="comment-input-wrapper">
+									<textarea class="reply-input"></textarea>
+									<input type="button" class="reply-submit-btn" value="提交" />
+								</div>
 								<div style="clear:both;"></div>
 							</div>
 							<div class="replies">

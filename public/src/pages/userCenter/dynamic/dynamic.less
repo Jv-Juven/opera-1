@@ -38,7 +38,7 @@
 	}
 
 	.comments {
-		display: none;
+		// display: none;
 		width: 100%;
 		margin-bottom: 20px;
 		background-color: #def2e6;
@@ -64,6 +64,16 @@
 				font-weight: bold;
 			}
 
+			.reply-input {
+				width: 745px;
+			    height: 80px;
+			    border-radius: 10px;
+			    border: 1px;
+			    outline: none;
+			    padding: 10px;
+			    margin-top: 10px;
+			}
+
 			.comment-item {
 				.commment-info {
 					float: left;
@@ -78,6 +88,14 @@
 					.comment-operate {
 						margin-top: 10px;
 						color: #7c817d;
+					}
+				}
+
+				.comment-input-wrapper {
+					display: none;
+					.reply-submit-btn {
+						float: right;
+						margin-right: 30px;
 					}
 				}
 			}
