@@ -99,7 +99,7 @@ class UserPageController extends BaseController{
 			'topics' => $topics,
 			'user'   => $user,
 			'links' 	=>$this->link()
-			));
+		));
 	}
 
 	//相册
