@@ -217,19 +217,24 @@
 
 	4.照片
 		请求方式:	GET
-		请求url:	/user/picture/:album_id
+		请求url:	/user/picture/
 
 		请求参数:	
 				album_id	相册的id			根据id取得图片实例
 
-		返回参数:	视图
-				pictures:[
-					{
-						title:xxx,			图片标题
-						picture:xxx			图片的url
-					},
-					....
-				]
+		返回参数:	
+
+				{
+				
+					pictures:{
+						title:xxx 		照片标题
+						picture:xxx 		照片url
+					}
+					errCode:xxx,			错误码	0表示返回正常	 
+					message:xxx			提示信息
+				}
+
+
 	5. 获取留言
 		请求方式:	GET
 		请求url:	/user/message/:user_id

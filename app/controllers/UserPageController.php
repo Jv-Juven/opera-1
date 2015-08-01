@@ -138,13 +138,19 @@ class UserPageController extends BaseController{
 	//照片
 	public function picture()
 	{	
-		$album_id	
-		 $album = Album::find($album_id);
+		$album_id	= Input::get('album_id');
+		$album 	= Album::find($album_id);
+		if($album == null)
+		{
+			return Response::json(array('errCode' =>1, 'message'=>'此相册不存在！','pictures'=>''));
+		}
+		 $pictures 	= $album->hasManyPictures()->get();
+		 if(count($pictures) !=0)
+		 {
+			 return Response::json(array('errCode'=>0, 'message'=>'返回相片','pictures'=>$pictures)) ;
+		 }
 
-		 $pictures = $album->hasManyPictures()->get();
-
-
-		 return 
+		 return Response::json(array('errCode' =>1, 'message'=>'该相册没有图片','pictures'=>''));
 	}
 
 	//个人中心——获取留言
