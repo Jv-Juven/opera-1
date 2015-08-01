@@ -339,6 +339,7 @@ window.navigation = (function() {
     //jQuery全局静态方法扩展
     $.extend({
         upload: function() {
+            console.log("头像上传");
             return function (options, handlers){
                 var callback, config, name, uploader;
                 config = $.extend({},{

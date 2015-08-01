@@ -62,21 +62,21 @@ $(".img-char").click(function() {
     
 });
 
-$.upload({
-    browse_button: "change_avatar",
-    container: "avatar_container",
-    uptoken_url: "/qiniu/getUpToken",
-    domain: "http://7xk6xh.com1.z0.glb.clouddn.com/"
-},{
-    FileUploaded: function (up,file,info) {
-        info = $.parseJSON(info);
-        domain = up.getOption("domain");
-        url = domain + info.key;
-        console.log("本地上传成功");
-        $(".img-char").find("img").attr("src",url);
-    }
-});
-
+// $.upload({
+//     browse_button: "change_avatar",
+//     container: "avatar_container",
+//     uptoken_url: "/qiniu/getUpToken",
+//     domain: "http://7xk6xh.com1.z0.glb.clouddn.com/"
+// },{
+//     FileUploaded: function (up,file,info) {
+//         info = $.parseJSON(info);
+//         domain = up.getOption("domain");
+//         url = domain + info.key;
+//         console.log("本地上传成功");
+//         $(".img-char").find("img").attr("src",url);
+//     }
+// });
+$.upload();
 
 
 
