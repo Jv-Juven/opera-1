@@ -19,7 +19,6 @@ class DatabaseSeeder extends Seeder {
 		$this->call('CommentOfTopiccommentTableSeeder');
 		$this->call('MessagesTableSeeder');
 		$this->call('MessageCommentsTableSeeder');
-		$this->call('CommentOfMsgcommentTableSeeder');
 		$this->call('BackstagesTableSeeder');
 		$this->call('EnlightenColumnsTableSeeder');
 		$this->call('SocietyDynamicsTableSeeder');

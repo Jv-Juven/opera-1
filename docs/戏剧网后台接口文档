@@ -1421,7 +1421,9 @@
 		请求方式:	POST
 		请求url:	user/topic_comment
 
-		请求参数:	content:xxx 				评论内容
+		请求参数:	
+				topic_id 				话题id
+				content:xxx 				评论内容
 
 		返回参数: 
 				{
@@ -1433,7 +1435,9 @@
 		请求方式:	POST
 		请求url:	user/reply
 
-		请求参数:	content:xxx 				回复内容
+		请求参数:	
+				reply_id				被回复id
+				content:xxx 				回复内容
 
 		返回参数: 
 				{

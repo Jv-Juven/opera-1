@@ -8,6 +8,7 @@ class CommentOfTopiccomment extends Eloquent{
 		'sender_id',
 		'receiver_id',
 		'topiccomment_id',
+		'topic_id',
 		'content'
 		);
 }

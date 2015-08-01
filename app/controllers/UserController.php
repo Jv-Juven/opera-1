@@ -752,62 +752,66 @@ class UserController extends BaseController{
 		return Response::json(array('errCode'=>2, 'message'=>'话题发表失败，请重新发送！'));
 	}
 
-	// 发表话题评论
+	//话题评论
 	public function topicComment()
 	{
-		$user 		= Auth::user();
-		$topic_id	=Input::get('topic_id');
-		$content 	= Input::get('content');
+		$content = Input::get('content');
+		$user 	= Auth::user();
+		$topic_id = Input::get('topic_id');
+
 		$validation = Validator::make(
-			array('content'=>$content),
-			array('content'=>'required')
+			array('content' => $content),
+			array('content' => 'required')
 			);
+
 		if($validation->fails())
 		{
-			return Response::json(array('errCode' => 1,'message'=>'请写评论！'));
+			return Response::json(array('errCode'=>1, 'message'=>'请填写评论内容！'));
 		}
 
-		$topicComment = new TopicComment;
-		$topicComment->topic_id = $topic_id;
-		$topicComment->user_id = $user->id;
-		$topicComment->content = $content;
-		if($topicComment->save())
+		$topic_comment = new TopicComment;
+		$topic_comment->content = $content;
+		$topic_comment->topic_id = $topic_id;
+		$topic_comment->user_id = $user->id;
+		if($topic_comment->save())
 		{
-			return Response::json(array('errCode'=>0, 'message'=>'评论成功'));
+			return Response::json(array('errCode'=>0, 'message'=>'评论成功！'));
 		}
 
-		return Response::json(array('errCode'=>2, 'message'=>'评论失败！'));
+		return Response::json(array('errrCode'=>'2', 'message'=>'评论失败！'));
+
 	}
 
-	//发表话题评论的回复
-	public function commentOfTopicComment()
+	//话题评论的回复
+	public function reply()
 	{
-		$user 			= Auth::user();
-		$topicComment_id	=Input::get('topicComment_id');
-		$content 		= Input::get('content');
-		$validation		= Validator::make(
-					array('content'=>$content),
-					array('content'=>'required')
-					);
+		$topiccomment_id = Input::get('topiccomment_id');
+		$content 	= Input::get('content');
+		$user 		= Auth::user();
+		$receiver_id 	= Input::get('receiver_id');
+		$validation = Validator::make(
+			array('content' => $content),
+			array('content' => 'required')
+			);
+
 		if($validation->fails())
 		{
-			return Response::json(array('errCode' => 1,'message'=>'请写评论！'));
+			return Response::json(array('errCode'=>1, 'message'=>'请填写回复内容！'));
 		}
 
-		$commentOfTopiccomment 				= new CommentOfTopiccomment;
-		$commentOfTopiccomment->user_id 		= $user->id;
-		$commentOfTopiccomment->topiccomment_id 	= $topicComment_id;
-		$commentOfTopiccomment->content 		=$content;
-
-		if($commentOfTopiccomment->save())
+		$reply 				= new CommentOfTopiccomment;
+		$reply->content 		= $content;
+		$reply->topiccomment_id 	= $topiccomment_id;
+		$reply->sender_id 		= $user->id;
+		$reply->receiver_id 		= $receiver_id;
+		if($reply->save())
 		{
-			return Response::json(array('errCdoe'=>0,'message'=>'回复成功！'));
+			return Response::json(array('errCode'=>0, 'message'=>'评论成功！'));
 		}
 
-		return Response::json(array('errCode'=>2, 'message'=>'回复失败！'));
-
+		return Response::json(array('errrCode'=>'2', 'message'=>'评论失败！'));
 	}
-
+	
 	public function isOwn()
 	{
 		if(!Auth::check())
@@ -823,5 +827,7 @@ class UserController extends BaseController{
 
 		return Response::json(array('errCode'=>0, 'message'=>'可操作'));
 	}
+
+	
 
 }
