@@ -339,8 +339,8 @@ window.navigation = (function() {
     //jQuery全局静态方法扩展
     $.extend({
         upload: function() {
-            console.log("头像上传");
             return function (options, handlers){
+                console.log("上传头像");
                 var callback, config, name, uploader;
                 config = $.extend({},{
                     runtimes: 'html5,flash,html4',

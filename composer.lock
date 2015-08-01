@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ecbfaf78ea4dcd7c59d8773eb8b3bdfe",
+    "hash": "ca2602862630749e977c2f8fac17d7e4",
     "packages": [
         {
             "name": "cartalyst/sentry",
@@ -1638,7 +1638,7 @@
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "v2.7.2",
+            "version": "v2.7.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/EventDispatcher.git",
@@ -1696,7 +1696,7 @@
         },
         {
             "name": "symfony/filesystem",
-            "version": "v2.7.2",
+            "version": "v2.7.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Filesystem.git",

@@ -20,7 +20,7 @@
 			<div class="img">
 				<img class="avatar" src="{{{$user->avatar}}}">
 			</div>
-			<div class="img-char">
+			<div class="img-char" id="img_char">
 				<img class="avatar-btn avatar-change" src="/images/userCenter/change_pic.png">
 				<span class="avatar-char avatar-change">更换头像</span>
 				<input type="file" id="change_avatar"/>
@@ -33,8 +33,8 @@
 				<span class="name-info noedit-status">{{{$user->realname}}}</span>
 				<input id="info_name" class="name-info edit-status" type="text" value="{{{$user->realname}}}"></input>
 				<div class="edit-click clearx">
-					<span class="edit-info noedit-status">修改资料</span>
-					<img class="edit-btn noedit-status" src="/images/userCenter/change_info.png">
+					<span class="edit-info noedit-status edit-info-ele">修改资料</span>
+					<img class="edit-btn noedit-status edit-info-ele" src="/images/userCenter/change_info.png">
 					
 				</div>
 				
