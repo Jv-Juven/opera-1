@@ -796,14 +796,19 @@ class UserController extends BaseController{
 	//话题评论
 	public function topicComment()
 	{
+		if(!Auth::check())
+		{
+			return Response::json(array('errCode'=>1, 'message'=>'[权限禁止]请先登录'));
+		}
+
+		$user = Auth::user();
 		$content = Input::get('content');
-		$user 	= Auth::user();
 		$topic_id = Input::get('topic_id');
 
 		$validation = Validator::make(
 			array('content' => $content),
 			array('content' => 'required')
-			);
+		);
 
 		if($validation->fails())
 		{
@@ -826,10 +831,18 @@ class UserController extends BaseController{
 	//话题评论的回复
 	public function reply()
 	{
-		$topiccomment_id = Input::get('topiccomment_id');
-		$content 	= Input::get('content');
-		$user 		= Auth::user();
-		$receiver_id 	= Input::get('receiver_id');
+		if(!Auth::check())
+		{
+			return Response::json(array('errCode'=>1, 'message'=>'[权限禁止]请先登录'));
+		}
+
+		$user = Auth::user();
+		$content = Input::get('content');
+		$topic_id = Input::get('topic_id');
+		$comment_id = Input::get('comment_id');
+		$reply_id = Input::get('reply_id');
+		$reply_type = Input::get('reply_type');
+
 		$validation = Validator::make(
 			array('content' => $content),
 			array('content' => 'required')
@@ -840,17 +853,30 @@ class UserController extends BaseController{
 			return Response::json(array('errCode'=>1, 'message'=>'请填写回复内容！'));
 		}
 
-		$reply 				= new CommentOfTopiccomment;
-		$reply->content 		= $content;
-		$reply->topiccomment_id 	= $topiccomment_id;
-		$reply->sender_id 		= $user->id;
-		$reply->receiver_id 		= $receiver_id;
-		if($reply->save())
+		$reply = new CommentOfTopiccomment;
+		$reply->content = $content;
+		$reply->topiccomment_id = $comment_id;
+		$reply->topic_id = $topic_id;
+		$reply->sender_id = $user->id;
+		if($reply_type == 0)
 		{
-			return Response::json(array('errCode'=>0, 'message'=>'评论成功！'));
+			$reply->receiver_id = TopicComment::find($comment_id)->user_id;
+		}
+		else
+		{
+			$reply->receiver_id = CommentOfTopiccomment::find($reply_id)->sender_id;
 		}
 
-		return Response::json(array('errrCode'=>'2', 'message'=>'评论失败！'));
+		if(!$reply->save())
+		{
+			return Response::json(array('errrCode'=>2, 'message'=>'[数据库错误]回复评论失败！'));
+		}
+
+		$reply["sender_avatar"] = $user->avatar;
+		$reply["sender_name"] = $user->username;
+		$reply["receiver_name"] = User::find($reply->receiver_id)->username;
+
+		return Response::json(array('errCode'=>0, 'reply'=>$reply));
 	}
 	
 	public function isOwn()

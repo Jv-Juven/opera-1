@@ -97,7 +97,7 @@ class UserPageController extends BaseController{
 				$topic["commentsCount"] = $topic->hasManyTopicComments()->count();
 				$topic["comments"] = $topic->hasManyTopicComments()->get();
 				foreach ($topic["comments"] as &$comment) {
-					$replies = DB::table("comment_of_topiccomments")->where('topiccomment_id', '=', $comment->id)->orderBy("created_at", "desc")->get();
+					$replies = DB::table("comment_of_topiccomments")->where('topiccomment_id', '=', $comment->id)->orderBy("created_at")->get();
 					$comment["author_name"] = User::find($comment->user_id)->username;
 					$comment["author_avatar"] = User::find($comment->user_id)->avatar;
 
@@ -177,13 +177,13 @@ class UserPageController extends BaseController{
 	{	
 		$user_id = Input::get('user_id');
 		$user = User::find($user_id);
-		$messages = Message::where('receiver_id', '=', $user_id)->orderBy("created_at", "desc")->get();
+		$messages = Message::where('receiver_id', '=', $user_id)->orderBy("created_at")->get();
 		foreach($messages as $message)
 		{
 			$message['sender'] 				= User::find($message['sender_id'])->username;
 			$message['avatar']				= User::find($message['sender_id'])->avatar;
 			$message['messageCommentCount']	= $message->MessageComments()->count();
-			$message['comments']			= MessageComment::where("message_id", "=", $message->id)->orderBy("created_at", "desc")->get();
+			$message['comments']			= MessageComment::where("message_id", "=", $message->id)->orderBy("created_at")->get();
 			
 			foreach ($message["comments"] as &$comment) {
 				$comment["sender_name"] = User::find($comment["sender_id"])->username;

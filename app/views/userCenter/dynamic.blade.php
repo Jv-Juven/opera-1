@@ -18,6 +18,7 @@
 	<div class="page-content">
 		@foreach($topics as $topic)
 		<div class="topic">
+			<input type="hidden" class="topic-id" value="{{{ $topic->id }}}" />
 			<div>
 				<p class="title">
 					{{{$topic->title}}}
@@ -40,6 +41,7 @@
 					<div class="comments">
 						@foreach($topic->comments as $comment)
 						<div class="comment">
+							<input type="hidden" class="comment-id" value="{{{ $comment['id'] }}}" />
 							<div class="comment-item">
 								<img class="author-avatar" src="{{{ $comment['author_avatar'] }}}" width="50" height="50" />
 								<div class="commment-info"> 
@@ -51,21 +53,17 @@
 										<a class="comment-reply-btn" href="javascript:void(0);">回复</a>
 									</div>
 								</div>
-								<div class="comment-input-wrapper">
-									<textarea class="reply-input"></textarea>
-									<input type="button" class="comment-reply-submit-btn" value="提交" />
-								</div>
 								<div style="clear:both;"></div>
 							</div>
 							<div class="replies">
 								@foreach($comment["replies"] as $reply)
 								<div class="reply">
+									<input type="hidden" class="reply-id" value="{{{ $reply->id }}}" />
 									<img class="author-avatar" src="{{{ $reply->sender_avatar }}}" width="50" height="50" />
 									<div class="reply-info"> 
 										<span class="author-name">{{{ $reply->sender_name }}}</span>
 										回复
 										<span class="author-name">{{{ $reply->receiver_name }}}</span>
-
 									 	 ： 
 										<span class="reply-content">{{{ $reply->content }}}</span>
 										<div class="reply-operate">
@@ -76,9 +74,32 @@
 									<div style="clear:both;"></div>
 								</div>
 								@endforeach
+								<script type="text/template" id="comment-reply-template">
+									<div class="reply">
+										<input type="hidden" class="reply-id" value="<%= id %>" />
+										<img class="author-avatar" src="<%= sender_avatar %>" width="50" height="50" />
+										<div class="reply-info"> 
+											<span class="author-name"><%= sender_name %></span>
+											回复
+											<span class="author-name"><%= receiver_name %></span>
+										 	 ： 
+											<span class="reply-content"><%= content %></span>
+											<div class="reply-operate">
+												<span class="reply-time"><%= created_at %></span>
+												<a class="reply-btn" href="javascript:void(0);">回复</a>
+											</div>
+										</div>
+										<div style="clear:both;"></div>
+									</div>
+								</script>
 								<div class="reply-input-wrapper">
+									<input type="hidden" class="topic-id" value="" />
+									<input type="hidden" class="comment-id" value="" />
+									<input type="hidden" class="reply-id" value="" />
+									<input type="hidden" class="reply-type" value="" />
 									<textarea class="reply-input"></textarea>
 									<input type="button" class="reply-submit-btn" value="提交" />
+									<div style="clear:both;"></div>
 								</div>
 							</div>
 						</div>
@@ -93,5 +114,6 @@
 
 @section("js")
     @parent
+    <script type="text/javascript" src="/lib/js/plugins/lodash.min.js"></script>
     <script type="text/javascript" src="/dist/js/pages/dynamic.js"></script>
 @stop

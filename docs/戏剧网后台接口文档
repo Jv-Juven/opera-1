@@ -452,7 +452,7 @@
 
 	4.2 发表话题评论的回复
 		请求方式:	POST
-		请求url:	/user/personal/comment_topiccomment
+		请求url:	/user/personal/reply
 
 		请求参数:	
 				topicComment_id:xxx 	评论的id
