@@ -447,7 +447,7 @@
 		返回参数:
 				{
 				errCode:xxx,			错误码	0表示返回正常	 
-				message:xxx			提示信息
+				message:xxx				提示信息
 				}
 
 	4.2 发表话题评论的回复
@@ -455,13 +455,13 @@
 		请求url:	/user/personal/comment_topiccomment
 
 		请求参数:	
-				topicComment_id:xxx 		评论的id
+				topicComment_id:xxx 	评论的id
 				content:xxx 			话题内容
 
 		返回参数:
 				{
 				errCode:xxx,			错误码	0表示返回正常	 
-				message:xxx			提示信息
+				message:xxx				提示信息
 				}
 
 

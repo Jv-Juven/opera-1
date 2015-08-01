@@ -61,8 +61,8 @@ Route::group(array('prefix'=>'user'),function()
 	//分数查询静态页
 	Route::get('inquiry','StaticPageController@inquiry');
 
-	Route::group(array('before' => 'auth'), function()
-	{
+	// Route::group(array('before' => 'auth'), function()
+	// {
 		Route::get('logout', 'UserController@getLogout');
 		//在线报名
 		Route::post('application', 'UserController@postApplication');
@@ -80,6 +80,8 @@ Route::group(array('prefix'=>'user'),function()
 			Route::post('issue_topic', 'UserController@issueTopic');
 			//发表留言
 			Route::post('message', 'UserController@postMessage');
+			
+			Route::post('delete_message', 'UserController@deleteMessage');
 			//发表回复
 			Route::post('message_comment','UserController@postMessageComment');
 			//更新个人资料
@@ -89,7 +91,7 @@ Route::group(array('prefix'=>'user'),function()
 				
 		});
 		
-	});
+	// });
 });
 
 Route::group(array('prefix'=>'customer'), function()

@@ -188,6 +188,7 @@ class UserPageController extends BaseController{
 			foreach ($message["comments"] as &$comment) {
 				$comment["sender_name"] = User::find($comment["sender_id"])->username;
 				$comment["receiver_name"] = User::find($comment["receiver_id"])->username;
+				$comment["sender_avatar"] = User::find($comment["sender_id"])->avatar;
 			}
 		}
 		return View::make('userCenter.message')->with(array(

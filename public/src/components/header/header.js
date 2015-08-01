@@ -46,8 +46,8 @@
     //用户登录成功之后
     function online(imgUrl,userN) {
 
-    	$("#offline").hide();
-    	$("#online").fadeIn();
+    	// $("#offline").hide();
+    	// $("#online").fadeIn();
 
     	$("#user_head").attr("src"," ").attr("src",imgUrl);
     	$("#user_id").text(userN);
@@ -69,8 +69,8 @@
     	if(getCookie("opera_userId") !== null){
     		// console.log(unescape(getCookie("opera_userImg")));
 
-    		$("#offline").hide();
-    		$("#online").show();
+    		// $("#offline").hide();
+    		// $("#online").show();
 
     		$("#user_head").attr("src"," ").attr("src",unescape(getCookie("opera_userImg")));
     		$("#user_id").text(getCookie("opera_userName"));

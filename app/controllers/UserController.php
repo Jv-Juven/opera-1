@@ -559,6 +559,34 @@ class UserController extends BaseController{
 		return Response::json(array('errCode'=>0, 'msg'=>$msg));
 	}
 
+	//个人中心——删除留言
+	public function deleteMessage()
+	{
+		if(!Auth::check())
+		{
+			return Response::json(array('errCode'=>1, 'message'=>'请登录！'));
+		}
+
+		$message_id = Input::get('message_id');
+		$user_id = Auth::user()->id;
+
+		$message = Message::find($message_id);
+
+		if($message->receiver_id == $user_id)
+		{
+			if(!$message->delete())
+			{
+				return Response::json(array('errCode'=>2, 'message'=>'[数据库错误]删除留言失败'));
+			}
+		}
+		else
+		{
+			return Response::json(array('errCode'=>1, 'message'=>'[权限禁止]只能删除自己收到的留言'));
+		}
+
+		return Response::json(array('errCode'=>0));
+	}
+
 	//个人中心——发表回复
 	public function postMessageComment()
 	{
@@ -568,21 +596,34 @@ class UserController extends BaseController{
 		}
 		$user = Auth::getUser();
 
-		$message_id = Input::get('message_id');
-		$content 	= Input::get('comment_content');
+		$message_id = Input::get('message_id');		// 留言的id
+		$comment_id = Input::get('comment_id');		// 留言下评论的id，当comment_type为1时可用
+		$comment_type = Input::get('comment_type');	// comment_type参数有两种取值，0代表是直接在留言下回复，1代表是在留言的评论下回复
+		$content 	= Input::get('content');
 
-		$comment = new MessageComment;
+		$comment = new MessageComment();
 		$comment->message_id = $message_id;
 		$comment->content = $content;
-		$comment->user_id = $user->id;
+		$comment->sender_id = $user->id;
+
+		if($comment_type == 1)
+		{
+			$comment->receiver_id = MessageComment::find($comment_id)->sender_id;
+		}
+		else
+		{
+			$comment->receiver_id = Message::find($message_id)->sender_id;
+		}
+
 
 		if(!$comment->save())
 		{
 			return Response::json(array('errCode'=>2, 'message'=>'评论创建失败！'));
 		}
 
-		$comment['username'] 	= $user->username;
+		$comment['sender_name'] = $user->username;
 		$comment['avatar']		= $user->avatar;
+		$comment['receiver_name'] = User::find($comment->receiver_id)->username;
 
 		return Response::json(array('errCode'=>0, 'comment'=>$comment)); 
 	}
