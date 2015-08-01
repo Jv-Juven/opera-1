@@ -15,7 +15,7 @@
 @stop
 
 @section('page-content')
-	<div class="page-content">
+	<form class="page-content">
 		<div class="apply-tr">
 			<div class="apply-td-text">
 				<span class="apply-text apply-must">姓名：</span>
@@ -130,10 +130,11 @@
 	
 		<div class="apply-btn-container"> 
 			<span>提交发表</span>
-			<span>重新填写</span>
+			<!-- <span>重新填写</span> -->
+			<input type="reset" value="重新填写"/>
 			<span>返回上一页</span>
 		</div>
-	</div>
+	</form>
 @stop
 
 @section('js')

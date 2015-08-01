@@ -1,7 +1,7 @@
 ;(function(window){
 
 	var submit_btn = $(".apply-btn-container span").eq(0),
-		 reset = $(".apply-btn-container span").eq(1);
+		 back = $(".apply-btn-container span").eq(1);
 
 	var submit = function () {
 
@@ -136,5 +136,8 @@
 
 	$(submit_btn).click(submit);
 
+	$(back).click(function (){
+		history.go(-1);
+	});
 
 })(window);
