@@ -29,7 +29,7 @@
 			@endforeach
 		@endif
 		</div>
-		<ul class="enlighten-subpage-plugin classic-footer">
+		<!-- <ul class="enlighten-subpage-plugin classic-footer">
 			<li><a href="javascript:">首页</a></li>
 			<li><a href="javascript:">1</a></li>
 			<li><a href="javascript:">2</a></li>
@@ -39,10 +39,11 @@
 			<li><a href="javascript:">下一页</a></li>
 			<li><a href="javascript:">末页</a></li>
 			<li>共<span class="enlighten-pages">2</span>页</li>
-		</ul>
+		</ul> -->
 	</div>
 	<div id="case_video" class="full-screen">
-		<iframe height=498 width=510 src="" frameborder=0 allowfullscreen></iframe>
+		<!-- <iframe height=498 width=510 src="" frameborder=0 allowfullscreen></iframe> -->
+		<!-- <img class="video-close" src="/images/common/close_btn.png"> -->
 	</div>
 @stop
 

@@ -340,6 +340,7 @@ window.navigation = (function() {
     $.extend({
         upload: function() {
             return function (options, handlers){
+                console.log("上传头像");
                 var callback, config, name, uploader;
                 config = $.extend({},{
                     runtimes: 'html5,flash,html4',

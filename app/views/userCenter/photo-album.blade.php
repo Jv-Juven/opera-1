@@ -19,7 +19,7 @@
 	<div class="page-content">
 		<div class="album-container clearx">
 			@foreach($albums as $album)
-			<div class="album-box">
+			<div class="album-box" data-id="{{$album->id}}">
 				<img src="{{{$album->picture}}}" alt="">
 				<div class="album-content">
 					<span class="album-name">{{{$album->title}}}</span>
@@ -31,7 +31,7 @@
 
 		<div class="album-division-hr"></div>
 
-		<div class="album-paging">
+		<!-- <div class="album-paging">
 			<span class="album-Pre">
 				<img src="/images/userCenter/pre_page.png" alt="">
 				<span class="album-paging-text">上一页</span>
@@ -40,17 +40,15 @@
 				<img src="/images/userCenter/next_page.png" alt="">
 				<span class="album-paging-text">下一页</span>
 			</span>
-		</div>
+		</div> -->
 
 	</div>
-	<div class="full-screen album-full-screen" style="display: block;z-index: -1;opacity: 0;">
+	<div class="full-screen album-full-screen" style="">
 		<div class="swiper-containter photo-album-swiper">
 			<div class="swiper-wrapper">
-				@foreach($albums as $album)
-				<div class="swiper-slide">
-					<img src="{{{$album->picture}}}" alt="">
-				</div>
-				@endforeach
+				<!-- <div class="swiper-slide">
+					<img src="" alt="">
+				</div> -->
 				<!-- <div class="swiper-slide">
 					<img src="/images/userCenter/album03.png" alt="">
 				</div> -->
@@ -60,7 +58,7 @@
 		<!-- 如果需要导航按钮 -->
 		<div class="swiper-button-prev"></div>
 		<div class="swiper-button-next"></div>
-		
+		<img class="video-close" src="/images/common/close_btn.png">
 	</div>
 @stop
 

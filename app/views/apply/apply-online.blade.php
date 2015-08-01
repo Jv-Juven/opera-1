@@ -138,7 +138,7 @@
 
 @section('js')
     @parent
-    <!-- // <script type="text/javascript"></script> -->
+    <script type="text/javascript" src="/dist/js/pages/apply-online.js"></script>
 @stop
 
 
