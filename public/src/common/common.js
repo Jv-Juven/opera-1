@@ -197,7 +197,7 @@ window.navigation = (function() {
         index = 0;
     }
     
-    console.log(index);
+    // console.log(index);
 
     // alert(urlArr[0]+"|"+urlArr[1]);
     if(urlArr[1] == ""){
@@ -316,11 +316,11 @@ window.navigation = (function() {
                 width = opts.width||"auto",
                 height = opts.height||"auto";
 
-            if(!/^(absolute)|(relative)/.test(fatherEle.css("position"))){
-                fatherEle.css({
-                    "position": "relative"
-                });
-            }
+            // if(!/^(absolute)|(relative)/.test(fatherEle.css("position"))){
+            //     fatherEle.css({
+            //         "position": "relative"
+            //     });
+            // }
 
             ele.css({
                 "position": "absolute",
