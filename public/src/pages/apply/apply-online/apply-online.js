@@ -5,7 +5,7 @@
 
 	var submit = function () {
 
-		$("#info_name").text();
+		// $("#info_name").text();
 
 		 var applyName = $("#apply_name").val(),
 				   sex = $(".radio-container input:checked").val(),
@@ -26,7 +26,7 @@
 			 learnTime = $("#learn_time").val(),
 		  applyDetails = $("#apply_details").val();
 
-		  if($(applyName).length == 0){
+		  if(applyName.length == 0){
 		  	alert("请填写姓名");
 		  	$("#apply_name").focus();
 		  	return false;
@@ -55,7 +55,7 @@
 		  // 	$("#guardian").focus();
 		  // 	return false;
 		  // }
-		  if(!'/^(13[0-9]|15[0|1|2|3|5|6|7|8|9]|18[0-9]|17[0-9])\d{8}$/'.test(applyPhone)){
+		  if(!/^(13[0-9]|15[0|1|2|3|5|6|7|8|9]|18[0-9]|17[0-9])\d{8}$/.test(applyPhone)){
 		  	alert("请填写正确的手机号码");
 		  	$("#apply_phone").focus();
 		  	return false;

@@ -42,4 +42,5 @@
 
 @section("js")
 	@parent
+	<script type="text/javascript" src="/dist/js/pages/query-score.js"></script>
 @stop
