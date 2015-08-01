@@ -108,6 +108,7 @@ class ColumnPageController extends BaseController{
 					$replys	 = CommentOfTopiccomment::where('topiccomment_id','=', $topic_comment->id)->orderBy('created_at','asc')->get();
 					$key = $topic_comment->id;
 					$comment_replys[$key] = $replys;
+				 
 				}
 
 				return View::make('communication.topics')->with(array(

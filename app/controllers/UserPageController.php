@@ -88,7 +88,8 @@ class UserPageController extends BaseController{
 		$user_id = Input::get('user_id');
 		$user = User::find($user_id);
 		$topics = $user->hasManyTopics()->get();
-		$comment_replys = array();
+		//将话题的评论和回复储存到对应的数组中，遍历时记得是字符串
+		$comments_replys = array();
 		if(count($topics) != 0)
 		{
 			foreach($topics as $topic)
@@ -97,18 +98,39 @@ class UserPageController extends BaseController{
 				//如果话题评论不为空
 				if(count($topic["commentsCount"]) != 0)
 				{
-					$topic_comments  	= $topic->hasManyTopicComments()->get();
-
-
+					$comments  		= $topic->hasManyTopicComments()->get();
+					$topic['comments'] 	=$comments;
+					// $comments_replys[$topic->id]	= $comments->toArray();
+					foreach($comments as $comment)
+					{	
+						//评论的回复人信息的对象集合
+						//replys可能为空数组
+						$replys	 = CommentOfTopiccomment::where('topiccomment_id','=', $comment->id)->orderBy('created_at','asc')->get();
+						if(count($replys) != 0)
+						{
+							// $comments_replys[$topic->id][$comment->id] = $replys->toArray();
+							$comment['replys'] =$replys;
+						}else{
+							$comment['replys'] =null;
+						}
+					}
+				}else{
+					$topic['comments'] =null;
 				}
+			}
 
-			}		
+			return View::make('userCenter.dynamic')->with(array(	
+						// 'comments_replys'		=>$comments_replys,
+						'topics' 			=> $topics,
+						'user'   				=> $user,
+						'links' 				=>$this->link()
+						));
 		}
 		return View::make('userCenter.dynamic')->with(array(
-			'topics' => $topics,
-			'user'   => $user,
-			'links' 	=>$this->link()
-		));
+					'topics' => $topics,
+					'user'   => $user,
+					'links' 	=>$this->link()
+					));
 	}
 
 	//相册
@@ -170,9 +192,10 @@ class UserPageController extends BaseController{
 		$messages = Message::where('receiver_id', '=', $user_id)->get();
 		foreach($messages as $message)
 		{
-			$message['sender'] 			= User::find($message['sender_id'])->username;
+			$message['sender'] 				= User::find($message['sender_id'])->username;
 			$message['avatar']				= User::find($message['sender_id'])->avatar;
 			$message['messageCommentCount']	= $message->MessageComments()->count();
+			$message['comments']			= $message->MessageComments()->get();
 		}
 		return View::make('userCenter.message')->with(array(
 			'messages' 	=> $messages,

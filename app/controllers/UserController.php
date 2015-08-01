@@ -463,7 +463,7 @@ class UserController extends BaseController{
 		//产生考生编号
 		$possible_charactors = "0123456789";
 		$scorenumber  =  "";   //
-		while(strlen($salt) < 6)
+		while(strlen($scorenumber) < 6)
 		{
 		 	 $scorenumber .= substr($possible_charactors,rand(0,strlen($possible_charactors)-1),1);
 		}
