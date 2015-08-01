@@ -27,39 +27,33 @@
 				<p>{{{$message->content}}}</p>
 			</div>
 			<div class="message-edit">
-				<span class= "reply-btn">回复({{{$message->messageCommentCount}}})</span>|<span class = "delete-btn">删除</span>
+				<a href="javascript:void(0);" class="message-reply-btn">回复({{{$message->messageCommentCount}}})</a>|<a href="javascript:void(0);" class="message-delete-btn">删除</a>
 			</div>
 			<div class="replies">
+				@foreach($message["comments"] as $comment)
 				<div class="reply">
-					<img class="avatar" src="{{{$message->avatar}}}" width="50" height="50" />
+					<img class="avatar" src="" width="50" height="50" />
 					<div class="reply-info">
-						<span class="reply-author name">王晓明</span>
-						<span class="reply-time time">2015-07-31 13:38:08</span>
+						<span class="reply-author name">{{{ $comment["sender_name"] }}}</span>
+						回复
+						<span class="reply-author name">{{{ $comment["receiver_name"] }}}</span>
+						<span class="reply-time time">{{{ $comment["created_at"] }}}</span>
 						<a href="javascript:void(0);" class="reply-btn">回复</a>
 					</div>
-					<div class="reply-content">
-						其实不应该是这样的，你完全不理解戏曲的重要性，我们做的是什么，热爱，对生活的向往，向阳！
-						其实不应该是这样的，你完全不理解戏曲的重要性，我们做的是什么，热爱，对生活的向往，向阳！
-						其实不应该是这样的，你完全不理解戏曲的重要性，我们做的是什么，热爱，对生活的向往，向阳！
-						其实不应该是这样的，你完全不理解戏曲的重要性，我们做的是什么，热爱，对生活的向往，向阳！
-					</div>
+					<div class="reply-content">{{{ $comment["content"] }}}</div>
 					<div style="clear:both;"></div>
 				</div>
-				<div class="reply">
-					<img class="avatar" src="{{{$message->avatar}}}" width="50" height="50" />
-					<div class="reply-info">
-						<span class="reply-author name">王晓明</span>
-						<span class="reply-time time">2015-07-31 13:38:08</span>
-						<a href="javascript:void(0);" class="reply-btn">回复</a>
-					</div>
-					<div class="reply-content">
-						其实不应该是这样的，你完全不理解戏曲的重要性，我们做的是什么，热爱，对生活的向往，向阳！
-						其实不应该是这样的，你完全不理解戏曲的重要性，我们做的是什么，热爱，对生活的向往，向阳！
-						其实不应该是这样的，你完全不理解戏曲的重要性，我们做的是什么，热爱，对生活的向往，向阳！
-						其实不应该是这样的，你完全不理解戏曲的重要性，我们做的是什么，热爱，对生活的向往，向阳！
-					</div>
+				@endforeach
+				<div class="reply-input-wrapper">
+					<textarea class="reply-input"></textarea>
+					<input type="button" class="reply-submit-btn" value="提交" />
 					<div style="clear:both;"></div>
 				</div>
+				<div style="clear:both;"></div>
+			</div>
+			<div class="message-reply-input-wrapper">
+				<textarea class="reply-input"></textarea>
+				<input type="button" class="message-reply-submit-btn" value="提交" />
 				<div style="clear:both;"></div>
 			</div>
 			<div style="clear:both;"></div>
@@ -68,7 +62,7 @@
 	</div>
 @stop
 
-
 @section("js")
     @parent
+    <script type="text/javascript" src="/dist/js/pages/message.js"></script>
 @stop
