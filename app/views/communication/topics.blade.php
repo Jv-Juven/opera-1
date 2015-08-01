@@ -53,14 +53,15 @@
 										
 									</div>
 									<div class="item-body">{{$topic_comment->content}}</div>
+									
 									<br/>
 									<div class="回复内容"> 
 								@if(isset($comment_replys[$topic_comment->id]))
 									@foreach($comment_replys[$topic_comment->id] as $reply)
-										<img src="{{User::find($reply->sender_id)->avatar}}">
+										<img src="{{User::find($reply->sender_id)->avatar}}" class="发表回复的头像">
 										{{User::find($reply->sender_id)->username}}
 										<strong>回复</strong>
-										<img src="{{User::find($reply->receiver_id)->avatar}}">
+										<img src="{{User::find($reply->receiver_id)->avatar}}" class="被回复的头像">
 										{{User::find($reply->receiver_id)->username}}
 										<span>:{{$reply->content}}</span>
 									@endforeach
