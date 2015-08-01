@@ -15,7 +15,7 @@
 @stop
 
 @section('page-content')
-	<div class="page-content">
+	<form class="page-content">
 		<div class="apply-tr">
 			<div class="apply-td-text">
 				<span class="apply-text apply-must">姓名：</span>
@@ -76,7 +76,7 @@
 			<div class="apply-td-text">
 				<span class="apply-text">单位：</span>
 			</div>
-			<input id="apple_unit" class="apply-td-input" type="text" style="width:330px;"/>
+			<input id="apply_unit" class="apply-td-input" type="text" style="width:330px;"/>
 		</div>
 		<div class="apply-tr">
 			<div class="apply-td-text">
@@ -130,15 +130,16 @@
 	
 		<div class="apply-btn-container"> 
 			<span>提交发表</span>
-			<span>重新填写</span>
+			<!-- <span>重新填写</span> -->
+			<input type="reset" value="重新填写"/>
 			<span>返回上一页</span>
 		</div>
-	</div>
+	</form>
 @stop
 
 @section('js')
     @parent
-    <!-- // <script type="text/javascript"></script> -->
+    <script type="text/javascript" src="/dist/js/pages/apply-online.js"></script>
 @stop
 
 

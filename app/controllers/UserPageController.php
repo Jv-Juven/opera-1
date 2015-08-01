@@ -88,7 +88,9 @@ class UserPageController extends BaseController{
 		$user_id = Input::get('user_id');
 		$user = User::find($user_id);
 		$topics = $user->hasManyTopics()->get();
-		if($topics != null)
+		//将话题的评论和回复储存到对应的数组中，遍历时记得是字符串
+		$comments_replys = array();
+		if(count($topics) != 0)
 		{
 			foreach($topics as &$topic)
 			{
@@ -113,10 +115,10 @@ class UserPageController extends BaseController{
 
 
 		return View::make('userCenter.dynamic')->with(array(
-			'topics' => $topics,
-			'user'   => $user,
-			'links' 	=>$this->link()
-		));
+					'topics' => $topics,
+					'user'   => $user,
+					'links' 	=>$this->link()
+					));
 	}
 
 	//相册
@@ -153,16 +155,21 @@ class UserPageController extends BaseController{
 	}
 
 	//照片
-	public function picture($album_id)
-	{
-		 $album = Album::find($album_id);
+	public function picture()
+	{	
+		$album_id	= Input::get('album_id');
+		$album 	= Album::find($album_id);
+		if($album == null)
+		{
+			return Response::json(array('errCode' =>1, 'message'=>'此相册不存在！','pictures'=>''));
+		}
+		 $pictures 	= $album->hasManyPictures()->get();
+		 if(count($pictures) !=0)
+		 {
+			 return Response::json(array('errCode'=>0, 'message'=>'返回相片','pictures'=>$pictures)) ;
+		 }
 
-		 $pictures = $album->hasManyPictures()->get();
-
-		 return View::make('照片')->with(array(
-		 	'pictures' 	=> $pictures,
-		 	'links' 		=>$this->link()
-		 	));
+		 return Response::json(array('errCode' =>1, 'message'=>'该相册没有图片','pictures'=>''));
 	}
 
 	//个人中心——获取留言
@@ -173,9 +180,10 @@ class UserPageController extends BaseController{
 		$messages = Message::where('receiver_id', '=', $user_id)->get();
 		foreach($messages as $message)
 		{
-			$message['sender'] 			= User::find($message['sender_id'])->username;
+			$message['sender'] 				= User::find($message['sender_id'])->username;
 			$message['avatar']				= User::find($message['sender_id'])->avatar;
 			$message['messageCommentCount']	= $message->MessageComments()->count();
+			$message['comments']			= $message->MessageComments()->get();
 		}
 		return View::make('userCenter.message')->with(array(
 			'messages' 	=> $messages,
@@ -213,5 +221,9 @@ class UserPageController extends BaseController{
 			));
 	}
 
+	//论谈评论
+	
+	
+	//论谈回复
 	
 }

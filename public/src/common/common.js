@@ -197,7 +197,7 @@ window.navigation = (function() {
         index = 0;
     }
     
-    console.log(index);
+    // console.log(index);
 
     // alert(urlArr[0]+"|"+urlArr[1]);
     if(urlArr[1] == ""){
@@ -316,11 +316,11 @@ window.navigation = (function() {
                 width = opts.width||"auto",
                 height = opts.height||"auto";
 
-            if(!/^(absolute)|(relative)/.test(fatherEle.css("position"))){
-                fatherEle.css({
-                    "position": "relative"
-                });
-            }
+            // if(!/^(absolute)|(relative)/.test(fatherEle.css("position"))){
+            //     fatherEle.css({
+            //         "position": "relative"
+            //     });
+            // }
 
             ele.css({
                 "position": "absolute",
@@ -340,6 +340,7 @@ window.navigation = (function() {
     $.extend({
         upload: function() {
             return function (options, handlers){
+                console.log("上传头像");
                 var callback, config, name, uploader;
                 config = $.extend({},{
                     runtimes: 'html5,flash,html4',

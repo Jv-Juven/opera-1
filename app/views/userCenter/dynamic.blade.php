@@ -16,6 +16,7 @@
 
 @section('page-content')
 	<div class="page-content">
+	@if(isset($topics))
 		@foreach($topics as $topic)
 		<div class="topic">
 			<div>
@@ -36,7 +37,8 @@
 							(<span class="number">{{{$topic->commentsCount}}}</span>)个评论
 						</span>
 					</a>
-
+				@if(isset($topic->comments))
+					<!-- 遍历话题评论 -->
 					<div class="comments">
 						@foreach($topic->comments as $comment)
 						<div class="comment">
@@ -57,6 +59,7 @@
 								</div>
 								<div style="clear:both;"></div>
 							</div>
+							@if(isset($comment->replys))
 							<div class="replies">
 								@foreach($comment["replies"] as $reply)
 								<div class="reply">
@@ -70,7 +73,6 @@
 										<span class="reply-content">{{{ $reply->content }}}</span>
 										<div class="reply-operate">
 											<span class="reply-time">{{{ $reply->created_at }}}</span>
-											<!-- <span class="reply-time">7月6日 19:36</span> -->
 											<a class="reply-btn" href="javascript:void(0);">回复</a>
 										</div>
 									</div>
@@ -82,14 +84,16 @@
 									<input type="button" class="reply-submit-btn" value="提交" />
 								</div>
 							</div>
+							@endif
 						</div>
 						@endforeach
 					</div>
+				@endif
 				</p>
 			</div>
 		</div>
 		@endforeach
-
+	@endif
 	</div>
 @stop
 

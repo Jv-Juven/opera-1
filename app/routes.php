@@ -68,16 +68,16 @@ Route::group(array('prefix'=>'user'),function()
 		Route::post('application', 'UserController@postApplication');
 		//成绩成绩查询
 		Route::post('score_inquiry', 'UserController@scoreInquiry');
+		//发表话题评论
+		Route::post('topic_comment','UserController@topicComment');
+		//发表话题评论的回复
+		Route::post('reply', 'UserController@reply');
 		//个人中心
 		Route::group(array('prefix'=>'personal'), function()
 		{
 			Route::get('is_own', 'UserController@isOwn');
 			//发表话题
 			Route::post('issue_topic', 'UserController@issueTopic');
-			//发表话题评论
-			Route::post('topic_comment','UserController@topicComment');
-			//发表话题评论的回复
-			Route::post('comment_topiccomment', 'UserController@commentOfTopicComment');
 			//发表留言
 			Route::post('message', 'UserController@postMessage');
 			//发表回复
