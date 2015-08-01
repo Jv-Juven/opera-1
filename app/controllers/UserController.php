@@ -401,25 +401,24 @@ class UserController extends BaseController{
 			return Response::json(array('errCode'=>1, 'message'=>'请登录！'));
 		}
 
-		$name         = Input::get('name');
-		$gender       = Input::get('gender');
-		$year           = Input::get('year');
-		$month         = Input::get('month');
-		$day             = Input::get('day');
-		$hometown   = Input::get('hometown');
-		$address      = Input::get('address');
-		$guardian     = Input::get('guardian');
-		$phone         = Input::get('phone');
-		$unit             = Input::get('unit');
-		$position      = Input::get('position');
-		$qq               = Input::get('QQ');
-		$school         = Input::get('school');
-		$postcode     = Input::get('postcode');
-		$trainingunit   = Input::get('trainingunit');
-		$profession   = Input::get('profession');
-		$timeoflearn  = Input::get('timeoflearn');
-		$details         = Input::get('details');
-
+		$name        	= Input::get('name');
+		$gender       	= Input::get('gender');
+		$year           	= Input::get('year');
+		$month         	= Input::get('month');
+		$day             	= Input::get('day');
+		$hometown   	= Input::get('hometown');
+		$address      	= Input::get('address');
+		$guardian     	= Input::get('guardian');
+		$phone         	= Input::get('phone');
+		$unit             	= Input::get('unit');
+		$position      	= Input::get('position');
+		$qq               	= Input::get('QQ');
+		$school        	= Input::get('school');
+		$postcode     	= Input::get('postcode');
+		$trainingunit   	= Input::get('trainingunit');
+		$profession   	= Input::get('profession');
+		$timeoflearn  	= Input::get('timeoflearn');
+		$details         	= Input::get('details');
 		$validation = Validator::make(
 			array(
 				'name' => $name,
@@ -434,8 +433,8 @@ class UserController extends BaseController{
 			return Response::json(array('errCode'=>2, 'message'=>'名字和手机必须填写完整!'));
 		}
 
-		$reg = "/^13[0-9]{1}[0-9]{8}$|15[0189]{1}[0-9]{8}$|189[0-9]{8}$/";
-		if(preg_match($reg, $phone))
+		$reg = "/^0?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/";
+		if( !preg_match($reg, $phone))
 		{
 			return Response::json(array('errCode'=>3, 'message'=>'手机格式不正确！'));
 		}
@@ -469,12 +468,11 @@ class UserController extends BaseController{
 		}
 		$application->scorenumber = $scorenumber;
 
-		if(!$application->save())
+		if($application->save())
 		{
-			return Response::json(array('errCode'=>4, 'message'=>'资料保存失败！'));
+			return Response::json(array('errCode'=>0, 'message'=>$scorenumber));
 		}
-
-		return Response::json(array('errCode'=>0, 'message'=>$scorenumber));
+		return Response::json(array('errCode'=>4, 'message'=>'资料保存失败！'));
 	}
 
 	//成绩查询

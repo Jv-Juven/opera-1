@@ -76,7 +76,7 @@
 			<div class="apply-td-text">
 				<span class="apply-text">单位：</span>
 			</div>
-			<input id="apple_unit" class="apply-td-input" type="text" style="width:330px;"/>
+			<input id="apply_unit" class="apply-td-input" type="text" style="width:330px;"/>
 		</div>
 		<div class="apply-tr">
 			<div class="apply-td-text">
