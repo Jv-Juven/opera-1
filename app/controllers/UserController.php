@@ -400,9 +400,20 @@ class UserController extends BaseController{
 		{
 			return Response::json(array('errCode'=>1, 'message'=>'请登录！'));
 		}
-
+		
+		$user_id 	= Auth::user()->id;
+		$apply = Application::where('user_id', '=', $user_id)->get();
+		if(count($apply) != 0)
+		{
+			return Response::json(array('errCode'=>2, 'message' =>'你已经报名！'));
+		}
+		
 		$name        	= Input::get('name');
 		$gender       	= Input::get('gender');
+		if($gender == null)
+		{
+			$gender = 2;
+		}
 		$year           	= Input::get('year');
 		$month         	= Input::get('month');
 		$day             	= Input::get('day');
@@ -430,16 +441,17 @@ class UserController extends BaseController{
 			));
 		if($validation->fails())
 		{
-			return Response::json(array('errCode'=>2, 'message'=>'名字和手机必须填写完整!'));
+			return Response::json(array('errCode'=>3, 'message'=>'名字和手机必须填写完整!'));
 		}
 
 		$reg = "/^0?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/";
 		if( !preg_match($reg, $phone))
 		{
-			return Response::json(array('errCode'=>3, 'message'=>'手机格式不正确！'));
+			return Response::json(array('errCode'=>4, 'message'=>'手机格式不正确！'));
 		}
 		//存储报名表
 		$application = new Application;
+		$application->user_id = $user_id;
 		$application->name = $name;
 		$application->gender = $gender;
 		$application->year = $year;
@@ -472,7 +484,7 @@ class UserController extends BaseController{
 		{
 			return Response::json(array('errCode'=>0, 'message'=>$scorenumber));
 		}
-		return Response::json(array('errCode'=>4, 'message'=>'资料保存失败！'));
+		return Response::json(array('errCode'=>5, 'message'=>'资料保存失败！'));
 	}
 
 	//成绩查询

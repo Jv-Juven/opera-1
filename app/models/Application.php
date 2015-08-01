@@ -5,7 +5,7 @@ class Application extends Eloquent{
 	protected $table = 'applications';
 
 	protected $fillable = array(
-		'id',
+		'user_id',
 		'name',
 		'gender',
 		'year',
