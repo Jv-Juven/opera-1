@@ -43,18 +43,32 @@
 							<!-- 评论区 -->
 							<div class="topics-comments-container">
 								<!-- 一个用户的评论 -->
+							@if(isset($topic_comments))
 								@foreach($topic_comments as $topic_comment)
 								<div class="comments-item">
 									<div class="item-head">
-										<div class="item-title">{{$comment_name[$topic_comment->user_id]}}</div>
+										<div class="item-title">{{User::find($topic_comment->user_id)->username}}</div>
 										<span class="comments-item-comment">评论</span>
 										<span>{{$topic_comment->created_at}}</span>
 										
 									</div>
 									<div class="item-body">{{$topic_comment->content}}</div>
+									<br/>
+									<div class="回复内容"> 
+								@if(isset($comment_replys[$topic_comment->id]))
+									@foreach($comment_replys[$topic_comment->id] as $reply)
+										<img src="{{User::find($reply->sender_id)->avatar}}">
+										{{User::find($reply->sender_id)->username}}
+										<strong>回复</strong>
+										<img src="{{User::find($reply->receiver_id)->avatar}}">
+										{{User::find($reply->receiver_id)->username}}
+										<span>:{{$reply->content}}</span>
+									@endforeach
+								@endif
+									</div>
 								</div>
 								@endforeach
-								
+							@endif	
 								<!-- 更多评论 -->
 								<div class="commonts-more">
 
