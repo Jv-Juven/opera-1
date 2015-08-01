@@ -15,7 +15,8 @@
 @stop
 
 @section('page-content')
-	@foreach($messages as $message)
+	@if(isset($messages))
+		@foreach($messages as $message)
 	<div class="page-content">
 		<div class="image">
 			<img src="{{{$message->avatar}}}">
@@ -28,12 +29,18 @@
 		</div>
 		<div class="message-btn">
 			<p class="message-edit"><span class= "reply-btn">回复({{{$message->messageCommentCount}}})</span>|<span class = "delete-btn">删除</span></p>
+			@if(isset($message->comments))
+				@foreach($message->comments as $comment)
+			<div class="回复内容" style="display:none" >
+				<img src="{{User::find($comment->sender_id)->avatar}}" class="回复者"><strong>回复</strong>
+				<span class="content">{{$comment->content}}</span><span class= "时间" >{{$comment->created_at}}</span>
+			</div>
+				@endforeach
+			@endif
 		</div>
-
 	</div>
-	@endforeach
-
-	
+		@endforeach
+	@endif
 @stop
 
 

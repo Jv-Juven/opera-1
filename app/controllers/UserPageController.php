@@ -192,9 +192,10 @@ class UserPageController extends BaseController{
 		$messages = Message::where('receiver_id', '=', $user_id)->get();
 		foreach($messages as $message)
 		{
-			$message['sender'] 			= User::find($message['sender_id'])->username;
+			$message['sender'] 				= User::find($message['sender_id'])->username;
 			$message['avatar']				= User::find($message['sender_id'])->avatar;
 			$message['messageCommentCount']	= $message->MessageComments()->count();
+			$message['comments']			= $message->MessageComments()->get();
 		}
 		return View::make('userCenter.message')->with(array(
 			'messages' 	=> $messages,
