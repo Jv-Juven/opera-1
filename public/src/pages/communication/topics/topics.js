@@ -1,14 +1,14 @@
 ;(function($){
 
 	// $(".left-nav-list li").eq(0).addClass("active");
-	var swiperTopics = new Swiper('.topics-swiper', {
-	    direction: 'vertical',
-	    freeMode: true,
-	    mousewheelControl: true,
-	    slidesPerView: 'auto',
-	    scrollbar: '.topics-scrollbar',
+	// var swiperTopics = new Swiper('.topics-swiper', {
+	//     direction: 'vertical',
+	//     freeMode: true,
+	//     mousewheelControl: true,
+	//     slidesPerView: 'auto',
+	//     scrollbar: '.topics-scrollbar',
 
-	});
+	// });
 
 	///////////////////
 	// 点击topics_border01的“发布话题”按钮事件 //
@@ -41,6 +41,37 @@
 			}
 		});
 
+	});
+
+	// 评论的展开和折叠
+	var tag = 1,
+	    swiperTopics;
+	$(".topics-comment").click(function (){
+		$(".topics-comments-container").slideToggle(800,function (){
+			if(tag != 1){
+				// tag = 0;
+				swiperTopics.destroy();
+			}
+			else{
+				tag = 0;
+			}
+			swiperTopics = new Swiper('.topics-swiper', {
+			    direction: 'vertical',
+			    freeMode: true,
+			    mousewheelControl: true,
+			    slidesPerView: 'auto',
+			    scrollbar: '.topics-scrollbar',
+
+			});
+			// swiperTopics.onResize();
+			// swiperTopics.updateSlidesSize();
+		});
+
+	});
+
+	//用户评论回复
+	$(".comments-item-comment").click(function (){
+		$(".reply-input").appendTo($(this).parent().parent());
 	});
 
 })(jQuery);
