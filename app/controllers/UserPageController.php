@@ -88,11 +88,20 @@ class UserPageController extends BaseController{
 		$user_id = Input::get('user_id');
 		$user = User::find($user_id);
 		$topics = $user->hasManyTopics()->get();
-		if($topics != null)
+		$comment_replys = array();
+		if(count($topics) != 0)
 		{
 			foreach($topics as $topic)
 			{
 				$topic["commentsCount"] = $topic->hasManyTopicComments()->count();
+				//如果话题评论不为空
+				if(count($topic["commentsCount"]) != 0)
+				{
+					$topic_comments  	= $topic->hasManyTopicComments()->get();
+
+
+				}
+
 			}		
 		}
 		return View::make('userCenter.dynamic')->with(array(
