@@ -686,16 +686,14 @@ class UserController extends BaseController{
 
 		$avatar = Input::get('avatar');
 		$messages = array(
-			'avatar.required' => '1',
-			'avatar.image' =>'2',
-			'avatar.size' =>'3'
+			'avatar.required' => 1,
 		);
-		$validation = validator::make(
+		$validation = Validator::make(
 			array(
 				'avatar'=>$avatar
 			),
 			array(
-				'avatar' =>'required|image|size:500'
+				'avatar' =>'required'
 			),
 			$messages
 			);
@@ -706,16 +704,20 @@ class UserController extends BaseController{
 			switch ($number[0])
 			{
 			case 1:
-				return Response::json(array('errCode'=>1, 'message'=>'无图片上传！')); 
-				break;
-			case 2:
-				return Response::json(array('errCode'=>2, 'message'=>'图片格式不正确！'));
+				return Response::json(array('errCode'=>2, 'message'=>'无图片上传！')); 
 				break;
 			default:
 				return Response::json(array('errCode'=>3, 'message'=>'图片必须小于500kb！'));
 			}
 		}
-		return Response::json(array('errCode'=>0, 'message' => '头像上传成功！'));
+		$user = Auth::user();
+		$user->avatar = $avatar;
+		if($user->save())
+		{
+			return Response::json(array('errCode'=>0, 'message' => '头像上传成功！'));
+		}
+
+		return Response::json(array('errCode'=>4, 'message' =>'图片上传失败！'));
 	}
 
 	//发表话题
