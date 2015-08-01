@@ -85,6 +85,9 @@
 								</div>
 								@endforeach
 							@endif	
+								<div class="reply-input">
+									<textarea></textarea>
+								</div>
 								<!-- 更多评论 -->
 								<div class="commonts-more">
 

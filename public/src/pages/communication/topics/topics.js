@@ -69,4 +69,9 @@
 
 	});
 
+	//用户评论回复
+	$(".comments-item-comment").click(function (){
+		$(".reply-input").appendTo($(this).parent().parent());
+	});
+
 })(jQuery);
