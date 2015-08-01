@@ -21,12 +21,21 @@ class HomeController extends BaseController {
 		$columns 	= EnlightenColumn::orderBy('created_at', 'desc')->take(8)->get();
 		$backstages 	= BackStage::orderBy('created_at', 'desc')->take(8)->get();
 		$contacts 	= ContactUs::all();
-		$contact 	= $contacts[0];
-		return View::make('home.home', array(
+		if(count($contacts) != 0)
+		{
+			$contact 	= $contacts[0];
+			return View::make('home.home', array(
 			'posters'	=>$posters,
 			'columns'	=>$columns,
 			'backstages'	=>$backstages,
 			'contact'	=>$contact,
+			'links' 		=>$this->link()
+			));
+		}
+		return View::make('home.home', array(
+			'posters'	=>$posters,
+			'columns'	=>$columns,
+			'backstages'	=>$backstages,
 			'links' 		=>$this->link()
 			));
 	}

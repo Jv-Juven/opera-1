@@ -104,7 +104,7 @@ class ColumnPageController extends BaseController{
 				foreach($topic_comments as $topic_comment)
 				{	//评论人的信息	
 					// $user_id 		= $topic_comment->user_id;
-					// $name 			= User::find($user_id)->username;
+					// $name 		= User::find($user_id)->username;
 					// $comment_name[$user_id] = $name;
 					//评论的回复人信息
 					$replys	 = CommentOfTopiccomment::where('topiccomment_id','=', $topic_comment->id);

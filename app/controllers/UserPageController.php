@@ -136,16 +136,15 @@ class UserPageController extends BaseController{
 	}
 
 	//照片
-	public function picture($album_id)
-	{
+	public function picture()
+	{	
+		$album_id	
 		 $album = Album::find($album_id);
 
 		 $pictures = $album->hasManyPictures()->get();
 
-		 return View::make('照片')->with(array(
-		 	'pictures' 	=> $pictures,
-		 	'links' 		=>$this->link()
-		 	));
+
+		 return 
 	}
 
 	//个人中心——获取留言

@@ -16,7 +16,7 @@
     	<div id="slider">
             <div class="swiper-container home-swiper-container">
                 <div class="swiper-wrapper">
-                    @if($posters != null)
+                    @if(isset($posters))
                         @foreach($posters as $poster)
                     <div class="swiper-slide"><a href="{{$poster->link}}"><img src="/images/admin/posters/{{$poster->image}}" class="slider-img" alt=""></a></div>
                         @endforeach
@@ -37,13 +37,15 @@
     				<span class="more"><a href="/customer/news/one_topic/" class="sub-title">更多》</a></span>
     			</div>
     			<ul class="content-list home-list">
-    				@foreach ( $columns as $column)
-                    <li>
-                        <a href="customer/news/column_more?column_id={{$column->id}}">
-                            {{$column->title}}
-                        </a>
-                    </li>
-                   @endforeach
+    	       @if(isset($columns))
+                                        @foreach ( $columns as $column)
+                                        <li>
+                                            <a href="customer/news/column_more?column_id={{$column->id}}">
+                                                {{$column->title}}
+                                            </a>
+                                        </li>
+                                       @endforeach
+                    @endif
     			</ul>
     		</li>
     		<li>
@@ -54,6 +56,7 @@
 
     			</div>
     			<ul class="content-list home-list">
+            @if(isset($backstages))
                     @foreach($backstages as $backstage)
                     <li>
                         <a href="customer/performance/backstage_more?backstage_id={{$backstage->id}}">
@@ -61,6 +64,7 @@
                         </a>
                     </li>
                     @endforeach
+            @endif
     			</ul>
     		</li>
     		<li>
@@ -69,11 +73,13 @@
     				<span class="sub-title-en"><a href="#">CONTACT</a></span>
     			</div>
     			<ul class="content-list home-code">
+                                        @if(isset($contact))
     				<li>联系电话：{{$contact->number}}</li>
     				<li>联系人：{{$contact->people}}</li>
     				<li>邮政编码：{{$contact->postcode}}</li>
     				<li>网址：<a>{{$contact->site}}</a></li>
     				<li>地址：{{$contact->address}}</li>
+                                        @endif
     				<li id="home_code_container">
     					<img class="index-code" src="/images/home/index_code.png" alt="">
     					<div id="code_content">

@@ -9,9 +9,9 @@ class CommentOfTopiccommentTableSeeder extends Seeder {
 	{
 		CommentOfTopiccomment::create([
 			'sender_id' => 3,
-			'receiver_id' => 2
+			'receiver_id' => 2,
 			'topiccomment_id' =>1,
-			'topic_id' => 1
+			'topic_id' => 1,
 			'content' => '神回复1'
 		]);
 
