@@ -37,57 +37,58 @@
 							(<span class="number">{{{$topic->commentsCount}}}</span>)个评论
 						</span>
 					</a>
-			@if($topic->comments != null)
+				@if(isset($topic->comments))
 					<!-- 遍历话题评论 -->
-				
-					@foreach($topic->comments as $comment)
-						@if( $comment != null)
 					<div class="comments">
+						@foreach($topic->comments as $comment)
 						<div class="comment">
 							<div class="comment-item">
-								<img class="author-avatar" src="{{User::find($comment->user_id)->avatar}}" width="50" height="50" />
+								<img class="author-avatar" src="{{{ $comment['author_avatar'] }}}" width="50" height="50" />
 								<div class="commment-info"> 
-									<span class="author-name">{{User::find($comment->user_id)->username}}</span>
+									<span class="author-name">{{{ $comment["author_name"] }}}</span>
 								 	 ： 
-									<span class="comment-content">{{$comment->content}}</span>
+									<span class="comment-content">{{{ $comment["content"] }}}</span>
 									<div class="comment-operate">
-										<span class="comment-time">{{$comment->created_at}}</span>
-										<a class="reply-btn" href="javascript:void(0);">回复</a>
+										<span class="comment-time">{{{ $comment["created_at"] }}}</span>
+										<a class="comment-reply-btn" href="javascript:void(0);">回复</a>
 									</div>
 								</div>
 								<div class="comment-input-wrapper">
 									<textarea class="reply-input"></textarea>
-									<input type="button" class="reply-submit-btn" value="提交" />
+									<input type="button" class="comment-reply-submit-btn" value="提交" />
 								</div>
 								<div style="clear:both;"></div>
 							</div>
-							@if($comment->replys != null)
+							@if(isset($comment->replys))
 							<div class="replies">
-								@foreach($comment->replys as $reply)
-									@if($reply != null)
+								@foreach($comment["replies"] as $reply)
 								<div class="reply">
-									<img class="author-avatar" src="{{User::find($reply->sender_id)->avatar}}" width="50" height="50" />
+									<img class="author-avatar" src="{{{ $reply->sender_avatar }}}" width="50" height="50" />
 									<div class="reply-info"> 
-										<span class="author-name">{{User::find($reply->sender_id)->username}}</span>
+										<span class="author-name">{{{ $reply->sender_name }}}</span>
+										回复
+										<span class="author-name">{{{ $reply->receiver_name }}}</span>
+
 									 	 ： 
-										<span class="reply-content">{{$reply->content}}</span>
+										<span class="reply-content">{{{ $reply->content }}}</span>
 										<div class="reply-operate">
-											<span class="reply-time">{{$reply->created_at}}</span>
+											<span class="reply-time">{{{ $reply->created_at }}}</span>
 											<a class="reply-btn" href="javascript:void(0);">回复</a>
 										</div>
 									</div>
 									<div style="clear:both;"></div>
 								</div>
-									@endif
 								@endforeach
-							</div>									
+								<div class="reply-input-wrapper">
+									<textarea class="reply-input"></textarea>
+									<input type="button" class="reply-submit-btn" value="提交" />
+								</div>
+							</div>
 							@endif
 						</div>
+						@endforeach
 					</div>
-						@endif
-					@endforeach
-				
-			@endif
+				@endif
 				</p>
 			</div>
 		</div>

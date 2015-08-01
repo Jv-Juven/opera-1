@@ -15,32 +15,57 @@
 @stop
 
 @section('page-content')
-	@if(isset($messages))
-		@foreach($messages as $message)
 	<div class="page-content">
-		<div class="image">
-			<img src="{{{$message->avatar}}}">
-		</div>
-		<div>
-			<p><span class= "name">{{{$message->sender}}}</span><span class ="time">{{{$message->created_at}}}</span></p>
-		</div>
-		<div class="content">
-			<p>{{{$message->content}}}</p>
-		</div>
-		<div class="message-btn">
-			<p class="message-edit"><span class= "reply-btn">回复({{{$message->messageCommentCount}}})</span>|<span class = "delete-btn">删除</span></p>
-			@if(isset($message->comments))
-				@foreach($message->comments as $comment)
-			<div class="回复内容" style="display:none" >
-				<img src="{{User::find($comment->sender_id)->avatar}}" class="回复者"><strong>回复</strong>
-				<span class="content">{{$comment->content}}</span><span class= "时间" >{{$comment->created_at}}</span>
+	@foreach($messages as $message)
+		<div class="message">
+			<img class="avatar" src="{{{$message->avatar}}}" width="50" height="50" />
+			<div class="message-info">
+				<span class="name">{{{$message->sender}}}</span>
+				<span class="time">{{{$message->created_at}}}</span>
 			</div>
-				@endforeach
-			@endif
+			<div class="content">
+				<p>{{{$message->content}}}</p>
+			</div>
+			<div class="message-edit">
+				<span class= "reply-btn">回复({{{$message->messageCommentCount}}})</span>|<span class = "delete-btn">删除</span>
+			</div>
+			<div class="replies">
+				<div class="reply">
+					<img class="avatar" src="{{{$message->avatar}}}" width="50" height="50" />
+					<div class="reply-info">
+						<span class="reply-author name">王晓明</span>
+						<span class="reply-time time">2015-07-31 13:38:08</span>
+						<a href="javascript:void(0);" class="reply-btn">回复</a>
+					</div>
+					<div class="reply-content">
+						其实不应该是这样的，你完全不理解戏曲的重要性，我们做的是什么，热爱，对生活的向往，向阳！
+						其实不应该是这样的，你完全不理解戏曲的重要性，我们做的是什么，热爱，对生活的向往，向阳！
+						其实不应该是这样的，你完全不理解戏曲的重要性，我们做的是什么，热爱，对生活的向往，向阳！
+						其实不应该是这样的，你完全不理解戏曲的重要性，我们做的是什么，热爱，对生活的向往，向阳！
+					</div>
+					<div style="clear:both;"></div>
+				</div>
+				<div class="reply">
+					<img class="avatar" src="{{{$message->avatar}}}" width="50" height="50" />
+					<div class="reply-info">
+						<span class="reply-author name">王晓明</span>
+						<span class="reply-time time">2015-07-31 13:38:08</span>
+						<a href="javascript:void(0);" class="reply-btn">回复</a>
+					</div>
+					<div class="reply-content">
+						其实不应该是这样的，你完全不理解戏曲的重要性，我们做的是什么，热爱，对生活的向往，向阳！
+						其实不应该是这样的，你完全不理解戏曲的重要性，我们做的是什么，热爱，对生活的向往，向阳！
+						其实不应该是这样的，你完全不理解戏曲的重要性，我们做的是什么，热爱，对生活的向往，向阳！
+						其实不应该是这样的，你完全不理解戏曲的重要性，我们做的是什么，热爱，对生活的向往，向阳！
+					</div>
+					<div style="clear:both;"></div>
+				</div>
+				<div style="clear:both;"></div>
+			</div>
+			<div style="clear:both;"></div>
 		</div>
+	@endforeach
 	</div>
-		@endforeach
-	@endif
 @stop
 
 

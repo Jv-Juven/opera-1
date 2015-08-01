@@ -32,12 +32,15 @@ class HomeController extends BaseController {
 			'links' 		=>$this->link()
 			));
 		}
-		return View::make('home.home', array(
-			'posters'	=>$posters,
-			'columns'	=>$columns,
-			'backstages'	=>$backstages,
-			'links' 		=>$this->link()
+		else
+		{
+			return View::make('home.home', array(
+				'posters'	=>$posters,
+				'columns'	=>$columns,
+				'backstages'	=>$backstages,
+				'links' 		=>$this->link()
 			));
+		}
 	}
 
 }
