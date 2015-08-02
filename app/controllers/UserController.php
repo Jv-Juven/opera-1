@@ -407,7 +407,7 @@ class UserController extends BaseController{
 		{
 			return Response::json(array('errCode'=>2, 'message' =>'你已经报名！'));
 		}
-		
+
 		$name        	= Input::get('name');
 		$gender       	= Input::get('gender');
 		if($gender == null)
@@ -556,6 +556,14 @@ class UserController extends BaseController{
 		
 		$content = Input::get('message_content');
 
+		$validation = Validator::make(
+			array('content'=>$content),
+			array('content'=>'required' )
+			);
+		if($validation->fails())
+		{
+			return Response::json(array('errCode'=>2,' message' =>'请填写评论内容！'));
+		}
 		$msg = new Message;
 		$msg->receiver_id = $receiver_id;
 		$msg->sender_id = $sender_id;
@@ -563,12 +571,10 @@ class UserController extends BaseController{
 
 		if(!$msg->save())
 		{
-			return Response::json(array('errCode'=>2, 'message'=>'回复失败！'));
+			return Response::json(array('errCode'=>3, 'message'=>'留言失败！'));
 		}
-		$msg['avatar'] 		= User::find($sender_id)->avatar;
-		$msg['username']	 	= User::find($sender_id)->username;
 
-		return Response::json(array('errCode'=>0, 'msg'=>$msg));
+		return Response::json(array('errCode'=>0, 'message'=>'留言成功！'));
 	}
 
 	//个人中心——发表回复
@@ -579,24 +585,31 @@ class UserController extends BaseController{
 			return Response::json(array('errCode'=>1, 'message'=>'请登录！'));
 		}
 		$user = Auth::getUser();
-
-		$message_id = Input::get('message_id');
+		$message_id 	= Input::get('message_id');
 		$content 	= Input::get('comment_content');
+		$receiver_id 	= Input::get('receiver_id');
+
+		$validation = Validator::make(
+			array('content'=>$content),
+			array('content'=>'required' )
+			);
+		if($validation->fails())
+		{
+			return Response::json(array('errCode'=>2,' message' =>'请填写回复内容！'));
+		}
 
 		$comment = new MessageComment;
 		$comment->message_id = $message_id;
 		$comment->content = $content;
-		$comment->user_id = $user->id;
+		$comment->sender_id = $user->id;
+		$comment->receiver_id = $receiver_id;
 
 		if(!$comment->save())
 		{
 			return Response::json(array('errCode'=>2, 'message'=>'评论创建失败！'));
 		}
 
-		$comment['username'] 	= $user->username;
-		$comment['avatar']		= $user->avatar;
-
-		return Response::json(array('errCode'=>0, 'comment'=>$comment)); 
+		return Response::json(array('errCode'=>0,'message'=>'回复成功！')); 
 	}
 
 	//更新资料,根据cngcong网写
