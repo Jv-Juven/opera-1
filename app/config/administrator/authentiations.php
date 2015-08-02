@@ -55,6 +55,20 @@ return array(
 				'5'
 				),
 		),
+
+		'username' =>array(
+			'title' => '用户名'
+		),
+
+		'email' => array(
+			'title' => '邮箱'
+		),
+
+		'password' => array(
+			'title' => '密码',
+			'type' => 'password'
+		),
+
 	),
 
 	'rules' => array(

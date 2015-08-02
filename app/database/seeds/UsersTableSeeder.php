@@ -9,7 +9,7 @@ class UsersTableSeeder extends Seeder {
 	{
 		
 		User::create([
-			'username' => 'alex',
+			'username' => 'alex1',
 			'avatar' => 'http://7xk6xh.com1.z0.glb.clouddn.com/avatar.png',
 			'password' => Hash::make('666666'),
 			'realname' =>'吴祖光',
@@ -30,7 +30,7 @@ class UsersTableSeeder extends Seeder {
 		]);
 
 		User::create([
-			'username' => 'alex',
+			'username' => 'alex2',
 			'avatar' => 'http://7xk6xh.com1.z0.glb.clouddn.com/avatar.png',
 			'password' =>Hash::make('666666'),
 			'realname' =>'刘天人',
@@ -50,7 +50,7 @@ class UsersTableSeeder extends Seeder {
 		]);
 
 		User::create([
-			'username' => 'alex',
+			'username' => 'alex3',
 			'avatar' => 'http://7xk6xh.com1.z0.glb.clouddn.com/avatar.png',
 			'password' =>Hash::make('666666'),
 			'realname' =>'大牛',
