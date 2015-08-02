@@ -124,6 +124,12 @@
 		  	details      : applyDetails
 		  },function (data){
 		  	if(data["errCode"] == 0) {
+
+		  		$("#apply_online_result .line-one").text(applyName);
+		  		$("#apply_online_result .line-two").text("编号为："+data["message"]);
+		  		$("#apply_online").fadeOut(300);
+		  		$("#apply_online_result").fadeIn(300);
+
 		  		alert("提交成功");
 		  	}
 		  	else {
