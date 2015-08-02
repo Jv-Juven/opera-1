@@ -43,7 +43,7 @@ Route::filter('auth', function()
 		}
 		else
 		{
-			return Response::json(array('errCode' =>401, 'message'=>'请登录'));
+			return Redirect::to('user/login');
 		}
 	}
 });
