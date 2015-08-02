@@ -30,9 +30,18 @@ class UserPageController extends BaseController{
 	public function spaceHome()
 	{	
 		$user_id = Input::get('user_id');
-		$user = User::find($user_id);
+		
+		if($user_id != null)
+		{
+			$user = User::find($user_id);
+		}else{
+			if(!Auth::check())
+			{
+				return Redirect::back();
+			}
+			$user = Auth::user();
+		}
 		// dd($user_id);	
-
 		$albums 		= $user->hasManyAlbums()->get();
  		$topics			= $user->hasManyTopics()->get();
  		// dd($albums);
