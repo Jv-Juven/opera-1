@@ -6,6 +6,7 @@
 
 @section('css')
 	@parent
+	<link rel="stylesheet" href="/dist/css/apply/query-score/query-score.css">
 	<link rel="stylesheet" href="/dist/css/apply/apply-online/apply-online.css">
 @stop
 
@@ -15,7 +16,7 @@
 @stop
 
 @section('page-content')
-	<form class="page-content">
+	<form id="apply_online" class="page-content">
 		<div class="apply-tr">
 			<div class="apply-td-text">
 				<span class="apply-text apply-must">姓名：</span>
@@ -135,6 +136,20 @@
 			<span>返回上一页</span>
 		</div>
 	</form>
+	<div id="apply_online_result" class="page-content" style="display: none;">
+		<div class="query-board">
+			<div class="query-board-header"></div>
+			<div class="query-board-body">
+
+				<div class="query-result">
+					<div class="line-one"></div>
+					<div class="line-two"></div>
+					<!-- <div class="line-three">考试成绩为：87分</div> -->
+				</div>
+
+			</div>
+		</div>
+	</div>
 @stop
 
 @section('js')
