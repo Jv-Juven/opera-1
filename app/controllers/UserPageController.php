@@ -45,7 +45,7 @@ class UserPageController extends BaseController{
 		$albums 		= $user->hasManyAlbums()->get();
  		$topics			= $user->hasManyTopics()->get();
  		// dd($albums);
-
+ 
  		$pictureCount = array();
  		$picture  = array();
  		$topicCommentCount = array();
