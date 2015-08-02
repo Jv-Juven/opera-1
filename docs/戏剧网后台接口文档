@@ -217,19 +217,24 @@
 
 	4.照片
 		请求方式:	GET
-		请求url:	/user/picture/:album_id
+		请求url:	/user/picture/
 
 		请求参数:	
 				album_id	相册的id			根据id取得图片实例
 
-		返回参数:	视图
-				pictures:[
-					{
-						title:xxx,			图片标题
-						picture:xxx			图片的url
-					},
-					....
-				]
+		返回参数:	
+
+				{
+				
+					pictures:{
+						title:xxx 		照片标题
+						picture:xxx 		照片url
+					}
+					errCode:xxx,			错误码	0表示返回正常	 
+					message:xxx			提示信息
+				}
+
+
 	5. 获取留言
 		请求方式:	GET
 		请求url:	/user/message/:user_id
@@ -442,21 +447,21 @@
 		返回参数:
 				{
 				errCode:xxx,			错误码	0表示返回正常	 
-				message:xxx			提示信息
+				message:xxx				提示信息
 				}
 
 	4.2 发表话题评论的回复
 		请求方式:	POST
-		请求url:	/user/personal/comment_topiccomment
+		请求url:	/user/personal/reply
 
 		请求参数:	
-				topicComment_id:xxx 		评论的id
+				topicComment_id:xxx 	评论的id
 				content:xxx 			话题内容
 
 		返回参数:
 				{
 				errCode:xxx,			错误码	0表示返回正常	 
-				message:xxx			提示信息
+				message:xxx				提示信息
 				}
 
 
@@ -1417,9 +1422,30 @@
 					video:xxx 			视频连接
 				}
 
-	4. 七牛云:
-		请求方式:	GET
-		请求url:	qiniu/getUpToken
+	4. 论谈评论
+		请求方式:	POST
+		请求url:	user/topic_comment
 
-		请求参数:
+		请求参数:	
+				topic_id 				话题id
+				content:xxx 				评论内容
 
+		返回参数: 
+				{
+					errCode:xxx,			错误码	0表示返回正常	 
+					message:xxx			提示信息
+				}
+
+	5.论谈评论的回复
+		请求方式:	POST
+		请求url:	user/reply
+
+		请求参数:	
+				reply_id				被回复id
+				content:xxx 				回复内容
+
+		返回参数: 
+				{
+					errCode:xxx,			错误码	0表示返回正常	 
+					message:xxx			提示信息
+				}

@@ -1,50 +1,119 @@
 .page-content{
 	/*margin-top: 20px;*/
-}
-img{
-	height: 98px;
-	width: 98px;
-	float: left;
-}
 
-.name{
-	color: #00a548;
-	font-size: 18px;
-	margin-left: 11px;
-}
+	.message {
+		border-bottom: solid #00a548 1px;
+		margin-top: 10px;
 
-.time{
-	color: #7c7c7c;
-	font-size: 12px;
-	margin-left: 20px;
-}
+		.reply-btn, .message-reply-btn {
+			margin-right: 15px;
+		}
 
-.content{
-	margin-left: 109px;
-	padding-top: 17px;
-}
+		.message-delete-btn{
+			margin-left: 15px;
+		}
 
-.content p {
-	color: #7c7c7c;
-	font-size: 14px;
-}
+		.name{
+			color: #00a548;
+			font-size: 18px;
+			margin-left: 11px;
+		}
 
-.message-btn{
-	border-bottom: solid 	#00a548 1px;
-}
+		.time{
+			color: #7c7c7c;
+			font-size: 12px;
+			margin-left: 20px;
+		}
 
-.message-edit{
-	color: #00a548;
-	clear: both;
-	text-align: right;
-	font-size: 14px;
-	padding-bottom: 10px;
-}
+		.message-info {
+			float: left;
+			width: 730px;
+		}
 
-.reply-btn{
-	margin-right: 15px;
-}
+		.content{
+			margin-left: 60px;
+			width: 100%;
+			float: left;
 
-.delete-btn{
-	margin-left: 15px;
+			p {
+				color: #7c7c7c;
+				font-size: 14px;
+			}
+		}
+
+		.message-edit{
+			color: #00a548;
+			clear: both;
+			text-align: right;
+			font-size: 14px;
+			padding-bottom: 10px;
+			margin-top: 20px;
+
+			a {
+				color: #00a548;
+				text-decoration: none;
+			}
+		}
+
+		.reply-input {
+			width: 745px;
+		    height: 80px;
+		    border-radius: 10px;
+		    border: 1px solid #ababab;
+		    outline: none;
+		    padding: 10px;
+		    margin-top: 10px;
+		}
+
+		.replies {
+			margin-left: 60px;
+
+			.reply {
+				.reply-info {
+					.reply-btn {
+						text-decoration: none;
+						color: #00a548;
+    					font-size: 14px;
+    					margin-left: 20px;
+					}
+				}
+
+				.reply-content {
+					color: #7c7c7c;
+    				font-size: 14px;
+    				float: left;
+    				width: 650px;
+				    margin-left: 10px;
+				    margin-top: 10px;
+				    line-height: 1.5em;
+				    margin-bottom: 20px;
+				}
+			}
+
+			.reply-input-wrapper {
+				display: none;
+				margin-bottom: 10px;
+				.reply-input {
+					width: 670px;
+				}
+
+				.reply-submit-btn {
+					float: right;
+					margin-right: 40px;
+				}
+			}
+		}
+
+		.message-reply-input-wrapper {
+			display: none;
+			margin-bottom: 10px;
+			.message-reply-submit-btn {
+				float: right;
+				margin-right: 30px;
+			}
+		}
+	}
+	.avatar {
+		float: left;
+	}
 }

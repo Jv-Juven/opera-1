@@ -8,52 +8,26 @@ class MessageCommentsTableSeeder extends Seeder {
 	public function run()
 	{
 		MessageComment::create([
-			'user_id' => 4,
+			'sender_id' => 6,
+			'receiver_id' => 4,
 			'message_id' =>1,
-			'content' => '我要评论留言，评论留言'
+			'content' => '戏剧带给你不一样的生活体验，发扬传统文化，传承中国文明，应好好珍惜现在的好时代，去到外面，漂洋过海。'
 		]);
 
 		MessageComment::create([
-			'user_id' => 4,
+			'sender_id' => 5,
+			'receiver_id' => 4,
 			'message_id' =>1,
-			'content' => '我要评论留言，评论留言'
+			'content' => '戏剧带给你不一样的生活体验，发扬传统文化，传承中国文明，应好好珍惜现在的好时代，去到外面，漂洋过海。'
 		]);
 
 		MessageComment::create([
-			'user_id' => 4,
+			'sender_id' => 7,
+			'receiver_id' => 4,
 			'message_id' =>1,
-			'content' => '我要评论留言，评论留言'
+			'content' => '戏剧带给你不一样的生活体验，发扬传统文化，传承中国文明，应好好珍惜现在的好时代，去到外面，漂洋过海。'
 		]);
 
-		MessageComment::create([
-			'user_id' => 4,
-			'message_id' =>1,
-			'content' => '我要评论留言，评论留言'
-		]);
-
-		MessageComment::create([
-			'user_id' => 4,
-			'message_id' =>2,
-			'content' => '我要评论留言，评论留言'
-		]);
-
-		MessageComment::create([
-			'user_id' => 4,
-			'message_id' =>2,
-			'content' => '我要评论留言，评论留言'
-		]);
-
-		MessageComment::create([
-			'user_id' => 4,
-			'message_id' =>2,
-			'content' => '我要评论留言，评论留言'
-		]);
-
-		MessageComment::create([
-			'user_id' => 4,
-			'message_id' =>2,
-			'content' => '我要评论留言，评论留言'
-		]);
 	}
 
 }

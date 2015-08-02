@@ -1,10 +1,8 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
-        "This file is @generated automatically"
-    ],
-    "hash": "a25cdd4d033f98446007b4a3294c016f",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated auto
     "packages": [
         {
             "name": "cartalyst/sentry",
@@ -1074,7 +1072,11 @@
             },
             "dist": {
                 "type": "zip",
+<<<<<<< HEAD
                 "url": "https://api.github.com/repos/qiniu/php-sdk/zipball/a7c996cdf91e7059ce3da203ed9b246877f0a266",
+=======
+                "url": "http://packagist.phpcomposer.com/files/qiniu/php-sdk/a7c996cdf91e7059ce3da203ed9b246877f0a266.zip",
+>>>>>>> f54b4af9b5d7ee1f3a8f86fbedd83b74c558cc5c
                 "reference": "a7c996cdf91e7059ce3da203ed9b246877f0a266",
                 "shasum": ""
             },
@@ -1125,7 +1127,11 @@
             },
             "dist": {
                 "type": "zip",
+<<<<<<< HEAD
                 "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/c1a26c729508f73560c1a4f767f60b8ab6b4a666",
+=======
+                "url": "http://packagist.phpcomposer.com/files/squizlabs/PHP_CodeSniffer/c1a26c729508f73560c1a4f767f60b8ab6b4a666.zip",
+>>>>>>> f54b4af9b5d7ee1f3a8f86fbedd83b74c558cc5c
                 "reference": "c1a26c729508f73560c1a4f767f60b8ab6b4a666",
                 "shasum": ""
             },
@@ -1638,7 +1644,7 @@
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "v2.7.2",
+            "version": "v2.7.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/EventDispatcher.git",
@@ -1696,7 +1702,7 @@
         },
         {
             "name": "symfony/filesystem",
-            "version": "v2.7.2",
+            "version": "v2.7.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Filesystem.git",

@@ -6,7 +6,8 @@ class MessageComment extends Eloquent{
 
 	protected $fillable = array(
 		'id',
-		'user_id',
+		'sender_id',
+		'receiver_id',
 		'message_id',
 		'content',
 		'created_at'

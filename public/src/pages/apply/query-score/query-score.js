@@ -8,7 +8,7 @@
 		var num = queryNum.val();
 		var name = queryName.val();
 
-		if(!'/[0-9]{0,}/'.test(num)){
+		if(!/[0-9]+/.test(num)){
 			alert("请输入你的编号");
 			queryNum.focus();
 			return ;
@@ -23,7 +23,7 @@
 			scorenumber : num,
 			name        : name
 		},function(data){
-			if(data[0]["errCode"] == 0){
+			if(data["errCode"] == 0){
 
 				$('.query-form').hide();
 				$(".query-result").fadeIn(300);
@@ -34,7 +34,7 @@
 
 			}
 			else{
-				alert(data[0]["message"]);
+				alert(data["message"]);
 			}
 		},'json');
 

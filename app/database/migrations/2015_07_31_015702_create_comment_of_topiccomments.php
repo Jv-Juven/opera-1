@@ -15,10 +15,11 @@ class CreateCommentOfTopiccomments extends Migration {
 		Schema::create('comment_of_topiccomments', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->integer('sender_id')->unsigned()->index('sender_id');
-			$table->integer('topiccomment_id')->unsigned()->index('topiccomment_id');
-			$table->integer('receiver_id')->unsigned()->index('receiver_id');
-			$table->string('content');
+			$table->integer('sender_id')->unsigned()->index('sender_id');		// 发表回复的用户
+			$table->integer('topiccomment_id')->unsigned()->index('topiccomment_id');	// 该回复所在的评论
+			$table->integer('receiver_id')->unsigned()->index('receiver_id');	// 被回复的用户
+			$table->integer('topic_id')->unsigned()->index('topic_id');//话题id
+			$table->string('content');	// 评论内容
 			$table->timestamps();
 
 			$table                          
@@ -30,6 +31,12 @@ class CreateCommentOfTopiccomments extends Migration {
 			$table                          
 				->foreign('receiver_id')
 				->references('id')->on('users') 
+				->onDelete('cascade')
+				->onUpdate('cascade');
+
+			$table                          
+				->foreign('topic_id')
+				->references('id')->on('topics') 
 				->onDelete('cascade')
 				->onUpdate('cascade');
 		});

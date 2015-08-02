@@ -400,26 +400,30 @@ class UserController extends BaseController{
 		{
 			return Response::json(array('errCode'=>1, 'message'=>'请登录！'));
 		}
-
-		$name         = Input::get('name');
-		$gender       = Input::get('gender');
-		$year           = Input::get('year');
-		$month         = Input::get('month');
-		$day             = Input::get('day');
-		$hometown   = Input::get('hometown');
-		$address      = Input::get('address');
-		$guardian     = Input::get('guardian');
-		$phone         = Input::get('phone');
-		$unit             = Input::get('unit');
-		$position      = Input::get('position');
-		$qq               = Input::get('QQ');
-		$school         = Input::get('school');
-		$postcode     = Input::get('postcode');
-		$trainingunit   = Input::get('trainingunit');
-		$profession   = Input::get('profession');
-		$timeoflearn  = Input::get('timeoflearn');
-		$details         = Input::get('details');
-
+		
+		$user_id 	= Auth::user()->id;
+		$name        	= Input::get('name');
+		$gender       	= Input::get('gender');
+		if($gender == null)
+		{
+			$gender = 2;
+		}
+		$year           	= Input::get('year');
+		$month         	= Input::get('month');
+		$day             	= Input::get('day');
+		$hometown   	= Input::get('hometown');
+		$address      	= Input::get('address');
+		$guardian     	= Input::get('guardian');
+		$phone         	= Input::get('phone');
+		$unit             	= Input::get('unit');
+		$position      	= Input::get('position');
+		$qq               	= Input::get('QQ');
+		$school        	= Input::get('school');
+		$postcode     	= Input::get('postcode');
+		$trainingunit   	= Input::get('trainingunit');
+		$profession   	= Input::get('profession');
+		$timeoflearn  	= Input::get('timeoflearn');
+		$details         	= Input::get('details');
 		$validation = Validator::make(
 			array(
 				'name' => $name,
@@ -434,47 +438,47 @@ class UserController extends BaseController{
 			return Response::json(array('errCode'=>2, 'message'=>'名字和手机必须填写完整!'));
 		}
 
-		$reg = "/^13[0-9]{1}[0-9]{8}$|15[0189]{1}[0-9]{8}$|189[0-9]{8}$/";
-		if(preg_match($reg, $phone))
+		$reg = "/^0?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/";
+		if( !preg_match($reg, $phone))
 		{
 			return Response::json(array('errCode'=>3, 'message'=>'手机格式不正确！'));
 		}
 		//存储报名表
-		$application = new Application;
-		$application->name = $name;
-		$application->gender = $gender;
-		$application->year = $year;
-		$application->month = $month;
-		$application->day = $day;
-		$application->hometown = $hometown;
-		$application->address = $address;
-		$application->guardian = $guardian;
-		$application->phone = $phone;
-		$application->unit = $unit;
-		$application->position = $position;
-		$application->qq = $qq;
-		$application->school = $school;
-		$application->postcode = $postcode;
-		$application->trainingunit = $trainingunit;
-		$application->profession = $profession;
-		$application->timeoflearn = $timeoflearn;
-		$application->details = $details;
+		$application 			= new Application;
+		$application->user_id 		= $user_id;
+		$application->name 		= $name;
+		$application->gender 		= $gender;
+		$application->year 		= $year;
+		$application->month 		= $month;
+		$application->day 		= $day;
+		$application->hometown 	= $hometown;
+		$application->address 	= $address;
+		$application->guardian 	= $guardian;
+		$application->phone 		= $phone;
+		$application->unit 		= $unit;
+		$application->position 		= $position;
+		$application->qq 		= $qq;
+		$application->school 		= $school;
+		$application->postcode 	= $postcode;
+		$application->trainingunit 	= $trainingunit;
+		$application->profession 	= $profession;
+		$application->timeoflearn 	= $timeoflearn;
+		$application->details 		= $details;
 		
 		//产生考生编号
 		$possible_charactors = "0123456789";
 		$scorenumber  =  "";   //
-		while(strlen($salt) < 6)
+		while(strlen($scorenumber) < 6)
 		{
 		 	 $scorenumber .= substr($possible_charactors,rand(0,strlen($possible_charactors)-1),1);
 		}
 		$application->scorenumber = $scorenumber;
 
-		if(!$application->save())
+		if($application->save())
 		{
-			return Response::json(array('errCode'=>4, 'message'=>'资料保存失败！'));
+			return Response::json(array('errCode'=>0, 'message'=>$scorenumber));
 		}
-
-		return Response::json(array('errCode'=>0, 'message'=>$scorenumber));
+		return Response::json(array('errCode'=>4, 'message'=>'资料保存失败！'));
 	}
 
 	//成绩查询
@@ -546,6 +550,14 @@ class UserController extends BaseController{
 		
 		$content = Input::get('message_content');
 
+		$validation = Validator::make(
+			array('content'=>$content),
+			array('content'=>'required' )
+			);
+		if($validation->fails())
+		{
+			return Response::json(array('errCode'=>2,' message' =>'请填写评论内容！'));
+		}
 		$msg = new Message;
 		$msg->receiver_id = $receiver_id;
 		$msg->sender_id = $sender_id;
@@ -553,12 +565,38 @@ class UserController extends BaseController{
 
 		if(!$msg->save())
 		{
-			return Response::json(array('errCode'=>2, 'message'=>'回复失败！'));
+			return Response::json(array('errCode'=>3, 'message'=>'留言失败！'));
 		}
-		$msg['avatar'] 		= User::find($sender_id)->avatar;
-		$msg['username']	 	= User::find($sender_id)->username;
 
-		return Response::json(array('errCode'=>0, 'msg'=>$msg));
+		return Response::json(array('errCode'=>0, 'message'=>'留言成功！'));
+	}
+
+	//个人中心——删除留言
+	public function deleteMessage()
+	{
+		if(!Auth::check())
+		{
+			return Response::json(array('errCode'=>1, 'message'=>'请登录！'));
+		}
+
+		$message_id = Input::get('message_id');
+		$user_id = Auth::user()->id;
+
+		$message = Message::find($message_id);
+
+		if($message->receiver_id == $user_id)
+		{
+			if(!$message->delete())
+			{
+				return Response::json(array('errCode'=>2, 'message'=>'[数据库错误]删除留言失败'));
+			}
+		}
+		else
+		{
+			return Response::json(array('errCode'=>1, 'message'=>'[权限禁止]只能删除自己收到的留言'));
+		}
+
+		return Response::json(array('errCode'=>0));
 	}
 
 	//个人中心——发表回复
@@ -570,21 +608,33 @@ class UserController extends BaseController{
 		}
 		$user = Auth::getUser();
 
-		$message_id = Input::get('message_id');
-		$content 	= Input::get('comment_content');
+		$message_id = Input::get('message_id');		// 留言的id
+		$comment_id = Input::get('comment_id');		// 留言下评论的id，当comment_type为1时可用
+		$comment_type = Input::get('comment_type');	// comment_type参数有两种取值，0代表是直接在留言下回复，1代表是在留言的评论下回复
+		$content 	= Input::get('content');
 
-		$comment = new MessageComment;
+		$comment = new MessageComment();
 		$comment->message_id = $message_id;
 		$comment->content = $content;
-		$comment->user_id = $user->id;
+		$comment->sender_id = $user->id;
+
+		if($comment_type == 1)
+		{
+			$comment->receiver_id = MessageComment::find($comment_id)->sender_id;
+		}
+		else
+		{
+			$comment->receiver_id = Message::find($message_id)->sender_id;
+		}
 
 		if(!$comment->save())
 		{
 			return Response::json(array('errCode'=>2, 'message'=>'评论创建失败！'));
 		}
-
-		$comment['username'] 	= $user->username;
+		
+		$comment['sender_name'] = $user->username;
 		$comment['avatar']		= $user->avatar;
+		$comment['receiver_name'] = User::find($comment->receiver_id)->username;
 
 		return Response::json(array('errCode'=>0, 'comment'=>$comment)); 
 	}
@@ -686,16 +736,14 @@ class UserController extends BaseController{
 
 		$avatar = Input::get('avatar');
 		$messages = array(
-			'avatar.required' => '1',
-			'avatar.image' =>'2',
-			'avatar.size' =>'3'
+			'avatar.required' => 1,
 		);
-		$validation = validator::make(
+		$validation = Validator::make(
 			array(
 				'avatar'=>$avatar
 			),
 			array(
-				'avatar' =>'required|image|size:500'
+				'avatar' =>'required'
 			),
 			$messages
 			);
@@ -706,16 +754,20 @@ class UserController extends BaseController{
 			switch ($number[0])
 			{
 			case 1:
-				return Response::json(array('errCode'=>1, 'message'=>'无图片上传！')); 
-				break;
-			case 2:
-				return Response::json(array('errCode'=>2, 'message'=>'图片格式不正确！'));
+				return Response::json(array('errCode'=>2, 'message'=>'无图片上传！')); 
 				break;
 			default:
 				return Response::json(array('errCode'=>3, 'message'=>'图片必须小于500kb！'));
 			}
 		}
-		return Response::json(array('errCode'=>0, 'message' => '头像上传成功！'));
+		$user = Auth::user();
+		$user->avatar = $avatar;
+		if($user->save())
+		{
+			return Response::json(array('errCode'=>0, 'message' => '头像上传成功！'));
+		}
+
+		return Response::json(array('errCode'=>4, 'message' =>'图片上传失败！'));
 	}
 
 	//发表话题
@@ -752,62 +804,92 @@ class UserController extends BaseController{
 		return Response::json(array('errCode'=>2, 'message'=>'话题发表失败，请重新发送！'));
 	}
 
-	// 发表话题评论
+	//话题评论
 	public function topicComment()
 	{
-		$user 		= Auth::user();
-		$topic_id	=Input::get('topic_id');
-		$content 	= Input::get('content');
+		if(!Auth::check())
+		{
+			return Response::json(array('errCode'=>1, 'message'=>'[权限禁止]请先登录'));
+		}
+
+		$user = Auth::user();
+		$content = Input::get('content');
+		$topic_id = Input::get('topic_id');
+
 		$validation = Validator::make(
-			array('content'=>$content),
-			array('content'=>'required')
-			);
+			array('content' => $content),
+			array('content' => 'required')
+		);
+
 		if($validation->fails())
 		{
-			return Response::json(array('errCode' => 1,'message'=>'请写评论！'));
+			return Response::json(array('errCode'=>1, 'message'=>'请填写评论内容！'));
 		}
 
-		$topicComment = new TopicComment;
-		$topicComment->topic_id = $topic_id;
-		$topicComment->user_id = $user->id;
-		$topicComment->content = $content;
-		if($topicComment->save())
+		$topic_comment = new TopicComment;
+		$topic_comment->content = $content;
+		$topic_comment->topic_id = $topic_id;
+		$topic_comment->user_id = $user->id;
+		if($topic_comment->save())
 		{
-			return Response::json(array('errCode'=>0, 'message'=>'评论成功'));
+			return Response::json(array('errCode'=>0, 'message'=>'评论成功！'));
 		}
 
-		return Response::json(array('errCode'=>2, 'message'=>'评论失败！'));
+		return Response::json(array('errrCode'=>'2', 'message'=>'评论失败！'));
+
 	}
 
-	//发表话题评论的回复
-	public function commentOfTopicComment()
+	//话题评论的回复
+	public function reply()
 	{
-		$user 			= Auth::user();
-		$topicComment_id	=Input::get('topicComment_id');
-		$content 		= Input::get('content');
-		$validation		= Validator::make(
-					array('content'=>$content),
-					array('content'=>'required')
-					);
+		if(!Auth::check())
+		{
+			return Response::json(array('errCode'=>1, 'message'=>'[权限禁止]请先登录'));
+		}
+
+		$user = Auth::user();
+		$content = Input::get('content');
+		$topic_id = Input::get('topic_id');
+		$comment_id = Input::get('comment_id');
+		$reply_id = Input::get('reply_id');
+		$reply_type = Input::get('reply_type');
+
+		$validation = Validator::make(
+			array('content' => $content),
+			array('content' => 'required')
+			);
+
 		if($validation->fails())
 		{
-			return Response::json(array('errCode' => 1,'message'=>'请写评论！'));
+			return Response::json(array('errCode'=>1, 'message'=>'请填写回复内容！'));
 		}
 
-		$commentOfTopiccomment 				= new CommentOfTopiccomment;
-		$commentOfTopiccomment->user_id 		= $user->id;
-		$commentOfTopiccomment->topiccomment_id 	= $topicComment_id;
-		$commentOfTopiccomment->content 		=$content;
-
-		if($commentOfTopiccomment->save())
+		$reply = new CommentOfTopiccomment;
+		$reply->content = $content;
+		$reply->topiccomment_id = $comment_id;
+		$reply->topic_id = $topic_id;
+		$reply->sender_id = $user->id;
+		if($reply_type == 0)
 		{
-			return Response::json(array('errCdoe'=>0,'message'=>'回复成功！'));
+			$reply->receiver_id = TopicComment::find($comment_id)->user_id;
+		}
+		else
+		{
+			$reply->receiver_id = CommentOfTopiccomment::find($reply_id)->sender_id;
 		}
 
-		return Response::json(array('errCode'=>2, 'message'=>'回复失败！'));
+		if(!$reply->save())
+		{
+			return Response::json(array('errrCode'=>2, 'message'=>'[数据库错误]回复评论失败！'));
+		}
 
+		$reply["sender_avatar"] = $user->avatar;
+		$reply["sender_name"] = $user->username;
+		$reply["receiver_name"] = User::find($reply->receiver_id)->username;
+
+		return Response::json(array('errCode'=>0, 'reply'=>$reply));
 	}
-
+	
 	public function isOwn()
 	{
 		if(!Auth::check())
@@ -823,5 +905,7 @@ class UserController extends BaseController{
 
 		return Response::json(array('errCode'=>0, 'message'=>'可操作'));
 	}
+
+	
 
 }

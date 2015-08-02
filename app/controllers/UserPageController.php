@@ -30,13 +30,22 @@ class UserPageController extends BaseController{
 	public function spaceHome()
 	{	
 		$user_id = Input::get('user_id');
-		$user = User::find($user_id);
+		
+		if($user_id != null)
+		{
+			$user = User::find($user_id);
+		}else{
+			if(!Auth::check())
+			{
+				return Redirect::back();
+			}
+			$user = Auth::user();
+		}
 		// dd($user_id);	
-
 		$albums 		= $user->hasManyAlbums()->get();
  		$topics			= $user->hasManyTopics()->get();
  		// dd($albums);
-
+ 
  		$pictureCount = array();
  		$picture  = array();
  		$topicCommentCount = array();
@@ -88,18 +97,37 @@ class UserPageController extends BaseController{
 		$user_id = Input::get('user_id');
 		$user = User::find($user_id);
 		$topics = $user->hasManyTopics()->get();
-		if($topics != null)
+		//将话题的评论和回复储存到对应的数组中，遍历时记得是字符串
+		$comments_replys = array();
+		if(count($topics) != 0)
 		{
-			foreach($topics as $topic)
+			foreach($topics as &$topic)
 			{
 				$topic["commentsCount"] = $topic->hasManyTopicComments()->count();
+				$topic["comments"] = $topic->hasManyTopicComments()->get();
+				foreach ($topic["comments"] as &$comment) {
+					$replies = DB::table("comment_of_topiccomments")->where('topiccomment_id', '=', $comment->id)->orderBy("created_at")->get();
+					$comment["author_name"] = User::find($comment->user_id)->username;
+					$comment["author_avatar"] = User::find($comment->user_id)->avatar;
+
+					foreach ($replies as &$reply) {
+						$reply->receiver_avatar = User::find($reply->receiver_id)->avatar;
+						$reply->receiver_name = User::find($reply->receiver_id)->username;
+						$reply->sender_avatar = User::find($reply->sender_id)->avatar;
+						$reply->sender_name = User::find($reply->sender_id)->username;
+					}
+
+					$comment["replies"] = $replies;
+				}
 			}		
 		}
+
+
 		return View::make('userCenter.dynamic')->with(array(
-			'topics' => $topics,
-			'user'   => $user,
-			'links' 	=>$this->link()
-			));
+					'topics' => $topics,
+					'user'   => $user,
+					'links' 	=>$this->link()
+					));
 	}
 
 	//相册
@@ -136,16 +164,21 @@ class UserPageController extends BaseController{
 	}
 
 	//照片
-	public function picture($album_id)
-	{
-		 $album = Album::find($album_id);
+	public function picture()
+	{	
+		$album_id	= Input::get('album_id');
+		$album 	= Album::find($album_id);
+		if($album == null)
+		{
+			return Response::json(array('errCode' =>1, 'message'=>'此相册不存在！','pictures'=>''));
+		}
+		 $pictures 	= $album->hasManyPictures()->get();
+		 if(count($pictures) !=0)
+		 {
+			 return Response::json(array('errCode'=>0, 'message'=>'返回相片','pictures'=>$pictures)) ;
+		 }
 
-		 $pictures = $album->hasManyPictures()->get();
-
-		 return View::make('照片')->with(array(
-		 	'pictures' 	=> $pictures,
-		 	'links' 		=>$this->link()
-		 	));
+		 return Response::json(array('errCode' =>1, 'message'=>'该相册没有图片','pictures'=>''));
 	}
 
 	//个人中心——获取留言
@@ -153,18 +186,25 @@ class UserPageController extends BaseController{
 	{	
 		$user_id = Input::get('user_id');
 		$user = User::find($user_id);
-		$messages = Message::where('receiver_id', '=', $user_id)->get();
+		$messages = Message::where('receiver_id', '=', $user_id)->orderBy("created_at")->get();
 		foreach($messages as $message)
 		{
-			$message['sender'] 			= User::find($message['sender_id'])->username;
+			$message['sender'] 				= User::find($message['sender_id'])->username;
 			$message['avatar']				= User::find($message['sender_id'])->avatar;
 			$message['messageCommentCount']	= $message->MessageComments()->count();
+			$message['comments']			= MessageComment::where("message_id", "=", $message->id)->orderBy("created_at")->get();
+			
+			foreach ($message["comments"] as &$comment) {
+				$comment["sender_name"] = User::find($comment["sender_id"])->username;
+				$comment["receiver_name"] = User::find($comment["receiver_id"])->username;
+				$comment["sender_avatar"] = User::find($comment["sender_id"])->avatar;
+			}
 		}
 		return View::make('userCenter.message')->with(array(
 			'messages' 	=> $messages,
 			'user' 	 	=> $user,
-			'links' 		=>$this->link()
-			));
+			'links' 	=> $this->link()
+		));
 	}
 
 	//个人中心——获取回复
@@ -196,5 +236,9 @@ class UserPageController extends BaseController{
 			));
 	}
 
+	//论谈评论
+	
+	
+	//论谈回复
 	
 }

@@ -15,13 +15,20 @@ class CreateMessageCommentsTable extends Migration {
 		Schema::create('message_comments', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->integer('user_id')->unsigned()->index('user_id');//留言者id
+			$table->integer('sender_id')->unsigned()->index('sender_id');//被回复者id
+			$table->integer('receiver_id')->unsigned()->index('receiver_id');//回复者id
 			$table->integer('message_id')->unsigned()->index('message_id');//被回复的留言的id
 			$table->text('content');//内容
 			$table->timestamps();
 
 			$table                          
-				->foreign('user_id')
+				->foreign('sender_id')
+				->references('id')->on('users') 
+				->onDelete('cascade')
+				->onUpdate('cascade');
+
+			$table                          
+				->foreign('receiver_id')
 				->references('id')->on('users') 
 				->onDelete('cascade')
 				->onUpdate('cascade');

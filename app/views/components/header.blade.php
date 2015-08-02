@@ -13,7 +13,8 @@
 			<li><a href="/user/auth/">在线报名</a></li>
 		</ul>
 
-		<!--用户已登录 -->
+        @if (!Auth::check())
+		<!--用户未登录 -->
 		<ul id="offline" class="user-info">
 			<li class="login">
 				<a id="login_btn" href="javascript:">登录</a> /   
@@ -23,19 +24,19 @@
 				<a id="register_btn" href="javascript:">注册</a>
 			</li>
 		</ul>
-
-		<!-- 用户未登录 -->
-		<ul id="online" class="user-info" style="display:none;">
+		@else
+		<!-- 用户已登录 -->
+		<ul id="online" class="user-info">
 			<li class="user-portrit">
 				<a href="/user/space_home/">
-					<img id="user_head" class="user-head" src="/images/common/user_head.png" alt="">
-					<span id="user_id" class="user-id">logan</span>
+					<img id="user_head" class="user-head" src="{{Auth::user()->avatar}}" alt="">
+					<span id="user_id" class="user-id">{{Auth::user()->username}}</span>
 				</a>    
 			</li>
 			<li class="logout">
 				<a id="logout" href="javascript:">退出</a>
 			</li>
 		</ul>
-
+		@endif
 	</div>
 </header>

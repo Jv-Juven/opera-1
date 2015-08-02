@@ -89,6 +89,7 @@ class ColumnPageController extends BaseController{
 	{	
 		//获取最新的那个话题
 		$topic = Topic::orderBy('updated_at', 'desc')->first();
+		// dd($topic->id);
 		if($topic != null)
 		{	//话题人的信息
 			$user_id 		= $topic->user_id;
@@ -97,26 +98,17 @@ class ColumnPageController extends BaseController{
 			$topic_comments  	= $topic->hasManyTopicComments()->get(); 
 			// $comment_name 	= array();
 			$comment_replys = array();
-			$another	 = User::all();	
 			if($topic_comments != null)
 			{	
 				$commentCount = $topic_comments->count();
 				foreach($topic_comments as $topic_comment)
-				{	//评论人的信息	
-					// $user_id 		= $topic_comment->user_id;
-					// $name 			= User::find($user_id)->username;
-					// $comment_name[$user_id] = $name;
-					//评论的回复人信息
-					$replys	 = CommentOfTopiccomment::where('topiccomment_id','=', $topic_comment->id);
-
-					// $reply_name	= array();
-					if($replys != null)
-					{
-						foreach($replys as $reply)
-						{
-							array_push($comment_replys,$reply);
-						}
-					}
+				{	
+					//评论的回复人信息的对象集合
+					//replys可能为空数组
+					$replys	 = CommentOfTopiccomment::where('topiccomment_id','=', $topic_comment->id)->orderBy('created_at','asc')->get();
+					$key = $topic_comment->id;
+					$comment_replys[$key] = $replys;
+				 
 				}
 
 				return View::make('communication.topics')->with(array(
@@ -124,7 +116,6 @@ class ColumnPageController extends BaseController{
 					'topic_comments'	=> $topic_comments,
 					'comment_replys' 	=> $comment_replys,
 					'commentCount' 	=> $commentCount,
-					'another' 		=> $another,
 					'user' 			=>$user,
 					'links' 			=>$this->link()
 					));

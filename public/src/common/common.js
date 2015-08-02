@@ -177,17 +177,27 @@ window.navigation = (function() {
 
     urlArr = urlStr.split("/");
     arg = urlArr.length - 1;
-    if(urlArr[arg] == ""){
-        index = 0;
-    }
     if(isNaN(urlArr[arg])){
-        index = urlArr[arg].charCodeAt() - 64;
+        index = urlArr[arg].charCodeAt();
+
+        if(index<100){
+            index = index - 64;
+        }
+        else{
+            index = 0;
+        }
     }
     else{
         index = urlArr[arg];
     }
+    if(urlArr[arg] == "city"){
+        index = -1;
+    }
+    else if(urlArr[arg] == "identity"){
+        index = 0;
+    }
     
-    console.log(index);
+    // console.log(index);
 
     // alert(urlArr[0]+"|"+urlArr[1]);
     if(urlArr[1] == ""){
@@ -235,7 +245,7 @@ window.navigation = (function() {
             }
             else if(urlArr[3] == "city"){
                 leftNav.removeClass("active").eq(1).addClass("active");
-                certication_li.removeClass("active").eq(index+1).addClass("active");
+                certication_li.removeClass("active").eq( ++ index).addClass("active");
             }
             else if(urlArr[3] == "username"){
                 leftNav.removeClass("active").eq(2).addClass("active");
@@ -306,11 +316,11 @@ window.navigation = (function() {
                 width = opts.width||"auto",
                 height = opts.height||"auto";
 
-            if(!/^(absolute)|(relative)/.test(fatherEle.css("position"))){
-                fatherEle.css({
-                    "position": "relative"
-                });
-            }
+            // if(!/^(absolute)|(relative)/.test(fatherEle.css("position"))){
+            //     fatherEle.css({
+            //         "position": "relative"
+            //     });
+            // }
 
             ele.css({
                 "position": "absolute",
@@ -330,6 +340,7 @@ window.navigation = (function() {
     $.extend({
         upload: function() {
             return function (options, handlers){
+                console.log("上传头像");
                 var callback, config, name, uploader;
                 config = $.extend({},{
                     runtimes: 'html5,flash,html4',

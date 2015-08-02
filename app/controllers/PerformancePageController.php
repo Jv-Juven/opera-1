@@ -73,7 +73,7 @@ class PerformancePageController extends BaseController{
 
  		$video = Appreciation::find($video_id);
 
- 		if($video != 0)
+ 		if($video != null)
  		{
 	 		return Response::json(array('errCode'=>0, 'message'=>'可播放视频', 'viedo'=>$video));
  		}
