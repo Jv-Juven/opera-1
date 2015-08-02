@@ -92,40 +92,28 @@ class UserPageController extends BaseController{
 		$comments_replys = array();
 		if(count($topics) != 0)
 		{
-			foreach($topics as $topic)
+			foreach($topics as &$topic)
 			{
 				$topic["commentsCount"] = $topic->hasManyTopicComments()->count();
-				//如果话题评论不为空
-				if(count($topic["commentsCount"]) != 0)
-				{
-					$comments  		= $topic->hasManyTopicComments()->get();
-					$topic['comments'] 	=$comments;
-					// $comments_replys[$topic->id]	= $comments->toArray();
-					foreach($comments as $comment)
-					{	
-						//评论的回复人信息的对象集合
-						//replys可能为空数组
-						$replys	 = CommentOfTopiccomment::where('topiccomment_id','=', $comment->id)->orderBy('created_at','asc')->get();
-						if(count($replys) != 0)
-						{
-							// $comments_replys[$topic->id][$comment->id] = $replys->toArray();
-							$comment['replys'] =$replys;
-						}else{
-							$comment['replys'] =null;
-						}
-					}
-				}else{
-					$topic['comments'] =null;
-				}
-			}
+				$topic["comments"] = $topic->hasManyTopicComments()->get();
+				foreach ($topic["comments"] as &$comment) {
+					$replies = DB::table("comment_of_topiccomments")->where('topiccomment_id', '=', $comment->id)->orderBy("created_at")->get();
+					$comment["author_name"] = User::find($comment->user_id)->username;
+					$comment["author_avatar"] = User::find($comment->user_id)->avatar;
 
-			return View::make('userCenter.dynamic')->with(array(	
-						// 'comments_replys'		=>$comments_replys,
-						'topics' 			=> $topics,
-						'user'   				=> $user,
-						'links' 				=>$this->link()
-						));
+					foreach ($replies as &$reply) {
+						$reply->receiver_avatar = User::find($reply->receiver_id)->avatar;
+						$reply->receiver_name = User::find($reply->receiver_id)->username;
+						$reply->sender_avatar = User::find($reply->sender_id)->avatar;
+						$reply->sender_name = User::find($reply->sender_id)->username;
+					}
+
+					$comment["replies"] = $replies;
+				}
+			}		
 		}
+
+
 		return View::make('userCenter.dynamic')->with(array(
 					'topics' => $topics,
 					'user'   => $user,
@@ -189,19 +177,25 @@ class UserPageController extends BaseController{
 	{	
 		$user_id = Input::get('user_id');
 		$user = User::find($user_id);
-		$messages = Message::where('receiver_id', '=', $user_id)->get();
+		$messages = Message::where('receiver_id', '=', $user_id)->orderBy("created_at")->get();
 		foreach($messages as $message)
 		{
 			$message['sender'] 				= User::find($message['sender_id'])->username;
 			$message['avatar']				= User::find($message['sender_id'])->avatar;
 			$message['messageCommentCount']	= $message->MessageComments()->count();
-			$message['comments']			= $message->MessageComments()->get();
+			$message['comments']			= MessageComment::where("message_id", "=", $message->id)->orderBy("created_at")->get();
+			
+			foreach ($message["comments"] as &$comment) {
+				$comment["sender_name"] = User::find($comment["sender_id"])->username;
+				$comment["receiver_name"] = User::find($comment["receiver_id"])->username;
+				$comment["sender_avatar"] = User::find($comment["sender_id"])->avatar;
+			}
 		}
 		return View::make('userCenter.message')->with(array(
 			'messages' 	=> $messages,
 			'user' 	 	=> $user,
-			'links' 		=>$this->link()
-			));
+			'links' 	=> $this->link()
+		));
 	}
 
 	//个人中心——获取回复

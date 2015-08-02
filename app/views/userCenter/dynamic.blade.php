@@ -16,9 +16,9 @@
 
 @section('page-content')
 	<div class="page-content">
-	@if(isset($topics))
 		@foreach($topics as $topic)
 		<div class="topic">
+			<input type="hidden" class="topic-id" value="{{{ $topic->id }}}" />
 			<div>
 				<p class="title">
 					{{{$topic->title}}}
@@ -37,66 +37,83 @@
 							(<span class="number">{{{$topic->commentsCount}}}</span>)个评论
 						</span>
 					</a>
-			@if($topic->comments != null)
 					<!-- 遍历话题评论 -->
-				
-					@foreach($topic->comments as $comment)
-						@if( $comment != null)
 					<div class="comments">
+						@foreach($topic->comments as $comment)
 						<div class="comment">
+							<input type="hidden" class="comment-id" value="{{{ $comment['id'] }}}" />
 							<div class="comment-item">
-								<img class="author-avatar" src="{{User::find($comment->user_id)->avatar}}" width="50" height="50" />
+								<img class="author-avatar" src="{{{ $comment['author_avatar'] }}}" width="50" height="50" />
 								<div class="commment-info"> 
-									<span class="author-name">{{User::find($comment->user_id)->username}}</span>
+									<span class="author-name">{{{ $comment["author_name"] }}}</span>
 								 	 ： 
-									<span class="comment-content">{{$comment->content}}</span>
+									<span class="comment-content">{{{ $comment["content"] }}}</span>
 									<div class="comment-operate">
-										<span class="comment-time">{{$comment->created_at}}</span>
-										<a class="reply-btn" href="javascript:void(0);">回复</a>
+										<span class="comment-time">{{{ $comment["created_at"] }}}</span>
+										<a class="comment-reply-btn" href="javascript:void(0);">回复</a>
 									</div>
-								</div>
-								<div class="comment-input-wrapper">
-									<textarea class="reply-input"></textarea>
-									<input type="button" class="reply-submit-btn" value="提交" />
 								</div>
 								<div style="clear:both;"></div>
 							</div>
-							@if($comment->replys != null)
 							<div class="replies">
-								@foreach($comment->replys as $reply)
-									@if($reply != null)
+								@foreach($comment["replies"] as $reply)
 								<div class="reply">
-									<img class="author-avatar" src="{{User::find($reply->sender_id)->avatar}}" width="50" height="50" />
+									<input type="hidden" class="reply-id" value="{{{ $reply->id }}}" />
+									<img class="author-avatar" src="{{{ $reply->sender_avatar }}}" width="50" height="50" />
 									<div class="reply-info"> 
-										<span class="author-name">{{User::find($reply->sender_id)->username}}</span>
+										<span class="author-name">{{{ $reply->sender_name }}}</span>
+										回复
+										<span class="author-name">{{{ $reply->receiver_name }}}</span>
 									 	 ： 
-										<span class="reply-content">{{$reply->content}}</span>
+										<span class="reply-content">{{{ $reply->content }}}</span>
 										<div class="reply-operate">
-											<span class="reply-time">{{$reply->created_at}}</span>
+											<span class="reply-time">{{{ $reply->created_at }}}</span>
 											<a class="reply-btn" href="javascript:void(0);">回复</a>
 										</div>
 									</div>
 									<div style="clear:both;"></div>
 								</div>
-									@endif
 								@endforeach
-							</div>									
-							@endif
+								<script type="text/template" id="comment-reply-template">
+									<div class="reply">
+										<input type="hidden" class="reply-id" value="<%= id %>" />
+										<img class="author-avatar" src="<%= sender_avatar %>" width="50" height="50" />
+										<div class="reply-info"> 
+											<span class="author-name"><%= sender_name %></span>
+											回复
+											<span class="author-name"><%= receiver_name %></span>
+										 	 ： 
+											<span class="reply-content"><%= content %></span>
+											<div class="reply-operate">
+												<span class="reply-time"><%= created_at %></span>
+												<a class="reply-btn" href="javascript:void(0);">回复</a>
+											</div>
+										</div>
+										<div style="clear:both;"></div>
+									</div>
+								</script>
+								<div class="reply-input-wrapper">
+									<input type="hidden" class="topic-id" value="" />
+									<input type="hidden" class="comment-id" value="" />
+									<input type="hidden" class="reply-id" value="" />
+									<input type="hidden" class="reply-type" value="" />
+									<textarea class="reply-input"></textarea>
+									<input type="button" class="reply-submit-btn" value="提交" />
+									<div style="clear:both;"></div>
+								</div>
+							</div>
 						</div>
+						@endforeach
 					</div>
-						@endif
-					@endforeach
-				
-			@endif
 				</p>
 			</div>
 		</div>
 		@endforeach
-	@endif
 	</div>
 @stop
 
 @section("js")
     @parent
+    <script type="text/javascript" src="/lib/js/plugins/lodash.min.js"></script>
     <script type="text/javascript" src="/dist/js/pages/dynamic.js"></script>
 @stop

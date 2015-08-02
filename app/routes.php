@@ -68,10 +68,7 @@ Route::group(array('prefix'=>'user'),function()
 		Route::post('application', 'UserController@postApplication');
 		//成绩成绩查询
 		Route::post('score_inquiry', 'UserController@scoreInquiry');
-		//发表话题评论
-		Route::post('topic_comment','UserController@topicComment');
-		//发表话题评论的回复
-		Route::post('reply', 'UserController@reply');
+		
 		//个人中心
 		Route::group(array('prefix'=>'personal'), function()
 		{
@@ -80,8 +77,13 @@ Route::group(array('prefix'=>'user'),function()
 			Route::post('issue_topic', 'UserController@issueTopic');
 			//发表留言
 			Route::post('message', 'UserController@postMessage');
+			Route::post('delete_message', 'UserController@deleteMessage');
 			//发表回复
 			Route::post('message_comment','UserController@postMessageComment');
+			//发表话题评论
+			Route::post('topic_comment','UserController@topicComment');
+			//发表话题评论的回复
+			Route::post('reply', 'UserController@reply');
 			//更新个人资料
 			Route::post('update', 'UserController@postUpdate');
 			//更换头像
