@@ -16,7 +16,7 @@
 			 applyAddr = $("#apply_addr").val(),
 			  guardian = $("#guardian").val(),
 			applyPhone = $("#apply_phone").val(),
-			 applyUnit = $("apply_unit").val(),
+			 applyUnit = $("#apply_unit").val(),
 			  applyJob = $("#apply_job").val(),
 				    qq = $("#qq").val(),
 		   applySchool = $("#apply_school").val(),

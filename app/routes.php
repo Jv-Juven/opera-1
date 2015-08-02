@@ -38,9 +38,13 @@ Route::group(array('prefix'=>'user'),function()
 	Route::post('check_captcha','UserController@checkCaptcha');
 	//
 	Route::post('resend_checkcode','UserController@resendCheckCode' );
-	Route::get('getremind','UserPageController@getRemind');
+	//点击忘记密码获取重置页
+	Route::get('get_remind','UserPageController@getRemind');
+	//往邮箱发送重置页
 	Route::post('post_remind','UserController@postRemind');
+	//获取输入密码页面
 	Route::get('get_reset','UserPageController@getReset');
+	//重置密码
 	Route::post('post_reset', 'UserController@postReset');
 
 	//空间首页
