@@ -86,6 +86,7 @@ module.exports = (grunt)->
                     'dist/css/userCenter/information/information.css':['src/pages/userCenter/information/information.less']
                     'dist/css/userCenter/dynamic/dynamic.css':['src/pages/userCenter/dynamic/dynamic.less']
                     'dist/css/login/login.css':['src/pages/login/login.less']
+                    'dist/css/login/findpassword.css':['src/pages/login/findpassword.less']
 
         cssmin:
             main:
