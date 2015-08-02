@@ -39,11 +39,11 @@ Route::filter('auth', function()
 	{
 		if (Request::ajax())
 		{
-			return response::json(array('errCode' =>10, 'message'=>'请登录'));
+			return Response::json(array('errCode' =>10, 'message'=>'请登录'));
 		}
 		else
 		{
-			return response::json(array('errCode' =>401, 'message'=>'请登录'));
+			return Response::json(array('errCode' =>401, 'message'=>'请登录'));
 		}
 	}
 });
