@@ -39,11 +39,11 @@ Route::filter('auth', function()
 	{
 		if (Request::ajax())
 		{
-			return Response::make('Unauthorized', 401);
+			return response::json(array('errCode' =>10, 'message'=>'请登录'));
 		}
 		else
 		{
-			return Redirect::guest('user/login');
+			return response::json(array('errCode' =>401, 'message'=>'请登录'));
 		}
 	}
 });
