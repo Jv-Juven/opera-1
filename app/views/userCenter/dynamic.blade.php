@@ -1,6 +1,5 @@
 @extends('layouts.subpage')
 
-
 @section('title')
 	<title>话题动态</title>
 @stop
@@ -37,6 +36,8 @@
 							(<span class="number">{{{$topic->commentsCount}}}</span>)个评论
 						</span>
 					</a>
+
+					<a href="javascript:void(0);" class="add-comment-btn">回复</a>
 					<!-- 遍历话题评论 -->
 					<div class="comments">
 						@foreach($topic->comments as $comment)
@@ -104,6 +105,10 @@
 							</div>
 						</div>
 						@endforeach
+						<div class="comment-input-wrapper">
+							<textarea class="reply-input"></textarea>
+							<input type="button" class="comment-reply-submit-btn" value="提交" />
+						</div>
 					</div>
 				</p>
 			</div>

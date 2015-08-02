@@ -17,7 +17,7 @@
 		<!--用户未登录 -->
 		<ul id="offline" class="user-info">
 			<li class="login">
-				<a id="login_btn" href="javascript:">登录</a> /   
+				<a id="login_btn" href="javascript:">登录</a>/   
 				<!-- <a id="login_btn" href="/user/login">登录</a> /    -->
 			</li>
 			<li class="register">

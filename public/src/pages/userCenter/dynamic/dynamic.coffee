@@ -6,6 +6,11 @@ showComments = (e)->
 	$parent = $(e.currentTarget).parent().parent();
 	$parent.find(".comments").slideToggle("slow");
 
+showCommentArea = (e)->
+	$parent = $(e.currentTarget).parent().parent();
+	$commentInputWrapper = $parent.find(".comment-input-wrapper");
+	console.log $commentInputWrapper[0]
+
 showCommentReplyArea = (e)->
 	$parent = $(e.currentTarget).parent().parent().parent().parent();
 	commentId = $parent.find(".comment-id").val();
@@ -68,6 +73,8 @@ submitReply = (e)->
 $ ->
 	$showCommentsBtn = $(".show-comments-btn");
 	$commentReplyBtn = $(".comment-reply-btn");
+	$addCommentBtn = $(".add-comment-btn");
+
 	$replyBtn = $(".reply-btn");
 
 	$commentReplySubmitBtn = $(".comment-reply-submit-btn")
@@ -79,6 +86,8 @@ $ ->
 
 	$commentReplySubmitBtn.click submitCommentReply
 	$replySubmitBtn.click submitReply
+
+	$addCommentBtn.click showCommentArea
 
 
 

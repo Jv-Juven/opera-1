@@ -9,17 +9,17 @@ class TopicCommentsTableSeeder extends Seeder {
 	{
 		TopicComment::create([
 			'content'=>'你这样说真的好吗？不知君何想如此，妙哉否，欢快否！',
-			'user_id' => 5,
+			'user_id' => 1,
 			'topic_id'=>'1',
 		]);
 		TopicComment::create([
 			'content'=>'你这样说真的好吗？不知君何想如此，妙哉否，欢快否！',
-			'user_id' => 6,
+			'user_id' => 2,
 			'topic_id'=>'1',
 		]);
 		TopicComment::create([
 			'content'=>'你这样说真的好吗？不知君何想如此，妙哉否，欢快否！',
-			'user_id' =>7,
+			'user_id' =>3,
 			'topic_id'=>'1',
 		]);
 	}

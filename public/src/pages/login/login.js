@@ -1,5 +1,6 @@
-;(function($){
-	return false;
+(function($){
+
+	alert
 
 	//登录数据页面
 	// var upload_login=function(){

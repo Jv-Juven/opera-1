@@ -80,8 +80,8 @@
 		请求url:	/user/login
 
 		请求参数:
-				username		用户名	字符串
-				password		密码		长度为6-20的字母和数字组成的字符串		  
+				username	用户名	字符串
+				password	密码		长度为6-20的字母和数字组成的字符串		  
 				captcha		验证码	长度为5的字符串
 		
 

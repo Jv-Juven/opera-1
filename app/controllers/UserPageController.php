@@ -1,7 +1,7 @@
 <?php
 
 use Gregwar\Captcha\CaptchaBuilder;
-class UserPageController extends BaseController{
+class UserPageController extends BaseController {
 
 	public function login()
 	{
@@ -10,9 +10,10 @@ class UserPageController extends BaseController{
 		$builder->build();
 		$phrase = $builder->getPhrase();
 		$_SESSION['phrase'] = $phrase;
+
 		return View::make('login')->with(array(
 			'captcha' 	=> $builder,
-			'links' 	=>$this->link()
+			'links' 	=> $this->link()
 		));
 	}
 
