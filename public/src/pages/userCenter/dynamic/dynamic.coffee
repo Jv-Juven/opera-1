@@ -2,14 +2,21 @@
 $CommentReplyTemplate = $("#comment-reply-template");
 CommentReplyTemplate = _.template($CommentReplyTemplate.html());
 
+$CommentTemplate = $("#comment-template");
+CommentTemplate = _.template($CommentTemplate.html());
+
 showComments = (e)->
 	$parent = $(e.currentTarget).parent().parent();
 	$parent.find(".comments").slideToggle("slow");
 
 showCommentArea = (e)->
 	$parent = $(e.currentTarget).parent().parent();
+
+	topic_id = $parent.parent().find(".topic-id").val()
 	$commentInputWrapper = $parent.find(".comment-input-wrapper");
-	console.log $commentInputWrapper[0]
+	$commentInputWrapper.fadeToggle('slow');
+	$commentInputWrapper.find(".reply-input").focus()
+	$commentInputWrapper.find(".topic-id").val(topic_id);
 
 showCommentReplyArea = (e)->
 	$parent = $(e.currentTarget).parent().parent().parent().parent();
@@ -49,6 +56,10 @@ submitCommentReply = (e)->
 	$.post '/user/personal/topic_comment', {topic_id: topicId, content: content}, (res)->
 		if res.errCode is 0
 			alert "提交评论成功"
+			$newComment = $(CommentTemplate(res.comment))
+			$parent.parent().append($newComment);
+			$parent.hide();
+			$parent.find(".reply-input").val("")
 		else
 			alert "提交评论失败"
 	
@@ -71,23 +82,14 @@ submitReply = (e)->
 			alert "提交回复失败"
 
 $ ->
-	$showCommentsBtn = $(".show-comments-btn");
-	$commentReplyBtn = $(".comment-reply-btn");
-	$addCommentBtn = $(".add-comment-btn");
+	$(document).on "click", ".show-comments-btn", showComments 
+	$(document).on "click", ".comment-reply-btn", showCommentReplyArea 
+	$(document).on "click", ".reply-btn", showReplyArea 
+	$(document).on "click", ".add-comment-btn", showCommentArea 
+	$(document).on "click", ".comment-reply-submit-btn", submitCommentReply 
+	$(document).on "click", ".reply-submit-btn", submitReply 
 
-	$replyBtn = $(".reply-btn");
 
-	$commentReplySubmitBtn = $(".comment-reply-submit-btn")
-	$replySubmitBtn = $(".reply-submit-btn")
- 
-	$showCommentsBtn.click showComments
-	$commentReplyBtn.click showCommentReplyArea
-	$replyBtn.click showReplyArea
-
-	$commentReplySubmitBtn.click submitCommentReply
-	$replySubmitBtn.click submitReply
-
-	$addCommentBtn.click showCommentArea
 
 
 

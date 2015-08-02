@@ -187,7 +187,7 @@ class UserPageController extends BaseController {
 	{	
 		$user_id = Input::get('user_id');
 		$user = User::find($user_id);
-		$messages = Message::where('receiver_id', '=', $user_id)->orderBy("created_at")->get();
+		$messages = Message::where('receiver_id', '=', $user_id)->orderBy("created_at", "desc")->get();
 		foreach($messages as $message)
 		{
 			$message['sender'] 				= User::find($message['sender_id'])->username;

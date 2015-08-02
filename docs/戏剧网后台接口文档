@@ -294,7 +294,7 @@
 
 		请求参数:	
 				receiver_id					被留言者id
-				message_content				留言内容
+				content						留言内容
 
 		返回参数:	
 				{

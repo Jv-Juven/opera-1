@@ -37,7 +37,7 @@
 						</span>
 					</a>
 
-					<a href="javascript:void(0);" class="add-comment-btn">回复</a>
+					<a href="javascript:void(0);" class="add-comment-btn">新增评论</a>
 					<!-- 遍历话题评论 -->
 					<div class="comments">
 						@foreach($topic->comments as $comment)
@@ -75,24 +75,6 @@
 									<div style="clear:both;"></div>
 								</div>
 								@endforeach
-								<script type="text/template" id="comment-reply-template">
-									<div class="reply">
-										<input type="hidden" class="reply-id" value="<%= id %>" />
-										<img class="author-avatar" src="<%= sender_avatar %>" width="50" height="50" />
-										<div class="reply-info"> 
-											<span class="author-name"><%= sender_name %></span>
-											回复
-											<span class="author-name"><%= receiver_name %></span>
-										 	 ： 
-											<span class="reply-content"><%= content %></span>
-											<div class="reply-operate">
-												<span class="reply-time"><%= created_at %></span>
-												<a class="reply-btn" href="javascript:void(0);">回复</a>
-											</div>
-										</div>
-										<div style="clear:both;"></div>
-									</div>
-								</script>
 								<div class="reply-input-wrapper">
 									<input type="hidden" class="topic-id" value="" />
 									<input type="hidden" class="comment-id" value="" />
@@ -106,8 +88,10 @@
 						</div>
 						@endforeach
 						<div class="comment-input-wrapper">
+							<input type="hidden" class="topic-id" value="" />
 							<textarea class="reply-input"></textarea>
 							<input type="button" class="comment-reply-submit-btn" value="提交" />
+							<div style="clear:both;"></div>
 						</div>
 					</div>
 				</p>
@@ -115,6 +99,55 @@
 		</div>
 		@endforeach
 	</div>
+
+	<script type="text/template" id="comment-template">
+		<div class="comment">
+			<input type="hidden" class="comment-id" value="<%= id %>" />
+			<div class="comment-item">
+				<img class="author-avatar" src="<%= avatar %>" width="50" height="50" />
+				<div class="commment-info"> 
+					<span class="author-name"><%= author_name %></span>
+				 	 ： 
+					<span class="comment-content"><%= content %></span>
+					<div class="comment-operate">
+						<span class="comment-time"><%= created_at %></span>
+						<a class="comment-reply-btn" href="javascript:void(0);">回复</a>
+					</div>
+				</div>
+				<div style="clear:both;"></div>
+			</div>
+			<div class="replies">
+				<div class="reply-input-wrapper">
+					<input type="hidden" class="topic-id" value="" />
+					<input type="hidden" class="comment-id" value="" />
+					<input type="hidden" class="reply-id" value="" />
+					<input type="hidden" class="reply-type" value="" />
+					<textarea class="reply-input"></textarea>
+					<input type="button" class="reply-submit-btn" value="提交" />
+					<div style="clear:both;"></div>
+				</div>
+			</div>
+		</div>
+	</script>
+
+	<script type="text/template" id="comment-reply-template">
+		<div class="reply">
+			<input type="hidden" class="reply-id" value="<%= id %>" />
+			<img class="author-avatar" src="<%= sender_avatar %>" width="50" height="50" />
+			<div class="reply-info"> 
+				<span class="author-name"><%= sender_name %></span>
+				回复
+				<span class="author-name"><%= receiver_name %></span>
+			 	 ： 
+				<span class="reply-content"><%= content %></span>
+				<div class="reply-operate">
+					<span class="reply-time"><%= created_at %></span>
+					<a class="reply-btn" href="javascript:void(0);">回复</a>
+				</div>
+			</div>
+			<div style="clear:both;"></div>
+		</div>
+	</script>
 @stop
 
 @section("js")

@@ -2,6 +2,15 @@
 $messageCommentTemplate = $("#message-comment-template");
 messageCommentTemplate = _.template($messageCommentTemplate.html());
 
+$messageTemplate = $("#message-template");
+messageTemplate = _.template($messageTemplate.html());
+
+showNewMessageArea = (e)->
+	$messageInputWrapper = $("#message-input-wrapper")
+	
+	$messageInputWrapper.fadeToggle('slow');
+	$messageInputWrapper.find(".message-input").focus()
+
 showMessageReplyArea = (e)->
 	$message = $(e.currentTarget).parent().parent();
 	$replyInputWrapper = $message.find(".reply-input-wrapper");
@@ -54,7 +63,7 @@ submitReply = (e)->
 			alert "提交回复成功"
 			$parent.hide();
 			$newComment = $(messageCommentTemplate(res.comment))
-			$parent.parent().prepend($newComment);
+			$parent.parent().append($newComment);
 			$parent.find(".reply-input").val("")
 		else
 			alert "提交回复失败"
@@ -70,22 +79,34 @@ deleteMessage = (e)->
 		else
 			alert "删除留言失败"
 
+submitNewMessage = (e)->
+	$parent = $(e.currentTarget).parent();
+
+	content = $parent.find(".message-input").val();
+	receiver_id = $("#receiver-id").val()
+
+	$.post "/user/personal/message", {content: content, receiver_id: receiver_id}, (res)->
+		if res.errCode is 0
+			alert "发表留言成功"
+			$parent.hide();
+			$newMessage = $(messageTemplate(res.message))
+			$parent.parent().find(".messages").prepend($newMessage);
+			$parent.find(".message-input").val("")
+		else
+			alert res.message
 
 $ ->
-	$messageReplyBtn = $(".message-reply-btn");
-	$replyBtn = $(".reply-btn");
+	$(document).on "click", ".message-reply-btn", showMessageReplyArea 
+	$(document).on "click", ".reply-btn", showReplyArea 
 
-	$messageReplySubmitBtn = $(".message-reply-submit-btn")
-	$replySubmitBtn = $(".reply-submit-btn")
-	$messageDeleteBtn = $(".message-delete-btn")
- 
-	$messageReplyBtn.click showMessageReplyArea
-	$replyBtn.click showReplyArea
+	$(document).on "click", ".message-reply-submit-btn", submitMessageReply 
+	$(document).on "click", ".reply-submit-btn", submitReply 
 
-	$messageReplySubmitBtn.click submitMessageReply
-	$replySubmitBtn.click submitReply
+	$(document).on "click", ".message-delete-btn", deleteMessage 
+	$(document).on "click", "#add-comment-btn", showNewMessageArea 
+	$(document).on "click", "#message-submit-btn", submitNewMessage 
 
-	$messageDeleteBtn.click deleteMessage
+
 
 
 

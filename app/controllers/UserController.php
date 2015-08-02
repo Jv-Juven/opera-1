@@ -548,7 +548,7 @@ class UserController extends BaseController{
 
 		$sender_id = Auth::user()->id;
 		
-		$content = Input::get('message_content');
+		$content = Input::get('content');
 
 		$validation = Validator::make(
 			array('content'=>$content),
@@ -568,7 +568,11 @@ class UserController extends BaseController{
 			return Response::json(array('errCode'=>3, 'message'=>'留言失败！'));
 		}
 
-		return Response::json(array('errCode'=>0, 'message'=>'留言成功！'));
+		$msg["avatar"] = Auth::user()->avatar;
+		$msg["sender_name"] = Auth::user()->username;
+
+
+		return Response::json(array('errCode'=>0, 'message'=>$msg));
 	}
 
 	//个人中心——删除留言
@@ -830,12 +834,15 @@ class UserController extends BaseController{
 		$topic_comment->content = $content;
 		$topic_comment->topic_id = $topic_id;
 		$topic_comment->user_id = $user->id;
-		if($topic_comment->save())
+		if(!$topic_comment->save())
 		{
-			return Response::json(array('errCode'=>0, 'message'=>'评论成功！'));
+			return Response::json(array('errrCode'=>'2', 'message'=>'[数据库错误]评论保存失败！'));
 		}
 
-		return Response::json(array('errrCode'=>'2', 'message'=>'评论失败！'));
+		$topic_comment["author_name"] = $user->username;
+		$topic_comment["avatar"] = $user->avatar;
+
+		return Response::json(array('errCode'=>0, 'comment'=>$topic_comment));
 
 	}
 
