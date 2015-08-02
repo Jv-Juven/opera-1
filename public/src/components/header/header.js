@@ -4,50 +4,9 @@
 	    userName = "",
 	    userPassword = "";
 
-	    // alert(getCookie("PHPSESSID"));
-
-    //写cookies
-    function setCookie(name,value)
-    {
-        var Days = 30;
-        var exp = new Date();
-        exp.setTime(exp.getTime() + Days*24*60*60*1000);
-        document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString()+";path=/";
-
-        
-        // var strsec = getsec(time);
-        // var exp = new Date();
-        // exp.setTime(exp.getTime() + strsec*1);
-        // document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString();
-    }
-
-    //读取cookies
-    function getCookie(name)
-    {
-        var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
-     
-        if(arr=document.cookie.match(reg))
-     
-            return (arr[2]);
-        else
-            return null;
-    }
-
-    //删除cookies
-    function delCookie(name)
-    {
-        var exp = new Date();
-        exp.setTime(exp.getTime() - 1);
-        var cval=getCookie(name);
-        if(cval!=null)
-            document.cookie= name + "="+cval+";expires="+exp.toGMTString()+";path=/";
-    }
 
     //用户登录成功之后
     function online(imgUrl,userN) {
-
-    	// $("#offline").hide();
-    	// $("#online").fadeIn();
 
     	$("#user_head").attr("src"," ").attr("src",imgUrl);
     	$("#user_id").text(userN);
@@ -59,30 +18,6 @@
     	});
 
     }
-
-
-     //////////////
-     // 检测用户是否登录 //
-     //////////////
-    (function () {
-      
-    	if(getCookie("opera_userId") !== null){
-    		// console.log(unescape(getCookie("opera_userImg")));
-
-    		// $("#offline").hide();
-    		// $("#online").show();
-
-    		$("#user_head").attr("src"," ").attr("src",unescape(getCookie("opera_userImg")));
-    		$("#user_id").text(getCookie("opera_userName"));
-
-    		$(".user-portrit>a").attr("href","/user/space_home/?user_id="+getCookie("opera_userId"));
-
-    	}
-    	else {
-    		console.log("没有用户登录！");
-    	}
-
-    })();
 	
 	//登录数据页面
 	var upload_login = function () {
@@ -117,14 +52,8 @@
 			success:function (data){
 				if(data['errCode'] == 0){
 					// console.log(data['user']['avatar']);
-					online(data['user']['avatar'],data['user']['username']);
-
-					
-
-					setCookie("opera_userId",data["user"]["id"]);
-					setCookie("opera_userName",data["user"]["username"]);
-					setCookie("opera_userImg",data['user']['avatar']);
-					$(".user-portrit>a").attr("href","/user/space_home/?user_id="+getCookie("opera_userId"));
+					window.location.href = window.location.href;
+					// online(data['user']['avatar'],data['user']['username']);
 
 					// console.log(data['user']['avatar']);
 					// console.log(getCookie("opera_userImg"));
@@ -152,11 +81,6 @@
 				if (data['errCode'] == 0){
 
 					alert("退出成功");
-
-					//删除本地存储
-					delCookie("opera_userId");
-					delCookie("opera_userImg");
-					delCookie("opera_userName");
 					
 					window.location.href = "/";
 
