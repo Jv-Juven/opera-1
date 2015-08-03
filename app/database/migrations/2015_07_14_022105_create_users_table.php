@@ -20,15 +20,15 @@ class CreateUsersTable extends Migration {
 			$table->string('password');//密码
 
 			$table->string('avatar')->default("http://7xk6xh.com1.z0.glb.clouddn.com/lucy.jpg");//头像
-			$table->string('realname');//真实姓名
+			$table->string('realname')->nullable();//真实姓名
 			$table->boolean('gender')->default(2);  // 0=male 1=female 2=unknown
-			$table->string('city');//所在城市
+			$table->string('city')->nullable();//所在城市
 			$table->string('identity');//转换成integer，用于认证老师的查询
-			$table->string('position');//职位
-			$table->string('interests');//兴趣
-			$table->text('per_description');//个人简介
+			$table->string('position')->nullable();//职位
+			$table->string('interests')->nullable();//兴趣
+			$table->text('per_description')->nullable();//个人简介
 			$table->string('remember_token')->nullable();
-			$table->integer('role_id'); //用户类型 1=student, 0=teacher, 3=administer 
+			$table->integer('role_id')->nullable(); //用户类型 1=student, 0=teacher, 3=administer 
 			$table->timestamps();
 		});
 	}
