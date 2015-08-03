@@ -58,7 +58,7 @@
 		<!-- 如果需要导航按钮 -->
 		<div class="swiper-button-prev"></div>
 		<div class="swiper-button-next"></div>
-		<img class="video-close" src="/images/common/close_btn.png">
+		<div class="video-close">×</div>
 	</div>
 @stop
 

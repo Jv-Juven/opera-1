@@ -91,7 +91,14 @@ Route::group(array('prefix'=>'user'),function()
 			Route::post('update', 'UserController@postUpdate');
 			//更换头像
 			Route::post('chang_image','UserController@changeImage');
-				
+			//新建相册
+			Route::post('add_album','UserController@addAlbum');
+			//删除相册
+			Route::post('delete_album', 'UserController@deleteAlbum');
+			//上传图片
+			Route::post('upload_image', 'UserController@uploadImage');
+			//删除照片
+			Route::post('delete_image','UserController@deleteImage');
 		});
 		
 	});

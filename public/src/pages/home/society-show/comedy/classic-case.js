@@ -5,7 +5,8 @@ $(".classic-content").click(function() {
 		video_id : id
 	},function(data) {
 		// console.log(data["viedo"]["video"]);
-		$("#case_video").html($(data["viedo"]["video"])).append($('<img class="video-close" src="/images/common/close_btn.png">'));
+		var url = data["viedo"]["video"];
+		$("#case_video").append('<iframe height=498 width=510 src="'+url+'" frameborder=0 allowfullscreen></iframe>').append($('<div class="video-close">×</div>'));
 		// $("#case_video img").addClass("video-close");
 		$("#case_video iframe").centerscreen({
 			width: 600,

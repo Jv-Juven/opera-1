@@ -301,8 +301,31 @@
     // 点击“忘记密码” //
     //////////////
     $(".login-tips").click(function() {
+
     	$("#login_container").fadeOut(400);
     	$("#login_findpsd").fadeIn(300);
+
+    	$("#login_find_btn").click(function(){
+
+    		var mail = $("#find_input").val();
+
+    		if(!/^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/.test(mail)) {
+    			$("#find_input").focus();
+    			alert("请填写正确的邮箱");
+    			return;
+    		}
+    		$.post("/user/post_remind",{
+    			email: mail
+    		},function(data) {
+    			if(data["errCode"] == 0){
+    				alert("邮件发送成功");
+    				window.location.href = window.location.href;
+    			}
+	    		else{
+	    			alert(data["message"]);
+	    		}
+    		},"json");
+    	});
     });
 
 

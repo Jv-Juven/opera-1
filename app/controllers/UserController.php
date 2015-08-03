@@ -295,7 +295,7 @@ class UserController extends BaseController{
 
 			if($user != 0)
 			{
-				Mail::send('login/findPassword',array(),function($message) use ($email)
+				Mail::send('login/reset',array(),function($message) use ($email)
 				{
 					$message->to($email,'')->subject('中国儿童戏剧密码重置!');
 				});
@@ -914,5 +914,127 @@ class UserController extends BaseController{
 	}
 
 	
+	//个人中心——新建相册
+	public function addAlbum()
+	{
+		if(!Auth::check())
+		{
+			return Response::json(array('errCode'=>1, 'message'=>'请登录'));
+		}
+
+		$album_name = Input::get('album_name');
+		$user_id 	= Auth::user()->id;
+
+		$validation = Validator::make(
+				array( 'album_name' => $album_name),
+				array('album_name'  => 'required')
+			);
+		if($validation->fails())
+		{
+			return Response::json(array('errCode'=>2 , 'message'=>'请输入相册名字！'));
+		}
+
+		$ablum 		= new Album;
+		$ablum->title 		= $album_name;
+		$ablum->user_id 	= $user_id;
+		if($ablum->save())
+		{
+			return Response::json(array('errCode'=>0, 'message'=>'新建相册成功！'));
+		}
+
+		return Response::json(array('errCode'=>3, 'message' => '新建相册失败！'));
+
+	}
+
+	//个人中心——删除相册
+	public function deleteAlbum()
+	{
+		if(!Auth::check())
+		{
+			return Response::json(array('errCode'=>1, 'message'=>'请登录'));
+		}
+
+		$album_id = Input::get('album_id');
+
+		$ablum = Ablum::find($album_id);
+
+		if($ablum != null)
+		{
+			if($ablum->delete())
+			{
+				return Response::json(array('errCode' => 0 , 'message'=>'相册删除成功！'));
+			}
+			
+			return Response::json(array('errCode'=>2, 'message'=>'相册删除失败！'));
+		}
+
+		return Response::json(array('errCode'=>3, 'message'=>'相册不存在！') );
+	}
+
+	//个人中心——上传图片
+	public function uploadImage()
+	{
+		if(!Auth::check())
+		{
+			return Response::json(array('errCode'=>1, 'message'=>'请登录'));
+		}
+
+		$img_url 	= Input::get('img_url');
+		$album_id 	= Input::get('album_id');
+		$title 		= Input::get('title');
+
+		$validation = Validator::make(
+				array( 
+					'title' => $title,
+					'img_url' => $img_url
+					),
+				array(
+					'title'  =>  'required',
+					'img_url'  =>  'required'
+				)
+			);
+		if($validation->fails())
+		{
+			return Response::json(array('errCode'=>2 , 'message'=>'上传信息不完整！'));
+		}
+
+		$picture 		= new Picture;
+		$picture->picture 	= $img_url;
+		$picture->album_id 	= $album_id;
+		$picture->title 		= $title;
+
+		if($picture->save())
+		{
+			return Response::json(array('errCode'=>3, 'message'=>'上传成功！'));
+		}
+
+		return Response::json(array('errCode' => 3, 'message'=>'相片上传失败！'));
+	}
+
+	//个人中心——删除照片
+	public function deleteImage()
+	{
+		if(!Auth::check())
+		{
+			return Response::json(array('errCode'=>1, 'message'=>'请登录'));
+		}
+
+		$img_id = Input::get('img_id');
+
+		$picture = Ablum::find($img_id);
+
+		if($picture != null)
+		{
+			if($picture->delete())
+			{
+				return Response::json(array('errCode' => 0 , 'message'=>'照片删除成功！'));
+			}
+			
+			return Response::json(array('errCode'=>2, 'message'=>'照片删除失败！'));
+		}
+
+		return Response::json(array('errCode'=>3, 'message'=>'照片不存在！') );
+		
+	}
 
 }

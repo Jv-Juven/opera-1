@@ -42,7 +42,7 @@
 		</ul> -->
 	</div>
 	<div id="case_video" class="full-screen">
-		<!-- <iframe height=498 width=510 src="" frameborder=0 allowfullscreen></iframe> -->
+		<!-- <iframe height=498 width=510 src="http://player.youku.com/embed/XMTI4NjQ4Njg0MA==" frameborder=0 allowfullscreen></iframe> -->
 		<!-- <img class="video-close" src="/images/common/close_btn.png"> -->
 	</div>
 @stop
