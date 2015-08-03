@@ -1476,15 +1476,33 @@
 					message:xxx			提示信息
 				}
 
+	8.浏览图片
+		请求方式:	POST
+		请求方式:	user/personal/scan_img
 
-	8. 上传图片
+		请求参数
+				album_id				相册id
+
+
+		返回参数: 
+				{
+					errCode:xxx,			错误码	0表示返回正常	 
+					message:xxx			提示信息
+					pictures:[
+						{
+						picture:xxx 		图片链接
+						},...
+					]
+				}
+
+	9. 上传图片
 		请求方式:	POST
 		请求方式:	user/personal/upload_image
 
 		请求参数
-				img_url					照片链接
+				img_url	s				照片链接
 				album_id				相册id
-				title					照片名字
+
 
 		返回参数: 
 				{
@@ -1492,7 +1510,7 @@
 					message:xxx			提示信息
 				}
 
-	9.删除照片
+	10.删除照片
 		请求方式:	POST
 		请求方式:	user/personal/delete_image
 

@@ -95,6 +95,8 @@ Route::group(array('prefix'=>'user'),function()
 			Route::post('add_album','UserController@addAlbum');
 			//删除相册
 			Route::post('delete_album', 'UserController@deleteAlbum');
+			//浏览图片
+			Route::post('scan_img','UserController@scanImg');
 			//上传图片
 			Route::post('upload_image', 'UserController@uploadImage');
 			//删除照片
