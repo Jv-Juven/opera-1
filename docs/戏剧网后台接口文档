@@ -1473,7 +1473,8 @@
 		返回参数: 
 				{
 					errCode:xxx,			错误码	0表示返回正常	 
-					message:xxx			提示信息
+					message:xxx,			提示信息
+					album_id                相册的id
 				}
 
 	8.浏览图片
@@ -1503,7 +1504,6 @@
 				img_url	s				照片链接
 				album_id				相册id
 
-
 		返回参数: 
 				{
 					errCode:xxx,			错误码	0表示返回正常	 
@@ -1522,4 +1522,16 @@
 					errCode:xxx,			错误码	0表示返回正常	 
 					message:xxx			提示信息
 				}
+
+	10.编辑相册名字
+		请求方式: post
+		请求链接:
+
+	    请求参数
+	           album_id                编辑名字的相册ID
+	           album_name              编辑之后的相册名字
+
+
+
+
 
