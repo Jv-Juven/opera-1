@@ -926,12 +926,12 @@ class UserController extends BaseController{
 		$user_id 	= Auth::user()->id;
 
 		$validation = Validator::make(
-				array( 'album_name' = $album_name),
-				array('album_name'  =  'required')
+				array( 'album_name' => $album_name),
+				array('album_name'  => 'required')
 			);
 		if($validation->fails())
 		{
-			return Response::json(array('errCode'=>2 , 'message'=>'请输入相册名字！'))
+			return Response::json(array('errCode'=>2 , 'message'=>'请输入相册名字！'));
 		}
 
 		$ablum 		= new Album;
@@ -989,13 +989,13 @@ class UserController extends BaseController{
 					'img_url' => $img_url
 					),
 				array(
-					'title'  =  'required',
-					'img_url'  =  'required'
+					'title'  =>  'required',
+					'img_url'  =>  'required'
 				)
 			);
 		if($validation->fails())
 		{
-			return Response::json(array('errCode'=>2 , 'message'=>'上传信息不完整！'))
+			return Response::json(array('errCode'=>2 , 'message'=>'上传信息不完整！'));
 		}
 
 		$picture 		= new Picture;
