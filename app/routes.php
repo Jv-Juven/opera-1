@@ -93,6 +93,8 @@ Route::group(array('prefix'=>'user'),function()
 			Route::post('chang_image','UserController@changeImage');
 			//新建相册
 			Route::post('add_album','UserController@addAlbum');
+			//编辑相册名
+			Route::post('edit_album', 'UserController@editAlbum');
 			//删除相册
 			Route::post('delete_album', 'UserController@deleteAlbum');
 			//浏览图片

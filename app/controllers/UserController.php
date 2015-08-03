@@ -952,7 +952,7 @@ class UserController extends BaseController{
 		$ablum->user_id 	= $user_id;
 		if($ablum->save())
 		{
-			return Response::json(array('errCode'=>0, 'message'=>'新建相册成功！'));
+			return Response::json(array('errCode'=>0, 'message'=>'新建相册成功！', 'album_id'=>$ablum->id));
 		}
 
 		return Response::json(array('errCode'=>3, 'message' => '新建相册失败！'));
@@ -1076,5 +1076,45 @@ class UserController extends BaseController{
 		return Response::json(array('errCode' => 0 , 'message'=>'照片删除成功！'));
 	}
 
+	//编辑相册名
+	public function editAlbum()
+	{
+		if(!Auth::check())
+		{
+			return Response::json(array('errCode' => 1, 'message' =>'请登录'));
+		}
+
+		$album_id 	= Input::get('album_id');
+		$name 		= Input::get('album_name');
+
+		$validation = Validator::make(
+			array('name' => $name),
+			array('name' =>'required')
+			);
+		if($validation->fails())
+		{
+			return Response::json(array('errCode'=>2, 'message'=>'请填写相册名字'));
+		}
+
+		$album = Album::where('id', '=', $album_id)->first();
+
+		if($album == null)
+		{
+			return Response::json(array('errCode'=>3, 'message'=>'相册不存在！'));
+		}
+
+		if($album->user_id != Auth::user()->id)
+		{
+			return Response::json(array('errCode'=>4,'message'=>'不可以修改他人的相册！'));
+		}
+
+		$album->title = $name;
+		if($album->save())
+		{
+			return Response::json(array('errCode'=>0, 'message'=>'相册名修改成功！'));
+		}
+
+		return Response::json(array('errCode'=>4, 'message'=>'相册名修改失败！'));
+	}
 	
 }
