@@ -504,7 +504,7 @@ class UserController extends BaseController{
 			return Response::json(array('errCode'=>1, 'message'=>'请登录！'));
 		}
 
-		$application = $user->hasOneApplication;
+		$application = Application::where('user_id', '=', $user->id)->first();
 
 		if(!isset($application))
 		{
@@ -790,6 +790,11 @@ class UserController extends BaseController{
 	//发表话题
 	public function issueTopic()
 	{
+		if(!Auth::check())
+		{
+			return Response::json(array('errCode'=>1, 'message'=>'请登录！'));
+		}
+
 		$title = Input::get('title');
 		$content = Input::get('content');
 		$user_id = Auth::user()->id;
@@ -806,7 +811,7 @@ class UserController extends BaseController{
 
 		if ($validation->fails()) 
 		{
-			return Response::json(array('errCode'=>1, 'message'=> '信息填写不完整！'));
+			return Response::json(array('errCode'=>2,, 'message'=> '信息填写不完整！'));
 		}
 		//创建用户
 		$topic = new Topic;
