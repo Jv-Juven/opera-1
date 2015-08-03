@@ -24,7 +24,6 @@
 // 后端测试路由 //
 ////////////
 Route::get('/','HomeController@showWelcome');
-//纯页面跳转
 
 Route::group(array('prefix'=>'user'),function()
 {
