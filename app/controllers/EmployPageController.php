@@ -4,16 +4,15 @@ class EmployPageController extends BaseController{
 
 	public function employment()
 	{
-		$employment_count 	= Employment::count();
-		$page			= ceil($employment_count/15);
-		$employments		= Employment::paginate(15);
+		// $employment_count 	= Employment::count();
+		// $page			= ceil($employment_count/15);
+		// $employments		= Employment::paginate(15);
 
-		return View::make('join.join')->with('links',$this->link());
-			// ->with(array(
-			// 	'employments' 	=> $employments,
-			// 	'page'			=> $page,
-			// 	'employment_count'  => $employment_count
-			// ));
+		$employments = Employment::all();
+		return View::make('join.join')->with(array(
+				'employments' 	=> $employments,
+				'links' 		=>$this->link()
+			));
 	}
 
 	public function employmentMore()
