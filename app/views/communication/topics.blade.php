@@ -43,7 +43,7 @@
 							<!-- 评论区 -->
 							<div class="topics-comments-container">
 								<!-- 一个用户的评论 -->
-							@if(isset($topic_comments))
+								@if(isset($topic_comments))
 								@foreach($topic_comments as $topic_comment)
 								<div class="comments-item">
 									<div class="comments-avatar">
@@ -53,63 +53,72 @@
 									</div>
 									<div class="item-head">
 										<div class="item-title">{{User::find($topic_comment->user_id)->username}}</div>
-										<span class="comments-item-comment">评论</span>
+										<a class="comment-reply-btn" href="javascript:void(0);">回复</a>
 										<span>{{$topic_comment->created_at}}</span>
-										
 									</div>
 									<div class="item-body">{{$topic_comment->content}}</div>
-
-								@if(isset($comment_replys[$topic_comment->id]))
-									@foreach($comment_replys[$topic_comment->id] as $reply)
-									<div class="reply-containers clearx"> 
-										<div class="reply-avatar">
-											<a href="">
-												<img class="reply-avatar" src="{{User::find($reply->sender_id)->avatar}}" class="发表回复的头像">
-											</a>
+									<div class="replies">
+										@if(isset($comment_replys[$topic_comment->id]))
+										@foreach($comment_replys[$topic_comment->id] as $reply)
+										<div class="reply-containers clearx"> 
+											<div class="reply-avatar">
+												<a href="javascript:void(0);">
+													<img class="reply-avatar" src="{{User::find($reply->sender_id)->avatar}}" class="发表回复的头像">
+												</a>
+											</div>
+											<div class="reply-content">
+												<span class="reply-name">{{User::find($reply->sender_id)->username}}</span>
+												<strong>回复</strong>
+												<!-- <img src="{{User::find($reply->receiver_id)->avatar}}" class="被回复的头像"> -->
+												<span class="reply-name">{{User::find($reply->receiver_id)->username}}</span>
+												<span>：{{$reply->content}}</span>
+											</div>
+											<div class="reply-content reply-date">
+												<span class="date">{{$reply->created_at}}</span>
+												<a class="reply-btn" href="javascript:void(0);">回复</a>
+												<!-- <span class="time">18:16</span> -->
+											</div>
 										</div>
-										<div class="reply-content">
-											<span class="reply-name">{{User::find($reply->sender_id)->username}}</span>
-											<strong>回复</strong>
-											<!-- <img src="{{User::find($reply->receiver_id)->avatar}}" class="被回复的头像"> -->
-											<span class="reply-name">{{User::find($reply->receiver_id)->username}}</span>
-											<span>：{{$reply->content}}</span>
+										@endforeach
+										@endif
+										<div class="reply-input-wrapper">
+											<input type="hidden" class="topic-id" value="" />
+											<input type="hidden" class="comment-id" value="" />
+											<input type="hidden" class="reply-id" value="" />
+											<input type="hidden" class="reply-type" value="" />
+											<textarea class="reply-input"></textarea>
+											<input type="button" class="reply-submit-btn" value="提交" />
+											<div style="clear:both;"></div>
 										</div>
-										<div class="reply-content reply-date">
-											<span class="date">{{$reply->created_at}}</span>
-											<!-- <span class="time">18:16</span> -->
-										</div>
-								
 									</div>
-									@endforeach
-								@endif
 								</div>
 								@endforeach
-							@endif	
-								<div class="reply-input">
-									<textarea></textarea>
+								@endif	
+								<div class="comment-input-wrapper">
+									<input type="hidden" class="topic-id" value="" />
+									<input type="hidden" class="comment-id" value="" />
+									<input type="hidden" class="reply-id" value="" />
+									<input type="hidden" class="reply-type" value="" />
+									<textarea class="reply-input"></textarea>
+									<input type="button" class="reply-submit-btn" value="提交" />
+									<div style="clear:both;"></div>
 								</div>
-								<!-- 更多评论 -->
 								<div class="commonts-more">
-
 									<div class="commont">
 										我要评论
-									</div>
-									<div class="more">
-										更多评论
 									</div>
 								</div>
 							</div>		
 						</div>
 					</div>
-					
 				</div>
 			</div>
 			<!-- 如果需要滚动条 -->
 		    <div class="swiper-scrollbar topics-scrollbar"></div>
 		</div>
 	</div>
-</div>
 	@endif
+</div>
 <div id="topics_border02" class="page-content" style="display:none">
 	<div class="topics-publish">
 		<div class="publish-container">
@@ -124,8 +133,16 @@
 
 	</div>
 </div>
-@stop
 
+<script type="text/template" id="comment-template">
+		
+</script>
+
+<script type="text/template" id="comment-reply-template">
+		
+</script>
+
+@stop
 
 @section('js')
 	@parent

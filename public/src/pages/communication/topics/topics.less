@@ -24,12 +24,22 @@
 	background: rgb(59,149,61);
 	float: left;
 }
+
+.reply-input(@width:745px) {
+	width: @width;
+    height: 80px;
+    border-radius: 10px;
+    border: 1px;
+    outline: none;
+    padding: 10px;
+    margin-top: 10px;
+}
+
 .topics-content{
 	height: 100%;
 	
 	.topics-swiper{
 		width: 100%;
-		height: 600px;
 		.topics-scrollbar{
 			.swiper-scrollbar-drag{
 				background: @btn-color;
@@ -110,9 +120,11 @@
 									padding: 0px 5px;
 									float: right;
 								}
-								.comments-item-comment{
-									.figures-name-text(14px);
-									cursor: pointer;
+								.comment-reply-btn{
+									.figures-name-text(16px);
+									color: #13a54c;
+									text-decoration: none;
+									float: right;
 								}
 							}
 							.item-body{
@@ -155,6 +167,10 @@
 							}
 							
 						}
+						.reply-input-wrapper {
+							display: none;
+						}
+
 						.commonts-more{
 							padding: 15px 0px;
 							overflow: hidden;

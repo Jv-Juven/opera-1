@@ -66,7 +66,7 @@ submitReply = (e)->
 			$parent.parent().append($newComment);
 			$parent.find(".reply-input").val("")
 		else
-			alert "提交回复失败"
+			alert res.message
 
 deleteMessage = (e)->
 	$message = $(e.currentTarget).parent().parent();

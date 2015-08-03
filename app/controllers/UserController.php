@@ -633,7 +633,7 @@ class UserController extends BaseController{
 
 		if(!$comment->save())
 		{
-			return Response::json(array('errCode'=>2, 'message'=>'评论创建失败！'));
+			return Response::json(array('errCode'=>2, 'message'=>'[数据库错误]评论创建失败！'));
 		}
 		
 		$comment['sender_name'] = $user->username;
