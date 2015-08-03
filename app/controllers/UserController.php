@@ -1016,32 +1016,34 @@ class UserController extends BaseController{
 		$album_id 	= Input::get('album_id');
 
 		$validation = Validator::make(
-				array( 
-					'title' => $title,
-					'img_urls' => $img_urls
-					),
-				array(
-					'title'  =>  'required',
-					'img_urls'  =>  'required'
-				)
-			);
+			array( 
+				'title' => $title,
+				'img_urls' => $img_urls
+				),
+			array(
+				'title'  =>  'required',
+				'img_urls'  =>  'required'
+			)
+		);
 		if($validation->fails())
 		{
-			return Response::json(array('errCode'=>2 , 'message'=>'上传信息不完整！'));
+			return Response::json(array('errCode'=>2, 'message'=>'上传信息不完整！'));
 		}
 
 		foreach($img_urls as $img_url)
 		{
-			$picture 		= new Picture;
+			$picture = new Picture;
 			$picture->picture 	= $img_url;
 			$picture->album_id 	= $album_id;
-			if($picture->save())
+
+			if(!$picture->save())
 			{
-				return Response::json(array('errCode'=>3, 'message'=>'上传成功！'));
-			}else{
 				return Response::json(array('errCode' => 3, 'message'=>'相片上传失败！'));
 			}
 		}
+
+		return Response::json(array('errCode'=>3, 'message'=>'上传成功！'));
+
 	}
 
 	//个人中心——删除照片
@@ -1052,22 +1054,26 @@ class UserController extends BaseController{
 			return Response::json(array('errCode'=>1, 'message'=>'请登录'));
 		}
 
-		$img_id = Input::get('img_id');
+		$photo_id = Input::get('photo_id');
 
-		$picture = Album::find($img_id);
+		$picture = Picture::find($photo_id);
 
-		if($picture != null)
+		if($picture == null)
 		{
-			if($picture->delete())
-			{
-				return Response::json(array('errCode' => 0 , 'message'=>'照片删除成功！'));
-			}
-			
+			return Response::json(array('errCode'=>3, 'message'=>'照片不存在！'));
+		}
+
+		if($picture->Album->user_id != Auth::user()->id)
+		{
+			return Response::json(array('errCode'=>4, 'message'=>'[权限禁止]只能删除自己的照片'));
+		}
+
+		if(!$picture->delete())
+		{
 			return Response::json(array('errCode'=>2, 'message'=>'照片删除失败！'));
 		}
 
-		return Response::json(array('errCode'=>3, 'message'=>'照片不存在！') );
-		
+		return Response::json(array('errCode' => 0 , 'message'=>'照片删除成功！'));
 	}
 
 	
