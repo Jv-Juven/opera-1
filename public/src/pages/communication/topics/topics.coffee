@@ -7,7 +7,7 @@ commentReplyTemplate = _.template $commentReplyTemplate.html()
 
 $ ->
 	# 点击topics_border01的“发布话题”按钮事件
-	$("#topics_border01 .seach-btn").click ()->
+	$("#topics_border01 .seach-btn,.seach-input").click ()->
 		$("#topics_border01").fadeOut(200);
 		$("#topics_border02").fadeIn(200);
 

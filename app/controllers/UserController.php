@@ -956,7 +956,7 @@ class UserController extends BaseController{
 
 		$album_id = Input::get('album_id');
 
-		$ablum = Ablum::find($album_id);
+		$ablum = Album::find($album_id);
 
 		if($ablum != null)
 		{
@@ -971,6 +971,26 @@ class UserController extends BaseController{
 		return Response::json(array('errCode'=>3, 'message'=>'相册不存在！') );
 	}
 
+	//个人中心——浏览图片
+	public function scanImg()
+	{
+		if(!Auth::check())
+		{
+			return Response::json(array('errCode'=>1, 'message'=>'请登录'));
+		}
+
+		$album_id = Input::get('album_id');
+		$pictures = Album::find($album_id);
+
+		if(count($pictures) != 0)
+		{
+			return Response::json(array('errCode'=>0, 'message'=>'返回图片', 'pictures'=>$pictures));
+		} 
+
+		return Response::json(array('errCode'=>2, 'message'=>'该相册不存在！'));
+	}
+
+
 	//个人中心——上传图片
 	public function uploadImage()
 	{
@@ -979,18 +999,17 @@ class UserController extends BaseController{
 			return Response::json(array('errCode'=>1, 'message'=>'请登录'));
 		}
 
-		$img_url 	= Input::get('img_url');
+		$img_urls 	= Input::get('img_urls');
 		$album_id 	= Input::get('album_id');
-		$title 		= Input::get('title');
 
 		$validation = Validator::make(
 				array( 
 					'title' => $title,
-					'img_url' => $img_url
+					'img_urls' => $img_urls
 					),
 				array(
 					'title'  =>  'required',
-					'img_url'  =>  'required'
+					'img_urls'  =>  'required'
 				)
 			);
 		if($validation->fails())
@@ -998,17 +1017,18 @@ class UserController extends BaseController{
 			return Response::json(array('errCode'=>2 , 'message'=>'上传信息不完整！'));
 		}
 
-		$picture 		= new Picture;
-		$picture->picture 	= $img_url;
-		$picture->album_id 	= $album_id;
-		$picture->title 		= $title;
-
-		if($picture->save())
+		if($img_urls as $img_url)
 		{
-			return Response::json(array('errCode'=>3, 'message'=>'上传成功！'));
+			$picture 		= new Picture;
+			$picture->picture 	= $img_url;
+			$picture->album_id 	= $album_id;
+			if($picture->save())
+			{
+				return Response::json(array('errCode'=>3, 'message'=>'上传成功！'));
+			}else{
+				return Response::json(array('errCode' => 3, 'message'=>'相片上传失败！'));
+			}
 		}
-
-		return Response::json(array('errCode' => 3, 'message'=>'相片上传失败！'));
 	}
 
 	//个人中心——删除照片
@@ -1021,7 +1041,7 @@ class UserController extends BaseController{
 
 		$img_id = Input::get('img_id');
 
-		$picture = Ablum::find($img_id);
+		$picture = Album::find($img_id);
 
 		if($picture != null)
 		{

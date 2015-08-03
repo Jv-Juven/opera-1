@@ -305,28 +305,41 @@
     	$("#login_container").fadeOut(400);
     	$("#login_findpsd").fadeIn(300);
 
-    	$("#login_find_btn").click(function(){
-
-    		var mail = $("#find_input").val();
-
-    		if(!/^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/.test(mail)) {
-    			$("#find_input").focus();
-    			alert("请填写正确的邮箱");
-    			return;
-    		}
-    		$.post("/user/post_remind",{
-    			email: mail
-    		},function(data) {
-    			if(data["errCode"] == 0){
-    				alert("邮件发送成功");
-    				window.location.href = window.location.href;
-    			}
-	    		else{
-	    			alert(data["message"]);
-	    		}
-    		},"json");
-    	});
     });
+
+	$("#login_find_btn").click(function(){
+		var mail = $("#find_input").val(),
+			_this = $(this);
+
+		if(!/^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/.test(mail)) {
+			$("#find_input").focus();
+			alert("请填写正确的邮箱");
+			return;
+		}
+
+		_this.hide();
+		$("#login_find_tips").fadeIn(800);
+
+		$.post("/user/post_remind",{
+			email: mail
+		},function(data) {
+			if(data["errCode"] == 0){
+
+				// _this.fadeIn(800);
+				// $("#login_find_tips").hide();
+
+				alert("邮件发送成功");
+				window.location.href = window.location.href;
+			}
+    		else{
+
+    			alert(data["message"]);
+    			
+    			_this.fadeIn(800);
+    			$("#login_find_tips").hide();
+    		}
+		},"json");
+	});
 
 
 })(jQuery);
