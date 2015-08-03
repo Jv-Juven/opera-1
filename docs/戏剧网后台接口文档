@@ -1455,7 +1455,7 @@
 		请求方式:	user/personal/add_album
 
 		请求参数
-				img_url					照片链接
+				album_name					照片链接
 
 		返回参数: 
 				{
