@@ -16,6 +16,7 @@ class CreateUsersTable extends Migration {
 		{
 			$table->increments('id');
 			$table->string('username')->unique();//用户名
+			$table->string('reset_id')->nullable();//用户重置id, 1表示密码为hash值，0表示密码为明文
 			$table->string('email');//邮箱
 			$table->string('password');//密码
 
@@ -28,7 +29,7 @@ class CreateUsersTable extends Migration {
 			$table->string('interests')->nullable();//兴趣
 			$table->text('per_description')->nullable();//个人简介
 			$table->string('remember_token')->nullable();
-			$table->integer('role_id')->nullable(); //用户类型 1=student, 0=teacher, 3=administer 
+			$table->integer('role_id')->defalut(0); //用户类型 1=student, 0=teacher, 3=administer 
 			$table->timestamps();
 		});
 	}

@@ -159,7 +159,8 @@ class UserController extends BaseController{
 			'username' => $_SESSION['username'],
 			'email' =>$_SESSION['email'],
 			'password' =>Hash::make($_SESSION['password']),
-			'role_id' =>1
+			'role_id' =>1,
+			'reset' =>1
 
 		));
 
@@ -230,28 +231,40 @@ class UserController extends BaseController{
 		
 		$user = User::where('username', '=', $data['username'])->first();
 
-	    if(!isset($user))
-	    {
-	    	return Response::json(array('errCode' => 8,'message' => '此用户没注册!'));
-	    }
-		// $password = $user->password;
-		// $data = Hash::make($data['password']);
-		// dd(Hash::make(666666));
-		// if( $data != $password )
-		// {
-		// 	return Response::json(array('errCode' => 9,'message' => '密码错误!'));
-		// }
-		// return Response::json(array('errCode' => 0,'message' => '登录成功!'));
+		if(!isset($user))
+		{
+			return Response::json(array('errCode' => 8,'message' => '此用户没注册!'));
+		}
+
+		//随便输入一个密码
+		if($user->reset == 0)
+		{
+			$user->password = Hash::make(666666);
+			$user->reset_id 	= 1;
+			if(!$user->save())
+			{
+				return Response::json(array('errCode' =>9, 'message' => '登录失败，请重新输入'));
+			}
+			$password = $user->password;
+
+			if(Auth::attempt(array('username'=>$data['username'], 'password'=> $data['password'])))
+			{	
+				$user 			= Auth::user();
+				$user_id 		= $user->id;
+				$_SESSION['user'] 	= $user_id;
+	 			return Response::json(array('errCode' => 0,'message' => '登录成功!','user'=>$user,'session_id'=>$_SESSION['user']));
+			}
+		}
 
 		if(Auth::attempt(array('username'=>$data['username'], 'password'=> $data['password'])))
 		{	
-			$user = Auth::user();
-			$user_id = $user->id;
-			$_SESSION['user'] = $user_id;
+			$user 			= Auth::user();
+			$user_id 		= $user->id;
+			$_SESSION['user'] 	= $user_id;
  			return Response::json(array('errCode' => 0,'message' => '登录成功!','user'=>$user,'session_id'=>$_SESSION['user']));
 		}
 
-		return Response::json(array('errCode' => 9,'message' => '密码错误!'));
+		return Response::json(array('errCode' => 10,'message' => '密码错误!'));
 	}
 
 	//重发验证码
@@ -956,7 +969,7 @@ class UserController extends BaseController{
 
 		$album_id = Input::get('album_id');
 
-		$ablum = Ablum::find($album_id);
+		$ablum = Album::find($album_id);
 
 		if($ablum != null)
 		{
@@ -971,6 +984,26 @@ class UserController extends BaseController{
 		return Response::json(array('errCode'=>3, 'message'=>'相册不存在！') );
 	}
 
+	//个人中心——浏览图片
+	public function scanImg()
+	{
+		if(!Auth::check())
+		{
+			return Response::json(array('errCode'=>1, 'message'=>'请登录'));
+		}
+
+		$album_id = Input::get('album_id');
+		$pictures = Album::find($album_id);
+
+		if(count($pictures) != 0)
+		{
+			return Response::json(array('errCode'=>0, 'message'=>'返回图片', 'pictures'=>$pictures));
+		} 
+
+		return Response::json(array('errCode'=>2, 'message'=>'该相册不存在！'));
+	}
+
+
 	//个人中心——上传图片
 	public function uploadImage()
 	{
@@ -979,36 +1012,38 @@ class UserController extends BaseController{
 			return Response::json(array('errCode'=>1, 'message'=>'请登录'));
 		}
 
-		$img_url 	= Input::get('img_url');
+		$img_urls 	= Input::get('img_urls');
 		$album_id 	= Input::get('album_id');
-		$title 		= Input::get('title');
 
 		$validation = Validator::make(
-				array( 
-					'title' => $title,
-					'img_url' => $img_url
-					),
-				array(
-					'title'  =>  'required',
-					'img_url'  =>  'required'
-				)
-			);
+			array( 
+				'title' => $title,
+				'img_urls' => $img_urls
+				),
+			array(
+				'title'  =>  'required',
+				'img_urls'  =>  'required'
+			)
+		);
 		if($validation->fails())
 		{
-			return Response::json(array('errCode'=>2 , 'message'=>'上传信息不完整！'));
+			return Response::json(array('errCode'=>2, 'message'=>'上传信息不完整！'));
 		}
 
-		$picture 		= new Picture;
-		$picture->picture 	= $img_url;
-		$picture->album_id 	= $album_id;
-		$picture->title 		= $title;
-
-		if($picture->save())
+		foreach($img_urls as $img_url)
 		{
-			return Response::json(array('errCode'=>3, 'message'=>'上传成功！'));
+			$picture = new Picture;
+			$picture->picture 	= $img_url;
+			$picture->album_id 	= $album_id;
+
+			if(!$picture->save())
+			{
+				return Response::json(array('errCode' => 3, 'message'=>'相片上传失败！'));
+			}
 		}
 
-		return Response::json(array('errCode' => 3, 'message'=>'相片上传失败！'));
+		return Response::json(array('errCode'=>3, 'message'=>'上传成功！'));
+
 	}
 
 	//个人中心——删除照片
@@ -1019,22 +1054,27 @@ class UserController extends BaseController{
 			return Response::json(array('errCode'=>1, 'message'=>'请登录'));
 		}
 
-		$img_id = Input::get('img_id');
+		$photo_id = Input::get('photo_id');
 
-		$picture = Ablum::find($img_id);
+		$picture = Picture::find($photo_id);
 
-		if($picture != null)
+		if($picture == null)
 		{
-			if($picture->delete())
-			{
-				return Response::json(array('errCode' => 0 , 'message'=>'照片删除成功！'));
-			}
-			
+			return Response::json(array('errCode'=>3, 'message'=>'照片不存在！'));
+		}
+
+		if($picture->Album->user_id != Auth::user()->id)
+		{
+			return Response::json(array('errCode'=>4, 'message'=>'[权限禁止]只能删除自己的照片'));
+		}
+
+		if(!$picture->delete())
+		{
 			return Response::json(array('errCode'=>2, 'message'=>'照片删除失败！'));
 		}
 
-		return Response::json(array('errCode'=>3, 'message'=>'照片不存在！') );
-		
+		return Response::json(array('errCode' => 0 , 'message'=>'照片删除成功！'));
 	}
 
+	
 }

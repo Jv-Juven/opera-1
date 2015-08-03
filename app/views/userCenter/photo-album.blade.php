@@ -43,9 +43,9 @@
 				<div class="album-box-add-text">创建新相册</div>
 			</div>
 		</div>
-
 		<div class="album-division-hr"></div>
 		{{$albums->links()}}
+
 		<!-- <div class="album-paging">
 			<span class="album-Pre">
 				<img src="/images/userCenter/pre_page.png" alt="">
@@ -56,7 +56,6 @@
 				<span class="album-paging-text">下一页</span>
 			</span>
 		</div> -->
-
 	</div>
 	<div class="full-screen album-full-screen" style="">
 
@@ -78,7 +77,7 @@
 	</div>
 
 	<div class="screen-cover-box">
-		<div class="box-header">创建相册</div>
+		<div claqss="box-header">创建相册</div>
 		<div class="box-body">
 			<div class="box-content">
 				<div class="box-input-field">

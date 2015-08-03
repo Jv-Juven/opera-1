@@ -20,7 +20,6 @@ $("#album_name_input").on("change input",function(){
 
 });
 
-
 // 关闭新建相册层
 $(".album-full-screen").click(function (){
 

@@ -11,4 +11,9 @@ class Picture extends Eloquent{
 		'picture',
 		'created_at'
 	);
+
+	public function album()
+    {
+        return $this->belongsTo('Album');
+    }
 }
