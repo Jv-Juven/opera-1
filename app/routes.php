@@ -53,6 +53,7 @@ Route::group(array('prefix'=>'user'),function()
 	//相册和照片
 	Route::get('album','UserPageController@album');
 	Route::get('picture','UserPageController@picture');
+	Route::get('gallary','UserPageController@gallary');
 	//获取留言
 	Route::get('message', 'UserPageController@message');
 	//获取留言回复

@@ -3,10 +3,15 @@
 use Gregwar\Captcha\CaptchaBuilder;
 class UserPageController extends BaseController {
 
+	public function gallary()
+	{
+		
+	}
+
 	public function login()
 	{
 		Session_start();
-		$builder = new CaptchaBuilder;
+		$builder = new CaptchaBuilder();
 		$builder->build();
 		$phrase = $builder->getPhrase();
 		$_SESSION['phrase'] = $phrase;
