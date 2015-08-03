@@ -16,7 +16,7 @@ function reset_psd() {
 		return ;
 	}
 
-	$.post("",{
+	$.post("/user/post_reset",{
 		password: password,
 		re_password: re_password
 	},function(data){
@@ -26,7 +26,7 @@ function reset_psd() {
 		else{
 			alert(data["message"]);
 		}
-	});
+	}."json");
 }
 
 $(".submit-btn").click(reset_psd);

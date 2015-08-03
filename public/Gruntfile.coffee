@@ -49,7 +49,7 @@ module.exports = (grunt)->
             compile:
                 options:
                     livereload: 1337
-                files: ['src/**/*.less', 'src/**/*.coffee','src/**/*.js']
+                files: ['src/**/*.less', 'src/**/*.coffee','src/**/*.js','src/**/**/*.js']
                 tasks: ['browserify', 'less']
 
         less:
