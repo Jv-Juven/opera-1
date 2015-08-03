@@ -159,7 +159,8 @@ class UserController extends BaseController{
 			'username' => $_SESSION['username'],
 			'email' =>$_SESSION['email'],
 			'password' =>Hash::make($_SESSION['password']),
-			'role_id' =>1
+			'role_id' =>1,
+			'reset' =>1
 
 		));
 
@@ -230,28 +231,40 @@ class UserController extends BaseController{
 		
 		$user = User::where('username', '=', $data['username'])->first();
 
-	    if(!isset($user))
-	    {
-	    	return Response::json(array('errCode' => 8,'message' => '此用户没注册!'));
-	    }
-		// $password = $user->password;
-		// $data = Hash::make($data['password']);
-		// dd(Hash::make(666666));
-		// if( $data != $password )
-		// {
-		// 	return Response::json(array('errCode' => 9,'message' => '密码错误!'));
-		// }
-		// return Response::json(array('errCode' => 0,'message' => '登录成功!'));
+		if(!isset($user))
+		{
+			return Response::json(array('errCode' => 8,'message' => '此用户没注册!'));
+		}
+
+		//随便输入一个密码
+		if($user->reset == 0)
+		{
+			$user->password = Hash::make(666666);
+			$user->reset_id 	= 1;
+			if(!$user->save())
+			{
+				return Response::json(array('errCode' =>9, 'message' => '登录失败，请重新输入'));
+			}
+			$password = $user->password;
+
+			if(Auth::attempt(array('username'=>$data['username'], 'password'=> $data['password'])))
+			{	
+				$user 			= Auth::user();
+				$user_id 		= $user->id;
+				$_SESSION['user'] 	= $user_id;
+	 			return Response::json(array('errCode' => 0,'message' => '登录成功!','user'=>$user,'session_id'=>$_SESSION['user']));
+			}
+		}
 
 		if(Auth::attempt(array('username'=>$data['username'], 'password'=> $data['password'])))
 		{	
-			$user = Auth::user();
-			$user_id = $user->id;
-			$_SESSION['user'] = $user_id;
+			$user 			= Auth::user();
+			$user_id 		= $user->id;
+			$_SESSION['user'] 	= $user_id;
  			return Response::json(array('errCode' => 0,'message' => '登录成功!','user'=>$user,'session_id'=>$_SESSION['user']));
 		}
 
-		return Response::json(array('errCode' => 9,'message' => '密码错误!'));
+		return Response::json(array('errCode' => 10,'message' => '密码错误!'));
 	}
 
 	//重发验证码
@@ -1017,7 +1030,7 @@ class UserController extends BaseController{
 			return Response::json(array('errCode'=>2 , 'message'=>'上传信息不完整！'));
 		}
 
-		if($img_urls as $img_url)
+		foreach($img_urls as $img_url)
 		{
 			$picture 		= new Picture;
 			$picture->picture 	= $img_url;
