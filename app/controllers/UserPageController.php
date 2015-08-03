@@ -24,7 +24,7 @@ class UserPageController extends BaseController {
 
 	public function getReset()
 	{
-		return View::make('password/reset')->with('msgs', array());
+		return View::make('login/findPassword');
 	}
 
 	//空间首页

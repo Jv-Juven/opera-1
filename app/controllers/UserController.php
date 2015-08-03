@@ -295,7 +295,7 @@ class UserController extends BaseController{
 
 			if($user != 0)
 			{
-				Mail::send('emails/get_reset',array(),function($message) use ($email)
+				Mail::send('login/findPassword',array(),function($message) use ($email)
 				{
 					$message->to($email,'')->subject('中国儿童戏剧密码重置!');
 				});
