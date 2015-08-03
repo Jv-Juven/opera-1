@@ -295,7 +295,7 @@ class UserController extends BaseController{
 
 			if($user != 0)
 			{
-				Mail::send('login/findPassword',array(),function($message) use ($email)
+				Mail::send('login/reset',array(),function($message) use ($email)
 				{
 					$message->to($email,'')->subject('中国儿童戏剧密码重置!');
 				});
@@ -868,7 +868,7 @@ class UserController extends BaseController{
 
 		if($validation->fails())
 		{
-			return Response::json(array('errCode'=>1, 'message'=>'请填写回复内容！'));
+			return Response::json(array('errCode'=>1, 'message'=>'[参数错误]请填写回复内容！'));
 		}
 
 		$reply = new CommentOfTopiccomment;
