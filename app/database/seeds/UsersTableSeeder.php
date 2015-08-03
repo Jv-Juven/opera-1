@@ -10,6 +10,7 @@ class UsersTableSeeder extends Seeder {
 		
 		User::create([
 			'username' => 'alex1',
+			'reset_id' =>1,
 			'avatar' => 'http://7xk6xh.com1.z0.glb.clouddn.com/avatar.png',
 			'password' => Hash::make('666666'),
 			'realname' =>'吴祖光',
@@ -31,6 +32,7 @@ class UsersTableSeeder extends Seeder {
 
 		User::create([
 			'username' => 'alex2',
+			'reset_id' =>1,
 			'avatar' => 'http://7xk6xh.com1.z0.glb.clouddn.com/avatar.png',
 			'password' =>Hash::make('666666'),
 			'realname' =>'刘天人',
@@ -51,6 +53,7 @@ class UsersTableSeeder extends Seeder {
 
 		User::create([
 			'username' => 'alex3',
+			'reset_id' =>1,
 			'avatar' => 'http://7xk6xh.com1.z0.glb.clouddn.com/avatar.png',
 			'password' =>Hash::make('666666'),
 			'realname' =>'大牛',
@@ -71,12 +74,13 @@ class UsersTableSeeder extends Seeder {
 
 		User::create([
 			'username' => 'admin',
+			'reset_id' =>1,
 			'avatar' => 'http://7xk6xh.com1.z0.glb.clouddn.com/avatar.png',
 			'password' =>Hash::make('666666'),
 			'role_id' =>3,
 			'email' => 'cyrilzhao@qq.com',
 			'realname' =>'周星驰',
-			'role_id' => 2,
+			'role_id' => 3,
 			'gender' =>2,
 			'city' => '重庆市',
 			'identity' => '2',
