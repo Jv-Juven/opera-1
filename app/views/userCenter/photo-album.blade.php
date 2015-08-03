@@ -28,9 +28,7 @@
 			</div>
 			@endforeach
 		</div>
-
 		<div class="album-division-hr"></div>
-
 		<!-- <div class="album-paging">
 			<span class="album-Pre">
 				<img src="/images/userCenter/pre_page.png" alt="">
@@ -41,7 +39,6 @@
 				<span class="album-paging-text">下一页</span>
 			</span>
 		</div> -->
-
 	</div>
 	<div class="full-screen album-full-screen" style="">
 		<div class="swiper-containter photo-album-swiper">

@@ -1452,7 +1452,7 @@
 
 	6.新建相册
 		请求方式:	POST
-		请求方式:	user/personal/add_album
+		请求方式:	/user/personal/add_album
 
 		请求参数
 				album_name					照片链接
@@ -1465,7 +1465,7 @@
 
 	7.删除相册
 		请求方式:	POST
-		请求方式:	user/personal/delete_album
+		请求方式:	/user/personal/delete_album
 
 		请求参数
 				album_id				相册id
@@ -1478,7 +1478,7 @@
 
 	8.浏览图片
 		请求方式:	POST
-		请求方式:	user/personal/scan_img
+		请求方式:	/user/personal/scan_img
 
 		请求参数
 				album_id				相册id
@@ -1497,7 +1497,7 @@
 
 	9. 上传图片
 		请求方式:	POST
-		请求方式:	user/personal/upload_image
+		请求方式:	/user/personal/upload_image
 
 		请求参数
 				img_url	s				照片链接
@@ -1512,10 +1512,10 @@
 
 	10.删除照片
 		请求方式:	POST
-		请求方式:	user/personal/delete_image
+		请求方式:	/user/personal/delete_image
 
 		请求参数
-				img_id					照片id
+				photo_id					照片id
 
 		返回参数: 
 				{

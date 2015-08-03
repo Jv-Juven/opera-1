@@ -45,7 +45,6 @@ Route::group(array('prefix'=>'user'),function()
 	Route::get('get_reset','UserPageController@getReset');
 	//重置密码
 	Route::post('post_reset', 'UserController@postReset');
-
 	//空间首页
 	Route::get('space_home', 'UserPageController@spaceHome');
 	//话题动态
