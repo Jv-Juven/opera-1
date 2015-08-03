@@ -868,7 +868,7 @@ class UserController extends BaseController{
 
 		if($validation->fails())
 		{
-			return Response::json(array('errCode'=>1, 'message'=>'请填写回复内容！'));
+			return Response::json(array('errCode'=>1, 'message'=>'[参数错误]请填写回复内容！'));
 		}
 
 		$reply = new CommentOfTopiccomment;
