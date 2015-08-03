@@ -69,8 +69,8 @@
     		</li>
     		<li>
     			<div class="content-li-head">
-    				<span class="sub-title"><a href="#">联系我们</a>/</span>
-    				<span class="sub-title-en"><a href="#">CONTACT</a></span>
+    				<span class="sub-title"><a>联系我们</a>/</span>
+    				<span class="sub-title-en"><a>CONTACT</a></span>
     			</div>
     			<ul class="content-list home-code">
                                         @if(isset($contact))

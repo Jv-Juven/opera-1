@@ -87,6 +87,7 @@
 					</div>
 					<div class="confirm-container find-confirm-container">
 						<div id="login_find_btn" class="confirm-btn">获取验证码</div>
+						<div id="login_find_tips" class="confirm-btn">邮件发送中</div>
 					</div>
 				</div>
 			</div>
