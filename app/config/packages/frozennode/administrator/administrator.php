@@ -52,7 +52,6 @@ return array(
 	 *	)
 	 */
 	'menu' => array(
-		'users',
 		'首页' => array('posters','contacts','links'),
 		'谈论' => array('enlighten_columns', 'society_dynamics', 'association_dynamics'),
 		'authentiations',
@@ -143,6 +142,6 @@ return array(
 	 *
 	 * @type array
 	 */
-	'locales' => array('en','zh-CN'),
+	'locales' => array('zh-CN','en'),
 
 );
