@@ -16,7 +16,7 @@ class CreateUsersTable extends Migration {
 		{
 			$table->increments('id');
 			$table->string('username')->unique();//用户名
-			$table->string('reset_id')->nullable();//用户重置id, 1表示密码为hash值，0表示密码为明文
+			$table->string('reset_id')->default(0);//用户重置id, 1表示密码为hash值，0表示密码为明文
 			$table->string('email');//邮箱
 			$table->string('password');//密码
 
