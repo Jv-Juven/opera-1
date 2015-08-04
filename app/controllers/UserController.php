@@ -189,7 +189,6 @@ class UserController extends BaseController{
 			'password.between' =>5,
 			'captcha.size' =>6
 		);
-
 		$validation = Validator::make($data, $rules,$messages);
 
 		//验证注册信息
@@ -811,7 +810,7 @@ class UserController extends BaseController{
 
 		if ($validation->fails()) 
 		{
-			return Response::json(array('errCode'=>2,, 'message'=> '信息填写不完整！'));
+			return Response::json(array('errCode'=>2, 'message'=> '信息填写不完整！'));
 		}
 		//创建用户
 		$topic = new Topic;

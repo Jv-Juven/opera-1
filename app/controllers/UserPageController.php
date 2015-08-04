@@ -57,7 +57,6 @@ class UserPageController extends BaseController {
 		$albums 		= $user->hasManyAlbums()->get();
  		$topics			= $user->hasManyTopics()->get();
  		// dd($albums);
- 
  		$pictureCount = array();
  		$picture  = array();
  		$topicCommentCount = array();
@@ -79,7 +78,7 @@ class UserPageController extends BaseController {
  			}
  		}
 
- 		if($topics != null)
+ 		if(count($topics) != 0)
  		{
  			foreach($topics as $topic)
  			{
@@ -89,7 +88,6 @@ class UserPageController extends BaseController {
 
  		$albums 			= Album::where('user_id', '=', $user_id)->paginate(2);
  		$topics 			= Topic::where('user_id', '=', $user_id)->paginate(2);
-			
 		$result = array(
 			'user' 	  		  		=> $user,
 			'albums'  		  		=> $albums,

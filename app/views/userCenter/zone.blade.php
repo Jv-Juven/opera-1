@@ -72,6 +72,7 @@
 			   		<div class="zone-banner">相册</div>
 
 			   		<a href="#" class="zone-content">
+			   		@if(isset($albums))
 			   			@foreach($albums as $album)
 			   			<div class="zone-album-box">
 			   				<img src="{{$picture[$album->id]}}" alt="">
@@ -84,24 +85,18 @@
 			   				</div>
 			   			</div>
 			   			@endforeach
+			   		@endif
 			   		</a>
 			   		
 				    <div class="zone-paging" style="display: none;">
-					    {{$albums->links()}}
-				    	<!-- <span class="zone-Pre">
-				    		<img src="/images/userCenter/pre_page.png" alt="">
-				    		<span class="zone-paging-text">上一页</span>
-				    	</span>
-				    	<span class="zone-Next">
-				    		<img src="/images/userCenter/next_page.png" alt="">
-				    		<span class="zone-paging-text">下一页</span>
-				    	</span> -->
+					
 				    </div>
 			   	</div>
 
 			   	<div class="zone-topics clearx">
 			   		<div class="zone-banner">话题动态</div>
 			   		<div class="zone-content">
+			   		@if(isset($topics))
 						@foreach($topics as $topic)
 			   			<div class="zone-topics-item">
 			   				<div class="zone-topics-head">
@@ -116,7 +111,7 @@
 			   				</div>
 			   			</div>
 						@endforeach
-			   			
+			   		@endif
 			   			<div class="zone-topics-more">
 			   				<a href="#">查看更多话题动态</a>
 			   			</div>
