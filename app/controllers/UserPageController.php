@@ -86,8 +86,9 @@ class UserPageController extends BaseController {
  			}
  		}
 
- 		$albums 			= Album::where('user_id', '=', $user_id)->paginate(2);
- 		$topics 			= Topic::where('user_id', '=', $user_id)->paginate(2);
+ 		$albums 			= Album::where('user_id', '=', $user->id)->paginate(2);
+ 		$topics 			= Topic::where('user_id', '=', $user->id)->paginate(2);
+
 		$result = array(
 			'user' 	  		  		=> $user,
 			'albums'  		  		=> $albums,
