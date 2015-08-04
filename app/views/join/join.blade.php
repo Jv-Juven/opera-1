@@ -24,23 +24,20 @@
 				</div>
 			</div>
 			<div class="swiper-container join-swiper-container join-content">
-
-				<div class="swiper-wrapper">
-					<div class="swiper-slide clearx">
-						
-						<ul class="">
-						@if(isset($employments))
-							@foreach($employments as $employment)
-							<li class="">
-								<span class="h1">{{$employment->title}}</span>
-								<span class="join-details">{{$employment->content}}</span>
-							</li>
-							@endforeach
-						@endif
-						</ul>
-					</div>
+				<!-- <div class="swiper-wrapper"> -->
+					<ul class="swiper-wrapper">
+					@if(isset($employments))
+						@foreach($employments as $employment)
+						<li class="swiper-slide">
+							<span class="h1">{{$employment->title}}</span>
+							<span class="join-details">{{$employment->content}}</span>
+						</li>
+						@endforeach
+					@endif
+					</ul>
+				<!-- </div> -->
+				
 					
-				</div>
 				<!-- 如果需要滚动条 -->
 			    <div class="swiper-scrollbar join-scrollbar"></div>
 			</div>
