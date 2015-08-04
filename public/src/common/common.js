@@ -408,6 +408,7 @@ window.uploader = function (options, handlers){
         unique_names: true,
         save_key: true,
         statusTip: '.image-upload-tips',
+        multi_selection: true,
         init: {
           'Error': function(up, err, errTip) {
             return console.log(errTip);

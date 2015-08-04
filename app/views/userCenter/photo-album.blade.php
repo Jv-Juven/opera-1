@@ -97,8 +97,8 @@
 
 @section('js')
 	@parent
-	<script type="text/javascript" src="/dist/js/lib/plugins/swiper.min.js"></script>
     <script type="text/javascript" src="/dist/js/lib/plugins/qiniu.min.js"></script>
     <script type="text/javascript" src="/dist/js/lib/plugins/plupload.full.min.js"></script>
+	<script type="text/javascript" src="/dist/js/lib/plugins/swiper.min.js"></script>
 	<script type="text/javascript" src="/dist/js/pages/photo-album.js"></script>
 @stop

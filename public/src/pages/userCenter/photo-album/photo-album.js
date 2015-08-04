@@ -1,4 +1,10 @@
 
+
+var url_arr = [],
+    id;
+
+
+
 //点击“创建相册”按钮
 $(".album-box-add").click(function (){
 
@@ -43,48 +49,52 @@ $("#box_btn").click(function (){
 		album_name: album_name
 	},function (data){
 
-		console.log("新建相册成功"+data["album_id"]);
 
 		if(data["errCode"] == 0){
-
-			var url_arr = [];
-
-			window.uploader({
-			    browse_button: "box_btn",
-			    container: "box_btn_container",
-			    uptoken_url: "/qiniu/getUpToken",
-			    domain: "http://7xk6xh.com1.z0.glb.clouddn.com/"
-			},{
-			    FileUploaded: function (up,file,info) {
-			        info = $.parseJSON(info);
-			        domain = up.getOption("domain");
-			        url = domain + info.key;
-			        console.log(url);
-			        url_arr.push(url);
-
-			    },
-			    UploadComplete: function() {
-	               //队列文件处理完毕后,处理相关的事情
-	               console.log(url_arr.length);
-	               $.post("/user/personal/upload_image",{
-		               	img_url: url_arr,
-		               	album_id: data["album_id"]
-	               },function (data){
-	               	if(data["errCode"] == 0){
-	               		alert("图片上传成功");
-	               		window.location.href = window.location.href;
-	               	}
-	               	else{
-	               		alert(data["message"]);
-	               	}
-	               });
-		        }
-			});
+			id = data["album_id"];
+			console.log("新建相册成功");
 		}
 		else{
 			alert(data["message"]);
 		}
 	});
+});
+
+//图片上传
+window.uploader({
+    browse_button: "box_btn",
+    container: "box_btn_container",
+    uptoken_url: "/qiniu/getUpToken",
+    domain: "http://7xk6xh.com1.z0.glb.clouddn.com/"
+},{
+    FileUploaded: function (up,file,info) {
+        info = $.parseJSON(info);
+        domain = up.getOption("domain");
+        url = domain + info.key;
+        console.log(url);
+        url_arr.push(url);
+
+    },
+    UploadComplete: function() {
+       //队列文件处理完毕后,处理相关的事情
+       console.log(url_arr.length);
+       $.post("/user/personal/upload_image",{
+           	img_urls: url_arr,
+           	album_id: id
+       },function (data){
+       	if(data["errCode"] == 0){
+       		alert("图片上传成功");
+       		window.location.href = window.location.href;
+       	}
+       	else{
+       		alert(data["message"]);
+       	}
+       });
+    },
+    'Error': function(up, err, errTip) {
+       //上传出错时,处理相关的事情
+       alert(errTip);
+    }
 });
 
 //点击“编辑”按钮
