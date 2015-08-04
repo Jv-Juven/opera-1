@@ -78,31 +78,30 @@ $("#box_btn").click(function (){
 	               });
 		        }
 			});
-
 		}
 		else{
 			alert(data["message"]);
 		}
 	});
-
-
 });
 
 //点击“编辑”按钮
 $(".album-oprate .album-edit").click(function (){
 	$(this).parents(".album-box").find(".album-content").children(".noedit-name").hide().end().children(".edit-name").show().blur(function (){
-		var album_name = $(this).val(),
-		album_id = $(this).parents(".album-box").attr("data-id");
-		$.post("",{
+		var self = $(this),
+			album_name = $(this).val(),
+			album_id = $(this).parents(".album-box").attr("data-id");
+		$.post("/user/personal/edit_album",{
 			album_name: album_name,
 			album_id: album_id
 		},function (data){
 			if(data["errCode"] == 0){
-				alert("修改相册名字成功");
-				window.location.href = window.location.href;
+				self.hide();
+				self.parent().find(".noedit-name").html(album_name).show();
 			}
 			else{
-				alert(data["message"]);
+				alert(data.message);
+				window.location.href = window.location.href;
 			}
 		});
 	});

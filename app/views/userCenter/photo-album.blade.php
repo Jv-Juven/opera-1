@@ -22,19 +22,17 @@
 		<div class="album-container clearx">
 			@foreach($albums as $album)
 			<div class="album-box album-box-finished" data-id="{{$album->id}}">
-				<img src="{{{$album->picture}}}" alt="">
+				<a href="/user/gallary?album_id={{{ $album->id }}}&&user_id={{{ $user->id }}}">
+					<img src="{{{$album->picture}}}" alt="">
+				</a>
 				<div class="album-content">
 					<span class="album-name noedit-name">{{{$album->title}}}</span>
 					<input class="album-name edit-name" type="text" value="{{{$album->title}}}" />
-					<span class="album-pics">图片数：<span class="count">{{{$album->albumCount}}}</span></span>
 				</div>
 				<div class="album-oprate">
-					<span class="album-edit">
-						编辑
-					</span>
-					<span class="album-del">
-						删除
-					</span>
+					<span class="album-pics">图片数：<span class="count">{{{$album->albumCount}}}</span></span>
+					<span class="album-edit">编辑</span>
+					<span class="album-del">删除</span>
 				</div>
 			</div>
 			@endforeach
