@@ -75,7 +75,7 @@
 	</div>
 
 	<div class="screen-cover-box">
-		<div claqss="box-header">创建相册</div>
+		<div class="box-header">创建相册</div>
 		<div class="box-body">
 			<div class="box-content">
 				<div class="box-input-field">

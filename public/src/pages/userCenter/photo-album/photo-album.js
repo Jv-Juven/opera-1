@@ -43,6 +43,8 @@ $("#box_btn").click(function (){
 		album_name: album_name
 	},function (data){
 
+		console.log("新建相册成功"+data["album_id"]);
+
 		if(data["errCode"] == 0){
 
 			var url_arr = [];
@@ -58,13 +60,13 @@ $("#box_btn").click(function (){
 			        domain = up.getOption("domain");
 			        url = domain + info.key;
 			        console.log(url);
-			        // url_arr.push(url);
+			        url_arr.push(url);
 
 			    },
 			    UploadComplete: function() {
 	               //队列文件处理完毕后,处理相关的事情
 	               console.log(url_arr.length);
-	               $.post("user/personal/upload_image",{
+	               $.post("/user/personal/upload_image",{
 		               	img_url: url_arr,
 		               	album_id: data["album_id"]
 	               },function (data){

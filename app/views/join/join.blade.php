@@ -7,6 +7,7 @@
 @section('css')
 	@parent
 	<link rel="stylesheet" href="/dist/css/join/join.css">
+	<link rel="stylesheet" href="/lib/css/swiper3.1.0.min.css">
 @stop
 
 @section('body')
@@ -22,17 +23,26 @@
 					<span class="join-left-en">JOIN US</span>
 				</div>
 			</div>
-			<div class="join-content clearx">
-				<ul>
-				@if(isset($employments))
-					@foreach($employments as $employment)
-					<li>
-						<span class="h1">{{$employment->title}}</span>
-						<span class="join-details">{{$employment->content}}</span>
-					</li>
-					@endforeach
-				@endif
-				</ul>
+			<div class="swiper-container join-swiper-container join-content">
+
+				<div class="swiper-wrapper">
+					<div class="swiper-slide clearx">
+						
+						<ul class="">
+						@if(isset($employments))
+							@foreach($employments as $employment)
+							<li class="">
+								<span class="h1">{{$employment->title}}</span>
+								<span class="join-details">{{$employment->content}}</span>
+							</li>
+							@endforeach
+						@endif
+						</ul>
+					</div>
+					
+				</div>
+				<!-- 如果需要滚动条 -->
+			    <div class="swiper-scrollbar join-scrollbar"></div>
 			</div>
 		</div>
 	</div>
@@ -40,5 +50,6 @@
 
 @section('js')
 	@parent
-	<!-- // <script type="text/javascript" src="/src/pages/join/join.js"></script> -->
+	<script type="text/javascript" src="/dist/js/lib/plugins/swiper.min.js"></script>
+	<script type="text/javascript" src="/dist/js/pages/join.js"></script>
 @stop
