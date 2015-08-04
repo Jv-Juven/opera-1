@@ -16,6 +16,8 @@
 @section('page-content')
 	<div id="mask" style="display:none;"></div>
 	<div class="page-content" style="padding:0px;">
+		<a href="/user/album?user_id={{{ $user_id }}}" class="return-btn">返回个人中心->相册页面</a>
+		<div style="clear:both;"></div>
 		<div class="photos">
 			@foreach($photos as $photo)
 			<div class="photo">

@@ -6,11 +6,13 @@ class UserPageController extends BaseController {
 	public function gallary()
 	{
 		$album_id = Input::get("album_id");
+		$user_id = Input::get("user_id");
 
 		$photos = Picture::where("album_id", "=", $album_id)->get();
 
 		return View::make('userCenter.gallary')->with(array(
-			"photos" => $photos
+			"photos" => $photos,
+			"user_id" => $user_id
 		));
 	}
 
