@@ -1044,7 +1044,7 @@ class UserController extends BaseController{
 			}
 		}
 
-		return Response::json(array('errCode'=>3, 'message'=>'上传成功！'));
+		return Response::json(array('errCode'=>0, 'message'=>'上传成功！'));
 
 	}
 
