@@ -1021,11 +1021,9 @@ class UserController extends BaseController{
 
 		$validation = Validator::make(
 			array( 
-				'title' => $title,
 				'img_urls' => $img_urls
 				),
 			array(
-				'title'  =>  'required',
 				'img_urls'  =>  'required'
 			)
 		);
