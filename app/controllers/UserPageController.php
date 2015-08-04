@@ -147,7 +147,18 @@ class UserPageController extends BaseController {
 	public function album()
 	{
 		$user_id = Input::get('user_id');
-		$user = User::find($user_id);
+		
+		if($user_id != null)
+		{
+			$user = User::find($user_id);
+		}else{
+			if(!Auth::check())
+			{
+				return Redirect::back();
+			}
+			$user = Auth::user();
+		}
+
 		$albums = $user->hasManyAlbums()->get();
 
 		if($albums != null)
@@ -167,7 +178,7 @@ class UserPageController extends BaseController {
 				$album->save();
 			}	
 		}
-		$albums = Album::where('user_id','=', $user_id)->paginate(6);
+		$albums = Album::where('user_id','=', $user->id)->paginate(6);
 
 		return View::make('userCenter.photo-album')->with(array(
 			'albums' 	=> $albums,
