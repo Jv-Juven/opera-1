@@ -56,7 +56,7 @@
 		   		   				</span>
 		   		   				
 		   		   				<div class="more">
-		   			   				<a href="#">查看更多个人资料</a>
+		   			   				<a href="/user/update?user_id={{$user->id}}">查看更多个人资料</a>
 		   		   				</div>
 		   	   				</div>
 
@@ -71,7 +71,7 @@
 			   	<div class="zone-album clearx">
 			   		<div class="zone-banner">相册</div>
 
-			   		<a href="#" class="zone-content">
+			   		<a href="/user/album?user_id={{$user->id}}" class="zone-content">
 			   		@if(isset($albums))
 			   			@foreach($albums as $album)
 			   			<div class="zone-album-box">
@@ -113,7 +113,7 @@
 						@endforeach
 			   		@endif
 			   			<div class="zone-topics-more">
-			   				<a href="#">查看更多话题动态</a>
+			   				<a href="/user/topic?user_id={{$user->id}}">查看更多话题动态</a>
 			   			</div>
 
 			   		</div>
