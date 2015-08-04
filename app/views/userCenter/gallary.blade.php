@@ -20,12 +20,23 @@
 		<div style="clear:both;"></div>
 		<div class="photos">
 			@foreach($photos as $photo)
-			<div class="photo">
+			<div class="photo" data-album-id="{{$photo->album_id}}">
 				<span class="delete-btn">×</span>
 				<input type="hidden" class="id" value="{{ $photo->id }}" />
 				<img src="{{ $photo->picture }}" width="236" height="195" />
 			</div>
 			@endforeach
+			<!--wuhui START-->
+			<div id="photo_add" class="photo-add">
+				<div class="photo-add-sign">
+					+
+				</div>
+				<div class="photo-add-text">
+					添加相片
+				</div>
+				<input id="photo_add_btn" type="file"/>
+			</div>
+			<!--wuhui END-->
 			<div style="clear:both;"></div>
 		</div>
 	</div>
@@ -48,6 +59,8 @@
 
 @section('js')
 	@parent
+    <script type="text/javascript" src="/dist/js/lib/plugins/qiniu.min.js"></script>
+    <script type="text/javascript" src="/dist/js/lib/plugins/plupload.full.min.js"></script>
 	<script type="text/javascript" src="/dist/js/lib/plugins/swiper.min.js"></script>
 	<script type="text/javascript" src="/dist/js/pages/gallary.js"></script>
 @stop

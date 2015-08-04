@@ -66,4 +66,51 @@ $ ->
 	$(document).on "click", ".photo", showPhotos
 	$(document).on "click", "#mask", hideMask
 
+# 上传相片
+url_arr = []
+args = 
+	
+
+window.uploader {
+    browse_button: "photo_add_btn",
+    container: "photo_add",
+    uptoken_url: "/qiniu/getUpToken",
+    domain: "http://7xk6xh.com1.z0.glb.clouddn.com/"
+},{
+    FileUploaded: (up,file,info)->
+	    info = $.parseJSON info
+	    domain = up.getOption "domain"
+	    url = domain + info.key
+	    console.log url
+	    url_arr.push url
+    UploadComplete: ()->
+	    #队列文件处理完毕后,处理相关的事情
+	    console.log url_arr.length
+	    $.post "/user/personal/upload_image", {
+		    img_urls: url_arr,
+		    album_id: $(".photo").attr "data-album-id"
+		    }, (data)->
+			    if data["errCode"] == 0 
+				    alert "图片上传成功"
+				    window.location.href = window.location.href
+			    else
+				    alert data["message"]
+}
+	
+    
+    
+    
+   
+
+
+
+
+
+
+
+
+
+
+
+
 

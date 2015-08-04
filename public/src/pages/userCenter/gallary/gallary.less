@@ -56,6 +56,55 @@
 				}
 			}
 		}
+
+
+		.photo-add {
+			float: left;
+			position: relative;
+			margin: 17px 10px;
+			cursor: pointer;
+			width: 236px;
+			height: 195px;
+			color: #b4b4b4;
+			box-shadow: 4px 3px 12px #aaa;
+			overflow: hidden;
+			&:hover{
+				color: #aaa;
+			}
+			.photo-add-sign{
+				position: absolute;
+				width: 210px;
+				line-height: 176px;
+				top: 50%;
+				left: 50%;
+				margin: -88px -105px;
+				background: #f0f0f0;
+				font-size: 140px;
+				text-align: center;
+			}
+			.photo-add-text{
+				position: absolute;
+				left: 0px;
+				width: 100%;
+				line-height: 60px;
+				font-size: 22px;
+				letter-spacing: 1px;
+				text-align: center;
+				color: #515051;
+				bottom: 10px;
+			}
+			#photo_add_btn{
+				position: absolute;
+				top: 0px;
+				right: 0px;
+				width: 600px;
+				height: 100%;
+				opacity: 0;
+				cursor: pointer;
+			}
+		}
+
+
 	}
 }
 
