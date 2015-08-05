@@ -1,4 +1,7 @@
 
+
+@import "public.less";
+
 *{
 	padding: 0;
 	margin: 0;
@@ -30,6 +33,10 @@ ul:after,.clearx:after{
 input{
 	padding-left: 5px; 
 	font-size: 1.2em;
+}
+
+img{
+	border: none;
 }
 .pagination a:visited{
 	color: #000;
@@ -97,7 +104,7 @@ input{
 }
 .input{
 	position: relative;
-	padding: 10px 0px;
+	line-height: 60px;
 	width: 410px;
 	margin: 0px auto;
 	font-size: 20px;
@@ -107,16 +114,23 @@ input{
 	font-weight: 600;
 }
 .input>input{
-	float: right;
-	width: 298px;
-	line-height: 40px;
+	width: 290px;
+	/*line-height: 42px;*/
+	padding: 6px;
 	border-radius: 10px;
 	border: 1px solid rgb(140,214,172);
-	margin-top: -10px;
+	
 	&:focus{
 		border: 1px solid rgb(140,214,172);
 		border-radius: 10px;
 		outline: none;
+	}
+}
+#register_container{
+	.input>input{
+		position: relative;
+		top:10px;
+		float: right;
 	}
 }
 
@@ -125,8 +139,7 @@ input{
 }
 
 .input .verify-input{
-	width: 175px;
-	margin-right: 123px;
+	width: 190px;
 }
 .login-tips{
 	position: absolute;
@@ -139,7 +152,7 @@ input{
 .verify-img{
 	position: absolute;
 	right: 0px;
-	top: -2px;
+	top: 6px;
 	width: 120px;
 	height: 100%;
 }
@@ -270,23 +283,30 @@ header{
 	height: 70px;
 }
 .logo{
+	position: relative;
+	display: inline-block;
 	float: left;
-	height:100%;
-	padding-top: 20px;
+	padding-left: 60px;
 }
-.head-portrait{
+.head-portrait {
+	position: absolute;
+	top: 50%;
+	left: 0px;
+	margin: -21px 0px; 
 	width:58px;
 	height: 42px;
+	border: none;
+	
+
 }
 .head-title{
 	font-family: "黑体";
 	font-size: 20px;
 	color: #085434;
-	display: block;
-	height: 100%;
-	float: right;
+	line-height: 80px;
+	display: inline-block;
 	font-weight: 600;
-	padding:8px 7px;
+	padding:0px 7px;
 }
 .a:link{
 	color: #000;

@@ -38,13 +38,12 @@
 						密&nbsp;&nbsp;&nbsp;码：<input id="user_pswd" type="password">
 					</div>
 					<div class="input">
-						验证码：
+						验证码：<input id="verify_input" class="verify-input" type="text">
 						<div class="verify-img">
 							<div class="verify-img-field">
 								<img src="" id="authcode-img" width="128" height="46" />
 							</div>
 						</div>
-						<input id="verify_input" class="verify-input" type="text">
 
 					</div>
 					<div class="login-line">
