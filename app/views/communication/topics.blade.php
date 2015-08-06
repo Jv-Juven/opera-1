@@ -31,7 +31,7 @@
 						<img src="{{$user->avatar}}">
 						<div class="topics-right-content">
 							<!-- 动态内容 -->
-							<div class="topics-msg">
+							<div class="topics-msg clearx">
 								<div class="topics-name">{{$user->username}}</div>
 								<div class="topics-title">{{$topic->title}}</div>
 								<div class="topics-msg-body">

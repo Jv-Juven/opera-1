@@ -127,7 +127,46 @@ $ ->
 
 
 
-#删除主题
+#删除话题、评论、回复
+
+deleteTopics = (e)->
+    topic = $(e.currentTarget).parents ".topics-items"
+    topic_id = $("#topic-id").val()
+    $.post "/user/personal/delete_topic",{
+	    topic_id : topic_id
+    },(data)->
+	    if data["errCode"] == 0
+		    topic.fadeOut()
+	    else 
+		    alert data["message"]
+
+deleteTopicComments = (e)->
+    topicComment = $(e.currentTarget).parents ".comments-item"
+    topiccomment_id = $("#comment-id").val()
+    $.post "/user/personal/delete_topic_comment",{
+	    topiccomment_id : topiccomment_id
+    },(data)->
+	    if data["errCode"] == 0
+		    topicComment.fadeOut()
+	    else 
+		    alert data["message"]
+
+
+deleteCommentReply = (e)->
+    commentReply = $(e.currentTarget).parents ".replies"
+    topic_reply_id = $("#reply-id").val()
+    $.post "/user/personal/delete_reply",{
+	    topic_reply_id : topic_reply_id
+    },(data)->
+	    if data["errCode"] == 0
+		    commentReply.fadeOut()
+	    else 
+		    alert data["message"]
+
+
+$(document).on "click", ".topics-comment-delete", deleteTopics
+$(document).on "click", ".comment-delete-btn", deleteTopicComments
+$(document).on "click", ".reply-delete-btn", deleteCommentReply
 
 
 

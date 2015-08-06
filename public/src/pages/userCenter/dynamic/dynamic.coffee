@@ -81,13 +81,16 @@ submitReply = (e)->
 		else
 			alert "提交回复失败"
 
+
 $ ->
 	$(document).on "click", ".show-comments-btn", showComments 
 	$(document).on "click", ".comment-reply-btn", showCommentReplyArea 
 	$(document).on "click", ".reply-btn", showReplyArea 
 	$(document).on "click", ".add-comment-btn", showCommentArea 
 	$(document).on "click", ".comment-reply-submit-btn", submitCommentReply 
-	$(document).on "click", ".reply-submit-btn", submitReply 
+	$(document).on "click", ".reply-submit-btn", submitReply
+
+	    
 
 
 
