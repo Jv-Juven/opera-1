@@ -37,6 +37,7 @@
 						</span>
 					</a>
 
+					<a href="javascript:void(0);" class="del-comment-btn">删除评论</a>
 					<a href="javascript:void(0);" class="add-comment-btn">新增评论</a>
 					<!-- 遍历话题评论 -->
 					<div class="comments">
@@ -52,6 +53,7 @@
 									<div class="comment-operate">
 										<span class="comment-time">{{{ $comment["created_at"] }}}</span>
 										<a class="comment-reply-btn" href="javascript:void(0);">回复</a>
+										<a class="comment-del-btn" href="javascript:void(0);">删除</a>
 									</div>
 								</div>
 								<div style="clear:both;"></div>
@@ -70,6 +72,7 @@
 										<div class="reply-operate">
 											<span class="reply-time">{{{ $reply->created_at }}}</span>
 											<a class="reply-btn" href="javascript:void(0);">回复</a>
+											<a class="del-reply-btn" href="javascript:void(0);">删除</a>
 										</div>
 									</div>
 									<div style="clear:both;"></div>

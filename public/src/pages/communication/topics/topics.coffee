@@ -34,7 +34,7 @@ $ ->
 				tag = 0;
 
 			params = {
-			    direction: 'vertical',
+			    mode: 'vertical',
 			    freeMode: true,
 			    mousewheelControl: true,
 			    slidesPerView: 'auto',
@@ -122,6 +122,13 @@ $ ->
 				$commentInputWrapper.find(".reply-input").val("")
 			else
 				alert res.message
+
+
+
+
+
+#删除主题
+
 
 
 

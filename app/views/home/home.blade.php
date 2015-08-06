@@ -6,7 +6,8 @@
 
 @section('css')
     @parent
-    <link rel="stylesheet" href="/lib/css/swiper3.1.0.min.css">
+    <!-- <link rel="stylesheet" href="/lib/css/swiper3.1.0.min.css"> -->
+
     <link rel="stylesheet" href="/dist/css/home/home.css">
 @stop
 
@@ -23,7 +24,7 @@
                     @endif
                 </div>
                 <!-- 如果需要分页器 -->
-                <div class="swiper-pagination"></div>
+                <div class="swiper-pagination home-swiper-pagination"></div>
 
             </div>
 
@@ -38,14 +39,14 @@
     			</div>
     			<ul class="content-list home-list">
     	       @if(isset($columns))
-                                        @foreach ( $columns as $column)
-                                        <li>
-                                            <a href="customer/news/column_more?column_id={{$column->id}}">
-                                                {{$column->title}}
-                                            </a>
-                                        </li>
-                                       @endforeach
-                    @endif
+                    @foreach ( $columns as $column)
+                    <li>
+                        <a href="customer/news/column_more?column_id={{$column->id}}">
+                            {{$column->title}}
+                        </a>
+                    </li>
+                   @endforeach
+                @endif
     			</ul>
     		</li>
     		<li>
@@ -104,7 +105,8 @@
 
 @section('js')
 	@parent
-    <script type="text/javascript" src="/dist/js/lib/plugins/swiper.min.js"></script>
+    <!-- // <script type="text/javascript" src="/dist/js/lib/plugins/swiper.min.js"></script> -->
+
 	<!-- // <script type="text/javascript" src="/src/common/common.js"></script> -->
 	<script type="text/javascript" src="/dist/js/pages/home.js"></script>
 @stop

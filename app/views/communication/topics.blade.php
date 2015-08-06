@@ -37,8 +37,11 @@
 								<div class="topics-msg-body">
 									{{$topic->content}}
 								</div>
+								<div class="topics-comment-delete">
+									删除  
+								</div>
 								<div class="topics-comment">
-									评论（<span>{{$commentCount}}</span>）  
+									评论(<span>{{$commentCount}}</span>)  
 								</div>
 							</div>
 							<!-- 评论区 -->
@@ -56,6 +59,7 @@
 										</div>
 										<div class="item-head">
 											<div class="item-title">{{User::find($topic_comment->user_id)->username}}</div>
+											<a class="comment-delete-btn" href="javascript:void(0);">删除</a>
 											<a class="comment-reply-btn" href="javascript:void(0);">回复</a>
 											<span>{{$topic_comment->created_at}}</span>
 										</div>
@@ -79,6 +83,7 @@
 												<div class="reply-content reply-date">
 													<span class="date">{{$reply->created_at}}</span>
 													<a class="reply-btn" href="javascript:void(0);">回复</a>
+													<a class="reply-delete-btn" href="javascript:void(0);">删除</a>
 												</div>
 											</div>
 											@endforeach
