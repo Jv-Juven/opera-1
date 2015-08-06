@@ -18,9 +18,7 @@
 	<div class="page-content">
 		<input type="hidden" id="receiver-id" value="{{{ $user->id }}}" />
 		@if(Auth::check())
-			@if(Auth::user()->id == $user->id)
 		<a href="javascript:void(0);" id="add-comment-btn">+新增留言</a>
-			@endif
 		@endif
 		<div id="message-input-wrapper">
 			<textarea class="message-input" placeholder="请写下留言的内容..."></textarea>
