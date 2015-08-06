@@ -87,8 +87,12 @@ Route::group(array('prefix'=>'user'),function()
 			Route::post('message_comment','UserController@postMessageComment');
 			//发表话题评论
 			Route::post('topic_comment','UserController@topicComment');
+			//删除话题评论
+			Route::post('delete_topic_comment','UserController@deleteTopicComment');
 			//发表话题评论的回复
 			Route::post('reply', 'UserController@reply');
+			//删除话题评论回复
+			Route::post('delete_reply','UserController@deleteReply');
 			//更新个人资料
 			Route::post('update', 'UserController@postUpdate');
 			//更换头像

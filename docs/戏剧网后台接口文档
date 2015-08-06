@@ -1554,4 +1554,32 @@
 					message:xxx			提示信息
 				}
 
+	12.删除话题评论
+		请求方式: 	POST
+		请求链接:	/user/personal/delete_topic_comment
+
+	    	请求参数
+			            topiccomment_id               		话题id
+			  
+		返回参数:	
+
+				{
+					errCode:xxx,			错误码	0表示返回正常	 
+					message:xxx			提示信息
+				}
+
+	13.删除话题评论回复
+		请求方式: 	POST
+		请求链接:	/user/personal/delete_reply
+
+	    	请求参数
+			            topic_reply_id               			话题id
+			  
+		返回参数:	
+
+				{
+					errCode:xxx,			错误码	0表示返回正常	 
+					message:xxx			提示信息
+				}
+
 
