@@ -78,6 +78,8 @@ Route::group(array('prefix'=>'user'),function()
 			Route::get('is_own', 'UserController@isOwn');
 			//发表话题
 			Route::post('issue_topic', 'UserController@issueTopic');
+			//删除话题
+			Route::post('delete_topic','UserController@deleteTopic');
 			//发表留言
 			Route::post('message', 'UserController@postMessage');
 			Route::post('delete_message', 'UserController@deleteMessage');
