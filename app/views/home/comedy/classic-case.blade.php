@@ -29,6 +29,7 @@
 			@endforeach
 		@endif
 		</div>
+		{{$appreciations->links()}}
 		<!-- <ul class="enlighten-subpage-plugin classic-footer">
 			<li><a href="javascript:">首页</a></li>
 			<li><a href="javascript:">1</a></li>

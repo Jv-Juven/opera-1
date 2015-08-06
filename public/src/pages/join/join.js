@@ -1,11 +1,11 @@
 
 
-var joinSwiper = new Swiper(".join-content",{
+var joinSwiper = new Swiper(".swiper-container",{
 
-	direction: "vertical",
-	freeMode: true,
-	mousewheelControl: true,
-	slidesPerView: 'auto',
-	scrollbar: '.join-scrollbar',
+	// direction: "vertical",
+	// freeMode: true,
+	// mousewheelControl: true,
+	// slidesPerView: 'auto',
+	// scrollbar: '.join-scrollbar'
 
 });

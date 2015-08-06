@@ -10,3 +10,9 @@
 .division-hr(@wdith: 1px,@style:solid,@color:@btn-color){
 	border-bottom: @arguments;
 }
+.back-img(@url: "/images/common/logo.png"){
+	background-image:url(@url)!important; 
+	background-image:url(@url);
+	filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src=@url, enabled=true, sizingMethod=scale); 
+	background-size: 100% 100%;
+}
