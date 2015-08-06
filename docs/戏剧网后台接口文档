@@ -1539,5 +1539,19 @@
 				}
 
 
+					<---需要登录操作--->
+	11.删除话题
+		请求方式: 	POST
+		请求链接:	/user/personal/delete_topic
+
+	    	请求参数
+			            topic_id                			话题id
+			  
+		返回参数:	
+
+				{
+					errCode:xxx,			错误码	0表示返回正常	 
+					message:xxx			提示信息
+				}
 
 

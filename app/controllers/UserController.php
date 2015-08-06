@@ -825,6 +825,34 @@ class UserController extends BaseController{
 		return Response::json(array('errCode'=>2, 'message'=>'话题发表失败，请重新发送！'));
 	}
 
+	//删除话题
+	public function deleteTopic()
+	{
+		if(!Auth::check())
+		{
+			return Response::json(array('errCode'=>1, 'message'=>'请登录！'));
+		}
+		$user_id = Auth::user()->id;
+		$topic_id = Input::get('topic_id');
+		$topic = Topic::find($topic_id);
+		if($topic != null)
+		{
+			if($topic->user_id != $user_id)
+			{
+				return Response::json(array('errCode'=>2, 'message'=>'不可删除后他人的相册！'));
+			}
+			if($topic->delete())
+			{
+				return Response::json(array('errCode' => 0 , 'message'=>'相话题删除成功！'));
+			}
+			
+			return Response::json(array('errCode'=>3, 'message'=>'话题删除失败！'));
+		}
+
+		return Response::json(array('errCode'=>4, 'message'=>'话题不存在！') );
+
+	}
+
 	//话题评论
 	public function topicComment()
 	{
