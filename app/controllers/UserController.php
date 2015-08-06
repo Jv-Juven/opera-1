@@ -600,7 +600,7 @@ class UserController extends BaseController{
 
 		$message = Message::find($message_id);
 
-		if($message->receiver_id == $user_id)
+		if($message->sender_id == $user_id)
 		{
 			if(!$message->delete())
 			{
