@@ -68,9 +68,6 @@ $ ->
 
 # 上传相片
 url_arr = []
-args = 
-	
-
 window.uploader {
     browse_button: "photo_add_btn",
     container: "photo_add",

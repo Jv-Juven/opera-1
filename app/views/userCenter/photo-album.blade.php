@@ -18,7 +18,7 @@
 @stop
 
 @section('page-content')
-	<div class="page-content">
+	<div class="page-content photo-album-page" data-user-id="{{{ $user->id }}}">
 		<div class="album-container clearx">
 			@foreach($albums as $album)
 			<div class="album-box album-box-finished" data-id="{{$album->id}}">
@@ -36,7 +36,7 @@
 				</div>
 			</div>
 			@endforeach
-			<div class="album-box album-box-add" data-id="">
+			<div id="album_box_add" class="album-box album-box-add" data-id="">
 				<div class="album-box-add-sign">+</div>
 				<div class="album-box-add-text">创建新相册</div>
 			</div>

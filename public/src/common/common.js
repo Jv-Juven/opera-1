@@ -2,7 +2,24 @@
 function encryption(){
 
     var base64EncodeChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
-    var base64DecodeChars = new Array(-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 62, -1, -1, -1, 63, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, -1, -1, -1, -1, -1, -1, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, -1, -1, -1, -1, -1, -1, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, -1, -1, -1, -1, -1);
+    var base64DecodeChars = new Array(
+            -1, -1, -1, -1, -1, -1, -1, -1,
+            -1, -1, -1, -1, -1, -1, -1, -1, 
+            -1, -1, -1, -1, -1, -1, -1, -1, 
+            -1, -1, -1, -1, -1, -1, -1, -1, 
+            -1, -1, -1, -1, -1, -1, -1, -1, 
+            -1, -1, -1, 62, -1, -1, -1, 63, 
+            52, 53, 54, 55, 56, 57, 58, 59, 
+            60, 61, -1, -1, -1, -1, -1, -1, 
+            -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 
+            9, 10, 11, 12, 13, 14, 15, 16, 
+            17, 18, 19, 20, 21, 22, 23, 24, 
+            25, -1, -1, -1, -1, -1, -1, 26, 
+            27, 28, 29, 30, 31, 32, 33, 34, 
+            35, 36, 37, 38, 39, 40, 41, 42, 
+            43, 44, 45, 46, 47, 48, 49, 50, 
+            51, -1, -1, -1, -1, -1
+        );
     /**
      * base64编码
      * @param {Object} str
@@ -297,8 +314,8 @@ window.navigation = (function() {
     $.fn.extend({
         //使元素全屏显示
         fullscreen: function() {
-            var width = $(window).width(),
-                height = $(window).height();
+            var width = $(document).width(),
+                height = $(document).height();
             $(this).css({
                 "width": width,
                 "height": height,
@@ -306,7 +323,6 @@ window.navigation = (function() {
                 "top": "0px",
                 "left": "0px"
             });
-            // console.log("高："+height+"\n宽："+width);
             return $(this);
         },
         // 使元素基于父一级元素居中显示
@@ -315,13 +331,6 @@ window.navigation = (function() {
                 ele = $(this),
                 width = opts.width||"auto",
                 height = opts.height||"auto";
-
-            // if(!/^(absolute)|(relative)/.test(fatherEle.css("position"))){
-            //     fatherEle.css({
-            //         "position": "relative"
-            //     });
-            // }
-
             ele.css({
                 "position": "absolute",
                 "top": "50%",
@@ -332,6 +341,21 @@ window.navigation = (function() {
             });
 
             return ele;
+        },
+        //检测用户权限，相关的jQuery对象实例display:none
+        checkedit: function(desId){ //desId 目标用户id所在的元素id
+            var des_id = desId,
+                ele = $(this);
+            $.get("/user/personal/is_own",{
+                user_id: des_id
+            },function(data) {
+                if(data["errCode"] !== 0){
+                    ele.hide();
+                }
+                else{
+                    ele.show();
+                }
+            });
         }
 
     });

@@ -73,9 +73,7 @@ window.uploader({
         info = $.parseJSON(info);
         domain = up.getOption("domain");
         url = domain + info.key;
-        // console.log("上传成功");
         $(".avatar").attr("src",url);
-
         $.post("/user/personal/chang_image",{
             avatar : url 
         },function (data){
@@ -88,7 +86,10 @@ window.uploader({
             }
         },"json");
 
-    }
+    },
+    Error: function(up, err, errTip) {
+            return console.log(errTip);
+      }
 });
 
 
