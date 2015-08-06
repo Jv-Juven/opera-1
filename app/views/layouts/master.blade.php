@@ -10,6 +10,7 @@
 	<!-- <link rel="shortcut icon" href="/images/common/logo.png" /> -->
 	<link rel="icon" type="image/png" href="/images/icon.png">
 	@section('css')
+		<link rel="stylesheet" href="/lib/css/idangerous.swiper.css">
 		<link rel="stylesheet" href="/dist/css/common.css">
 	@show
 </head>
@@ -152,12 +153,13 @@
 	</div>
 
 	@section('js')
-	<script type="text/javascript" src="/dist/js/lib/jquery/jquery-1.11.2.js"></script>
-	<script type="text/javascript" src="/dist/js/lib/jquery/jquery-1.11.2.min.js"></script>
-	<script type="text/javascript" src="/dist/js/lib/jquery/jquery.cookie.js"></script>
-	<script type="text/javascript" src="/dist/js/lib/jquery/jquery.transit.js"></script>
-	<script type="text/javascript" src="/dist/js/mycomponents.js"></script>
-	<script type="text/javascript" src="/dist/js/common.js"></script>
+		<script type="text/javascript" src="/dist/js/lib/plugins/idangerous.swiper.min.js"></script>
+		<script type="text/javascript" src="/dist/js/lib/jquery/jquery-1.11.2.js"></script>
+		<script type="text/javascript" src="/dist/js/lib/jquery/jquery-1.11.2.min.js"></script>
+		<script type="text/javascript" src="/dist/js/lib/jquery/jquery.cookie.js"></script>
+		<script type="text/javascript" src="/dist/js/lib/jquery/jquery.transit.js"></script>
+		<script type="text/javascript" src="/dist/js/mycomponents.js"></script>
+		<script type="text/javascript" src="/dist/js/common.js"></script>
 	@show
 </body>
 </html>

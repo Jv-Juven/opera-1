@@ -34,7 +34,7 @@ $ ->
 				tag = 0;
 
 			params = {
-			    direction: 'vertical',
+			    mode: 'vertical',
 			    freeMode: true,
 			    mousewheelControl: true,
 			    slidesPerView: 'auto',
