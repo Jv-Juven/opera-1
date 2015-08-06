@@ -31,15 +31,23 @@
 				</div>
 				<div class="album-oprate">
 					<span class="album-pics">图片数：<span class="count">{{{$album->albumCount}}}</span></span>
+				@if(Auth::check())
+					@if(Auth::user()->id == $user->id)
 					<span class="album-edit">编辑</span>
 					<span class="album-del">删除</span>
+					@endif
+				@endif
 				</div>
 			</div>
 			@endforeach
+			@if(Auth::check())
+				@if(Auth::user()->id == $user->id)
 			<div id="album_box_add" class="album-box album-box-add" data-id="">
 				<div class="album-box-add-sign">+</div>
 				<div class="album-box-add-text">创建新相册</div>
 			</div>
+				@endif
+			@endif
 		</div>
 		<div class="album-division-hr"></div>
 		{{$albums->links()}}

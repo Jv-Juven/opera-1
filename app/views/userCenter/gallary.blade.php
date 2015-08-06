@@ -27,6 +27,8 @@
 			</div>
 			@endforeach
 			<!--wuhui START-->
+			@if(Auth::check())
+				@if(Auth::user()->id == $user_id)
 			<div id="photo_add" class="photo-add">
 				<div class="photo-add-sign">
 					+
@@ -36,6 +38,8 @@
 				</div>
 				<input id="photo_add_btn" type="file"/>
 			</div>
+				@endif
+			@endif
 			<!--wuhui END-->
 			<div style="clear:both;"></div>
 		</div>

@@ -600,7 +600,7 @@ class UserController extends BaseController{
 
 		$message = Message::find($message_id);
 
-		if($message->receiver_id == $user_id)
+		if($message->sender_id == $user_id)
 		{
 			if(!$message->delete())
 			{
@@ -890,6 +890,62 @@ class UserController extends BaseController{
 		return Response::json(array('errCode'=>0, 'comment'=>$topic_comment));
 
 	}
+
+	//删除话题评论
+	public function deleteTopicComment()
+	{
+		if(!Auth::check())
+		{
+			return Response::json(array('errCode'=>1, 'message'=>'[权限禁止]请先登录'));
+		}
+		$topiccomment_id = Input::get('topiccomment_id');
+		$topic_comment = TopicComment::find($topiccomment_id);
+		if(count($topic_comment) == 0)
+		{
+			return Response::json(array('errCode'=>2, 'message'=>'评论不存在！'));
+		}
+		$user = Auth::user();
+		if($topic_comment->user_id != $user->id)
+		{
+			return Response::json(array('errCode'=>3, 'message'=>'不可删除他人的话题评论！'));
+		}
+
+		if(!$topic_comment->delete())
+		{
+			return Response::json(array('errCode'=>4, 'message'=>'删除失败！'));
+		}
+
+		return Response::json(array('errCode'=>0, 'message'=>'删除成功！'));
+	}
+
+	//删除话题评论回复
+	public function deleteReply()
+	{
+		if(!Auth::check())
+		{
+			return Response::json(array('errCode'=>1, 'message'=>'[权限禁止]请先登录'));
+		}
+
+		$topic_reply_id = Input::get('topic_reply_id');
+		$topic_reply 	= CommentOfTopiccomment::find($topic_reply_id);
+		if(count($topic_reply) == 0)
+		{
+			return Response::json(array('errCode'=>2, 'message'=>'话题评论回复不存在！'));
+		}
+		$user = Auth::user();
+		if($topic_reply->sender_id != $user->id)
+		{
+			return Response::json(array('errCode'=>3, 'message'=>'不可删除他人的话题评论回复！'));
+		}
+
+		if(!$topic_reply->delete())
+		{
+			return Response::json(array('errCode'=>4, 'message'=>'删除失败！'));
+		}
+
+		return Response::json(array('errCode'=>0, 'message'=>'删除成功！'));
+	}
+
 
 	//话题评论的回复
 	public function reply()

@@ -39,6 +39,12 @@ class CreateCommentOfTopiccomments extends Migration {
 				->references('id')->on('topics') 
 				->onDelete('cascade')
 				->onUpdate('cascade');
+
+			$table                          
+				->foreign('topiccomment_id')
+				->references('id')->on('topic_comments') 
+				->onDelete('cascade')
+				->onUpdate('cascade');
 		});
 	}
 
