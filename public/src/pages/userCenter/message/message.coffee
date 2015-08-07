@@ -72,8 +72,8 @@ submitReply = (e)->
 deleteMessage = (e)->
 	$message = $(e.currentTarget).parent().parent();
 	messageId = $message.find(".message-id").val()
-	
-	$.post '/user/personal/delete_message', {message_id: messageId}, (res)->
+	user_id = $("#receiver-id").val()
+	$.post '/user/personal/delete_message', {message_id: messageId,user_id: user_id}, (res)->
 		if res.errCode is 0
 			alert "删除留言成功"
 			$message.fadeOut();

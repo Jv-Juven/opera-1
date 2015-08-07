@@ -105,9 +105,11 @@ deleteTopics = (e)->
 			alert data["message"]
 
 deleteTopicComments = (e)->
+    receiver_id = $("#receiver-id").val()
 	topicComment = $(e.currentTarget).parents ".comment"
 	topiccomment_id = topicComment.find(".comment-id").val()
 	$.post "/user/personal/delete_topic_comment",{
+		user_id : receiver_id,
 		topiccomment_id : topiccomment_id
 	},(data)->
 		if data["errCode"] == 0
@@ -117,9 +119,11 @@ deleteTopicComments = (e)->
 
 
 deleteCommentReply = (e)->
+    receiver_id = $("#receiver-id").val()
 	commentReply = $(e.currentTarget).parents ".reply"
 	topic_reply_id = commentReply.find(".reply-id").val()
 	$.post "/user/personal/delete_reply",{
+		user_id : receiver_id,
 		topic_reply_id : topic_reply_id
 	},(data)->
 		if data["errCode"] == 0

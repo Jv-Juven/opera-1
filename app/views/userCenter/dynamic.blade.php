@@ -15,6 +15,7 @@
 
 @section('page-content')
 	<div class="page-content">
+	<input type="hidden" id="receiver-id" value="{{{ $user->id }}}">
 		@foreach($topics as $topic)
 		<div class="topic">
 			<input type="hidden" class="topic-id" value="{{{ $topic->id }}}" />
