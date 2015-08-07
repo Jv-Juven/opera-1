@@ -39,10 +39,12 @@
 					<p>{{{$message->content}}}</p>
 				</div>
 				<div class="message-edit">
-					<a href="javascript:void(0);" class="message-reply-btn">回复(<span class="message-comment-count">{{{$message->messageCommentCount}}}</span>)</a>|
 					@if(Auth::check())
-						@if(Auth::user()->id ==$message->sender_id )
-					<a href="javascript:void(0);" class="message-delete-btn">删除</a>
+					<a href="javascript:void(0);" class="message-reply-btn">回复(<span class="message-comment-count">{{{$message->messageCommentCount}}}</span>)</a>|
+						@if(Auth::user()->id == $user->id)
+							<a href="javascript:void(0);" class="message-delete-btn">删除</a>
+						@elseif(Auth::user()->id ==$message->sender_id )
+							<a href="javascript:void(0);" class="message-delete-btn">删除</a>
 						@endif
 					@endif
 				</div>

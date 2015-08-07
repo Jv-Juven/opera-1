@@ -57,8 +57,10 @@
 										<span class="comment-time">{{{ $comment["created_at"] }}}</span>
 									@if(Auth::check())	
 										<a class="comment-reply-btn" href="javascript:void(0);">回复</a>
-										@if(Auth::user()->id == $comment->user_id)	
-										<a class="comment-del-btn" href="javascript:void(0);">删除</a>
+										@if(Auth::user()->id == $user->id)
+											<a class="comment-del-btn" href="javascript:void(0);">删除</a>
+										@elseif(Auth::user()->id == $comment->user_id)	
+											<a class="comment-del-btn" href="javascript:void(0);">删除</a>
 										@endif
 									@endif
 									</div>
@@ -80,8 +82,10 @@
 											<span class="reply-time">{{{ $reply->created_at }}}</span>
 										@if(Auth::check())	
 											<a class="reply-btn" href="javascript:void(0);">回复</a>
-											@if(Auth::user()->id == $reply->sender_id)	
-											<a class="del-reply-btn" href="javascript:void(0);">删除</a>
+											@if(Auth::user()->id == $user->id)
+												<a class="del-reply-btn" href="javascript:void(0);">删除</a>
+											@elseif(Auth::user()->id == $reply->sender_id)	
+												<a class="del-reply-btn" href="javascript:void(0);">删除</a>
 											@endif
 										@endif
 										</div>

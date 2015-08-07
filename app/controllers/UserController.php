@@ -598,7 +598,7 @@ class UserController extends BaseController{
 		$message_id = Input::get('message_id');
 		$user_id = Input::get('user_id');
 		$message = Message::find($message_id);
-
+		dd($user_id);
 		if($message == null)
 		{
 			return Response::json(array('errCode'=>2,'message'=>'该留言不存在'));
@@ -611,7 +611,7 @@ class UserController extends BaseController{
 				return Response::json(array('errCode'=>4, 'message'=>'删除留言失败！'));
 			}
 
-			return Response::json(array('errCode'=>0,'message' =>'删除成功'！));
+			return Response::json(array('errCode'=>0,'message' =>'删除成功！'));
 		}
 		//在别人的个人空间中，只能删除自己的留言
 		if($message->sender_id == Auth::user()->id)
@@ -1002,7 +1002,7 @@ class UserController extends BaseController{
 		}
 		
 		//判断是否是在自己的个人空间
-		if($Auth::user()->id == $user_id)
+		if(Auth::user()->id == $user_id)
 		{
 			if(!$topic_reply->delete())
 			{
