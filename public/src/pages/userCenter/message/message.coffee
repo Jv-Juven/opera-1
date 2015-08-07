@@ -26,6 +26,7 @@ showReplyArea = (e)->
 	$reply = $(e.currentTarget).parent().parent();
 	$parent = $reply.parent();
 	$replyInputWrapper = $parent.find(".reply-input-wrapper");
+	$replyInputWrapper.appendTo($parent)
 
 	commentId = $reply.find(".comment-id").val();
 	messageId = $parent.parent().find(".message-id").val()
@@ -41,7 +42,7 @@ submitMessageReply = (e)->
 
 	$.post '/user/personal/message_comment', {}, (res)->
 		if res.errCode is 0
-			alert "提交评论成功"
+			#alert "提交评论成功"
 		else
 			alert "提交评论失败"
 	
@@ -60,7 +61,7 @@ submitReply = (e)->
 
 	$.post '/user/personal/message_comment', {message_id: messageId, comment_id: commentId, content: content, comment_type: commentType}, (res)->
 		if res.errCode is 0
-			alert "提交回复成功"
+			#alert "提交回复成功"
 			$parent.hide();
 			$newComment = $(messageCommentTemplate(res.comment))
 			$parent.parent().append($newComment);
@@ -87,13 +88,27 @@ submitNewMessage = (e)->
 
 	$.post "/user/personal/message", {content: content, receiver_id: receiver_id}, (res)->
 		if res.errCode is 0
-			alert "发表留言成功"
+			#alert "发表留言成功"
 			$parent.hide();
 			$newMessage = $(messageTemplate(res.message))
 			$parent.parent().find(".messages").prepend($newMessage);
 			$parent.find(".message-input").val("")
 		else
 			alert res.message
+
+
+deleteCommentReply = (e)->
+	commentReply = $(e.currentTarget).parents ".reply"
+	topic_reply_id = commentReply.find(".comment-id").val()
+	user_id = $("#receiver-id").val()
+	$.post "/user/personal/delete_msg_comment",{
+		user_id : user_id,
+		msg_comment_id : topic_reply_id
+	},(data)->
+		if data["errCode"] == 0
+			commentReply.fadeOut()
+		else 
+			alert data["message"]
 
 $ ->
 	$(document).on "click", ".message-reply-btn", showMessageReplyArea 
@@ -105,6 +120,8 @@ $ ->
 	$(document).on "click", ".message-delete-btn", deleteMessage 
 	$(document).on "click", "#add-comment-btn", showNewMessageArea 
 	$(document).on "click", "#message-submit-btn", submitNewMessage 
+
+	$(document).on "click", ".delete-btn", deleteCommentReply
 
 
 
