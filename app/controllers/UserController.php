@@ -76,7 +76,6 @@ class UserController extends BaseController{
 			{
 			 	 $salt .= substr($possible_charactors,rand(0,strlen($possible_charactors)-1),1);
 			}
-			
 			//发送邮件
 			Mail::send('emails/token',array('token' => $salt),function($message) use ($data)
 			{
