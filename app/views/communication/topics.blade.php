@@ -17,6 +17,7 @@
 
 @section('page-content')
 <div id="topics_border01" class="page-content">
+    <input type="hidden" id="receiver-id" value="{{{ $user->id }}}">
 	<div class="seach-container clearx">
 		<input class="seach-input" type="text">
 		<div class="seach-btn">发布话题</div>
