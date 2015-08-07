@@ -10,6 +10,7 @@ $ ->
 	$("#topics_border01 .seach-btn,.seach-input").click ()->
 		$("#topics_border01").fadeOut(200);
 		$("#topics_border02").fadeIn(200);
+		$("#topics_title").focus()
 
 	# 点击topics_border02的“发布话题”按钮事件 
 	$(".topics-publish-btn").click ()->
@@ -34,11 +35,11 @@ $ ->
 				tag = 0;
 
 			params = {
-			    mode: 'vertical',
-			    freeMode: true,
-			    mousewheelControl: true,
-			    slidesPerView: 'auto',
-			    scrollbar: '.topics-scrollbar'
+				mode: 'vertical',
+				freeMode: true,
+				mousewheelControl: true,
+				slidesPerView: 'auto',
+				scrollbar: '.topics-scrollbar'
 			}
 			swiperTopics = new Swiper '.topics-swiper', params
 		)
@@ -62,6 +63,9 @@ $ ->
 		$parent = $reply.parent()
 		$comment = $parent.parent()
 		$replyInputWrapper = $parent.find(".reply-input-wrapper")
+
+		$replyInputWrapper.appendTo($parent)
+
 		$replyInputWrapper.fadeToggle()
 
 		topic_id = $("#topic-id").val()
@@ -90,7 +94,7 @@ $ ->
 
 		$.post "/user/personal/reply", params, (res)->
 			if res.errCode is 0
-				alert "发表回复成功"
+				#alert "发表回复成功"
 				$parent = $replyInputWrapper.parent()
 				$newReply = $(commentReplyTemplate(res.reply))
 				$parent.append($newReply)
@@ -114,7 +118,7 @@ $ ->
 
 		$.post "/user/personal/topic_comment", params, (res)->
 			if res.errCode is 0
-				alert "发表评论成功"
+				#alert "发表评论成功"
 				$parent = $commentInputWrapper.parent()
 				$newComment = $(commentTemplate(res.comment))
 				$parent.find(".comments").append($newComment)
@@ -130,38 +134,42 @@ $ ->
 #删除话题、评论、回复
 
 deleteTopics = (e)->
-    topic = $(e.currentTarget).parents ".topics-items"
-    topic_id = $("#topic-id").val()
-    $.post "/user/personal/delete_topic",{
-	    topic_id : topic_id
-    },(data)->
-	    if data["errCode"] == 0
-		    topic.fadeOut()
-	    else 
-		    alert data["message"]
+
+	if !confirm("确定要删除这个话题")
+		return
+	topic = $(e.currentTarget).parents ".topics-items"
+	topic_id = $("#topic-id").val()
+	$.post "/user/personal/delete_topic",{
+		topic_id : topic_id
+	},(data)->
+		if data["errCode"] == 0
+			#topic.fadeOut()
+			location.reload()
+		else 
+			alert data["message"]
 
 deleteTopicComments = (e)->
-    topicComment = $(e.currentTarget).parents ".comments-item"
-    topiccomment_id = $("#comment-id").val()
-    $.post "/user/personal/delete_topic_comment",{
-	    topiccomment_id : topiccomment_id
-    },(data)->
-	    if data["errCode"] == 0
-		    topicComment.fadeOut()
-	    else 
-		    alert data["message"]
+	topicComment = $(e.currentTarget).parents ".comments-item"
+	topiccomment_id = topicComment.find(".comment-id").val()
+	$.post "/user/personal/delete_topic_comment",{
+		topiccomment_id : topiccomment_id
+	},(data)->
+		if data["errCode"] == 0
+			topicComment.fadeOut()
+		else 
+			alert data["message"]
 
 
 deleteCommentReply = (e)->
-    commentReply = $(e.currentTarget).parents ".replies"
-    topic_reply_id = $("#reply-id").val()
-    $.post "/user/personal/delete_reply",{
-	    topic_reply_id : topic_reply_id
-    },(data)->
-	    if data["errCode"] == 0
-		    commentReply.fadeOut()
-	    else 
-		    alert data["message"]
+	commentReply = $(e.currentTarget).parents ".reply-containers"
+	topic_reply_id = commentReply.find(".reply-id").val()
+	$.post "/user/personal/delete_reply",{
+		topic_reply_id : topic_reply_id
+	},(data)->
+		if data["errCode"] == 0
+			commentReply.fadeOut()
+		else 
+			alert data["message"]
 
 
 $(document).on "click", ".topics-comment-delete", deleteTopics

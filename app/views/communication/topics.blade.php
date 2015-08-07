@@ -148,6 +148,7 @@
 			</div>
 			<div class="item-head">
 				<div class="item-title"><%= author_name %></div>
+				<a class="comment-delete-btn" href="javascript:void(0);">删除</a>
 				<a class="comment-reply-btn" href="javascript:void(0);">回复</a>
 				<span><%= created_at %></span>
 			</div>
@@ -183,6 +184,7 @@
 		<div class="reply-content reply-date">
 			<span class="date"><%= created_at %></span>
 			<a class="reply-btn" href="javascript:void(0);">回复</a>
+			<a class="reply-delete-btn" href="javascript:void(0);">删除</a>
 		</div>
 	</div>
 </script>

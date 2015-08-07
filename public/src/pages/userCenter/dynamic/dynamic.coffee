@@ -55,7 +55,7 @@ submitCommentReply = (e)->
 
 	$.post '/user/personal/topic_comment', {topic_id: topicId, content: content}, (res)->
 		if res.errCode is 0
-			alert "提交评论成功"
+			#alert "提交评论成功"
 			$newComment = $(CommentTemplate(res.comment))
 			$parent.parent().append($newComment);
 			$parent.hide();
@@ -73,7 +73,7 @@ submitReply = (e)->
 
 	$.post '/user/personal/reply', {topic_id: topicId, comment_id: commentId, reply_id: replyId, reply_type: replyType, content: content}, (res)->
 		if res.errCode is 0
-			alert "提交回复成功"
+			#alert "提交回复成功"
 			$newReply = $(CommentReplyTemplate(res.reply))
 			$parent.parent().append($newReply);
 			$parent.hide();
