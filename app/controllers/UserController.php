@@ -596,20 +596,34 @@ class UserController extends BaseController{
 		}
 
 		$message_id = Input::get('message_id');
-		$user_id = Auth::user()->id;
-
+		$user_id = Input::get('user_id');
 		$message = Message::find($message_id);
 
-		if($message->sender_id == $user_id)
+		if($message == null)
+		{
+			return Response::json(array('errCode'=>2,'message'=>'该留言不存在'));
+		}
+		//判断是否在自己的个人空间
+		if(Auth::user()->id == $user_id)
 		{
 			if(!$message->delete())
 			{
-				return Response::json(array('errCode'=>2, 'message'=>'[数据库错误]删除留言失败'));
+				return Response::json(array('errCode'=>4, 'message'=>'删除留言失败！'));
+			}
+
+			return Response::json(array('errCode'=>0,'message' =>'删除成功'！));
+		}
+		//在别人的个人空间中，只能删除自己的留言
+		if($message->sender_id == Auth::user()->id)
+		{
+			if(!$message->delete())
+			{
+				return Response::json(array('errCode'=>5, 'message'=>'[数据库错误]删除留言失败'));
 			}
 		}
 		else
 		{
-			return Response::json(array('errCode'=>1, 'message'=>'[权限禁止]只能删除自己收到的留言'));
+			return Response::json(array('errCode'=>6, 'message'=>'[权限禁止]只能删除自己收到的留言'));
 		}
 
 		return Response::json(array('errCode'=>0));
@@ -670,6 +684,7 @@ class UserController extends BaseController{
 		{
 			return Response::json(array('errCode'=>2, 'message'=>'该留言回复不存在！'));
 		}
+		////判断是否在自己的个人空间
 		if(Auth::user()->id == $user_id)
 		{
 			if(!$msg_comment->delete())
@@ -679,7 +694,9 @@ class UserController extends BaseController{
 
 			return Response::json(array('errCode'=>0, 'message'=>'删除成功！'));
 		}
-		$sender_id = $msg_comment->$sender_id;
+
+		//在别人的个人空间中，只能删除自己的留言回复
+		$sender_id = $msg_comment->sender_id;
 		if(Auth::user()->id != $sender_id)
 		{
 			return Response::json(array('errCode'=>4,'message'=>'[权限禁止]只能删除自己的留言回复'));
@@ -936,21 +953,33 @@ class UserController extends BaseController{
 		{
 			return Response::json(array('errCode'=>1, 'message'=>'[权限禁止]请先登录'));
 		}
+		$user_id = Input::get('user_id');
 		$topiccomment_id = Input::get('topiccomment_id');
 		$topic_comment = TopicComment::find($topiccomment_id);
 		if(count($topic_comment) == 0)
 		{
 			return Response::json(array('errCode'=>2, 'message'=>'评论不存在！'));
 		}
-		$user = Auth::user();
-		if($topic_comment->user_id != $user->id)
+
+		//判断是否是在自己的个人空间
+		if(Auth::user()->id == $user_id)
 		{
-			return Response::json(array('errCode'=>3, 'message'=>'不可删除他人的话题评论！'));
+			if(!$topic_comment->delete())
+			{
+				return Response::json(array('errCode'=>3, 'message'=>'删除失败！'));
+			}
+			return Response::json(array('errCode'=>0, 'message'=>'删除成功！'));
+		}
+
+		//在别人个人空间只能删除自己的话题评论
+		if($topic_comment->user_id != Auth::user()->id)
+		{
+			return Response::json(array('errCode'=>4, 'message'=>'不可删除他人的话题评论！'));
 		}
 
 		if(!$topic_comment->delete())
 		{
-			return Response::json(array('errCode'=>4, 'message'=>'删除失败！'));
+			return Response::json(array('errCode'=>3, 'message'=>'删除失败！'));
 		}
 
 		return Response::json(array('errCode'=>0, 'message'=>'删除成功！'));
@@ -964,14 +993,26 @@ class UserController extends BaseController{
 			return Response::json(array('errCode'=>1, 'message'=>'[权限禁止]请先登录'));
 		}
 
+		$user_id = Input::get('user_id');
 		$topic_reply_id = Input::get('topic_reply_id');
 		$topic_reply 	= CommentOfTopiccomment::find($topic_reply_id);
 		if(count($topic_reply) == 0)
 		{
 			return Response::json(array('errCode'=>2, 'message'=>'话题评论回复不存在！'));
 		}
-		$user = Auth::user();
-		if($topic_reply->sender_id != $user->id)
+		
+		//判断是否是在自己的个人空间
+		if($Auth::user()->id == $user_id)
+		{
+			if(!$topic_reply->delete())
+			{
+				return Response::json(array('errCode'=>3, 'message'=>'删除失败！'));
+			}
+			return Response::json(array('errCode'=>0, 'message'=>'删除成功！'));
+		}
+
+		//在他人的个人空间只能删除自己的评论回复
+		if($topic_reply->sender_id != Auth::user()->id)
 		{
 			return Response::json(array('errCode'=>3, 'message'=>'不可删除他人的话题评论回复！'));
 		}
