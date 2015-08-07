@@ -22,7 +22,7 @@
 		   	
 		   	   	<div class="zone-header">
 		   	   		<div class="zone-banner">头像</div>
-		   	   		<a href="/" class="zone-content">
+		   	   		<a href="javascript:" class="zone-content">
 		   	   			<img src="{{$user->avatar}}" alt="">
 		   	   			<div class="zone-header-info clearx">
 		   	   				<span class="zone-header-name">{{$user->realname}}</span>

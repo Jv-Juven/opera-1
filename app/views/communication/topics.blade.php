@@ -31,7 +31,9 @@
 			<div class="swiper-wrapper">
 				<div class="swiper-slide">
 					<div class="topics-items">
-						<img src="{{$user->avatar}}">
+						<a href="/user/space_home?user_id={{ $topic->user_id }}">
+							<img src="{{$user->avatar}}">
+						</a>
 						<div class="topics-right-content">
 							<!-- 动态内容 -->
 							<div class="topics-msg clearx">
@@ -60,7 +62,7 @@
 									<div class="comments-item">
 										<input type="hidden" class="comment-id" value="{{ $topic_comment->id }}" />
 										<div class="comments-avatar">
-											<a href="javascript:">
+											<a href="/user/space_home?user_id={{ $topic_comment->user_id }}">
 												<img src="{{User::find($topic_comment->user_id)->avatar}}">
 											</a>
 										</div>
@@ -83,7 +85,7 @@
 											<div class="reply-containers clearx"> 
 												<input type="hidden" class="reply-id" value="{{ $reply->id }}" />
 												<div class="reply-avatar">
-													<a href="javascript:void(0);">
+													<a href="/user/space_home?user_id={{ $reply->sender_id }}">
 														<img class="reply-avatar" src="{{User::find($reply->sender_id)->avatar}}" class="发表回复的头像">
 													</a>
 												</div>

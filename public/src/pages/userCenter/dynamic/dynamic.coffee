@@ -91,7 +91,7 @@ submitReply = (e)->
 
 deleteTopics = (e)->
 
-	if !confirm("确定要删除这个话题")
+	if !confirm("确定要删除这个话题吗?")
 		return
 	topic = $(e.currentTarget).parents ".topic"
 	topic_id = $(".topic-id").val()

@@ -49,7 +49,11 @@
 						<div class="comment">
 							<input type="hidden" class="comment-id" value="{{{ $comment['id'] }}}" />
 							<div class="comment-item">
-								<img class="author-avatar" src="{{{ $comment['author_avatar'] }}}" width="50" height="50" />
+
+								<a href="/user/space_home?user_id={{ $comment->user_id }}">
+									<img class="author-avatar" src="{{{ $comment['author_avatar'] }}}" width="50" height="50" />
+								</a>
+								
 								<div class="commment-info"> 
 									<span class="author-name">{{{ $comment["author_name"] }}}</span>
 									 ： 
@@ -72,7 +76,10 @@
 								@foreach($comment["replies"] as $reply)
 								<div class="reply">
 									<input type="hidden" class="reply-id" value="{{{ $reply->id }}}" />
-									<img class="author-avatar" src="{{{ $reply->sender_avatar }}}" width="50" height="50" />
+									<a href="/user/space_home?user_id={{ $reply->sender_id }}">
+										<img class="author-avatar" src="{{{ $reply->sender_avatar }}}" width="50" height="50" />
+									</a>
+									
 									<div class="reply-info"> 
 										<span class="author-name">{{{ $reply->sender_name }}}</span>
 										回复

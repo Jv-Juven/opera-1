@@ -30,7 +30,10 @@
 			@foreach($messages as $message)
 			<div class="message">
 				<input type="hidden" class="message-id" value="{{{ $message->id }}}" />
-				<img class="avatar" src="{{{$message->avatar}}}" width="50" height="50" />
+				<a href="/user/space_home?user_id={{ $message->sender_id }}">
+					<img class="avatar" src="{{{$message->avatar}}}" width="50" height="50" />
+				</a>
+				
 				<div class="message-info">
 					<span class="name">{{{$message->sender}}}</span>
 					<span class="time">{{{$message->created_at}}}</span>
@@ -52,7 +55,10 @@
 					@foreach($message["comments"] as $comment)
 					<div class="reply">
 						<input type="hidden" class="comment-id" value="{{{ $comment['id'] }}}" />
-						<img class="avatar" src="{{{ $comment['sender_avatar'] }}}" width="50" height="50" />
+						<a href="/user/space_home?user_id={{ $comment->sender_id }}">
+							<img class="avatar" src="{{{ $comment['sender_avatar'] }}}" width="50" height="50" />
+						</a>
+						
 						<div class="reply-info">
 							<span class="reply-author name">{{{ $comment["sender_name"] }}}</span>
 							回复
