@@ -78,7 +78,7 @@
 			clear: both;
 			text-align: right;
 			font-size: 14px;
-			padding-bottom: 10px;
+			padding: 20px 0px;
 			margin-top: 20px;
 
 			a {
@@ -89,12 +89,12 @@
 
 		.reply-input {
 			width: 745px;
-		    height: 80px;
-		    border-radius: 10px;
-		    border: 1px solid #ababab;
-		    outline: none;
-		    padding: 10px;
-		    margin-top: 10px;
+			height: 80px;
+			border-radius: 10px;
+			border: 1px solid #ababab;
+			outline: none;
+			padding: 10px;
+			margin-top: 10px;
 		}
 
 		.replies {
@@ -102,23 +102,26 @@
 
 			.reply {
 				.reply-info {
-					.reply-btn {
+					.reply-btn, .delete-btn {
+						display: inline-block;
+						padding: 5px 0px 5px 8px;
 						text-decoration: none;
 						color: #00a548;
-    					font-size: 14px;
-    					margin-left: 20px;
+						font-size: 14px;
+						margin-right: 0px;
+						/*margin-left: 20px;*/
 					}
 				}
 
 				.reply-content {
 					color: #7c7c7c;
-    				font-size: 14px;
-    				float: left;
-    				width: 650px;
-				    margin-left: 10px;
-				    margin-top: 10px;
-				    line-height: 1.5em;
-				    margin-bottom: 20px;
+					font-size: 14px;
+					float: left;
+					width: 650px;
+					margin-left: 10px;
+					margin-top: 10px;
+					line-height: 1.5em;
+					margin-bottom: 20px;
 				}
 			}
 

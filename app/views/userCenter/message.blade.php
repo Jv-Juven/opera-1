@@ -57,6 +57,7 @@
 							<span class="reply-author name" style="margin-left: 0px;">{{{ $comment["receiver_name"] }}}</span>
 							<span class="reply-time time">{{{ $comment["created_at"] }}}</span>
 							<a href="javascript:void(0);" class="reply-btn">回复</a>
+							<a href="javascript:void(0);" class="delete-btn">删除</a>
 						</div>
 						<div class="reply-content">{{{ $comment["content"] }}}</div>
 						<div style="clear:both;"></div>
@@ -88,6 +89,7 @@
 				<span class="reply-author name" style="margin-left: 0px;"><%= receiver_name %></span>
 				<span class="reply-time time"><%= created_at %></span>
 				<a href="javascript:void(0);" class="reply-btn">回复</a>
+				<a href="javascript:void(0);" class="delete-btn">删除</a>
 			</div>
 			<div class="reply-content"><%= content %></div>
 			<div style="clear:both;"></div>
