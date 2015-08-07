@@ -14,6 +14,8 @@ showCommentArea = (e)->
 
 	topic_id = $parent.parent().find(".topic-id").val()
 	$commentInputWrapper = $parent.find(".comment-input-wrapper");
+	$(".reply-input-wrapper, .comment-input-wrapper").hide();
+
 	$commentInputWrapper.fadeToggle('slow');
 	$commentInputWrapper.find(".reply-input").focus()
 	$commentInputWrapper.find(".topic-id").val(topic_id);
@@ -24,6 +26,8 @@ showCommentReplyArea = (e)->
 	topicId = $parent.parent().parent().parent().parent().find(".topic-id").val()
 
 	$replyInputWrapper = $parent.find(".reply-input-wrapper");
+	$(".reply-input-wrapper, .comment-input-wrapper").hide();
+
 	$replyInputWrapper.fadeToggle("slow");
 	$replyInputWrapper.find(".comment-id").val(commentId);
 	$replyInputWrapper.find(".reply-id").val(commentId);
@@ -41,6 +45,8 @@ showReplyArea = (e)->
 	replyId = $reply.find(".reply-id").val();
 
 	$replyInputWrapper = $parent.find(".reply-input-wrapper");
+	$(".reply-input-wrapper, .comment-input-wrapper").hide();
+	$replyInputWrapper.appendTo($parent);
 	$replyInputWrapper.fadeToggle("slow");
 	$replyInputWrapper.find(".topic-id").val(topicId);
 	$replyInputWrapper.find(".comment-id").val(commentId);
@@ -81,6 +87,46 @@ submitReply = (e)->
 		else
 			alert "提交回复失败"
 
+#删除话题、评论、回复
+
+deleteTopics = (e)->
+
+	if !confirm("确定要删除这个话题")
+		return
+	topic = $(e.currentTarget).parents ".topic"
+	topic_id = $(".topic-id").val()
+	$.post "/user/personal/delete_topic",{
+		topic_id : topic_id
+	},(data)->
+		if data["errCode"] == 0
+			#topic.fadeOut()
+			location.reload()
+		else 
+			alert data["message"]
+
+deleteTopicComments = (e)->
+	topicComment = $(e.currentTarget).parents ".comment"
+	topiccomment_id = topicComment.find(".comment-id").val()
+	$.post "/user/personal/delete_topic_comment",{
+		topiccomment_id : topiccomment_id
+	},(data)->
+		if data["errCode"] == 0
+			topicComment.fadeOut()
+		else 
+			alert data["message"]
+
+
+deleteCommentReply = (e)->
+	commentReply = $(e.currentTarget).parents ".reply"
+	topic_reply_id = commentReply.find(".reply-id").val()
+	$.post "/user/personal/delete_reply",{
+		topic_reply_id : topic_reply_id
+	},(data)->
+		if data["errCode"] == 0
+			commentReply.fadeOut()
+		else 
+			alert data["message"]
+
 
 $ ->
 	$(document).on "click", ".show-comments-btn", showComments 
@@ -89,8 +135,12 @@ $ ->
 	$(document).on "click", ".add-comment-btn", showCommentArea 
 	$(document).on "click", ".comment-reply-submit-btn", submitCommentReply 
 	$(document).on "click", ".reply-submit-btn", submitReply
+	#删除话题、评论、回复
+	$(document).on "click", ".del-comment-btn", deleteTopics
+	$(document).on "click", ".comment-del-btn", deleteTopicComments
+	$(document).on "click", ".del-reply-btn", deleteCommentReply
 
-	    
+		
 
 
 

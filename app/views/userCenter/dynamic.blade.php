@@ -37,7 +37,7 @@
 						</span>
 					</a>
 
-					<a href="javascript:void(0);" class="del-comment-btn">删除评论</a>
+					<a href="javascript:void(0);" class="del-comment-btn">删除话题</a>
 					<a href="javascript:void(0);" class="add-comment-btn">新增评论</a>
 					<!-- 遍历话题评论 -->
 					<div class="comments">
@@ -48,7 +48,7 @@
 								<img class="author-avatar" src="{{{ $comment['author_avatar'] }}}" width="50" height="50" />
 								<div class="commment-info"> 
 									<span class="author-name">{{{ $comment["author_name"] }}}</span>
-								 	 ： 
+									 ： 
 									<span class="comment-content">{{{ $comment["content"] }}}</span>
 									<div class="comment-operate">
 										<span class="comment-time">{{{ $comment["created_at"] }}}</span>
@@ -67,7 +67,7 @@
 										<span class="author-name">{{{ $reply->sender_name }}}</span>
 										回复
 										<span class="author-name">{{{ $reply->receiver_name }}}</span>
-									 	 ： 
+										 ： 
 										<span class="reply-content">{{{ $reply->content }}}</span>
 										<div class="reply-operate">
 											<span class="reply-time">{{{ $reply->created_at }}}</span>
@@ -110,11 +110,12 @@
 				<img class="author-avatar" src="<%= avatar %>" width="50" height="50" />
 				<div class="commment-info"> 
 					<span class="author-name"><%= author_name %></span>
-				 	 ： 
+					 ： 
 					<span class="comment-content"><%= content %></span>
 					<div class="comment-operate">
 						<span class="comment-time"><%= created_at %></span>
 						<a class="comment-reply-btn" href="javascript:void(0);">回复</a>
+						<a class="comment-del-btn" href="javascript:void(0);">删除</a>
 					</div>
 				</div>
 				<div style="clear:both;"></div>
@@ -141,11 +142,12 @@
 				<span class="author-name"><%= sender_name %></span>
 				回复
 				<span class="author-name"><%= receiver_name %></span>
-			 	 ： 
+				 ： 
 				<span class="reply-content"><%= content %></span>
 				<div class="reply-operate">
 					<span class="reply-time"><%= created_at %></span>
 					<a class="reply-btn" href="javascript:void(0);">回复</a>
+					<a class="del-reply-btn" href="javascript:void(0);">删除</a>
 				</div>
 			</div>
 			<div style="clear:both;"></div>
@@ -154,7 +156,7 @@
 @stop
 
 @section("js")
-    @parent
-    <script type="text/javascript" src="/lib/js/plugins/lodash.min.js"></script>
-    <script type="text/javascript" src="/dist/js/pages/dynamic.js"></script>
+	@parent
+	<script type="text/javascript" src="/lib/js/plugins/lodash.min.js"></script>
+	<script type="text/javascript" src="/dist/js/pages/dynamic.js"></script>
 @stop
