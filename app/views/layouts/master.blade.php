@@ -11,6 +11,7 @@
 	<link rel="icon" type="image/png" href="/images/icon.png">
 	@section('css')
 		<link rel="stylesheet" href="/lib/css/idangerous.swiper.css">
+		<link rel="stylesheet" href="/lib/css/idangerous.swiper.scrollbar-2.4.1.css">
 		<link rel="stylesheet" href="/dist/css/common.css">
 	@show
 </head>
@@ -154,6 +155,7 @@
 
 	@section('js')
 		<script type="text/javascript" src="/dist/js/lib/plugins/idangerous.swiper.min.js"></script>
+		<script type="text/javascript" src="/dist/js/lib/plugins/idangerous.swiper.scrollbar-2.4.1.min.js"></script>
 		<script type="text/javascript" src="/dist/js/lib/jquery/jquery-1.11.2.js"></script>
 		<script type="text/javascript" src="/dist/js/lib/jquery/jquery-1.11.2.min.js"></script>
 		<script type="text/javascript" src="/dist/js/lib/jquery/jquery.cookie.js"></script>

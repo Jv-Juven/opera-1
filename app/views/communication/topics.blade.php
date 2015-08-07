@@ -7,7 +7,7 @@
 @section('css')
 	@parent
 	<link rel="stylesheet" href="/dist/css/communication/topics/topic.css">
-	<link rel="stylesheet" href="/lib/css/swiper3.1.0.min.css">
+	<!-- <link rel="stylesheet" href="/lib/css/swiper3.1.0.min.css"> -->
 
 @stop
 
@@ -213,7 +213,7 @@
 
 @section('js')
 	@parent
-	<script type="text/javascript" src="/dist/js/lib/plugins/swiper.min.js"></script>
+	<!-- // <script type="text/javascript" src="/dist/js/lib/plugins/swiper.min.js"></script> -->
 	<script type="text/javascript" src="/dist/js/lib/plugins/lodash.min.js"></script>
 	<script type="text/javascript" src="/dist/js/pages/topics.js"></script>
 @stop

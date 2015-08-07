@@ -27,6 +27,19 @@ $ ->
 	# 评论的展开和折叠
 	tag = 1
 	swiperTopics = null
+
+	params = {
+		mode: 'vertical',
+		freeMode: true,
+		mousewheelControl: true,
+		slidesPerView: 'auto',
+		scrollbar: {
+			container: '.topics-scrollbar',
+			hide: false
+		}
+	}
+	swiperTopics = new Swiper '.topics-swiper', params
+
 	$(document).on "click", ".topics-comment", (e)->
 		$(".topics-comments-container").slideToggle(800, ()->
 			if tag != 1
@@ -39,7 +52,9 @@ $ ->
 				freeMode: true,
 				mousewheelControl: true,
 				slidesPerView: 'auto',
-				scrollbar: '.topics-scrollbar'
+				scrollbar: {
+					container: '.topics-scrollbar'
+				}
 			}
 			swiperTopics = new Swiper '.topics-swiper', params
 		)

@@ -43,7 +43,16 @@
 	
 	.topics-swiper{
 		width: 100%;
+		height: 100%;
 		.topics-scrollbar{
+			position: absolute;
+			width: 10px;
+			height: 100%;
+			top: 0px;
+			right: 0px;
+			z-index: 999;
+			background: rgba(0,0,0,0.1) !important;
+			background: url('/images/scrollbg.png');
 			.swiper-scrollbar-drag{
 				background: @btn-color;
 			}
