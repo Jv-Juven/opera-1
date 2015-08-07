@@ -598,7 +598,7 @@ class UserController extends BaseController{
 		$message_id = Input::get('message_id');
 		$user_id = Input::get('user_id');
 		$message = Message::find($message_id);
-		dd($user_id);
+		// dd($user_id);
 		if($message == null)
 		{
 			return Response::json(array('errCode'=>2,'message'=>'该留言不存在'));
