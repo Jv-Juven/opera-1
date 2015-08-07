@@ -36,9 +36,12 @@
 							(<span class="number">{{{$topic->commentsCount}}}</span>)个评论
 						</span>
 					</a>
-
+					@if(Auth::check())
+						@if(Auth::user()->id == $user->id)
 					<a href="javascript:void(0);" class="del-comment-btn">删除话题</a>
+						@endif
 					<a href="javascript:void(0);" class="add-comment-btn">新增评论</a>
+					@endif
 					<!-- 遍历话题评论 -->
 					<div class="comments">
 						@foreach($topic->comments as $comment)
@@ -52,8 +55,12 @@
 									<span class="comment-content">{{{ $comment["content"] }}}</span>
 									<div class="comment-operate">
 										<span class="comment-time">{{{ $comment["created_at"] }}}</span>
+									@if(Auth::check())	
 										<a class="comment-reply-btn" href="javascript:void(0);">回复</a>
+										@if(Auth::user()->id == $comment->user_id)	
 										<a class="comment-del-btn" href="javascript:void(0);">删除</a>
+										@endif
+									@endif
 									</div>
 								</div>
 								<div style="clear:both;"></div>
@@ -71,8 +78,12 @@
 										<span class="reply-content">{{{ $reply->content }}}</span>
 										<div class="reply-operate">
 											<span class="reply-time">{{{ $reply->created_at }}}</span>
+										@if(Auth::check())	
 											<a class="reply-btn" href="javascript:void(0);">回复</a>
+											@if(Auth::user()->id == $reply->sender_id)	
 											<a class="del-reply-btn" href="javascript:void(0);">删除</a>
+											@endif
+										@endif
 										</div>
 									</div>
 									<div style="clear:both;"></div>

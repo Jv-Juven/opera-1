@@ -37,9 +37,13 @@
 								<div class="topics-msg-body">
 									{{$topic->content}}
 								</div>
+								@if(Auth::check())
+									@if(Auth::user()->id == $user->id)
 								<div class="topics-comment-delete">
 									删除  
 								</div>
+									@endif
+								@endif
 								<div class="topics-comment">
 									评论(<span>{{$commentCount}}</span>)  
 								</div>
@@ -59,8 +63,14 @@
 										</div>
 										<div class="item-head">
 											<div class="item-title">{{User::find($topic_comment->user_id)->username}}</div>
+											@if(Auth::check())
+												@if(Auth::user()->id == $user->id)
 											<a class="comment-delete-btn" href="javascript:void(0);">删除</a>
+												@endif
+											@endif	
+											@if(Auth::check())
 											<a class="comment-reply-btn" href="javascript:void(0);">回复</a>
+											@endif
 											<span>{{$topic_comment->created_at}}</span>
 										</div>
 										<div class="item-body">{{$topic_comment->content}}</div>
@@ -82,8 +92,14 @@
 												</div>
 												<div class="reply-content reply-date">
 													<span class="date">{{$reply->created_at}}</span>
+													@if(Auth::check())
 													<a class="reply-btn" href="javascript:void(0);">回复</a>
+													@endif	
+													@if(Auth::check())
+														@if(Auth::user()->id == $user->id)
 													<a class="reply-delete-btn" href="javascript:void(0);">删除</a>
+														@endif
+													@endif	
 												</div>
 											</div>
 											@endforeach
