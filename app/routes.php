@@ -82,9 +82,12 @@ Route::group(array('prefix'=>'user'),function()
 			Route::post('delete_topic','UserController@deleteTopic');
 			//发表留言
 			Route::post('message', 'UserController@postMessage');
+			//删除留言
 			Route::post('delete_message', 'UserController@deleteMessage');
 			//发表回复
 			Route::post('message_comment','UserController@postMessageComment');
+			//删除留言回复
+			Route::post('delete_msg_comment','UserController@deleteMsgComment');
 			//发表话题评论
 			Route::post('topic_comment','UserController@topicComment');
 			//删除话题评论

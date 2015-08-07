@@ -655,6 +655,44 @@ class UserController extends BaseController{
 		return Response::json(array('errCode'=>0, 'comment'=>$comment)); 
 	}
 
+	//个人中心——删除留言回复
+	public function deleteMsgComment()
+	{
+		if(!Auth::check())
+		{
+			return Response::json(array('errCode'=>1, 'message'=>'请登录！'));
+		}
+		$user_id = Input::get('user_id');
+		$msg_comment_id  = Input::get('msg_comment_id');
+		$msg_comment = MessageComment::find($msg_comment_id);
+		// dd($msg_comment->sender_id);
+		if($msg_comment == null)
+		{
+			return Response::json(array('errCode'=>2, 'message'=>'该留言回复不存在！'));
+		}
+		if(Auth::user()->id == $user_id)
+		{
+			if(!$msg_comment->delete())
+			{
+				return Response::json(array('errCode'=>3,'message'=>'删除失败！'));
+			}
+
+			return Response::json(array('errCode'=>0, 'message'=>'删除成功！'));
+		}
+		$sender_id = $msg_comment->$sender_id;
+		if(Auth::user()->id != $sender_id)
+		{
+			return Response::json(array('errCode'=>4,'message'=>'[权限禁止]只能删除自己的留言回复'));
+		}
+
+		if(!$msg_comment->delete())
+		{
+			return Response::json(array('errCode'=>5,'message'=>'删除失败！'));
+		}
+
+		return Response::json(array('errCode'=>0, 'message'=>'删除成功！'));
+	}
+
 	//更新资料,根据cngcong网写
 	public function postUpdate()
 	{
