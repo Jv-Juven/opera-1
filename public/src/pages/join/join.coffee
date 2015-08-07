@@ -2,11 +2,13 @@
 
 joinSwiper = new Swiper ".swiper-container",{
 
-	direction: "vertical",
+	mode: 'vertical',
 	freeMode: true,
 	mousewheelControl: true,
-	slidesPerView: '2',
-	scrollbar: '.join-scrollbar',
-	calculateHeight: true
+	slidesPerView: 'auto',
+	scrollbar: {
+		container: '.join-scrollbar',
+		hide: false
+	}
 
 }

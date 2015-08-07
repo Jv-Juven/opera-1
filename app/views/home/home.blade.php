@@ -41,6 +41,7 @@
     	       @if(isset($columns))
                     @foreach ( $columns as $column)
                     <li>
+                        <img class="home-point" src="/images/home/point01.png" alt="">
                         <a href="customer/news/column_more?column_id={{$column->id}}">
                             {{$column->title}}
                         </a>
@@ -49,7 +50,7 @@
                 @endif
     			</ul>
     		</li>
-    		<li>
+    		<li class="home-margin-left">
     			<div class="content-li-head">
     				<span class="sub-title"><a href="/customer/performance/teacher">协会表演</a>/</span>
     				<span class="sub-title-en"><a href="/customer/performance/teacher">PERFORM</a></span>
@@ -60,6 +61,7 @@
             @if(isset($backstages))
                     @foreach($backstages as $backstage)
                     <li>
+                        <img class="home-point" src="/images/home/point01.png" alt="">
                         <a href="customer/performance/backstage_more?backstage_id={{$backstage->id}}">
                             {{$backstage->title}}
                         </a>
@@ -68,19 +70,19 @@
             @endif
     			</ul>
     		</li>
-    		<li>
+    		<li class="home-margin-left home-contact-us">
     			<div class="content-li-head">
     				<span class="sub-title"><a>联系我们</a>/</span>
     				<span class="sub-title-en"><a>CONTACT</a></span>
     			</div>
     			<ul class="content-list home-code">
-                                        @if(isset($contact))
+                    @if(isset($contact))
     				<li>联系电话：{{$contact->number}}</li>
     				<li>联系人：{{$contact->people}}</li>
     				<li>邮政编码：{{$contact->postcode}}</li>
     				<li>网址：<a>{{$contact->site}}</a></li>
     				<li>地址：{{$contact->address}}</li>
-                                        @endif
+                    @endif
     				<li id="home_code_container">
     					<img class="index-code" src="/images/home/index_code.png" alt="">
     					<div id="code_content">

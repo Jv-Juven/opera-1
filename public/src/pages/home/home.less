@@ -10,28 +10,44 @@
 }
 
 .home-swiper-container{
-    position: relative;
+	position: relative;
 	width: 1000px;
 	height: 412px;
 }
 
 .home-swiper-pagination{
-    position: absolute;
-    bottom: 50px;
+	position: absolute;
+	bottom: 10px;
 	width: 100%;
-	height: 12px;
+	line-height: 50px;
+	z-index: 999;
+	text-align: center;
 	span{
 		display: inline-block;
-		width: 10px;
-		height: 10px;
+		width: 13px;
+		height: 13px;
 		border-radius: 10px;
-		background: rgba(0,175,101,0.5);
+		margin: 0px 5px;
+		background: rgba(0,175,101,0.5) !important;
+		background: rgb(0, 175 ,101);
+		filter:alpha(opacity=50);
+		/*background: url('/images/home/point03.png');*/
+		background-size: 100% 100%;
+		cursor: pointer;
+	}
+	.swiper-active-switch{
+		background: rgb(0, 175 ,101) !important;
+		filter:alpha(opacity=90);
+		/*background: url('/images/home/point01.png');*/
+		background-size: 100% 100%;
 	}
 }
 
-.swiper-pagination-bullet-active{
+/*.swiper-pagination-bullet-active{
 	background: rgb(0, 175 ,101) !important;
-}
+	background: url('/images/home/point01.png');
+	background-size: 100% 100%;
+}*/
 .swiper-pagination-bullet{
 	width: 12px !important;
 	height: 12px !important;
@@ -80,11 +96,11 @@
 		font-size: 16px;
 	}
 }
-#content>li:not(:nth-child(1)){
+.home-margin-left{
 	margin-left: 80px;
 }
-.home-list li:before{
-	/*content: url('/images/home/li_point.png');*/
+/*.home-list li:before{
+	content: url('/images/home/li_point.png');
 	content: " ";
 	display: inline-block;
 	background: rgb(77,167,100);
@@ -92,6 +108,17 @@
 	height: 9px;
 	border-radius: 9px;
 	margin-bottom: 0px;
+}
+*/
+.home-list{
+	li{
+		.home-point{
+			width: 9px;
+			height: 9px;
+			margin-right: 2px
+		}
+	}
+	
 }
 
 #content .content-list li{
@@ -108,16 +135,15 @@
 		color: rgb(0,175,101);
 	}
 }
-#content .content-list:nth-last-child(1) li:nth-child(1){
+.home-code{
 	padding-top: 9px;
-}
-#content>li:nth-child(3) li{
-	border:0px;
-	line-height: 20px;
-	padding-top: 0px;
-	letter-spacing: 2px;
-	font-size: 13px;
-
+	li{
+		border:0px !important;
+		line-height: 25px;
+		padding-top: 0px !important;
+		letter-spacing: 2px;
+		font-size: 13px;
+	}
 }
 #content>li:nth-child(3) li:nth-last-child(1){
 	padding-top: 6px;
@@ -137,7 +163,7 @@
 }
 .sweep-text{
 	position: absolute;
-	padding: 12px 0px;
+	padding: 9px 0px;
 	color: #fff;
 	font-weight: 700;
 	font-size: 18px;
@@ -160,12 +186,11 @@
 	padding-top: 2px;
 }
 #weixin_brand{
-	padding-top: 5px;
 	text-align: center;
 	font-family: "楷体";
 	font-size: 13px;
 }
 #home_code_container{
-	
+	padding-top: 5px !important;
 }
 

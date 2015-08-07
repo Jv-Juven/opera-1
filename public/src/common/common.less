@@ -75,7 +75,8 @@ img{
 	left: 0px;
 	width: 100%;
 	height: 100%;
-	background: rgba(0,0,0,0.4);
+	background: url('/images/fullbg.png');
+	background-repeat: repeat;
 	z-index: 1;
 	display: none;
 }
@@ -87,6 +88,7 @@ img{
 	width: 540px;
 	border:10px solid rgba(0,0,0,0.3);
 	display: none;
+	z-index: 2;
 }
 .cover-box-header{
 	width: 100%;
@@ -207,14 +209,32 @@ img{
 	font-family: "黑体";
 	letter-spacing: 2px;
 }
-#send_verify_code{
-	width: 200px;
-	border-radius: 10px;
-	margin-top: -10px;
-	float: right;
-	line-height: 40px;
-	cursor: pointer;
-	text-align: center;
+#verify_code_container{
+	.verify-input-container{
+		line-height: 50px;
+		width: 100%;
+		text-align: center;
+		#user_verify_code{
+			border-radius: 8px;
+			border: 1px solid rgb(0, 164, 71);
+			width: 200px;
+			padding: 10px 5px;
+			margin-right: 32px;
+			&:focus{
+				outline: none;
+			}
+		}
+
+		#send_verify_code{
+			display: inline-block;
+			width: 200px;
+			border-radius: 10px;
+			line-height: 45px;
+			cursor: pointer;
+			text-align: center;
+		}
+
+	}
 }
 #verify_container .active{
 	background: rgb(0,164,71);
@@ -317,13 +337,13 @@ header{
 /*header #header a{
 	text-decoration:none;
 }*/
-header #header a:link,header #header a:visited{
+/*header #header a:link,header #header a:visited{
 	color: #000;
 	text-decoration:none;
-}
+}*/
 
 .nav{
-	padding:25px 0 0 10px;
+	padding: 25px 0 0 10px;
 	float: left;
 	font-weight: 400;
 }
@@ -333,14 +353,19 @@ header #header a:link,header #header a:visited{
 	cursor: pointer;
 	letter-spacing: 1px;
 }
-.nav li>a{
+.nav li a{
 	display: block;
 	padding: 5px 15px;
 	font-family: '黑体';
+	text-decoration: none;
+	&:visited, &:link, &:active {
+		color: #000;
+	}
 }
 .nav .active,.nav .active a{
 	background: #00af65;
 	color: #fff !important;
+
 }
 
 .nav li:hover,.nav li>a:hover{
@@ -358,6 +383,12 @@ header #header a:link,header #header a:visited{
 }
 .user-info li{
 	float: left;
+	a{
+		text-decoration: none;
+		&:active,&:link,&:visited{
+			color: #000;
+		}
+	}
 }
 
 .user-portrit a{
