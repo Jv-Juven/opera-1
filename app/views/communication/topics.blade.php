@@ -124,9 +124,11 @@
 									<div style="clear:both;"></div>
 								</div>
 								<div class="comments-more">
+									@if(Auth::check())
 									<div class="comment-btn">
 										我要评论
 									</div>
+									@endif
 								</div>
 							</div>		
 						</div>
