@@ -1,8 +1,8 @@
 
 albumSwiper = new Swiper ".photo-album-swiper", {
-	direction: "horizontal",
+	mode: "horizontal",
 	speed: 400,
-	spaceBetween: 100,
+	#spaceBetween: 100,
 	nextButton: ".swiper-button-next",
 	prevButton: ".swiper-button-prev"
 }

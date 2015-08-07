@@ -24,14 +24,25 @@
 	width: 130px;
 	margin: 0px -65px;
 }
-.query-input{
-	font-family: "黑体";
-	display: block;
-	margin: 30px auto;
-	width:330px;
-	height: 45px;
-	&:focus{
-		outline: none;
+.query-board{
+	
+	.input-container{
+		position: relative;
+		background: inherit;
+		width: 100%;
+		text-align: center;
+		font-size: 22px;
+		color: #222;
+		.query-input{
+			font-family: "黑体";
+			display: inline-block;
+			width: 330px;
+			padding: 10px 5px;
+			font-size: 22px;
+			&:focus{
+				outline: none;
+			}
+		}
 	}
 }
 .query-submit{

@@ -21,9 +21,9 @@
 				<img class="avatar" src="{{{$user->avatar}}}">
 			</div>
 			<div class="img-char" id="img_char">
+				<input type="file" id="change_avatar"/>
 				<img class="avatar-btn avatar-change" src="/images/userCenter/change_pic.png">
 				<span class="avatar-char avatar-change">更换头像</span>
-				<input type="file" id="change_avatar"/>
 			</div>	
 		</div>
 		<input id="des_id" type="hidden" value="{{$user->id}}" />

@@ -49,8 +49,8 @@
 		   	   				</span>
 		   	   			</div>
 		   	   			<div class="zone-info-intro clearx">
-		   	   				<div class="intro-box">我的简介：</div>
-		   	   				<div class="intro-box">
+		   	   				<div class="intro-box intro-box01">我的简介：</div>
+		   	   				<div class="intro-box intro-box02">
 		   		   				<span class="intro-box-content">
 		   		   					{{$user->per_description}}
 		   		   				</span>

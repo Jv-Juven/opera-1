@@ -12,17 +12,17 @@
 		}
 		text-decoration: none;
 	}
-    & .zone-line-container>div{
-	    border: 1px solid @btn-color;
-    }
+	& .zone-line-container>div{
+		border: 1px solid @btn-color;
+	}
 
-    .zone-banner{
-    	width: 100%;
-    	background: @btn-color;
-    	padding: 10px 0px;
+	.zone-banner{
+		width: 100%;
+		background: @btn-color;
+		padding: 10px 0px;
 		.figures-name-text(16px,"黑体",600,white);
 		text-align: center;
-    }
+	}
 
 	.zone-header{
 		float: left;
@@ -84,26 +84,39 @@
 				vertical-align: inherit;
 				height: 100%;
 				display: inline-block;
-				&:nth-child(1){
-					float: left;
-				}
-				&:nth-child(2){
-					float: right;
-					width: 460px;
-				}
 
 				.more{
 					position: absolute;
 					bottom: 0px;
 					width: 100%;
-					line-height: 18px;
+					height: 30px;
+					line-height: 20px;
 					text-align: right;
 					
 					a {
+						display: inline-block;
 						text-decoration: none;
 						.figures-name-text(14px,"黑体",500);
 					}
 				}
+				.moree{
+					display: block;
+					width: 100%;
+					height: 20px;
+					a {
+						display: inline-block;
+						text-decoration: none;
+						.figures-name-text(14px,"黑体",500);
+					}
+				}
+			}
+
+			.intro-box01{
+				float: left;
+			}
+			.intro-box02{
+				float: right;
+				width: 460px;
 			}
 
 

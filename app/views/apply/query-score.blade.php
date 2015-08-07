@@ -23,8 +23,12 @@
 				<img src="/images/common/logo.png" alt="">
 			</div>
 			<div class="query-form">
-				<input id="query_num" class="query-input" type="text" placeholder="输入你的编号">
-				<input id="query_name" class="query-input" type="text" placeholder="输入你的姓名">
+				<div class="input-container">
+					编号：<input id="query_num" class="query-input" type="text" placeholder="输入你的编号">
+				</div>
+				<div class="input-container">
+					姓名：<input id="query_name" class="query-input" type="text" placeholder="输入你的姓名">
+				</div>
 				<div id="query_btn" class="query-submit">成绩查询</div>
 
 			</div>
