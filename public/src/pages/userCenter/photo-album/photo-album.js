@@ -64,8 +64,7 @@ $("#box_btn").click(function (){
 window.uploader({
     browse_button: "box_btn",
     container: "box_btn_container",
-    uptoken_url: "/qiniu/getUpToken",
-    domain: "http://7xk6xh.com1.z0.glb.clouddn.com/"
+    uptoken_url: "/qiniu/getUpToken"
 },{
     FileUploaded: function (up,file,info) {
         info = $.parseJSON(info);

@@ -18,9 +18,9 @@
 	<div class="page-content gallary-page" data-user-id="{{{ $user_id }}}" style="padding:0px;">
 		<a href="/user/album?user_id={{{ $user_id }}}" class="return-btn">返回个人中心->相册页面</a>
 		<div style="clear:both;"></div>
-		<div class="photos">
+		<div class="photos" data-album-id="{{$album_id}}">
 			@foreach($photos as $photo)
-			<div class="photo" data-album-id="{{$photo->album_id}}">
+			<div class="photo">
 				<span class="delete-btn">×</span>
 				<input type="hidden" class="id" value="{{ $photo->id }}" />
 				<img src="{{ $photo->picture }}" width="236" height="195" />

@@ -77,21 +77,20 @@ url_arr = []
 window.uploader {
     browse_button: "photo_add_btn",
     container: "photo_add",
-    uptoken_url: "/qiniu/getUpToken",
-    domain: "http://7xk6xh.com1.z0.glb.clouddn.com/"
+    uptoken_url: "/qiniu/getUpToken"
 },{
     FileUploaded: (up,file,info)->
 	    info = $.parseJSON info
 	    domain = up.getOption "domain"
 	    url = domain + info.key
-	    console.log url
+	    console.log url + $(".gallary-page .photos").attr "data-album-id"
 	    url_arr.push url
     UploadComplete: ()->
 	    #队列文件处理完毕后,处理相关的事情
 	    console.log url_arr.length
 	    $.post "/user/personal/upload_image", {
 		    img_urls: url_arr,
-		    album_id: $(".photo").attr "data-album-id"
+		    album_id: $(".gallary-page .photos").attr "data-album-id"
 		    }, (data)->
 			    if data["errCode"] == 0 
 				    alert "图片上传成功"
