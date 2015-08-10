@@ -66,8 +66,7 @@ $(".img-char").click(function() {
 window.uploader({
     browse_button: "change_avatar",
     container: "img_char",
-    uptoken_url: "/qiniu/getUpToken",
-    domain: "http://7xk6xh.com1.z0.glb.clouddn.com/"
+    uptoken_url: "/qiniu/getUpToken"
 },{
     FileUploaded: function (up,file,info) {
         info = $.parseJSON(info);

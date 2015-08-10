@@ -420,7 +420,7 @@ window.uploader = function (options, handlers){
         runtimes: 'html5,flash,html4',
         browse_button: 'click-file',
         uptoken_url: '/qiniu/getUpToken',
-        domain: "http://7sbxao.com1.z0.glb.clouddn.com/",
+        domain: "http://7xkx3d.com1.z0.glb.clouddn.com/",
         container: 'container',
         max_file_size: '5mb',
         flash_swf_url: '/lib/plupload/Moxie.swf',
