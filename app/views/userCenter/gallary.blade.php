@@ -21,7 +21,11 @@
 		<div class="photos" data-album-id="{{$album_id}}">
 			@foreach($photos as $photo)
 			<div class="photo">
+				@if(Auth::check())
+					@if(Auth::user()->id == $user_id)
 				<span class="delete-btn">×</span>
+					@endif
+				@endif
 				<input type="hidden" class="id" value="{{ $photo->id }}" />
 				<img src="{{ $photo->picture }}" width="236" height="195" />
 			</div>
