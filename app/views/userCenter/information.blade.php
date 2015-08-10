@@ -64,8 +64,8 @@
 			</div>
 			<div class="p position">
 				<span class="name-field">职&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;位:</span>
-				<span class="name-info noedit-status">{{{$user->postion}}}</span>
-				<input id="info_job" class="name-info edit-status" type="text" value="{{{$user->postion}}}"></input>
+				<span class="name-info noedit-status">{{{$user->position}}}</span>
+				<input id="info_job" class="name-info edit-status" type="text" value="{{{$user->position}}}"></input>
 			</div>
 			<div class="p city">
 				<span class="name-field">所在城市:</span>

@@ -49,7 +49,7 @@ $("#info_confirm").click(function() {
     	per_description : intro
     },function(data){
     	if(data["errCode"] == 0){
-    		window.location.href = window.location.href;
+    		// location.reload();
     	}
     	else{
     		alert(data["message"]);

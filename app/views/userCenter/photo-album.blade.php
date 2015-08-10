@@ -22,7 +22,7 @@
 		<div class="album-container clearx">
 			@foreach($albums as $album)
 			<div class="album-box album-box-finished" data-id="{{$album->id}}">
-				<a href="/user/gallary?album_id={{{ $album->id }}}&&user_id={{{ $user->id }}}">
+				<a class="album-box-img" href="/user/gallary?album_id={{{ $album->id }}}&&user_id={{{ $user->id }}}">
 					<img src="{{{$album->picture}}}" alt="">
 				</a>
 				<div class="album-content">
@@ -101,6 +101,7 @@
 			</div>
 		</div>
 	</div>
+	<div class="album-mask white-mask"></div>
 @stop
 
 @section('js')

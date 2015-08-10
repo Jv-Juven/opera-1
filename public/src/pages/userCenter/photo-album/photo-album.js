@@ -74,6 +74,9 @@ window.uploader({
         url_arr.push(url);
 
     },
+    BeforeUpload: function() {
+    	$(".album-mask").fullscreen().show();
+    },
     UploadComplete: function() {
        //队列文件处理完毕后,处理相关的事情
        console.log(url_arr.length);
@@ -84,6 +87,7 @@ window.uploader({
        	if(data["errCode"] == 0){
        		alert("图片上传成功");
        		window.location.href = window.location.href;
+       		$(".album-mask").fadeOut();
        	}
        	else{
        		alert(data["message"]);

@@ -63,6 +63,8 @@
 		</div>
 		<div style="clear:both;"></div>
 	</div>
+
+	<div class="gallary-mask white-mask"></div>
 @stop
 
 @section('js')

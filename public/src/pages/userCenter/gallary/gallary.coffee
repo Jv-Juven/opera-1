@@ -95,8 +95,11 @@ window.uploader {
 			    if data["errCode"] == 0 
 				    alert "图片上传成功"
 				    window.location.href = window.location.href
+				    $(".gallary-mask").fadeOut()
 			    else
 				    alert data["message"]
+    BeforeUpload: ()->
+	    $(".gallary-mask").fullscreen().show()
 }
 	
     
