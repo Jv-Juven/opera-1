@@ -12,7 +12,8 @@ class UserPageController extends BaseController {
 
 		return View::make('userCenter.gallary')->with(array(
 			"photos" => $photos,
-			"user_id" => $user_id
+			"user_id" => $user_id,
+			"album_id" => $album_id
 		));
 	}
 
