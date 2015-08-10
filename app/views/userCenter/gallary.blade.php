@@ -6,7 +6,7 @@
 
 @section('css')
 	@parent
-	<link rel="stylesheet" href="/lib/css/swiper3.1.0.min.css">
+	<!-- <link rel="stylesheet" href="/lib/css/swiper3.1.0.min.css"> -->
 	<link rel="stylesheet" href="/dist/css/userCenter/gallary/gallary.css">
 @stop
 
@@ -55,8 +55,12 @@
 			</div>
 		</div>
 		<!-- 如果需要导航按钮 -->
-		<div class="swiper-button-prev"></div>
-		<div class="swiper-button-next"></div>
+		<div class="swiper-button-prev">
+			<img src="/images/userCenter/Swiper_prev.png" alt="">
+		</div>
+		<div class="swiper-button-next">
+			<img src="/images/userCenter/Swiper_next.png" alt="">
+		</div>
 		<div style="clear:both;"></div>
 	</div>
 @stop
@@ -65,6 +69,6 @@
 	@parent
     <script type="text/javascript" src="/dist/js/lib/plugins/qiniu.min.js"></script>
     <script type="text/javascript" src="/dist/js/lib/plugins/plupload.full.min.js"></script>
-	<script type="text/javascript" src="/dist/js/lib/plugins/swiper.min.js"></script>
+	<!-- // <script type="text/javascript" src="/dist/js/lib/plugins/swiper.min.js"></script> -->
 	<script type="text/javascript" src="/dist/js/pages/gallary.js"></script>
 @stop

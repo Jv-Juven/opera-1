@@ -3,8 +3,13 @@ albumSwiper = new Swiper ".photo-album-swiper", {
 	mode: "horizontal",
 	speed: 400,
 	#spaceBetween: 100,
-	nextButton: ".swiper-button-next",
-	prevButton: ".swiper-button-prev"
+	#nextButton: ".swiper-button-next",
+	#prevButton: ".swiper-button-prev",
+	onSwiperCreated: (swiper)->
+		$(".swiper-button-prev").click ()->
+			albumSwiper.swipePrev()
+		$(".swiper-button-next").click ()->
+			albumSwiper.swipeNext()
 }
 
 showCloseBtn = (e)->
@@ -50,8 +55,9 @@ showPhotos = (e)->
 			currentIndex = index
 			return false
 
-	albumSwiper.update()
-	albumSwiper.slideTo(currentIndex)
+	#albumSwiper.update()
+	#albumSwiper.reInit()
+	albumSwiper.swipeTo(currentIndex)
 
 	$("#mask").fadeIn()
 
